@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>CS Revenue Playbook — Nutraceutico</title>
+<title>CS Revenue Playbook — Nutraceutical USA (Email / Freshdesk)</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,sans-serif;display:flex;height:100vh;overflow:hidden;background:#060b14;color:#e2e8f0}
-::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:#1e293b;border-radius:4px}
-#sb{width:228px;background:#060b14;border-right:1px solid #0f172a;overflow-y:auto;flex-shrink:0;display:flex;flex-direction:column}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:#1e293b;border-radius:4px}
+#sb{width:256px;background:#060b14;border-right:1px solid #0f172a;overflow-y:auto;flex-shrink:0;display:flex;flex-direction:column}
 .sb-hd{padding:18px 16px 14px;border-bottom:1px solid #0f172a}
 .sb-title{font-size:13px;font-weight:800;color:#f8fafc;letter-spacing:-.02em}
-.sb-sub{font-size:10px;color:#334155;margin-top:2px}
-.sb-stats{display:flex;gap:8px;margin-top:10px}
-.sb-stat{background:#0f172a;border-radius:7px;padding:7px 10px;flex:1;text-align:center}
-.sb-stat-n{font-size:16px;font-weight:900;color:#f8fafc}
-.sb-stat-l{font-size:9px;color:#475569;margin-top:1px}
-.sb-lbl{font-size:9px;font-weight:700;color:#1e3a5f;letter-spacing:.1em;text-transform:uppercase;padding:10px 16px 5px}
+.sb-sub{font-size:10px;color:#334155;margin-top:2px;line-height:1.5}
+.sb-stats{display:flex;gap:7px;margin-top:11px}
+.sb-stat{background:#0f172a;border-radius:7px;padding:7px 8px;flex:1;text-align:center}
+.sb-stat-n{font-size:15px;font-weight:900;color:#f8fafc}
+.sb-stat-l{font-size:8.5px;color:#475569;margin-top:1px}
+.sb-lbl{font-size:9px;font-weight:700;color:#1e3a5f;letter-spacing:.1em;text-transform:uppercase;padding:13px 16px 5px}
 .nb{display:flex;align-items:center;gap:9px;width:100%;padding:7px 12px 7px 14px;border:none;background:transparent;cursor:pointer;text-align:left;border-left:2px solid transparent;transition:all .12s}
 .nb:hover{background:#0f172a}.nb.active{background:#0f172a}
 .nb-icon{width:27px;height:27px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
@@ -24,8 +24,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,sans-seri
 .nb-name{font-size:11px;color:#64748b;font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.35}
 .nb.active .nb-name{color:#f1f5f9;font-weight:600}
 .nb-prog{font-size:9px;color:#1e3a5f;margin-top:1px}
+.tag-badge{display:inline-block;font-size:8.5px;font-weight:700;padding:1px 7px;border-radius:8px;margin-top:2px}
 #main{flex:1;overflow-y:auto;background:#f0f4f8}
-.mi{padding:22px 24px 48px;max-width:860px}
+.mi{padding:22px 24px 56px;max-width:920px}
 .nh{display:flex;align-items:center;gap:14px;padding:18px 20px;background:white;border-radius:14px;margin-bottom:14px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
 .nh-icon{width:50px;height:50px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:25px;flex-shrink:0}
 .nh-name{font-size:19px;font-weight:800;color:#0f172a;letter-spacing:-.03em}
@@ -38,29 +39,34 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,sans-seri
 .pc{background:white;border:1px solid #e2e8f0;border-radius:12px;padding:12px 13px}
 .pc.ft{background:#0f172a;border-color:#0f172a}
 .pc-lbl{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#94a3b8}
-.pc.ft .pc-lbl{color:#334155}
+.pc.ft .pc-lbl{color:#cbd5e1}
 .best-tag{display:inline-block;font-size:8px;font-weight:800;background:#10b981;color:white;padding:1px 6px;border-radius:8px;margin-left:4px;vertical-align:1px}
 .pc-price{font-size:22px;font-weight:900;color:#0f172a;letter-spacing:-.04em;margin-top:3px}
 .pc.ft .pc-price{color:white}
 .pc-unit{font-size:10px;font-weight:400;color:#94a3b8}
 .pc-info{font-size:10px;color:#94a3b8;margin-top:3px}
-.pc.ft .pc-info{color:#475569}
+.pc.ft .pc-info{color:#94a3b8}
 .pc-save{font-size:10px;font-weight:700;color:#10b981;margin-top:2px}
 .pc-ship{font-size:10px;font-weight:600;color:#10b981;margin-top:1px}
-.tab-nav{display:flex;gap:3px;background:white;padding:4px;border-radius:12px;margin-bottom:14px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
-.tb{flex:1;padding:8px 6px;border:none;background:transparent;cursor:pointer;font-size:10.5px;font-weight:500;color:#64748b;border-radius:9px;transition:all .12s;white-space:nowrap}
+.tab-nav{display:flex;gap:3px;background:white;padding:4px;border-radius:12px;margin-bottom:14px;box-shadow:0 1px 3px rgba(0,0,0,.05);flex-wrap:wrap}
+.tb{flex:1;padding:8px 6px;border:none;background:transparent;cursor:pointer;font-size:10.5px;font-weight:500;color:#64748b;border-radius:9px;transition:all .12s;white-space:nowrap;min-width:90px}
 .tb:hover{background:#f1f5f9;color:#0f172a}.tb.active{font-weight:700;color:white}
 .scenario-box{background:white;border-radius:12px;padding:14px 16px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
 .sc-title{font-size:11px;font-weight:800;color:#0f172a;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
 .sc-ctx{font-size:12px;color:#64748b;line-height:1.65;margin-bottom:8px}
 .sc-approach{font-size:11.5px;font-weight:600;padding:7px 11px;border-radius:8px;line-height:1.5}
 .sk{background:white;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;margin-bottom:9px}
-.sk-hd{display:flex;justify-content:space-between;align-items:center;padding:9px 13px;background:#f8fafc;border-bottom:1px solid #e2e8f0}
+.sk-hd{display:flex;justify-content:space-between;align-items:center;padding:9px 13px;background:#f8fafc;border-bottom:1px solid #e2e8f0;gap:8px}
 .sk-num{width:19px;height:19px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;flex-shrink:0;color:white}
 .sk-lbl{font-size:11px;font-weight:600;color:#374151;margin-left:8px;flex:1}
-.cp-btn{display:flex;align-items:center;gap:4px;padding:3px 9px;border-radius:6px;border:1px solid #e2e8f0;background:white;color:#64748b;font-size:10.5px;cursor:pointer;transition:all .12s;font-family:inherit}
+.cp-btn{display:flex;align-items:center;gap:4px;padding:3px 9px;border-radius:6px;border:1px solid #e2e8f0;background:white;color:#64748b;font-size:10.5px;cursor:pointer;transition:all .12s;font-family:inherit;white-space:nowrap;flex-shrink:0}
 .cp-btn:hover{border-color:#94a3b8;color:#0f172a}.cp-btn.ok{border-color:#10b981;background:#ecfdf5;color:#059669}
-.sk-body{padding:13px 14px;font-size:12.5px;line-height:1.9;color:#1e293b;white-space:pre-wrap}
+.sk-body{padding:0}
+.email-subject{font-size:11.5px;font-weight:700;color:#0f172a;padding:10px 14px 4px;background:#fcfdfe}
+.script-en{padding:11px 14px 13px;font-size:12.5px;line-height:1.85;color:#1e293b;white-space:pre-wrap;border-bottom:1px solid #f1f5f9}
+.script-why{padding:10px 14px;font-size:11.5px;line-height:1.7;color:#475569;background:#f8fafc;white-space:pre-wrap}
+.script-why b{color:#0f172a;font-weight:700}
+.why-tag{display:inline-block;font-size:8.5px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:#0e7490;background:#cffafe;padding:2px 7px;border-radius:7px;margin-bottom:6px}
 .cs-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
 .cs-card{background:white;border:1px solid #e2e8f0;border-radius:10px;padding:11px 12px;cursor:pointer;transition:all .15s}
 .cs-card:hover{border-color:#94a3b8;transform:translateY(-1px);box-shadow:0 2px 8px rgba(0,0,0,.06)}
@@ -80,534 +86,1095 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,sans-seri
 .info-content{background:#f8fafc;border-radius:9px;padding:13px 14px;margin-bottom:14px;border:1px solid #f1f5f9}
 .info-content-title{font-size:10px;font-weight:800;text-transform:uppercase;color:#64748b;letter-spacing:.07em;margin-bottom:8px}
 .info-content-list{font-size:12px;color:#374151;line-height:2;white-space:pre-wrap}
-.slbl{font-size:10px;font-weight:800;color:#94a3b8;text-transform:uppercase;letter-spacing:.08em;margin:16px 0 8px}
+.slbl{font-size:10px;font-weight:800;color:#94a3b8;text-transform:uppercase;letter-spacing:.08em;margin:18px 0 8px}
+.metric-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px}
+.metric-card{background:white;border-radius:12px;padding:12px 14px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.metric-lbl{font-size:11px;color:#64748b;margin-bottom:7px}
+.dots{display:flex;gap:3px}
+.dot{width:18px;height:5px;border-radius:3px}
+.callout{border-radius:12px;padding:13px 15px;margin:14px 0;font-size:12.5px;line-height:1.7}
+.callout-tip{background:#eef2ff;color:#3730a3}
+.callout-warn{background:#fef2f2;color:#991b1b}
+.callout-fresh{background:#ecfdf5;color:#065f46}
+.callout b{font-weight:800}
+.fresh-step{display:flex;gap:12px;background:white;border-radius:11px;padding:13px 15px;margin-bottom:9px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.fresh-num{width:26px;height:26px;border-radius:8px;background:#0e7490;color:white;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0}
+.fresh-body{flex:1}
+.fresh-h{font-size:13px;font-weight:700;color:#0f172a;margin-bottom:4px}
+.fresh-p{font-size:12px;color:#475569;line-height:1.65}
+.fresh-p code{background:#f1f5f9;padding:1px 6px;border-radius:5px;font-size:11px;color:#0e7490;font-family:ui-monospace,monospace}
+.intro-hero{background:linear-gradient(135deg,#0f172a,#1e293b);border-radius:16px;padding:24px 26px;margin-bottom:16px;color:white}
+.intro-hero h1{font-size:22px;font-weight:900;letter-spacing:-.03em;margin-bottom:8px}
+.intro-hero p{font-size:13px;line-height:1.7;color:#cbd5e1;margin-bottom:6px}
+.pill-row{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+.pill{font-size:10.5px;font-weight:600;padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.08);color:#e2e8f0;border:1px solid rgba(255,255,255,.12)}
+.principle{background:white;border-radius:12px;padding:15px 17px;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,.04);border-left:3px solid #0e7490}
+.principle-h{font-size:13.5px;font-weight:800;color:#0f172a;margin-bottom:5px}
+.principle-p{font-size:12.5px;color:#475569;line-height:1.7}
+.principle-p b{color:#0f172a}
 pre{font-family:inherit}
+.seq-tag{display:inline-block;font-size:9px;font-weight:700;color:#7c3aed;background:#ede9fe;padding:2px 8px;border-radius:8px;margin-left:6px}
 </style>
 </head>
 <body>
 <div id="sb">
   <div class="sb-hd">
     <div class="sb-title">CS Revenue Playbook</div>
-    <div class="sb-sub">Nutraceutico &bull; 12 nichos</div>
+    <div class="sb-sub">Nutraceutical USA &bull; Email / Freshdesk<br>12 nichos &bull; 11 estratégias</div>
     <div class="sb-stats">
       <div class="sb-stat"><div class="sb-stat-n" id="stat-prod">—</div><div class="sb-stat-l">Produtos</div></div>
       <div class="sb-stat"><div class="sb-stat-n" id="stat-ready">—</div><div class="sb-stat-l">Ativos</div></div>
       <div class="sb-stat"><div class="sb-stat-n" id="stat-dev">—</div><div class="sb-stat-l">Dev.</div></div>
     </div>
   </div>
+  <div class="sb-lbl">Começe aqui</div>
+  <div id="sb-intro"></div>
   <div class="sb-lbl">Nichos</div>
   <div id="sb-nichos"></div>
+  <div class="sb-lbl">Estratégias de receita</div>
+  <div id="sb-strategies"></div>
+  <div class="sb-lbl">Operação</div>
+  <div id="sb-ops"></div>
 </div>
 <div id="main"><div class="mi" id="content"></div></div>
 <script>
+/* ============================================================
+   CS REVENUE PLAYBOOK — DADOS
+   Scripts em INGLÊS (US market) + explicação do "porquê" em PT-BR
+   Canal: E-MAIL via Freshdesk
+   Público: consumidor nutracêutico dos EUA, desgastado, cético,
+   já se sentiu enganado por promessas milagrosas.
+   ============================================================ */
+
 const PRICING=[
-  {label:"Try Two",bottles:2,supply:"60 dias",price:89,total:178,save:180,frete:false},
-  {label:"Best Value",bottles:6,supply:"180 dias",price:49,total:294,save:780,frete:true,ft:true},
-  {label:"Great Deal",bottles:3,supply:"90 dias",price:72,total:216,save:321,frete:true},
+  {label:"Try Two",bottles:2,supply:"60 days",price:89,total:178,save:180,frete:false},
+  {label:"Best Value",bottles:6,supply:"180 days",price:49,total:294,save:780,frete:true,ft:true},
+  {label:"Great Deal",bottles:3,supply:"90 days",price:72,total:216,save:321,frete:true},
 ];
 
+/* Estrutura de cada cenário de nicho:
+   msgs:[{l:rótulo, subj:assunto EN, t:corpo EN, why:explicação PT}] */
+
 const N=[
+/* ===================== 1. DISFUNÇÃO ERÉTIL ===================== */
 {id:"ed",label:"Disfunção Erétil",abbr:"ED",icon:"⚡",acc:"#3b82f6",bg:"#dbeafe",txt:"#1d4ed8",
  prods:[{n:"VigorLong",r:1},{n:"BoosterXT",r:1},{n:"BoostSteelX",r:0},{n:"IronPulseX",r:0},{n:"AlphaErec",r:0},{n:"VigorTitan",r:0},{n:"SteelVirility",r:0},{n:"VirilonMax",r:0}],
  cs:[{n:"ProstaFense",nid:"pr",w:"Próstata e função erétil são inseparáveis"},{n:"NervoLyn",nid:"np",w:"Nervos regulam a resposta erétil"},{n:"GlucoRecover",nid:"db",w:"Diabetes causa DE em 40% dos casos"}],
  sc:{
-  fr:{ctx:"Cliente diz que usou o produto mas não sentiu diferença alguma.",ap:"Diagnóstico empático → identifica interferências externas → protocolo 180 dias",
+  fr:{ctx:"Cliente diz que usou o produto mas não sentiu diferença alguma.",ap:"Acolhe sem defensividade → identifica interferências externas reais → reposiciona como protocolo, não pílula → 180 dias",
    msgs:[
-    {l:"Abertura automática (até 1 min)",t:"Oi [Nome], recebi sua mensagem e vou cuidar pessoalmente do seu caso. 🤝\n\nEnquanto nosso especialista analisa, posso te fazer uma pergunta rápida?\n\nVocê usou o [produto] todos os dias pelo período recomendado, sem pular doses?\n\nEstou aqui pra resolver isso com você."},
-    {l:"Diagnóstico empático (humano, tom privado)",t:"Entendi, [Nome]. Fico feliz que confiou em falar sobre isso conosco.\n\nDurante o uso, você estava sob muito estresse, dormia pouco ou consumia álcool com frequência?\n\nEsses fatores têm impacto direto nos resultados. 🙏"},
-    {l:"Oferta: protocolo 180 dias",t:"[Nome], agora ficou claro o que aconteceu.\n\nO [produto] funciona — mas pra homens com seu perfil o resultado real vem com o protocolo de 180 dias. Clientes nesse perfil relatam diferença já na 2ª semana do ciclo completo.\n\n🔥 6 frascos × $49/frasco + frete grátis\n💰 Economia de $780\n\nPosso gerar seu link agora?"},
+    {l:"Auto-reply (Freshdesk, <1 min)",subj:"Re: your message — I've got your case, [First Name]",
+     t:"Hi [First Name],\n\nGot your message, and I'm personally taking your case from here. No call center, no runaround.\n\nWhile I pull up your order, one quick thing so I don't waste your time: did you take [Product] daily for the full bottle, or were there days you skipped?\n\nNo judgment either way — it just changes what I recommend next.\n\n— [Agent], Customer Care",
+     why:"<b>Por que funciona:</b> o público de DE nos EUA está exausto de \"miracle pills\". A primeira frase mata a expectativa de call center (\"no runaround\") e personaliza (\"I'm personally taking your case\"). A pergunta sobre doses puladas não acusa — <b>transfere a investigação para o uso</b>, não para o produto, sem soar defensivo. Disparado como <b>automation rule</b> no Freshdesk para o cliente nunca esperar."},
+    {l:"Diagnóstico empático (humano)",subj:"A couple of honest questions, [First Name]",
+     t:"Thanks for being straight with me, [First Name].\n\nMost guys don't realize this, but three things quietly block results even when the formula is working: poor sleep, daily alcohol, and high stress. Any of those been part of your last couple months?\n\nI ask because if one of them is in play, you didn't get a fair test — and I can fix that for you.",
+     why:"<b>Por que funciona:</b> \"Most guys don't realize\" remove a culpa individual (não é fracasso dele) e cria identificação. Listar sono/álcool/estresse dá ao cliente uma <b>explicação que não é \"o produto falhou\"</b> nem \"você falhou\" — é circunstância. \"You didn't get a fair test\" planta a ideia de que ele merece uma segunda tentativa. Tom privado e discreto, essencial num nicho de vergonha."},
+    {l:"Oferta: protocolo 180 dias",subj:"Here's what actually works for your profile",
+     t:"[First Name], now it makes sense.\n\n[Product] works — but for men with your profile, real change shows up on the full 180-day protocol, not a single bottle. Guys in your exact situation usually feel the shift by week 2 of the complete cycle.\n\nHere's the honest math:\n- 6 bottles × $49/bottle\n- Free shipping\n- You save $780\n- 60-day money-back guarantee — if it doesn't work, you don't pay\n\nWant me to set up your link right now?",
+     why:"<b>Por que funciona:</b> reposiciona de \"pílula que falhou\" para \"protocolo que ele não completou\" — preserva a credibilidade do produto. \"Honest math\" e o bullet de garantia atacam diretamente o ceticismo (\"if it doesn't work, you don't pay\"). O CTA pede micro-compromisso (\"set up your link\"), não \"compre agora\". O preço de $49 vem ancorado contra os $780 economizados."},
    ]},
-  ar:{ctx:"Cliente pede reembolso ou diz que se arrependeu da compra.",ap:"Acolhe → descobre real motivo → reframe do investimento → downsell 3 frascos",
+  ar:{ctx:"Cliente pede reembolso ou diz que se arrependeu da compra.",ap:"Acolhe → descobre o motivo real (preço vs resultado vs medo) → reframe de investimento diário → downsell 3 frascos",
    msgs:[
-    {l:"Acolhimento (humano)",t:"Oi [Nome], aqui é [nome] da equipe. 🙏\n\nEntendo — e antes de qualquer coisa: me conta o que aconteceu. Foi algo específico que te fez querer cancelar, ou é mais uma questão de timing ou valor?\n\nQuero resolver isso da melhor forma pra você."},
-    {l:"Reframe do investimento",t:"[Nome], obrigado pela honestidade.\n\nDeixa eu te mostrar outro ângulo: 6 frascos ÷ 180 dias = $1,63/dia. Menos que um café.\n\nPor saúde que impacta sua confiança, sua relação e seu bem-estar. E com garantia de 60 dias: se não gostar, devolve tudo.\n\nO risco real é não tentar. O que você acha?"},
-    {l:"Downsell: kit 3 frascos",t:"[Nome], se preferir começar menor, tenho uma opção:\n\n3 frascos × $72/frasco com frete grátis = $216 no total.\n\nÉ suficiente pra 90 dias — onde a maioria dos homens sente a mudança real.\n\n*(se não aceitar → processa o reembolso sem pressão)*"},
+    {l:"Acolhimento (humano)",subj:"Re: refund — let's make this right, [First Name]",
+     t:"Hi [First Name], this is [Agent] from the care team.\n\nFirst things first: I'll honor your request. But before I do — can you tell me what happened? Was it the results, the timing, or the price? \n\nI'm not here to trap you into keeping it. I just want to make the right call for you.",
+     why:"<b>Por que funciona:</b> dizer \"I'll honor your request\" logo no início <b>desarma a defensividade</b> — o cliente para de brigar e começa a conversar. \"I'm not here to trap you\" nomeia o medo dele (de ser enrolado) e o neutraliza. A pergunta de 3 opções (resultado/timing/preço) faz o cliente revelar a objeção real, que decide qual reframe usar."},
+    {l:"Reframe do investimento",subj:"One angle you might not have seen",
+     t:"Thanks for being honest, [First Name].\n\nLet me show you the math a different way: 6 bottles ÷ 180 days = $1.63/day. That's less than a coffee — for something that affects your confidence, your relationship, and how you feel about yourself.\n\nAnd with the 60-day guarantee, the real risk isn't the money. The real risk is never giving it a fair shot.\n\nWhat do you say?",
+     why:"<b>Por que funciona:</b> o reframe de custo diário ($1.63/day < coffee) reduz o valor de $294 a algo trivial. Conecta a um benefício emocional concreto (confiança, relação) — não \"saúde\" abstrata. A inversão de risco (\"the real risk is never giving it a fair shot\") é uma técnica de reposicionamento clássica que transforma o medo de perder dinheiro em medo de perder o resultado."},
+    {l:"Downsell: kit 3 frascos",subj:"A smaller way to start, [First Name]",
+     t:"[First Name], if you'd rather start small, here's an option:\n\n3 bottles × $72/bottle, free shipping = $216 total.\n\nThat covers 90 days — the point where most men finally feel the real change. Same 60-day guarantee.\n\nIf that's still not right for you, just reply and I'll process your refund, no hard feelings.",
+     why:"<b>Por que funciona:</b> oferece uma saída intermediária <b>antes</b> de devolver o dinheiro — recupera parte da receita mesmo quando o reembolso parecia certo. O \"no hard feelings\" mantém a confiança e protege a marca (cliente desgastado não tolera pressão). A regra de ouro: se recusar de novo, <b>processa o reembolso sem insistir</b> — insistência demais gera chargeback e review negativo."},
    ]},
-  iv:{ctx:"Cliente acha caro, pede desconto ou diz não ter dinheiro agora.",ap:"Justifica valor vs custo diário → compara com alternativas → kit menor",
+  iv:{ctx:"Cliente acha caro, pede desconto ou diz não ter dinheiro agora.",ap:"Valida a preocupação → custo diário vs alternativas (clínica, ED meds) → kit menor com garantia",
    msgs:[
-    {l:"Contextualização de valor",t:"[Nome], entendo completamente a sua preocupação — e respeito isso.\n\nMas veja assim: são menos de $1,65 por dia com frete grátis.\n\nComparado a consultas, tratamentos convencionais e o impacto que isso tem na sua vida e relações — é o melhor custo-benefício que existe.\n\nMais: garantia de 60 dias. Se não funcionar, devolvo tudo. Risco zero. 🙏"},
-    {l:"Oferta do kit menor",t:"[Nome], se o kit de 6 está pesando no momento, tenho uma alternativa:\n\n3 frascos por $72/frasco — $216 total com frete grátis.\n\nVocê experimenta por 90 dias, vê o resultado por conta própria.\n\nPosso gerar o link agora?"},
+    {l:"Contextualização de valor",subj:"I hear you on the price, [First Name]",
+     t:"[First Name], I completely get it — and I respect that you're being careful with your money.\n\nBut look at it this way: it's under $1.65 a day with free shipping. Compare that to a urology visit ($200+), or prescription ED meds ($20–70 per dose with side effects).\n\nThis is natural, it's a fraction of the cost, and it's backed by a 60-day guarantee. If it doesn't work, I refund you. Zero risk on your end.",
+     why:"<b>Por que funciona:</b> nunca discute o preço de frente — valida primeiro (\"I respect that\"). Depois ancora contra alternativas reais e caras do mercado americano (urologista, ED meds por dose). O público dos EUA conhece esses preços, então a comparação é visceral. Fecha com inversão de risco para neutralizar o medo de jogar dinheiro fora de novo."},
+    {l:"Oferta do kit menor",subj:"Smaller kit, same guarantee",
+     t:"[First Name], if the 6-bottle kit feels heavy right now, here's a lighter start:\n\n3 bottles for $72/bottle — $216 total, free shipping.\n\nYou test it for 90 days and see the result for yourself. Want me to generate the link?",
+     why:"<b>Por que funciona:</b> dá um ponto de entrada acessível sem desvalorizar o kit principal. \"See the result for yourself\" devolve o controle ao cliente cético — ele não precisa acreditar na marca, só testar. CTA suave."},
    ]},
-  ip:{titulo:"Protocolo da Performance Masculina",tipo:"Ebook + Vídeo Bônus",preco:"$27 — $47",upsell:"Bônus incluso no kit de 6 frascos OU venda separada pelo CS",
-   desc:"Guia digital que posiciona o suplemento como parte de um protocolo completo de saúde masculina. Aumenta o valor percebido, reduz reembolsos e abre porta para upsell.",
-   conteudo:"• Os 7 fatores silenciosos que destroem a performance\n• Protocolo de 90 dias: suplementação + alimentação + sono\n• Exercícios específicos para fluxo sanguíneo e hormônios\n• O que fazer e NÃO fazer durante o tratamento\n• Como monitorar evolução semana a semana",
-   pitch:{l:"Script de pitch do infoproduto",t:"[Nome], antes de qualquer decisão — posso te mostrar algo que vai mudar como você enxerga isso?\n\nCriamos o 'Protocolo da Performance Masculina' — o guia que explica por que a maioria dos homens não tem resultado e o que muda isso.\n\nEle está incluso no kit de 6 frascos sem custo adicional.\n\nQuer saber mais sobre o protocolo completo? 💪"},
+  ip:{titulo:"The Male Performance Protocol",tipo:"Ebook + Bonus Video",preco:"$27 — $47",upsell:"Incluso no kit de 6 frascos OU venda avulsa pelo CS",
+   desc:"Guia digital que posiciona o suplemento como parte de um protocolo completo de saúde masculina. Aumenta valor percebido, reduz reembolso e abre porta para upsell e assinatura.",
+   conteudo:"• The 7 silent factors that destroy male performance\n• The 90-day protocol: supplementation + nutrition + sleep\n• Specific exercises for blood flow and hormones\n• What to do and what to AVOID during treatment\n• How to track your progress week by week",
+   pitch:{l:"Pitch do infoproduto",subj:"Before you decide — read this first, [First Name]",
+    t:"[First Name], before any decision — can I show you something that changes how you see this?\n\nWe built 'The Male Performance Protocol' — the guide that explains why most men get no result, and what flips it. It's included free in the 6-bottle kit.\n\nWant me to send you the overview?",
+    why:"<b>Por que funciona:</b> o infoproduto transforma uma pílula commodity em <b>sistema</b>, o que justifica o preço e reduz reembolso (cliente sente que recebeu conhecimento, não só frascos). \"Why most men get no result\" promete uma explicação — exatamente o que o cliente desgastado procura. Oferecido como bônus do kit de 6, ancora a decisão no kit maior."},
   },
  }
 },
+/* ===================== 2. EMAGRECIMENTO ===================== */
 {id:"wl",label:"Emagrecimento",abbr:"WL",icon:"🔥",acc:"#f97316",bg:"#ffedd5",txt:"#c2410c",
  prods:[{n:"LipoBliss",r:1},{n:"Lipotrine",r:1},{n:"LipoPeak",r:1},{n:"LipoMeltx",r:0},{n:"OzemSlimPro",r:0},{n:"ThermoLeanX",r:0},{n:"MounjaMelt",r:0}],
- cs:[{n:"FloraNew",nid:"gut",w:"Microbioma controla metabolismo"},{n:"GlucoRecover",nid:"db",w:"Resistência insulínica trava o emagrecimento"},{n:"BurnFusionX",nid:"x",w:"Stack termogênico amplificado"}],
+ cs:[{n:"FloraNew",nid:"gut",w:"Microbioma controla o metabolismo"},{n:"GlucoRecover",nid:"db",w:"Resistência à insulina trava o emagrecimento"},{n:"BurnFusionX",nid:"x",w:"Stack termogênico amplificado"}],
  sc:{
-  fr:{ctx:"Cliente diz que tomou o produto mas não perdeu peso ou não sentiu diferença.",ap:"Empatia → diagnóstico metabólico → protocolo 180 dias + fator intestinal",
+  fr:{ctx:"Cliente diz que tomou o produto mas não perdeu peso ou não sentiu diferença.",ap:"Empatia → diagnóstico metabólico → reframe de fisiologia (21-45 dias) → protocolo 180 dias + fator intestinal",
    msgs:[
-    {l:"Abertura automática",t:"Oi [Nome], recebi sua mensagem e entendo completamente a frustração. 💪\n\nEnquanto nosso especialista analisa, me conta: você manteve a alimentação durante o uso? Dormia bem e se hidratava?\n\nEstou aqui pra entender exatamente o que aconteceu."},
-    {l:"Diagnóstico metabólico (humano)",t:"Entendi, [Nome]. O que você está descrevendo é muito mais comum do que parece — e tem solução.\n\nVocê tem condição de tireoide, hormonal ou resistência à insulina? Já usou outros produtos antes?\n\nEssas informações me ajudam a encontrar o que realmente vai funcionar pro seu metabolismo. 🙏"},
-    {l:"Oferta: protocolo metabólico 180 dias",t:"[Nome], agora entendo o que está acontecendo.\n\nPara quem tem histórico de ciclos de dieta anteriores, o metabolismo cria resistência. O protocolo de 180 dias ataca por todos os ângulos.\n\nClientes nessa situação relatam resultados reais nos primeiros 60 dias do ciclo completo.\n\n🔥 6 frascos × $49/frasco + frete grátis\n💰 Economia de $780\n\nQuer tentar de verdade dessa vez?"},
+    {l:"Auto-reply (Freshdesk)",subj:"Re: your message — I'm on it, [First Name]",
+     t:"Hi [First Name],\n\nI got your message and I completely understand the frustration. You've probably tried things before that promised the world and did nothing — so let's not do that here.\n\nQuick question while I review your order: during the time you used [Product], were you able to keep your eating roughly steady, and were you sleeping okay?\n\nThis tells me a lot about what actually happened.",
+     why:"<b>Por que funciona:</b> \"promised the world and did nothing\" <b>nomeia em voz alta o trauma do público de weight-loss</b> — o mais queimado de todos os nichos. Reconhecer isso gera alívio e baixa a guarda. A pergunta sobre alimentação/sono começa o diagnóstico sem culpar, e prepara o argumento de que o teste pode não ter sido justo."},
+    {l:"Diagnóstico metabólico (humano)",subj:"This is more common than you think, [First Name]",
+     t:"Thanks, [First Name]. What you're describing is far more common than people admit — and it has a cause.\n\nDo you have any thyroid, hormonal, or insulin-resistance issues? And have you used other weight-loss products before this one?\n\nThe reason I ask: a metabolism that's been through repeated diet cycles builds resistance. That's physiology, not failure — and it changes the approach completely.",
+     why:"<b>Por que funciona:</b> \"physiology, not failure\" é a frase-chave — retira a culpa do cliente, que normalmente já se sente um fracasso. Perguntar sobre dietas anteriores valida a história dele e cria a narrativa de \"metabolismo resistente\", que <b>justifica naturalmente um protocolo mais longo</b> (não foi o produto, é o corpo dele que precisa de mais tempo)."},
+    {l:"Oferta: protocolo metabólico 180 dias",subj:"What it takes to actually move the needle",
+     t:"[First Name], now I understand what's going on.\n\nFor anyone with a history of dieting, the metabolism resists fast change — so it needs a full reset, not a sprint. The 180-day protocol attacks it from every angle, and people in your situation usually see real movement within the first 60 days of the complete cycle.\n\n- 6 bottles × $49/bottle + free shipping\n- You save $780\n- 60-day money-back guarantee\n\nWant to actually give it a fair shot this time?",
+     why:"<b>Por que funciona:</b> \"a reset, not a sprint\" reposiciona a expectativa de resultado rápido (que sempre frustra) para um processo. \"Give it a fair shot this time\" usa o histórico de decepção a favor — desta vez vai ser diferente porque o approach é diferente. Garantia em destaque para o público mais cético do portfólio."},
    ]},
-  ar:{ctx:"Cliente se arrependeu, diz que não vai funcionar para ela ou quer reembolso.",ap:"Valida → questiona expectativa → reframe de prazo → downsell",
+  ar:{ctx:"Cliente se arrependeu, diz que não vai funcionar para ela ou quer reembolso.",ap:"Valida → questiona o tempo de uso → reframe de prazo fisiológico → oferta de acompanhamento → downsell",
    msgs:[
-    {l:"Acolhimento e entendimento",t:"Oi [Nome], aqui é [nome] da equipe. Recebi sua solicitação. 🙏\n\nAntes de qualquer coisa, posso te perguntar: é uma questão de resultados que não vieram ainda, ou algo que aconteceu durante o uso?\n\nQuero entender pra te ajudar da melhor forma."},
-    {l:"Reframe de expectativa e prazo",t:"[Nome], entendi.\n\nO metabolismo humano leva de 21 a 45 dias pra começar a responder a mudanças. É fisiologia, não falha do produto.\n\nSe você usou por menos de 30 dias, ainda não entrou no período de resultado real.\n\nQue tal eu te acompanhar pessoalmente nas próximas 3 semanas? Se não sentir diferença, processo o reembolso imediatamente."},
-    {l:"Downsell: kit 3 frascos",t:"[Nome], se quiser começar com menos e se sentir mais segura:\n\n3 frascos × $72/frasco + frete grátis = $216.\n\n90 dias de protocolo real — o tempo mínimo pra um resultado que você vê.\n\n*(se não aceitar → processa o reembolso normalmente)*"},
+    {l:"Acolhimento e entendimento",subj:"Re: refund — I want to help, [First Name]",
+     t:"Hi [First Name], this is [Agent] from the team. I got your request.\n\nBefore anything else: was this about results that haven't shown up yet, or something that happened while you were using it?\n\nI'll take care of whatever you decide — I just want to understand so I help the right way.",
+     why:"<b>Por que funciona:</b> separar \"resultado que não veio ainda\" de \"algo aconteceu\" é diagnóstico: se for tempo insuficiente, o reframe de prazo resolve; se for efeito colateral, muda a conversa. \"I'll take care of whatever you decide\" tira a pressão e abre espaço para a verdade."},
+    {l:"Reframe de prazo fisiológico",subj:"21 to 45 days — here's why that matters",
+     t:"[First Name], here's the part nobody tells you.\n\nThe human metabolism takes 21 to 45 days just to start responding to change. That's biology, not the product failing. If you used it for less than 30 days, you literally haven't reached the window where results begin.\n\nHere's my offer: let me personally check in with you over the next 3 weeks. If you feel nothing by then, I process your refund immediately. Deal?",
+     why:"<b>Por que funciona:</b> dar um número específico (21-45 dias) soa científico e credível, não como desculpa de vendedor. A oferta de acompanhamento pessoal (\"check in over the next 3 weeks\") é poderosa: converte um reembolso em <b>retenção com prazo</b>, e a promessa de reembolso garantido remove todo o risco percebido."},
+    {l:"Downsell: kit 3 frascos",subj:"Start smaller, stay safe",
+     t:"[First Name], if you'd feel more comfortable starting smaller:\n\n3 bottles × $72/bottle + free shipping = $216.\n\nThat's 90 days of real protocol — the minimum to see a result you can actually notice. Same full guarantee.\n\nIf it's still not for you, reply and I'll refund you right away.",
+     why:"<b>Por que funciona:</b> o downsell recupera receita parcial. \"A result you can actually notice\" fala com quem já foi enganado por mudanças imperceptíveis. Mantém a porta aberta para o reembolso sem fricção — protege reputação."},
    ]},
-  iv:{ctx:"Cliente acha caro ou pede condição especial de pagamento.",ap:"Custo diário → comparação com alternativas → kit menor + garantia",
+  iv:{ctx:"Cliente acha caro ou pede condição especial de pagamento.",ap:"Valida → custo diário vs nutricionista/Ozempic → kit menor + garantia",
    msgs:[
-    {l:"Contextualização de valor",t:"[Nome], eu entendo muito bem essa preocupação.\n\nMas divide assim: 6 frascos ÷ 180 dias = $1,63 por dia. Menos do que um suco industrializado.\n\nUm plano com nutricionista: $100+/mês. Remédio convencional para obesidade: $200+/mês com efeitos colaterais.\n\nAqui: natural, com garantia de 60 dias, $49/frasco. O investimento mais inteligente que você pode fazer pela sua saúde. 🙏"},
-    {l:"Oferta: kit menor",t:"[Nome], se preferir, o kit de 3 frascos está por $72/frasco — $216 no total com frete grátis.\n\nÉ suficiente pra completar 90 dias de protocolo real.\n\nPosso gerar o link agora?"},
+    {l:"Contextualização de valor",subj:"On the price — a fair comparison, [First Name]",
+     t:"[First Name], I really do understand this concern.\n\nBut break it down: 6 bottles ÷ 180 days = $1.63 a day. Less than a bottled juice.\n\nA nutritionist runs $100+/month. Prescription weight-loss meds (the ones everyone's talking about) run $200–1,300/month with side effects. This is natural, $49/bottle, 60-day guarantee.\n\nIt's the smartest money you can put toward your body right now.",
+     why:"<b>Por que funciona:</b> a comparação com GLP-1 meds (Ozempic/Wegovy) é altamente relevante no mercado americano de 2026 — todo mundo conhece o preço de $200-1300/mês. Isso faz $49/frasco parecer irrisório. Custo diário < suco torna a barreira psicológica mínima."},
+    {l:"Oferta: kit menor",subj:"Lighter option for you",
+     t:"[First Name], if you'd prefer, the 3-bottle kit is $72/bottle — $216 total with free shipping.\n\nThat's enough for a full 90 days of real protocol. Want me to generate the link?",
+     why:"<b>Por que funciona:</b> ponto de entrada acessível mantendo a integridade do protocolo (90 dias = mínimo viável). CTA direto e leve."},
    ]},
-  ip:{titulo:"Método Metabólico 90 Dias",tipo:"Programa Online + Ebook",preco:"$37 — $67",upsell:"Bônus no kit de 6 frascos ou venda separada para leads que não compraram",
-   desc:"Programa de emagrecimento que combina alimentação anti-inflamatória, suplementação e hábitos. Reduz drasticamente o reembolso porque o cliente entende que o resultado vem de um sistema, não de uma pílula.",
-   conteudo:"• Por que você não está perdendo peso (e não é sua culpa)\n• Alimentação anti-inflamatória: 30 dias de protocolo\n• Como a suplementação encaixa no sistema\n• Sono, estresse e metabolismo: o triângulo que sabota tudo\n• Receitas + lista de compras semana a semana",
-   pitch:{l:"Script de pitch",t:"[Nome], antes de qualquer decisão — posso te contar sobre algo que transforma o resultado do produto?\n\nCriamos o 'Método Metabólico 90 Dias' — um programa que combina o [produto] com protocolo de alimentação e hábitos específicos.\n\nClientes que usam o programa + suplemento têm resultado até 3x mais rápido.\n\nEstá incluso no kit de 6 frascos. Quer ver como funciona? 🔥"},
+  ip:{titulo:"The 90-Day Metabolic Method",tipo:"Online Program + Ebook",preco:"$37 — $67",upsell:"Bônus no kit de 6 frascos ou venda avulsa para leads que não compraram",
+   desc:"Programa que combina alimentação anti-inflamatória, suplementação e hábitos. Reduz drasticamente reembolso porque o cliente entende que o resultado vem de um sistema, não de uma pílula.",
+   conteudo:"• Why you're not losing weight (and it's not your fault)\n• Anti-inflammatory eating: 30-day protocol\n• How supplementation fits into the system\n• Sleep, stress, and metabolism: the triangle that sabotages everything\n• Recipes + weekly shopping list",
+   pitch:{l:"Pitch do infoproduto",subj:"The piece that makes it actually work, [First Name]",
+    t:"[First Name], before any decision — can I tell you about the thing that changes everything?\n\nWe built 'The 90-Day Metabolic Method' — a program that pairs [Product] with a specific eating and habit protocol. People who use the program WITH the supplement see results up to 3x faster.\n\nIt's included in the 6-bottle kit. Want to see how it works?",
+    why:"<b>Por que funciona:</b> resolve a objeção mais profunda do nicho — \"pílula sozinha não emagrece ninguém\". Ao admitir que o suplemento precisa de um sistema, a marca ganha credibilidade com o cético e <b>justifica o kit de 6</b> (onde o programa vem grátis). \"3x faster\" dá um motivo concreto para o upsell."},
   },
  }
 },
+/* ===================== 3. MEMÓRIA / COGNIÇÃO ===================== */
 {id:"me",label:"Memória / Cognição",abbr:"ME",icon:"🧠",acc:"#8b5cf6",bg:"#ede9fe",txt:"#5b21b6",
  prods:[{n:"MaroBrain",r:1},{n:"NeuroRemind",r:0},{n:"MemoryRepairs",r:0}],
  cs:[{n:"VisiumPro",nid:"vs",w:"Nervo óptico e cognição: mesmo circuito"},{n:"AudiLeaf",nid:"zb",w:"Mesmo público 50+ com queixas sensoriais"},{n:"NervoLyn",nid:"np",w:"Nervos saudáveis = cérebro saudável"}],
  sc:{
-  fr:{ctx:"Cliente diz que não sentiu melhora na memória ou concentração.",ap:"Diagnóstico de contexto → hábitos que interferem → protocolo cognitivo 180 dias",
+  fr:{ctx:"Cliente diz que não sentiu melhora na memória ou concentração.",ap:"Diagnóstico de contexto (sono, medicação) → cognição é acumulativa → protocolo 180 dias",
    msgs:[
-    {l:"Abertura automática",t:"Oi [Nome], recebi sua mensagem sobre o [produto] e quero entender o que aconteceu. 🧠\n\nEnquanto nosso especialista analisa, me conta: você tem usado com regularidade e mantém um sono de qualidade?\n\nVamos resolver isso juntos."},
-    {l:"Diagnóstico (humano)",t:"Entendi, [Nome]. Saúde cognitiva é algo que levamos muito a sério.\n\nOs lapsos de memória são mais frequentes em qual momento do dia? Você tem pressão alta, usa medicação regular ou passou por muito estresse recentemente?\n\nEssas informações fazem toda a diferença."},
-    {l:"Oferta: protocolo cognitivo 180 dias",t:"[Nome], com base no que você me contou, tenho boas notícias.\n\nSaúde cognitiva é acumulativa — os resultados mais expressivos aparecem entre o 60º e 90º dia de uso consistente.\n\nClientes com esse perfil relatam melhora clara na concentração e memória no ciclo completo.\n\n🧠 6 frascos × $49/frasco + frete grátis\n💰 Economia de $780\n\nPosso gerar seu link?"},
+    {l:"Auto-reply (Freshdesk)",subj:"Re: your message — I'll look into this personally, [First Name]",
+     t:"Hi [First Name],\n\nI got your message about [Product] and I want to understand exactly what happened. Brain health is something we take seriously here.\n\nWhile I review your case: have you been taking it consistently, and how's your sleep been? Those two things change cognitive results more than almost anything.\n\nLet's figure this out together.",
+     why:"<b>Por que funciona:</b> público 50+ valoriza seriedade e atenção pessoal. Citar sono e consistência abre o diagnóstico sem culpar e prepara a narrativa de que cognição depende de fatores que ele pode não ter controlado. Tom calmo, sem hype — esse público desconfia de exagero."},
+    {l:"Diagnóstico (humano)",subj:"A few questions to get this right",
+     t:"Thanks, [First Name]. Memory is one of those things you can't see improving day to day — but it does change.\n\nWhen are the lapses worst — mornings, afternoons, under stress? And do you take blood-pressure or other daily medication?\n\nThis context tells me whether you got a fair test or whether something was working against you.",
+     why:"<b>Por que funciona:</b> \"you can't see it improving day to day — but it does\" prepara o terreno para o argumento de gradualidade (a principal razão de o cliente achar que \"não funcionou\"). Perguntar sobre medicação dá uma explicação externa legítima e personaliza."},
+    {l:"Oferta: protocolo cognitivo 180 dias",subj:"Good news about your profile, [First Name]",
+     t:"[First Name], based on what you told me, I have good news.\n\nCognitive health is cumulative — the clearest results show up between day 60 and 90 of consistent use. People with your profile usually report sharper focus and recall on the full cycle.\n\n- 6 bottles × $49/bottle + free shipping\n- You save $780\n- 60-day money-back guarantee\n\nWant me to set up your link?",
+     why:"<b>Por que funciona:</b> \"cumulative\" e a janela de 60-90 dias dão um motivo fisiológico para continuar, não uma desculpa. \"Good news\" inverte o tom de uma conversa que começou negativa. Garantia tranquiliza o público mais avesso a risco."},
    ]},
-  ar:{ctx:"Cliente se arrependeu da compra, acha que não vai funcionar para ele.",ap:"Acolhe → educa sobre cognição e tempo → downsell",
+  ar:{ctx:"Cliente se arrependeu, acha que não vai funcionar para ele.",ap:"Acolhe → neuroplasticidade é real mas gradual → garantia → downsell",
    msgs:[
-    {l:"Acolhimento",t:"Oi [Nome], aqui é [nome] da equipe. Recebi sua solicitação.\n\nEntendo a dúvida — saúde cognitiva é um tema onde muita promessa de resultado rápido cria frustração.\n\nMe conta: o que te fez querer o produto originalmente? Memória, concentração ou clareza mental?\n\nQuero entender pra te ajudar de verdade."},
-    {l:"Reframe: cognição é processo",t:"[Nome], obrigado pela honestidade.\n\nO cérebro é o único órgão que não se vê mudando — mas ele muda. Neuroplasticidade é real, porém gradual.\n\nO protocolo de 180 dias é onde os resultados se consolidam de forma mensurável. E a garantia de 60 dias garante que você não perde nada tentando.\n\nO que você tem a perder com 60 dias de garantia total?"},
-    {l:"Downsell: 3 frascos",t:"[Nome], se preferir começar menor:\n\n3 frascos × $72/frasco + frete grátis = $216.\n\n90 dias — tempo suficiente pra sentir a diferença no dia a dia.\n\n*(se não aceitar → reembolso sem pressão)*"},
+    {l:"Acolhimento",subj:"Re: refund — let's talk first, [First Name]",
+     t:"Hi [First Name], this is [Agent] from the care team. I got your request.\n\nI understand the doubt — cognitive health is a space where fast-result promises create a lot of disappointment.\n\nCan you tell me what you were hoping to improve — memory, focus, or mental clarity? I want to help you for real, not just keep a sale.",
+     why:"<b>Por que funciona:</b> admitir que o nicho está cheio de promessas vazias (\"fast-result promises create disappointment\") conquista o cético. Perguntar o objetivo específico personaliza e abre o reframe certo."},
+    {l:"Reframe: cognição é processo",subj:"The one organ you can't watch change",
+     t:"[First Name], thank you for being honest.\n\nThe brain is the only organ you never see changing — but it does. Neuroplasticity is real, just gradual. The 180-day protocol is where the results become measurable, and the 60-day guarantee means you risk nothing finding out.\n\nWhat do you really have to lose with full money-back protection?",
+     why:"<b>Por que funciona:</b> \"the one organ you can't watch change\" é uma metáfora que explica por que ele não percebeu resultado — sem dizer que ele está errado. Neuroplasticidade soa científico e respeitoso. A pergunta final reposiciona o risco como zero."},
+    {l:"Downsell: 3 frascos",subj:"A smaller start, [First Name]",
+     t:"[First Name], if you'd rather start smaller:\n\n3 bottles × $72/bottle + free shipping = $216.\n\n90 days — enough to feel the difference in daily life. Same guarantee. If it's not for you after that, I'll refund you, no pressure.",
+     why:"<b>Por que funciona:</b> recupera receita parcial com um compromisso menor. \"No pressure\" é essencial — público maduro abandona marcas que pressionam."},
    ]},
-  iv:{ctx:"Cliente acha caro para suplemento cognitivo.",ap:"Comparação com custo de não tratar → valor do raciocínio claro → kit menor",
+  iv:{ctx:"Cliente acha caro para suplemento cognitivo.",ap:"Custo de não tratar (produtividade) → vs nootrópicos de farmácia → kit menor",
    msgs:[
-    {l:"Contextualização de valor",t:"[Nome], eu entendo.\n\nMas veja assim: memória e clareza mental impactam sua produtividade, seu trabalho, sua qualidade de vida.\n\n$49/frasco ÷ 30 dias = $1,63/dia. Menos do que qualquer suplemento cognitivo de farmácia — e com garantia de 60 dias.\n\nNão há risco financeiro aqui. 🙏"},
-    {l:"Kit menor",t:"[Nome], temos também o kit de 3 frascos por $72/frasco — $216 total com frete grátis.\n\n90 dias é o tempo mínimo pra resultado real em saúde cognitiva.\n\nPosso gerar o link agora?"},
+    {l:"Contextualização de valor",subj:"What clear thinking is worth, [First Name]",
+     t:"[First Name], I understand.\n\nBut think about it: memory and mental clarity affect your work, your independence, your quality of life. $49/bottle ÷ 30 days = $1.63/day — less than any pharmacy nootropic, and backed by a 60-day guarantee.\n\nThere's no financial risk here.",
+     why:"<b>Por que funciona:</b> conecta o produto a independência e qualidade de vida — gatilhos fortes para 50+. Comparação com nootrópicos de farmácia ancora o preço. Inversão de risco fecha."},
+    {l:"Kit menor",subj:"Smaller kit option",
+     t:"[First Name], we also have the 3-bottle kit at $72/bottle — $216 total, free shipping.\n\n90 days is the minimum for a real cognitive result. Want me to generate the link?",
+     why:"<b>Por que funciona:</b> entrada acessível sem quebrar a lógica de tempo mínimo. CTA direto."},
    ]},
-  ip:{titulo:"Memória Afiada: O Protocolo Cognitivo",tipo:"Ebook + Áudios de Treino Mental",preco:"$37 — $57",upsell:"Incluso no kit de 6 frascos ou venda separada",
-   desc:"Guia com exercícios cognitivos, alimentação pró-cérebro e protocolo de suplementação. Justifica o tratamento e reduz reembolsos ao educar sobre a lentidão natural do processo.",
-   conteudo:"• Por que sua memória está pior (e o que provoca isso)\n• Protocolo cognitivo: suplementação + exercícios + sono\n• 15 exercícios cerebrais pra praticar diariamente\n• Alimentação neuroprotetora: o que comer e o que evitar\n• Como medir sua melhora mês a mês",
-   pitch:{l:"Script de pitch",t:"[Nome], posso te mostrar o que transforma o resultado do [produto]?\n\nCriamos o 'Memória Afiada' — protocolo com exercícios cognitivos e guia alimentar que potencializa o efeito do suplemento.\n\nClientes que combinam os dois relatam melhoras 2x mais rápidas.\n\nEstá incluso no kit de 6 frascos. Posso te enviar mais informações? 🧠"},
+  ip:{titulo:"Sharp Memory: The Cognitive Protocol",tipo:"Ebook + Brain-Training Audio",preco:"$37 — $57",upsell:"Incluso no kit de 6 frascos ou venda avulsa",
+   desc:"Guia com exercícios cognitivos, alimentação pró-cérebro e protocolo de suplementação. Justifica o tratamento e reduz reembolso ao educar sobre a lentidão natural do processo.",
+   conteudo:"• Why your memory is slipping (and what triggers it)\n• The cognitive protocol: supplementation + exercises + sleep\n• 15 brain exercises to do daily\n• Neuroprotective eating: what to eat and what to avoid\n• How to measure your improvement month over month",
+   pitch:{l:"Pitch do infoproduto",subj:"What makes the result faster, [First Name]",
+    t:"[First Name], can I show you what amplifies [Product]?\n\nWe built 'Sharp Memory' — a protocol with cognitive exercises and a brain-food guide that boosts the supplement's effect. People who combine both report improvement up to 2x faster.\n\nIt's included in the 6-bottle kit. Want the details?",
+    why:"<b>Por que funciona:</b> o material educa sobre processo, reduzindo a expectativa de pílula mágica e o consequente reembolso. \"2x faster\" e a inclusão no kit de 6 puxam o upsell."},
   },
  }
 },
+/* ===================== 4. AUDIÇÃO / ZUMBIDO ===================== */
 {id:"zb",label:"Audição / Zumbido",abbr:"ZB",icon:"👂",acc:"#f59e0b",bg:"#fef3c7",txt:"#b45309",
  prods:[{n:"AudiLeaf",r:1},{n:"AudiQuiet",r:0},{n:"TinniCalms",r:0}],
  cs:[{n:"NervoLyn",nid:"np",w:"Zumbido tem origem nervosa/neural"},{n:"MaroBrain",nid:"me",w:"Mesmo público 50+ com queixas cognitivas"},{n:"PressureCalmX",nid:"x",w:"Pressão alta causa e piora o zumbido"}],
  sc:{
-  fr:{ctx:"Cliente diz que o zumbido continua ou não melhorou com o produto.",ap:"Empatia → diagnóstico de origem → protocolo longo com argumento de regeneração nervosa",
+  fr:{ctx:"Cliente diz que o zumbido continua ou não melhorou.",ap:"Empatia profunda → diagnóstico de origem → regeneração do nervo auditivo é lenta → 180 dias",
    msgs:[
-    {l:"Abertura automática",t:"Oi [Nome], recebi sua mensagem e sei o quanto o zumbido pode ser desgastante. 👂\n\nEnquanto nosso especialista analisa, me conta: o zumbido é constante ou varia em intensidade? Piora em situações de estresse?\n\nEstou aqui pra te ajudar."},
-    {l:"Diagnóstico (humano)",t:"Entendo, [Nome]. Zumbido crônico afeta sono, concentração e humor — e você merece resolver isso.\n\nQuando começou o zumbido? Você tem histórico de exposição a ruídos altos, pressão alta ou usa alguma medicação?\n\nEssas informações fazem muita diferença pra encontrar o melhor caminho."},
-    {l:"Oferta: protocolo 180 dias",t:"[Nome], o que você descreveu é exatamente o perfil que mais responde ao tratamento de longo prazo.\n\nZumbido crônico exige regeneração do nervo auditivo — e isso leva tempo. Os clientes com maior redução usaram por 90 a 180 dias seguidos.\n\n👂 6 frascos × $49/frasco + frete grátis\n💰 Economia de $780\n\nIsso muda de verdade sua situação. Posso gerar o link?"},
+    {l:"Auto-reply (Freshdesk)",subj:"Re: your message — I know how draining this is, [First Name]",
+     t:"Hi [First Name],\n\nI got your message, and I want you to know I understand how exhausting tinnitus can be. It wears on your sleep, your focus, your mood.\n\nWhile I review your case: is the ringing constant, or does it come and go? And does it get worse when you're stressed?\n\nI'm here to help you find real relief.",
+     why:"<b>Por que funciona:</b> zumbido tem altíssima carga emocional — validar o sofrimento (\"exhausting\", afeta sono/foco/humor) gera conexão imediata. Perguntar se varia é estratégico: qualquer variação vira prova de que o tratamento age, usada no reframe seguinte."},
+    {l:"Diagnóstico (humano)",subj:"You deserve to fix this, [First Name]",
+     t:"I understand, [First Name]. Chronic tinnitus affects everything — and you deserve to resolve it.\n\nWhen did it start? Any history of loud-noise exposure, high blood pressure, or daily medication?\n\nThese details make a real difference in finding the right path for you.",
+     why:"<b>Por que funciona:</b> \"you deserve to resolve it\" valida e motiva. As perguntas mapeiam a causa (ruído, pressão, remédio) e personalizam, ao mesmo tempo que preparam a narrativa de \"nervo auditivo precisa de tempo\"."},
+    {l:"Oferta: protocolo 180 dias",subj:"Your profile is the one that responds best",
+     t:"[First Name], what you described is exactly the profile that responds best to longer-term treatment.\n\nChronic tinnitus requires the auditory nerve to recover — and that takes time. The people who saw the biggest drop in ringing used it for 90 to 180 days straight.\n\n- 6 bottles × $49/bottle + free shipping\n- You save $780\n- 60-day money-back guarantee\n\nThis genuinely changes your situation. Want me to set up the link?",
+     why:"<b>Por que funciona:</b> \"the profile that responds best\" transforma a queixa dele em razão para continuar. A regeneração nervosa lenta justifica o protocolo longo de forma crível. Garantia reduz o medo de mais uma decepção."},
    ]},
-  ar:{ctx:"Cliente quer reembolso, está descrente sobre o produto.",ap:"Acolhe a frustração → educa sobre nervo auditivo → downsell",
+  ar:{ctx:"Cliente quer reembolso, está descrente.",ap:"Acolhe a frustração → nervo auditivo regenera devagar → variação = resposta → downsell",
    msgs:[
-    {l:"Acolhimento",t:"Oi [Nome], aqui é [nome] da equipe. Recebi sua solicitação. 🙏\n\nEntendo completamente — zumbido é um problema que esgota qualquer um.\n\nPosso te perguntar: por quanto tempo você usou o produto? E o zumbido chegou a variar em algum momento?"},
-    {l:"Reframe: nervo auditivo regenera devagar",t:"[Nome], obrigado pela honestidade.\n\nO nervo auditivo é um dos tecidos mais lentos pra responder a tratamento.\n\nSe o zumbido variou em qualquer momento durante o uso, é sinal de que o tratamento está funcionando — só precisa de mais tempo.\n\nQue tal mais 60 dias com suporte meu e garantia total?"},
-    {l:"Downsell: 3 frascos",t:"[Nome], se preferir começar com menos:\n\n3 frascos × $72/frasco + frete grátis = $216.\n\n90 dias de tratamento consistente — mínimo recomendado para zumbido crônico.\n\n*(se não aceitar → reembolso)*"},
+    {l:"Acolhimento",subj:"Re: refund — I completely understand, [First Name]",
+     t:"Hi [First Name], this is [Agent] from the team. I got your request.\n\nI completely understand — tinnitus drains anyone's patience.\n\nCan I ask: how long did you use it? And did the ringing change at all — even a little — at any point?",
+     why:"<b>Por que funciona:</b> validar a exaustão antes de qualquer pitch desarma. A pergunta sobre variação prepara o argumento central: qualquer mudança é sinal de resposta."},
+    {l:"Reframe: nervo regenera devagar",subj:"If it changed even once, that means something",
+     t:"[First Name], thank you for being honest.\n\nThe auditory nerve is one of the slowest tissues to respond to treatment. If the ringing shifted at any point during use, that's a signal it's working — it just needs more time.\n\nHere's my offer: 60 more days with me personally checking in, and the full money-back guarantee still stands. What do you say?",
+     why:"<b>Por que funciona:</b> reinterpreta a experiência do cliente como evidência de progresso. A oferta de acompanhamento converte reembolso em retenção, e a garantia remove o risco."},
+    {l:"Downsell: 3 frascos",subj:"A smaller start, [First Name]",
+     t:"[First Name], if you'd rather start with less:\n\n3 bottles × $72/bottle + free shipping = $216.\n\n90 days of consistent treatment — the minimum recommended for chronic tinnitus. Same guarantee. If it's still not right, reply and I'll refund you.",
+     why:"<b>Por que funciona:</b> recupera receita parcial com compromisso menor; mantém a porta do reembolso aberta sem fricção."},
    ]},
-  iv:{ctx:"Cliente acha caro para um problema de ouvido.",ap:"Contextualiza impacto na vida → custo diário → kit menor",
+  iv:{ctx:"Cliente acha caro para um problema de ouvido.",ap:"Custo real do zumbido na vida → custo diário → kit menor",
    msgs:[
-    {l:"Impacto real do zumbido",t:"[Nome], entendo a preocupação com o valor.\n\nMas me conta: o zumbido já afetou seu sono, sua concentração no trabalho ou sua qualidade de vida?\n\nSe sim, o custo de NÃO tratar é muito maior do que $1,63/dia.\n\nE com garantia de 60 dias — se não funcionar, devolvo tudo. Risco zero. 🙏"},
-    {l:"Kit menor",t:"[Nome], também temos o kit de 3 frascos por $72/frasco — $216 total com frete grátis.\n\nÉ o mínimo recomendado pra quem tem zumbido há mais de 6 meses.\n\nPosso gerar o link?"},
+    {l:"Impacto real do zumbido",subj:"What is your sleep worth, [First Name]?",
+     t:"[First Name], I understand the concern about price.\n\nBut let me ask: has the ringing already cost you sleep, focus at work, or peace of mind? If so, the cost of NOT treating it is far more than $1.63/day.\n\nAnd with the 60-day guarantee — if it doesn't work, I refund you. Zero risk.",
+     why:"<b>Por que funciona:</b> converte o custo financeiro em custo de qualidade de vida — muito mais pesado para quem sofre de zumbido. Custo diário trivializa o preço e a garantia neutraliza o ceticismo."},
+    {l:"Kit menor",subj:"Smaller kit option",
+     t:"[First Name], we also have the 3-bottle kit at $72/bottle — $216 total, free shipping.\n\nIt's the minimum recommended for anyone with tinnitus longer than 6 months. Want me to generate the link?",
+     why:"<b>Por que funciona:</b> entrada acessível com justificativa de tempo mínimo específica para zumbido crônico."},
    ]},
-  ip:{titulo:"Protocolo do Silêncio",tipo:"Ebook + Áudios de Terapia Sonora",preco:"$27 — $47",upsell:"Bônus no kit de 6 frascos",
-   desc:"Guia completo sobre tinnitus com técnicas de manejo e protocolo de suplementação. Ajuda o cliente a ter resultados percebidos mais rapidamente e reduz ansiedade sobre o processo.",
-   conteudo:"• O que causa o zumbido (e por que é tão difícil de tratar)\n• Protocolo anti-inflamatório neural: suplementação + alimentação\n• Técnicas de terapia sonora para alívio imediato\n• Como o estresse amplifica o zumbido e como quebrar o ciclo\n• Diário de melhora: acompanhamento semana a semana",
-   pitch:{l:"Script de pitch",t:"[Nome], antes de decidir qualquer coisa — posso te mostrar algo que pode mudar completamente como você está lidando com o zumbido?\n\nCriamos o 'Protocolo do Silêncio' — guia com técnicas de alívio imediato + protocolo de longo prazo que potencializa o [produto].\n\nEstá incluso no kit de 6 frascos. Quer que eu te envie as informações? 👂"},
+  ip:{titulo:"The Silence Protocol",tipo:"Ebook + Sound-Therapy Audio",preco:"$27 — $47",upsell:"Bônus no kit de 6 frascos",
+   desc:"Guia completo sobre tinnitus com técnicas de manejo e protocolo de suplementação. Acelera o resultado percebido e reduz ansiedade sobre o processo.",
+   conteudo:"• What causes tinnitus (and why it's so hard to treat)\n• Neural anti-inflammatory protocol: supplementation + nutrition\n• Sound-therapy techniques for immediate relief\n• How stress amplifies tinnitus and how to break the cycle\n• A relief journal: tracking week by week",
+   pitch:{l:"Pitch do infoproduto",subj:"Something that can change how you cope, [First Name]",
+    t:"[First Name], before you decide anything — can I show you something that could change how you're dealing with the ringing right now?\n\nWe built 'The Silence Protocol' — a guide with immediate-relief techniques plus a long-term protocol that boosts [Product].\n\nIt's included in the 6-bottle kit. Want me to send it over?",
+    why:"<b>Por que funciona:</b> oferece alívio imediato (técnicas de terapia sonora) enquanto o suplemento age no longo prazo — resolve a impaciência que gera reembolso. A inclusão no kit de 6 puxa o upsell."},
   },
  }
 },
+/* ===================== 5. PRÓSTATA ===================== */
 {id:"pr",label:"Próstata",abbr:"PR",icon:"🛡️",acc:"#14b8a6",bg:"#ccfbf1",txt:"#0f766e",
  prods:[{n:"ProstaFense",r:1},{n:"ProstaVitalis",r:0},{n:"ProstaReliefX",r:0}],
  cs:[{n:"VigorLong",nid:"ed",w:"Próstata e função erétil são inseparáveis"},{n:"GlucoRecover",nid:"db",w:"Diabetes afeta diretamente a próstata"},{n:"NervoLyn",nid:"np",w:"Sintomas urinários têm componente nervoso"}],
  sc:{
-  fr:{ctx:"Cliente diz que sintomas (urgência urinária, fluxo) não melhoraram.",ap:"Diagnóstico de tipo de sintoma → educa sobre gradualidade → protocolo 180 dias",
+  fr:{ctx:"Cliente diz que sintomas (urgência urinária, fluxo) não melhoraram.",ap:"Diagnóstico de tipo de sintoma → próstata responde gradualmente → protocolo 180 dias",
    msgs:[
-    {l:"Abertura automática",t:"Oi [Nome], recebi sua mensagem e quero cuidar do seu caso pessoalmente. 🛡️\n\nEnquanto nosso especialista analisa, me conta: os sintomas chegaram a diminuir em algum momento durante o uso?\n\nEstou aqui pra entender."},
-    {l:"Diagnóstico (humano)",t:"Entendo, [Nome]. Saúde da próstata afeta diretamente a qualidade de vida.\n\nVocê tem histórico de diabetes, pressão alta ou usa alguma medicação regularmente?\n\nAlém disso: o sintoma principal é urgência urinária, fluxo fraco ou acordar muito à noite?"},
-    {l:"Oferta: protocolo 180 dias",t:"[Nome], com o que você me contou, ficou claro que o tempo de uso é a chave.\n\nA próstata responde de forma gradual — clientes que completaram 180 dias relatam resultados reais e duradouros.\n\n🛡️ 6 frascos × $49/frasco + frete grátis\n💰 Economia de $780\n\nPosso gerar o link?"},
+    {l:"Auto-reply (Freshdesk)",subj:"Re: your message — I've got your case, [First Name]",
+     t:"Hi [First Name],\n\nI got your message and I'm handling your case personally. Prostate symptoms hit your daily quality of life, and I take that seriously.\n\nWhile I review your order: did the symptoms ease at all at any point during use — even slightly?\n\nLet's get to the bottom of this.",
+     why:"<b>Por que funciona:</b> homens 50+ querem ser levados a sério e tratados com discrição. Perguntar sobre melhora parcial planta a semente do reframe (\"qualquer melhora = está funcionando\"). Tom sóbrio."},
+    {l:"Diagnóstico (humano)",subj:"A couple of questions, [First Name]",
+     t:"I understand, [First Name]. Prostate health directly affects how you live day to day.\n\nDo you have diabetes, high blood pressure, or take daily medication? And which is the main symptom — urgency, weak flow, or waking up at night?\n\nThis tells me exactly what's happening and what to do next.",
+     why:"<b>Por que funciona:</b> mapear o sintoma principal personaliza e mostra competência. Perguntar sobre diabetes abre cross-sell e dá contexto fisiológico que justifica gradualidade."},
+    {l:"Oferta: protocolo 180 dias",subj:"Time is the key for your case",
+     t:"[First Name], from what you told me, time is the key here.\n\nThe prostate responds gradually — it's glandular tissue with slow circulation. Men who complete the 180-day protocol report real, lasting results.\n\n- 6 bottles × $49/bottle + free shipping\n- You save $780\n- 60-day money-back guarantee\n\nWant me to set up your link?",
+     why:"<b>Por que funciona:</b> \"glandular tissue with slow circulation\" dá uma razão fisiológica concreta e crível para o protocolo longo. \"Lasting results\" apela ao desejo de não recorrência. Garantia tranquiliza."},
    ]},
-  ar:{ctx:"Cliente pede reembolso ou está desapontado.",ap:"Acolhe → gradualidade da próstata → downsell com acompanhamento",
+  ar:{ctx:"Cliente pede reembolso ou está desapontado.",ap:"Acolhe → próstata é tecido lento → acompanhamento → downsell",
    msgs:[
-    {l:"Acolhimento",t:"Oi [Nome], aqui é [nome] da equipe. Recebi sua solicitação. 🙏\n\nEntendo — esperar resultado pra um problema que incomoda o dia a dia é difícil.\n\nMe conta: você chegou a perceber qualquer mudança (mesmo pequena) durante o uso?"},
-    {l:"Reframe e proposta de continuidade",t:"[Nome], obrigado pela honestidade.\n\nPróstata é um dos órgãos que mais demora pra responder — é tecido glandular com circulação lenta.\n\nSe você notou qualquer mudança, o tratamento está funcionando — precisa de mais tempo.\n\nQue tal mais 60 dias com suporte meu a cada 2 semanas?"},
-    {l:"Downsell: 3 frascos",t:"[Nome], se preferir começar menor:\n\n3 frascos × $72/frasco + frete grátis = $216.\n\n90 dias com acompanhamento personalizado.\n\n*(se não aceitar → reembolso sem pressão)*"},
+    {l:"Acolhimento",subj:"Re: refund — let's make it right, [First Name]",
+     t:"Hi [First Name], this is [Agent] from the team. I got your request.\n\nI understand — waiting on results for something that bothers you every day is hard.\n\nDid you notice any change at all — even small — during use?",
+     why:"<b>Por que funciona:</b> validar a frustração diária desarma. A pergunta sobre mudança mínima prepara o reframe de progresso."},
+    {l:"Reframe e continuidade",subj:"Any change means it's working, [First Name]",
+     t:"[First Name], thank you for being honest.\n\nThe prostate is one of the slowest organs to respond — glandular tissue, slow circulation. If you noticed any change, the treatment is working; it just needs more time.\n\nHere's my offer: 60 more days with me checking in every two weeks, full guarantee intact. Sound fair?",
+     why:"<b>Por que funciona:</b> reinterpreta mudança mínima como sucesso. Check-in quinzenal converte reembolso em retenção com suporte percebido."},
+    {l:"Downsell: 3 frascos",subj:"Smaller start, [First Name]",
+     t:"[First Name], if you'd rather start smaller:\n\n3 bottles × $72/bottle + free shipping = $216.\n\n90 days with personal follow-up. Same guarantee. If it's still not right, reply and I'll refund you.",
+     why:"<b>Por que funciona:</b> recupera receita parcial; mantém saída sem fricção."},
    ]},
-  iv:{ctx:"Cliente acha caro para suplemento de próstata.",ap:"Contextualiza progressão da doença → custo alternativo → kit menor",
+  iv:{ctx:"Cliente acha caro para suplemento de próstata.",ap:"Custo da progressão (cirurgia) → vs alternativas → kit menor",
    msgs:[
-    {l:"Custo de não tratar",t:"[Nome], entendo a preocupação.\n\nMas pensa assim: HPB (próstata aumentada) não tratada evolui para retenção urinária, pedra no rim, infecções e cirurgia.\n\nUma cirurgia de próstata: $3.000 a $10.000. O protocolo completo: $294 com garantia.\n\nO investimento inteligente é agora. 🙏"},
-    {l:"Kit menor",t:"[Nome], temos também o kit de 3 frascos por $72/frasco — $216 com frete grátis.\n\nMínimo recomendado para próstata.\n\nPosso gerar o link?"},
+    {l:"Custo de não tratar",subj:"The real cost of waiting, [First Name]",
+     t:"[First Name], I understand the concern.\n\nBut consider: untreated BPH progresses to urinary retention, kidney stones, infections, and surgery. A prostate surgery runs $3,000 to $10,000. The full protocol is $294, with a guarantee.\n\nThe smart investment is now.",
+     why:"<b>Por que funciona:</b> contrasta o custo do protocolo com o custo de cirurgia (preços reais dos EUA). \"The smart investment is now\" cria urgência preventiva sem alarmismo."},
+    {l:"Kit menor",subj:"Smaller kit option",
+     t:"[First Name], we also have the 3-bottle kit at $72/bottle — $216 with free shipping.\n\nIt's the minimum recommended for prostate support. Want me to generate the link?",
+     why:"<b>Por que funciona:</b> entrada acessível com justificativa de mínimo recomendado."},
    ]},
-  ip:{titulo:"Guia Completo da Saúde Prostática",tipo:"Ebook + Consulta Bônus",preco:"$27 — $47",upsell:"Bônus no kit de 6 frascos",
+  ip:{titulo:"The Complete Prostate Health Guide",tipo:"Ebook + Bonus Consultation",preco:"$27 — $47",upsell:"Bônus no kit de 6 frascos",
    desc:"Guia educativo que ensina sobre progressão da doença, posiciona suplementação como prevenção e aumenta urgência de tratamento.",
-   conteudo:"• O que está acontecendo na sua próstata (e o que vai acontecer se não agir)\n• Protocolo anti-inflamatório: suplementação + alimentação\n• O que comer e o que EVITAR para saúde prostática\n• Exercícios de soalho pélvico para controle urinário\n• Quando procurar um médico: sinais de alerta",
-   pitch:{l:"Script de pitch",t:"[Nome], posso te mostrar algo que faz toda diferença no resultado do tratamento?\n\nCriamos o 'Guia da Saúde Prostática' — um material que explica exatamente o que está acontecendo e como tratar de forma completa.\n\nEstá incluso no kit de 6 frascos. Quer que eu te envie os detalhes? 🛡️"},
+   conteudo:"• What's happening in your prostate (and what happens if you don't act)\n• Anti-inflammatory protocol: supplementation + nutrition\n• What to eat and what to AVOID for prostate health\n• Pelvic-floor exercises for urinary control\n• When to see a doctor: warning signs",
+   pitch:{l:"Pitch do infoproduto",subj:"What makes the difference in treatment, [First Name]",
+    t:"[First Name], can I show you something that makes a real difference?\n\nWe built 'The Complete Prostate Health Guide' — it explains exactly what's happening and how to treat it fully. It's included in the 6-bottle kit. Want the details?",
+    why:"<b>Por que funciona:</b> educa sobre progressão, aumentando urgência e reduzindo reembolso. Inclusão no kit de 6 ancora o upsell."},
   },
  }
 },
+/* ===================== 6. NERVOS / NEUROPATIA ===================== */
 {id:"np",label:"Nervos / Neuropatia",abbr:"NP",icon:"⚙️",acc:"#22c55e",bg:"#dcfce7",txt:"#15803d",
  prods:[{n:"NervoLyn",r:1},{n:"NervocalmX",r:0},{n:"SciatiRelax",r:0}],
  cs:[{n:"GlucoRecover",nid:"db",w:"Neuropatia diabética: causa mais comum"},{n:"JointReliveX",nid:"jt",w:"Dor nervosa e articular frequentemente juntas"},{n:"AudiLeaf",nid:"zb",w:"Nervo auditivo também se beneficia"}],
  sc:{
-  fr:{ctx:"Cliente diz que ainda sente dor, formigamento ou dormência.",ap:"Diagnóstico de tipo/origem → regeneração nervosa é lenta → protocolo 180 dias",
+  fr:{ctx:"Cliente diz que ainda sente dor, formigamento ou dormência.",ap:"Diagnóstico de tipo/origem → regeneração nervosa é matematicamente lenta → protocolo 180 dias",
    msgs:[
-    {l:"Abertura automática",t:"Oi [Nome], recebi sua mensagem e sei o quanto a dor nervosa pode ser exaustiva. ⚙️\n\nEnquanto nosso especialista analisa, me conta: a dor/formigamento é constante ou vem em crises? Em quais partes do corpo?\n\nEstou aqui pra te ajudar de verdade."},
-    {l:"Diagnóstico (humano)",t:"Entendo, [Nome]. Neuropatia é um dos problemas mais frustrantes por ser tão persistente.\n\nVocê tem diabetes, fez quimioterapia ou tem histórico de hérnia/compressão de nervo?\n\nCom essas informações consigo te indicar o caminho mais eficiente."},
-    {l:"Oferta: protocolo 180 dias",t:"[Nome], agora entendo o que está acontecendo.\n\nNervo é o tecido que mais demora pra regenerar — a regeneração acontece de forma lenta mas profunda. O protocolo de 180 dias é onde os resultados se consolidam.\n\nClientes com seu perfil relatam redução significativa na dor a partir do 45º dia contínuo.\n\n⚙️ 6 frascos × $49/frasco + frete grátis\n💰 Economia de $780\n\nPosso gerar o link agora?"},
+    {l:"Auto-reply (Freshdesk)",subj:"Re: your message — I know how exhausting this is, [First Name]",
+     t:"Hi [First Name],\n\nI got your message, and I know how draining nerve pain can be. It doesn't let up.\n\nWhile I review your case: is the pain or tingling constant, or does it come in waves? And which parts of your body?\n\nI'm here to help you for real.",
+     why:"<b>Por que funciona:</b> validar a exaustão da dor crônica (\"it doesn't let up\") gera conexão. Mapear o padrão (constante vs crises) e localização personaliza e prepara o diagnóstico."},
+    {l:"Diagnóstico (humano)",subj:"A few questions, [First Name]",
+     t:"I understand, [First Name]. Neuropathy is one of the most frustrating conditions because it's so persistent.\n\nDo you have diabetes, a history of chemo, or any nerve compression/herniated disc? With that, I can point you to the most effective path.",
+     why:"<b>Por que funciona:</b> reconhecer a persistência valida a experiência. Perguntar a causa (diabetes, quimio, compressão) personaliza, abre cross-sell e justifica o tempo de regeneração."},
+    {l:"Oferta: protocolo 180 dias",subj:"Nerve tissue is the slowest to heal — here's why that's good",
+     t:"[First Name], now I understand what's happening.\n\nNerve is the slowest tissue to regenerate — it heals slowly but deeply. The 180-day protocol is where results consolidate. People with your profile usually report significant pain reduction from day 45 of continuous use.\n\n- 6 bottles × $49/bottle + free shipping\n- You save $780\n- 60-day money-back guarantee\n\nWant me to set up the link now?",
+     why:"<b>Por que funciona:</b> \"slowly but deeply\" reposiciona a lentidão como qualidade (profundidade), não como falha. O marco de \"day 45\" dá um horizonte concreto. Garantia para o cético."},
    ]},
-  ar:{ctx:"Cliente quer reembolso, perdeu esperança no produto.",ap:"Acolhe frustração → nervo demora → proposta de continuidade",
+  ar:{ctx:"Cliente quer reembolso, perdeu esperança.",ap:"Acolhe → nervo regenera 1-3mm/dia → variação = resposta → continuidade",
    msgs:[
-    {l:"Acolhimento",t:"Oi [Nome], aqui é [nome] da equipe. 🙏\n\nDor nervosa crônica é exaustiva, e entendo por que a impaciência aparece.\n\nPosso te perguntar: o formigamento/dor chegou a variar em intensidade ou frequência durante o uso? Mesmo que pouco?"},
-    {l:"Reframe: regeneração nervosa",t:"[Nome], qualquer variação é sinal de que o nervo está respondendo.\n\nNervo periférico regenera 1-3mm por dia — é matematicamente impossível ter resultado completo em menos de 60-90 dias.\n\nQue tal mais 60 dias com suporte meu e garantia total?"},
-    {l:"Downsell: 3 frascos",t:"[Nome], se preferir:\n\n3 frascos × $72/frasco + frete grátis = $216.\n\nMínimo de 90 dias pra regeneração nervosa real.\n\n*(se não aceitar → reembolso)*"},
+    {l:"Acolhimento",subj:"Re: refund — I understand the impatience, [First Name]",
+     t:"Hi [First Name], this is [Agent] from the team.\n\nChronic nerve pain is exhausting, and I understand why patience runs out.\n\nCan I ask: did the tingling or pain change in intensity or frequency at any point — even a little — during use?",
+     why:"<b>Por que funciona:</b> validar a perda de paciência desarma. A pergunta sobre variação prepara o argumento de regeneração em curso."},
+    {l:"Reframe: regeneração nervosa",subj:"The math of nerve regeneration",
+     t:"[First Name], any variation is a sign the nerve is responding.\n\nPeripheral nerve regenerates about 1–3mm per day — it's mathematically impossible to get a complete result in under 60–90 days. That's not the product failing; it's biology.\n\nHere's my offer: 60 more days with my support, full guarantee intact. Deal?",
+     why:"<b>Por que funciona:</b> o número (1-3mm/dia) é a arma mais forte deste nicho — soa científico e torna a impaciência irracional sem ofender. Converte reembolso em retenção via acompanhamento."},
+    {l:"Downsell: 3 frascos",subj:"Smaller start, [First Name]",
+     t:"[First Name], if you'd rather:\n\n3 bottles × $72/bottle + free shipping = $216.\n\nMinimum 90 days for real nerve regeneration. Same guarantee. If it's still not right, reply and I'll refund you.",
+     why:"<b>Por que funciona:</b> recupera receita parcial; mantém saída livre de fricção."},
    ]},
-  iv:{ctx:"Cliente acha caro para dor nervosa.",ap:"Custo de dor crônica na qualidade de vida → custo alternativo → kit menor",
+  iv:{ctx:"Cliente acha caro para dor nervosa.",ap:"Custo da dor crônica na vida → vs medicação convencional → kit menor",
    msgs:[
-    {l:"Custo da dor crônica",t:"[Nome], entendo a preocupação com o valor.\n\nMas a dor nervosa crônica tem um custo diferente: produtividade, sono, qualidade de vida.\n\n$49/frasco = $1,63/dia. Com garantia de 60 dias.\n\nComparado a qualquer medicação convencional pra neuropatia — que tem efeitos colaterais e não trata a causa — é incomparável. 🙏"},
-    {l:"Kit menor",t:"[Nome], temos o kit de 3 frascos por $72/frasco — $216 com frete grátis.\n\n90 dias de protocolo. Mínimo recomendado.\n\nPosso gerar o link?"},
+    {l:"Custo da dor crônica",subj:"What chronic pain really costs, [First Name]",
+     t:"[First Name], I understand the price concern.\n\nBut chronic nerve pain has a different cost: your productivity, your sleep, your quality of life. $49/bottle = $1.63/day, with a 60-day guarantee.\n\nCompared to conventional neuropathy meds — which carry side effects and don't treat the cause — there's no comparison.",
+     why:"<b>Por que funciona:</b> converte custo financeiro em custo de vida (sono, produtividade). Contrasta com gabapentina/pregabalina (efeitos colaterais), valorizando a opção natural."},
+    {l:"Kit menor",subj:"Smaller kit option",
+     t:"[First Name], we have the 3-bottle kit at $72/bottle — $216 with free shipping.\n\n90 days of protocol — the recommended minimum. Want me to generate the link?",
+     why:"<b>Por que funciona:</b> entrada acessível com justificativa de mínimo recomendado."},
    ]},
-  ip:{titulo:"Protocolo Anti-Neuropatia",tipo:"Ebook + Vídeo",preco:"$27 — $47",upsell:"Bônus no kit de 6 frascos",
+  ip:{titulo:"The Anti-Neuropathy Protocol",tipo:"Ebook + Video",preco:"$27 — $47",upsell:"Bônus no kit de 6 frascos",
    desc:"Guia sobre regeneração nervosa que educa o cliente sobre a lentidão do processo, reduz abandono e aumenta adesão ao tratamento completo.",
-   conteudo:"• Como o nervo é danificado e como ele regenera\n• Protocolo anti-inflamatório: suplementação + alimentação\n• O que acelera e o que retarda a regeneração nervosa\n• Exercícios de estimulação nervosa (sem dor)\n• Acompanhamento semanal: como medir sua evolução",
-   pitch:{l:"Script de pitch",t:"[Nome], antes de qualquer decisão — posso te mostrar o que faz diferença no tratamento de neuropatia?\n\nCriamos o 'Protocolo Anti-Neuropatia' — guia que explica exatamente como o nervo regenera e o que fazer pra acelerar.\n\nEstá incluso no kit de 6 frascos. Quer que eu te envie? ⚙️"},
+   conteudo:"• How nerves get damaged and how they heal\n• Anti-inflammatory protocol: supplementation + nutrition\n• What speeds up and what slows down nerve regeneration\n• Nerve-stimulation exercises (pain-free)\n• Weekly tracking: how to measure your progress",
+   pitch:{l:"Pitch do infoproduto",subj:"What makes the difference in neuropathy, [First Name]",
+    t:"[First Name], can I show you what makes the difference in neuropathy treatment?\n\nWe built 'The Anti-Neuropathy Protocol' — it explains exactly how the nerve heals and what speeds it up. It's included in the 6-bottle kit. Want me to send it?",
+    why:"<b>Por que funciona:</b> educar sobre lentidão reduz abandono e reembolso. Inclusão no kit de 6 ancora o upsell."},
   },
  }
 },
+/* ===================== 7. DIABETES / GLICOSE ===================== */
 {id:"db",label:"Diabetes / Glicose",abbr:"DB",icon:"🩸",acc:"#ef4444",bg:"#fee2e2",txt:"#b91c1c",
  prods:[{n:"GlucoRecover",r:1},{n:"GlycePrime",r:0},{n:"SugarDefendX",r:0},{n:"InsuCalmX",r:0}],
- cs:[{n:"VisiumPro",nid:"vs",w:"Retinopatia diabética: complicação silenciosa"},{n:"NervoLyn",nid:"np",w:"Neuropatia diabética: muito prevalente"},{n:"FloraNew",nid:"gut",w:"Microbioma intestinal regula glicemia"}],
+ cs:[{n:"VisiumPro",nid:"vs",w:"Retinopatia diabética: complicação silenciosa"},{n:"NervoLyn",nid:"np",w:"Neuropatia diabética: muito prevalente"},{n:"FloraNew",nid:"gut",w:"Microbioma intestinal regula a glicemia"}],
  sc:{
-  fr:{ctx:"Cliente diz que a glicemia não melhorou ou não sentiu diferença.",ap:"Diagnóstico de hábitos + medicação → educa sobre fisiologia → protocolo 180 dias",
+  fr:{ctx:"Cliente diz que a glicemia não melhorou ou não sentiu diferença.",ap:"Diagnóstico de hábitos + medicação → fisiologia do pâncreas (60-90 dias) → protocolo 180 dias",
    msgs:[
-    {l:"Abertura automática",t:"Oi [Nome], recebi sua mensagem e quero cuidar do seu caso com atenção. 🩸\n\nEnquanto nosso especialista analisa, me conta: você monitora a glicemia regularmente? Percebeu alguma variação durante o uso?\n\nEstou aqui pra entender."},
-    {l:"Diagnóstico (humano)",t:"Entendi, [Nome]. Controle glicêmico envolve muitas variáveis.\n\nVocê usa medicação para diabetes? A alimentação variou muito durante o uso?\n\nAlém disso: você mediu a glicemia antes e depois das refeições pra ver as variações ao longo do dia?"},
-    {l:"Oferta: protocolo 180 dias",t:"[Nome], agora está mais claro.\n\nControle glicêmico natural leva de 60 a 90 dias pra mostrar resultados consistentes — pâncreas e fígado precisam de tempo.\n\nClientes no protocolo completo relatam melhora em energia, sono e redução de neuropatia.\n\n🩸 6 frascos × $49/frasco + frete grátis\n💰 Economia de $780\n\nPosso gerar o link?"},
+    {l:"Auto-reply (Freshdesk)",subj:"Re: your message — handling your case with care, [First Name]",
+     t:"Hi [First Name],\n\nI got your message and I want to handle your case carefully. Blood sugar is serious business.\n\nWhile I review your order: do you check your glucose regularly? Did you notice any change in your readings during use?\n\nLet's understand this together.",
+     why:"<b>Por que funciona:</b> seriedade e cuidado tranquilizam um público que teme complicações. Perguntar sobre as medições abre o diagnóstico baseado em dados (que o cliente respeita) e prepara o argumento de variação."},
+    {l:"Diagnóstico (humano)",subj:"A few questions to get this right, [First Name]",
+     t:"I understand, [First Name]. Glucose control involves many variables.\n\nAre you on diabetes medication? Did your eating vary a lot during use? And did you measure before and after meals to see the daily swings?\n\nThis tells me exactly what was happening.",
+     why:"<b>Por que funciona:</b> perguntas técnicas (medicação, antes/depois das refeições) demonstram competência e dão explicações externas legítimas para um resultado abaixo do esperado."},
+    {l:"Oferta: protocolo 180 dias",subj:"Natural glucose control takes 60–90 days — here's why",
+     t:"[First Name], now it's clearer.\n\nNatural glucose control takes 60 to 90 days to show consistent results — the pancreas and liver need time. People on the full protocol report better energy, sleep, and less neuropathy.\n\n- 6 bottles × $49/bottle + free shipping\n- You save $780\n- 60-day money-back guarantee\n\nWant me to set up the link?",
+     why:"<b>Por que funciona:</b> a janela de 60-90 dias com base no pâncreas/fígado dá uma razão fisiológica crível. Citar benefícios paralelos (energia, sono) aumenta o valor percebido. Garantia tranquiliza."},
    ]},
-  ar:{ctx:"Cliente se arrependeu ou quer reembolso.",ap:"Acolhe → explica fisiologia do pâncreas → downsell com acompanhamento",
+  ar:{ctx:"Cliente se arrependeu ou quer reembolso.",ap:"Acolhe → fisiologia do pâncreas → acompanhamento com check-ins → downsell",
    msgs:[
-    {l:"Acolhimento",t:"Oi [Nome], aqui é [nome] da equipe. 🙏\n\nEntendo — diabetes é um problema sério e quando o resultado não vem no ritmo esperado, a frustração é compreensível.\n\nMe conta: a glicemia chegou a variar em algum momento durante o uso, mesmo que pouco?"},
-    {l:"Reframe: fisiologia glicêmica",t:"[Nome], qualquer variação é sinal de resposta.\n\nO pâncreas e os receptores de insulina têm capacidade limitada de se 'resetar' — esse processo leva 60 a 90 dias mínimo.\n\nQue tal 60 dias mais com suporte meu e check-ins semanais de glicemia?"},
-    {l:"Downsell: 3 frascos",t:"[Nome], se preferir:\n\n3 frascos × $72/frasco + frete grátis = $216.\n\nMínimo de 90 dias para resultados glicêmicos reais.\n\n*(se não aceitar → reembolso)*"},
+    {l:"Acolhimento",subj:"Re: refund — I understand, [First Name]",
+     t:"Hi [First Name], this is [Agent] from the team.\n\nI understand — diabetes is serious, and when results don't come on schedule, the frustration makes sense.\n\nDid your glucose readings shift at all during use, even a little?",
+     why:"<b>Por que funciona:</b> validar a seriedade e a frustração desarma. A pergunta sobre variação prepara o reframe."},
+    {l:"Reframe: fisiologia glicêmica",subj:"Any shift is a response, [First Name]",
+     t:"[First Name], any shift is a sign of response.\n\nThe pancreas and insulin receptors can only 'reset' so fast — that process takes a minimum of 60 to 90 days. Here's my offer: 60 more days with my support and weekly glucose check-ins. Full guarantee intact.",
+     why:"<b>Por que funciona:</b> reinterpreta variação como resposta. Check-ins semanais de glicemia convertem reembolso em retenção e dão sensação de acompanhamento médico."},
+    {l:"Downsell: 3 frascos",subj:"Smaller start, [First Name]",
+     t:"[First Name], if you'd prefer:\n\n3 bottles × $72/bottle + free shipping = $216.\n\nMinimum 90 days for real glucose results. Same guarantee. If it's still not right, reply and I'll refund you.",
+     why:"<b>Por que funciona:</b> recupera receita parcial; saída livre."},
    ]},
-  iv:{ctx:"Cliente acha caro para suplemento de diabetes.",ap:"Custo de complicações → custo alternativo (insulina, medicamentos) → kit menor",
+  iv:{ctx:"Cliente acha caro para suplemento de diabetes.",ap:"Custo das complicações (insulina, diálise) → kit menor",
    msgs:[
-    {l:"Custo de não tratar",t:"[Nome], entendo completamente.\n\nMas pensa assim: diabetes não controlada leva a cegueira (retinopatia), neuropatia, insuficiência renal e amputações.\n\nInsulinização: $200+/mês. Diálise: $4.000+/mês.\n\nO protocolo completo: $49/frasco × 6 com garantia de 60 dias. 🩸"},
-    {l:"Kit menor",t:"[Nome], temos o kit de 3 frascos por $72/frasco — $216 com frete grátis.\n\n90 dias de protocolo para controle glicêmico.\n\nPosso gerar o link?"},
+    {l:"Custo de não tratar",subj:"The real cost of uncontrolled diabetes, [First Name]",
+     t:"[First Name], I completely understand.\n\nBut consider: uncontrolled diabetes leads to blindness (retinopathy), neuropathy, kidney failure, and amputations. Insulin runs $200+/month. Dialysis runs $4,000+/month.\n\nThe full protocol is $49/bottle × 6, with a 60-day guarantee.",
+     why:"<b>Por que funciona:</b> contrasta com custos reais e assustadores das complicações (insulina, diálise nos EUA). Cria urgência preventiva apoiada em fatos, não em medo vazio."},
+    {l:"Kit menor",subj:"Smaller kit option",
+     t:"[First Name], we have the 3-bottle kit at $72/bottle — $216 with free shipping.\n\n90 days for glucose control. Want me to generate the link?",
+     why:"<b>Por que funciona:</b> entrada acessível com justificativa."},
    ]},
-  ip:{titulo:"Controle Glicêmico Natural: O Protocolo Completo",tipo:"Programa Online + Monitoramento",preco:"$47 — $77",upsell:"Incluso no kit de 6 frascos ou venda separada",
-   desc:"Programa que combina suplementação com protocolo alimentar anti-glicêmico. Fundamental nesse nicho pois sem mudança alimentar o suplemento tem resultado limitado.",
-   conteudo:"• O que está realmente causando sua resistência à insulina\n• Protocolo alimentar anti-glicêmico: 30 dias de guia\n• Como monitorar glicemia em casa de forma eficaz\n• Exercícios de 15 min que reduzem glicemia imediatamente\n• Prevenção das 4 complicações silenciosas",
-   pitch:{l:"Script de pitch",t:"[Nome], posso te mostrar o que transforma o resultado pra diabéticos?\n\nCriamos um protocolo completo que combina o [produto] com guia alimentar e monitoramento.\n\nClientes que usam o programa junto com a suplementação têm resultados muito mais consistentes.\n\nEstá incluso no kit de 6 frascos. Quer saber mais? 🩸"},
+  ip:{titulo:"Natural Glucose Control: The Complete Protocol",tipo:"Online Program + Tracking",preco:"$47 — $77",upsell:"Incluso no kit de 6 frascos ou venda avulsa",
+   desc:"Programa que combina suplementação com protocolo alimentar anti-glicêmico. Fundamental nesse nicho: sem mudança alimentar, o suplemento tem resultado limitado.",
+   conteudo:"• What's really causing your insulin resistance\n• Anti-glycemic eating: a 30-day guide\n• How to monitor glucose at home effectively\n• 15-minute exercises that lower glucose immediately\n• Preventing the 4 silent complications",
+   pitch:{l:"Pitch do infoproduto",subj:"What transforms results for diabetics, [First Name]",
+    t:"[First Name], can I show you what transforms results for diabetics?\n\nWe built a complete protocol pairing [Product] with an eating guide and monitoring system. People who use the program alongside the supplement get far more consistent results. It's included in the 6-bottle kit. Want to know more?",
+    why:"<b>Por que funciona:</b> admite que dieta é parte essencial — credibilidade com o cético. Justifica o kit de 6 (onde o programa é grátis) e reduz reembolso por gerenciar expectativa."},
   },
  }
 },
+/* ===================== 8. VISÃO ===================== */
 {id:"vs",label:"Visão",abbr:"VS",icon:"👁️",acc:"#0ea5e9",bg:"#e0f2fe",txt:"#0369a1",
  prods:[{n:"VisiumPro",r:1},{n:"EyeVitalis",r:0},{n:"NeuroRetine",r:0}],
  cs:[{n:"MaroBrain",nid:"me",w:"Nervo óptico = extensão do cérebro"},{n:"GlucoRecover",nid:"db",w:"Diabetes causa retinopatia"},{n:"NervoLyn",nid:"np",w:"Nervo óptico precisa de suporte neural"}],
  sc:{
-  fr:{ctx:"Cliente diz que a visão não melhorou ou continua com cansaço/embaçamento.",ap:"Tipo de queixa visual → fisiologia lenta da retina → protocolo 180 dias",
+  fr:{ctx:"Cliente diz que a visão não melhorou ou continua com cansaço/embaçamento.",ap:"Tipo de queixa visual → retina é tecido lento → protocolo 180 dias",
    msgs:[
-    {l:"Abertura automática",t:"Oi [Nome], recebi sua mensagem sobre o [produto] e quero entender o que aconteceu. 👁️\n\nEnquanto nosso especialista analisa, me conta: sua principal queixa é visão embaçada, cansaço visual, sensibilidade à luz ou flashes?\n\nVou te ajudar a encontrar a solução certa."},
-    {l:"Diagnóstico (humano)",t:"Entendi, [Nome]. Saúde visual é algo que não podemos deixar pra depois.\n\nVocê tem diabetes, pressão alta ou histórico de glaucoma/degeneração macular na família?\n\nAlém disso: você usa tela de computador ou celular por muitas horas por dia?"},
-    {l:"Oferta: protocolo 180 dias",t:"[Nome], com base no que você me contou, agora está claro.\n\nRetina e nervo óptico estão entre os tecidos mais lentos pra responder a suplementação — os resultados mais expressivos aparecem no protocolo de 180 dias.\n\nClientes com esse perfil relatam melhora na nitidez a partir do 2º mês.\n\n👁️ 6 frascos × $49/frasco + frete grátis\n💰 Economia de $780\n\nPosso gerar seu link?"},
+    {l:"Auto-reply (Freshdesk)",subj:"Re: your message — I want to understand this, [First Name]",
+     t:"Hi [First Name],\n\nI got your message about [Product] and I want to understand what happened.\n\nWhile I review your case: is your main complaint blurry vision, eye fatigue, light sensitivity, or flashes?\n\nI'll help you find the right solution.",
+     why:"<b>Por que funciona:</b> identificar o tipo exato de queixa visual demonstra competência e personaliza. Sem hype — público preocupado com visão valoriza precisão."},
+    {l:"Diagnóstico (humano)",subj:"A couple of questions, [First Name]",
+     t:"I understand, [First Name]. Eye health isn't something to put off.\n\nDo you have diabetes, high blood pressure, or a family history of glaucoma or macular degeneration? And how many hours a day are you on screens?\n\nThese details matter a lot.",
+     why:"<b>Por que funciona:</b> perguntas de risco (diabetes, histórico familiar, telas) personalizam, abrem cross-sell e contextualizam a lentidão do resultado."},
+    {l:"Oferta: protocolo 180 dias",subj:"Retina is one of the slowest tissues — here's the plan",
+     t:"[First Name], based on what you shared, it's clear now.\n\nThe retina and optic nerve are among the slowest tissues to respond — the biggest results appear on the 180-day protocol. People with your profile report sharper vision from month 2.\n\n- 6 bottles × $49/bottle + free shipping\n- You save $780\n- 60-day money-back guarantee\n\nWant me to set up your link?",
+     why:"<b>Por que funciona:</b> a lentidão da retina justifica o protocolo longo de forma crível. Marco de \"month 2\" dá horizonte. Garantia tranquiliza."},
    ]},
-  ar:{ctx:"Cliente se arrependeu ou acha que não vai funcionar.",ap:"Acolhe → gravidade de não tratar → fisiologia da retina → downsell",
+  ar:{ctx:"Cliente se arrependeu ou acha que não vai funcionar.",ap:"Acolhe → gravidade de não tratar → retina não regenera fácil → downsell",
    msgs:[
-    {l:"Acolhimento",t:"Oi [Nome], aqui é [nome] da equipe. Recebi sua solicitação. 🙏\n\nEntendo a dúvida — resultado em visão é sutil no começo.\n\nMe conta: você notou alguma diferença (mesmo mínima) em cansaço, nitidez ou sensibilidade à luz durante o uso?"},
-    {l:"Reframe: impacto de não tratar",t:"[Nome], visão é o sentido mais precioso que temos — e degeneração macular pode progredir silenciosamente.\n\nRetina é tecido nervoso que não regenera com facilidade. Proteger agora é muito mais fácil do que recuperar depois.\n\nQue tal mais 60 dias com suporte meu e garantia total?"},
-    {l:"Downsell: 3 frascos",t:"[Nome], se preferir:\n\n3 frascos × $72/frasco + frete grátis = $216.\n\nMínimo de 90 dias pra resultado real em saúde visual.\n\n*(se não aceitar → reembolso)*"},
+    {l:"Acolhimento",subj:"Re: refund — let's talk first, [First Name]",
+     t:"Hi [First Name], this is [Agent] from the team. I got your request.\n\nI understand the doubt — vision results are subtle at first.\n\nDid you notice any difference at all — even minimal — in fatigue, sharpness, or light sensitivity during use?",
+     why:"<b>Por que funciona:</b> reconhecer que resultado em visão é sutil prepara o cliente para entender a gradualidade. Pergunta sobre mudança mínima abre o reframe."},
+    {l:"Reframe: impacto de não tratar",subj:"Vision is the one sense you protect now, [First Name]",
+     t:"[First Name], vision is the most precious sense we have — and macular degeneration can progress silently.\n\nThe retina is nerve tissue that doesn't regenerate easily. Protecting it now is far easier than recovering it later.\n\nHere's my offer: 60 more days with my support and the full guarantee. Worth it?",
+     why:"<b>Por que funciona:</b> apela à preservação (medo de perder a visão) sem alarmismo. \"Protect now vs recover later\" cria urgência preventiva. Acompanhamento converte reembolso."},
+    {l:"Downsell: 3 frascos",subj:"Smaller start, [First Name]",
+     t:"[First Name], if you'd prefer:\n\n3 bottles × $72/bottle + free shipping = $216.\n\nMinimum 90 days for a real result in eye health. Same guarantee. If it's still not right, reply and I'll refund you.",
+     why:"<b>Por que funciona:</b> recupera receita parcial; saída livre."},
    ]},
-  iv:{ctx:"Cliente acha caro para suplemento de visão.",ap:"Custo de perder a visão → custo cirúrgico → kit menor",
+  iv:{ctx:"Cliente acha caro para suplemento de visão.",ap:"Custo de perder visão → cirurgia/glaucoma → kit menor",
    msgs:[
-    {l:"Perspectiva de valor",t:"[Nome], eu entendo.\n\nMas pensa: óculos custam $200-500 e precisam ser trocados. Cirurgia a laser: $2.000-$4.000. Tratamento de glaucoma avançado: $500+/mês.\n\nO protocolo completo: $294, uma vez, com garantia. Proteção preventiva é sempre mais barata que tratamento corretivo. 👁️"},
-    {l:"Kit menor",t:"[Nome], temos o kit de 3 frascos por $72/frasco — $216 com frete grátis.\n\n90 dias de protocolo de proteção visual.\n\nPosso gerar o link?"},
+    {l:"Perspectiva de valor",subj:"Prevention vs correction, [First Name]",
+     t:"[First Name], I understand.\n\nBut consider: glasses run $200–500 and need replacing. Laser surgery is $2,000–4,000. Advanced glaucoma treatment is $500+/month.\n\nThe full protocol is $294, once, with a guarantee. Preventive protection is always cheaper than corrective treatment.",
+     why:"<b>Por que funciona:</b> contrasta com custos reais de óptica/cirurgia nos EUA. \"Prevention cheaper than correction\" é um princípio que o público aceita facilmente."},
+    {l:"Kit menor",subj:"Smaller kit option",
+     t:"[First Name], we have the 3-bottle kit at $72/bottle — $216 with free shipping.\n\n90 days of visual-protection protocol. Want me to generate the link?",
+     why:"<b>Por que funciona:</b> entrada acessível com justificativa."},
    ]},
-  ip:{titulo:"Visão Nítida: Protocolo de Proteção Ocular",tipo:"Ebook + Exercícios Visuais",preco:"$27 — $47",upsell:"Bônus no kit de 6 frascos",
+  ip:{titulo:"Clear Vision: The Eye-Protection Protocol",tipo:"Ebook + Visual Exercises",preco:"$27 — $47",upsell:"Bônus no kit de 6 frascos",
    desc:"Guia de saúde ocular que educa sobre progressão de doenças visuais, exercícios de relaxamento e protocolo alimentar. Aumenta urgência de tratamento.",
-   conteudo:"• As 5 ameaças silenciosas à sua visão\n• Protocolo de nutrição ocular: suplementação + alimentação\n• 10 exercícios visuais diários (5 minutos)\n• Como a luz azul danifica sua retina e como se proteger\n• Quando é emergência: sinais que exigem médico imediatamente",
-   pitch:{l:"Script de pitch",t:"[Nome], posso te mostrar algo que vai transformar como você cuida da sua visão?\n\nCriamos o 'Visão Nítida' — guia completo que combina o [produto] com exercícios e protocolo alimentar para saúde ocular.\n\nEstá incluso no kit de 6 frascos. Quer que eu te envie? 👁️"},
+   conteudo:"• The 5 silent threats to your vision\n• Eye-nutrition protocol: supplementation + diet\n• 10 daily visual exercises (5 minutes)\n• How blue light damages your retina and how to protect it\n• When it's an emergency: signs that need a doctor now",
+   pitch:{l:"Pitch do infoproduto",subj:"How to truly care for your vision, [First Name]",
+    t:"[First Name], can I show you something that transforms how you care for your eyes?\n\nWe built 'Clear Vision' — pairing [Product] with exercises and an eating protocol for eye health. It's included in the 6-bottle kit. Want me to send it?",
+    why:"<b>Por que funciona:</b> educa sobre prevenção, aumentando urgência e valor percebido. Inclusão no kit de 6 ancora o upsell."},
   },
  }
 },
+/* ===================== 9. FUNGOS / UNHAS ===================== */
 {id:"fg",label:"Fungos / Unhas",abbr:"FG",icon:"🍄",acc:"#d97706",bg:"#fef3c7",txt:"#92400e",
  prods:[{n:"NailsCleanPro",r:1}],
- cs:[{n:"FloraNew",nid:"gut",w:"Fungo sistêmico tem origem intestinal"},{n:"GlucoRecover",nid:"db",w:"Diabéticos têm maior risco fúngico"},{n:"NervoLyn",nid:"np",w:"Imunodeficiência afeta nervos e unhas"}],
+ cs:[{n:"FloraNew",nid:"gut",w:"Fungo sistêmico tem origem intestinal"},{n:"GlucoRecover",nid:"db",w:"Diabéticos têm maior risco fúngico"},{n:"NervoLyn",nid:"np",w:"Imunidade fraca afeta nervos e unhas"}],
  sc:{
-  fr:{ctx:"Cliente diz que as unhas não melhoraram ou o fungo voltou.",ap:"Diagnóstico de origem sistêmica → ciclo de crescimento da unha → protocolo 180 dias",
+  fr:{ctx:"Cliente diz que as unhas não melhoraram ou o fungo voltou.",ap:"Origem sistêmica → ciclo de crescimento da unha (6-12 meses) → protocolo 180 dias",
    msgs:[
-    {l:"Abertura automática",t:"Oi [Nome], recebi sua mensagem sobre o NailsCleanPro e quero te ajudar. 🍄\n\nEnquanto nosso especialista analisa, me conta: as unhas chegaram a mostrar alguma melhora (menos espessamento, cor melhor) durante o uso?\n\nEstou aqui pra entender."},
-    {l:"Diagnóstico (humano)",t:"Entendi, [Nome]. Fungo nas unhas é persistente justamente porque tem raiz sistêmica.\n\nVocê tem diabetes ou usa corticoide regularmente? Frequenta academia, piscina ou ambientes úmidos?\n\nEsse contexto explica muito."},
-    {l:"Oferta: protocolo 180 dias",t:"[Nome], agora ficou claro o que está acontecendo.\n\nFungo nas unhas tem raiz no intestino e no sistema imune. A unha nova demora 6 a 12 meses pra crescer completamente limpa.\n\nO protocolo de 180 dias é onde os clientes relatam unhas completamente limpas.\n\n🍄 6 frascos × $49/frasco + frete grátis\n💰 Economia de $780\n\nPosso gerar o link?"},
+    {l:"Auto-reply (Freshdesk)",subj:"Re: your message — I want to help, [First Name]",
+     t:"Hi [First Name],\n\nI got your message about NailsCleanPro and I want to help.\n\nWhile I review your case: did the nails show any improvement at all — less thickening, better color — during use?\n\nLet's get to the bottom of this.",
+     why:"<b>Por que funciona:</b> perguntar sobre melhora parcial (espessura, cor) prepara o reframe e mostra que você sabe o que observar. Tom prático."},
+    {l:"Diagnóstico (humano)",subj:"Why nail fungus is so stubborn, [First Name]",
+     t:"I understand, [First Name]. Nail fungus is stubborn precisely because it has a systemic root.\n\nDo you have diabetes or use corticosteroids regularly? Do you spend time at the gym, pool, or in damp environments? This context explains a lot.",
+     why:"<b>Por que funciona:</b> \"systemic root\" reposiciona o problema — não é só a unha, é o corpo todo, o que justifica tratamento mais longo e abre cross-sell intestinal. Perguntas de exposição personalizam."},
+    {l:"Oferta: protocolo 180 dias",subj:"A new nail takes 6–12 months — here's the plan",
+     t:"[First Name], now it's clear.\n\nNail fungus is rooted in the gut and immune system. A brand-new nail takes 6 to 12 months to fully grow in clean. The 180-day protocol is where people report completely clear nails.\n\n- 6 bottles × $49/bottle + free shipping\n- You save $780\n- 60-day money-back guarantee\n\nWant me to set up the link?",
+     why:"<b>Por que funciona:</b> o ciclo biológico de crescimento da unha (6-12 meses) é um fato indiscutível que justifica perfeitamente o protocolo longo. \"Completely clear nails\" é o resultado-desejo. Garantia tranquiliza."},
    ]},
-  ar:{ctx:"Cliente pede reembolso, acredita que não adianta.",ap:"Acolhe → ciclo biológico da unha → downsell com explicação",
+  ar:{ctx:"Cliente pede reembolso, acredita que não adianta.",ap:"Acolhe → ciclo da unha (3mm/mês) → parar = recidiva → downsell",
    msgs:[
-    {l:"Acolhimento",t:"Oi [Nome], aqui é [nome] da equipe. 🙏\n\nEntendo — fungo nas unhas é frustrante porque o resultado visível demora.\n\nMe conta: as unhas chegaram a ficar menos espessas ou com cor mais clara em algum momento?"},
-    {l:"Reframe: ciclo de crescimento da unha",t:"[Nome], qualquer melhora é sinal de que o fungo está sendo eliminado.\n\nA unha humana cresce 3mm por mês. Uma unha completamente nova demora 9 a 12 meses.\n\nO resultado visível não é instantâneo — é fisiologia. Se você parar agora, o fungo volta.\n\nQue tal mais 60 dias com suporte meu e garantia total?"},
-    {l:"Downsell: 3 frascos",t:"[Nome], se preferir:\n\n3 frascos × $72/frasco + frete grátis = $216.\n\nMínimo de 90 dias pra fungos mais leves.\n\n*(se não aceitar → reembolso)*"},
+    {l:"Acolhimento",subj:"Re: refund — I understand the frustration, [First Name]",
+     t:"Hi [First Name], this is [Agent] from the team.\n\nI understand — nail fungus is frustrating because visible results take so long.\n\nDid the nails get any less thick or lighter in color at any point?",
+     why:"<b>Por que funciona:</b> validar a demora visível desarma. A pergunta prepara o argumento de progresso em curso."},
+    {l:"Reframe: ciclo da unha",subj:"Any improvement means the fungus is dying, [First Name]",
+     t:"[First Name], any improvement means the fungus is being cleared.\n\nNails grow about 3mm per month. A fully new nail takes 9 to 12 months. The visible result isn't instant — it's physiology. If you stop now, the fungus comes back.\n\nHere's my offer: 60 more days with my support, full guarantee intact.",
+     why:"<b>Por que funciona:</b> o número (3mm/mês) torna a impaciência irracional sem ofender. \"If you stop now, it comes back\" cria medo de perda do investimento já feito — forte motivador de continuidade."},
+    {l:"Downsell: 3 frascos",subj:"Smaller start, [First Name]",
+     t:"[First Name], if you'd prefer:\n\n3 bottles × $72/bottle + free shipping = $216.\n\nMinimum 90 days for milder cases. Same guarantee. If it's still not right, reply and I'll refund you.",
+     why:"<b>Por que funciona:</b> recupera receita parcial; saída livre."},
    ]},
-  iv:{ctx:"Cliente acha caro para um problema de unhas.",ap:"Comparação com antifúngico oral + laser → kit menor",
+  iv:{ctx:"Cliente acha caro para um problema de unhas.",ap:"vs antifúngico oral (risco hepático) + laser → kit menor",
    msgs:[
-    {l:"Comparação com alternativas",t:"[Nome], entendo a preocupação.\n\nAntifúngicos orais de farmácia: $50-100/mês com risco de dano hepático. Tratamento a laser: $200-500 por sessão (várias sessões).\n\nO protocolo: $49/frasco, natural, com garantia de 60 dias. 🍄"},
-    {l:"Kit menor",t:"[Nome], temos o kit de 3 frascos por $72/frasco — $216 com frete grátis.\n\nMínimo para fungos em fase inicial.\n\nPosso gerar o link?"},
+    {l:"Comparação com alternativas",subj:"A fair comparison, [First Name]",
+     t:"[First Name], I understand the concern.\n\nOral antifungals run $50–100/month with liver-damage risk. Laser treatment is $200–500 per session (multiple needed). The protocol is $49/bottle, natural, with a 60-day guarantee.",
+     why:"<b>Por que funciona:</b> contrasta com alternativas caras e arriscadas (antifúngico oral hepatotóxico, laser por sessão). Valoriza a opção natural e segura."},
+    {l:"Kit menor",subj:"Smaller kit option",
+     t:"[First Name], we have the 3-bottle kit at $72/bottle — $216 with free shipping.\n\nMinimum for early-stage fungus. Want me to generate the link?",
+     why:"<b>Por que funciona:</b> entrada acessível com justificativa."},
    ]},
-  ip:{titulo:"Anti-Fungo Total: Do Intestino às Unhas",tipo:"Ebook + Protocolo Tópico",preco:"$17 — $37",upsell:"Bônus no kit de 6 frascos",
+  ip:{titulo:"Total Anti-Fungal: From Gut to Nails",tipo:"Ebook + Topical Protocol",preco:"$17 — $37",upsell:"Bônus no kit de 6 frascos",
    desc:"Guia que explica a origem intestinal do fungo e como combinar suplementação sistêmica com cuidados tópicos. Reduz recidiva e aumenta percepção de resultado.",
-   conteudo:"• Por que o fungo volta (e o que resolver de verdade)\n• O papel do intestino na saúde das unhas\n• Protocolo tópico: o que aplicar + o que evitar\n• Alimentação anti-Candida: alimentos que alimentam o fungo\n• Como desinfetar calçados, meias e ambientes",
-   pitch:{l:"Script de pitch",t:"[Nome], posso te mostrar o que vai garantir que o fungo não volte?\n\nCriamos o 'Anti-Fungo Total' — guia que combina o NailsCleanPro com protocolo tópico e alimentar pra acabar com o ciclo de recidiva.\n\nEstá incluso no kit de 6 frascos. Quer que eu te envie? 🍄"},
+   conteudo:"• Why the fungus keeps coming back (and how to truly fix it)\n• The gut's role in nail health\n• Topical protocol: what to apply and what to avoid\n• Anti-Candida eating: foods that feed the fungus\n• How to disinfect shoes, socks, and surfaces",
+   pitch:{l:"Pitch do infoproduto",subj:"How to make sure it doesn't come back, [First Name]",
+    t:"[First Name], can I show you what guarantees the fungus won't return?\n\nWe built 'Total Anti-Fungal' — pairing NailsCleanPro with a topical and dietary protocol to end the recurrence cycle. It's included in the 6-bottle kit. Want me to send it?",
+    why:"<b>Por que funciona:</b> ataca o medo central do nicho (recidiva). Inclusão no kit de 6 ancora o upsell e reduz reembolso."},
   },
  }
 },
+/* ===================== 10. SAÚDE INTESTINAL ===================== */
 {id:"gut",label:"Saúde Intestinal",abbr:"GUT",icon:"🌱",acc:"#16a34a",bg:"#dcfce7",txt:"#14532d",
  prods:[{n:"FloraNew",r:1},{n:"FloraLiftX",r:0},{n:"GutPrimeX",r:0}],
- cs:[{n:"LipoBliss",nid:"wl",w:"Microbioma saudável acelera metabolismo"},{n:"GlucoRecover",nid:"db",w:"Intestino regula absorção de glicose"},{n:"NailsCleanPro",nid:"fg",w:"GUT reequilibra flora fúngica sistêmica"}],
+ cs:[{n:"LipoBliss",nid:"wl",w:"Microbioma saudável acelera o metabolismo"},{n:"GlucoRecover",nid:"db",w:"Intestino regula a absorção de glicose"},{n:"NailsCleanPro",nid:"fg",w:"GUT reequilibra a flora fúngica sistêmica"}],
  sc:{
-  fr:{ctx:"Cliente diz que ainda tem inchaço, intestino irregular ou não melhorou.",ap:"Diagnóstico de hábito alimentar → tempo de recolonização → protocolo 180 dias",
+  fr:{ctx:"Cliente diz que ainda tem inchaço, intestino irregular ou não melhorou.",ap:"Diagnóstico de hábito alimentar → recolonização leva 90-180 dias → protocolo",
    msgs:[
-    {l:"Abertura automática",t:"Oi [Nome], recebi sua mensagem sobre o [produto] e quero entender. 🌱\n\nEnquanto nosso especialista analisa, me conta: seus principais sintomas eram inchaço, intestino preso, diarreia ou gases?\n\nVou te ajudar a encontrar a solução certa."},
-    {l:"Diagnóstico (humano)",t:"Entendi, [Nome]. Saúde intestinal é a base de tudo no corpo.\n\nVocê usou antibiótico nos últimos 2 anos? Tem intolerância alimentar conhecida?\n\nAlém disso: você manteve a alimentação durante o uso? Isso impacta muito o resultado do probiótico."},
-    {l:"Oferta: protocolo 180 dias",t:"[Nome], com base no que você me contou, entendi o que está acontecendo.\n\nRecolonização intestinal é gradual — a microbiota se reequilibra ao longo de 90 a 180 dias.\n\nClientes que completaram o protocolo relataram melhora intestinal, energia, pele, imunidade e até perda de peso.\n\n🌱 6 frascos × $49/frasco + frete grátis\n💰 Economia de $780\n\nPosso gerar o link?"},
+    {l:"Auto-reply (Freshdesk)",subj:"Re: your message — let's figure this out, [First Name]",
+     t:"Hi [First Name],\n\nI got your message about [Product] and I want to understand.\n\nWhile I review your case: were your main symptoms bloating, constipation, diarrhea, or gas? And did you keep your eating roughly steady during use?\n\nThat changes a probiotic's results more than people realize.",
+     why:"<b>Por que funciona:</b> mapear o sintoma principal personaliza. Citar alimentação prepara o argumento de que o probiótico depende da dieta — base do reframe e do infoproduto."},
+    {l:"Diagnóstico (humano)",subj:"The foundation of everything, [First Name]",
+     t:"I understand, [First Name]. Gut health is the foundation of everything in the body.\n\nHave you used antibiotics in the last 2 years? Any known food intolerance? And did you maintain your diet during use? That heavily affects the result.",
+     why:"<b>Por que funciona:</b> \"foundation of everything\" eleva a importância do produto. Perguntar sobre antibióticos/dieta dá explicações externas legítimas e abre o infoproduto de dieta."},
+    {l:"Oferta: protocolo 180 dias",subj:"Recolonization is gradual — here's the plan",
+     t:"[First Name], now I understand.\n\nGut recolonization is gradual — the microbiome rebalances over 90 to 180 days. People who complete the protocol report better digestion, energy, skin, immunity, even weight loss.\n\n- 6 bottles × $49/bottle + free shipping\n- You save $780\n- 60-day money-back guarantee\n\nWant me to set up the link?",
+     why:"<b>Por que funciona:</b> a recolonização gradual justifica o protocolo. Listar benefícios sistêmicos (pele, imunidade, peso) multiplica o valor percebido e abre cross-sells. Garantia tranquiliza."},
    ]},
-  ar:{ctx:"Cliente se arrependeu da compra ou quer reembolso.",ap:"Acolhe → saúde intestinal é base de tudo → downsell",
+  ar:{ctx:"Cliente se arrependeu ou quer reembolso.",ap:"Acolhe → intestino é base de tudo → acompanhamento → downsell",
    msgs:[
-    {l:"Acolhimento",t:"Oi [Nome], aqui é [nome] da equipe. 🙏\n\nEntendo — saúde intestinal às vezes parece abstrata quando esperamos resultados visíveis.\n\nMe conta: você chegou a perceber alguma mudança (mesmo pequena) no trânsito intestinal, inchaço ou energia?"},
-    {l:"Reframe: intestino como base",t:"[Nome], a microbiota intestinal controla imunidade, humor, peso e energia. Reequilibrá-la leva tempo — mas os efeitos se espalham por todo o corpo.\n\nQue tal mais 60 dias com suporte meu? Se não sentir diferença, processo tudo."},
-    {l:"Downsell: 3 frascos",t:"[Nome], se preferir:\n\n3 frascos × $72/frasco + frete grátis = $216.\n\nMínimo de 90 dias para recolonização intestinal real.\n\n*(se não aceitar → reembolso)*"},
+    {l:"Acolhimento",subj:"Re: refund — let's talk first, [First Name]",
+     t:"Hi [First Name], this is [Agent] from the team.\n\nI understand — gut health can feel abstract when you're waiting for visible results.\n\nDid you notice any change at all — bowel regularity, bloating, energy — even small?",
+     why:"<b>Por que funciona:</b> reconhecer que resultado intestinal parece \"abstrato\" prepara o cliente para a gradualidade. Pergunta abre o reframe."},
+    {l:"Reframe: intestino como base",subj:"Your gut controls more than you'd think, [First Name]",
+     t:"[First Name], your gut microbiome controls immunity, mood, weight, and energy. Rebalancing it takes time — but the effects spread through your whole body.\n\nHere's my offer: 60 more days with my support. If you feel nothing, I process everything.",
+     why:"<b>Por que funciona:</b> conectar o intestino a humor/imunidade/peso amplia a percepção de valor. Acompanhamento converte reembolso em retenção."},
+    {l:"Downsell: 3 frascos",subj:"Smaller start, [First Name]",
+     t:"[First Name], if you'd prefer:\n\n3 bottles × $72/bottle + free shipping = $216.\n\nMinimum 90 days for real gut recolonization. Same guarantee. If it's still not right, reply and I'll refund you.",
+     why:"<b>Por que funciona:</b> recupera receita parcial; saída livre."},
    ]},
-  iv:{ctx:"Cliente acha caro para um probiótico.",ap:"Custo de intestino desregulado → comparação com farmácia → kit menor",
+  iv:{ctx:"Cliente acha caro para um probiótico.",ap:"Custo do intestino desregulado → vs probiótico de farmácia → kit menor",
    msgs:[
-    {l:"Perspectiva de valor",t:"[Nome], entendo.\n\nUm probiótico de farmácia de qualidade: $50-80/mês, poucas cepas, sem garantia.\n\nAqui: 18+ cepas probióticas, garantia de 60 dias, $49/frasco.\n\nIntestino desregulado gera gastos frequentes em consultas e medicamentos pra sintomas — sem tratar a causa. 🌱"},
-    {l:"Kit menor",t:"[Nome], temos o kit de 3 frascos por $72/frasco — $216 com frete grátis.\n\nMínimo de 90 dias de reequilíbrio intestinal.\n\nPosso gerar o link?"},
+    {l:"Perspectiva de valor",subj:"What you're actually getting, [First Name]",
+     t:"[First Name], I understand.\n\nA quality pharmacy probiotic runs $50–80/month, few strains, no guarantee. Here you get 18+ probiotic strains, a 60-day guarantee, at $49/bottle.\n\nAn unbalanced gut means constant spending on visits and meds for symptoms — without treating the cause.",
+     why:"<b>Por que funciona:</b> compara cepas (18+) e garantia com probióticos de farmácia. \"Treating symptoms vs cause\" valoriza a abordagem de raiz."},
+    {l:"Kit menor",subj:"Smaller kit option",
+     t:"[First Name], we have the 3-bottle kit at $72/bottle — $216 with free shipping.\n\nMinimum 90 days of gut rebalancing. Want me to generate the link?",
+     why:"<b>Por que funciona:</b> entrada acessível com justificativa."},
    ]},
-  ip:{titulo:"Reset Intestinal 30 Dias",tipo:"Programa Online + Receitas",preco:"$27 — $57",upsell:"Bônus no kit de 6 frascos ou venda separada para leads interessados",
-   desc:"Programa guiado de reequilíbrio intestinal com protocolo alimentar anti-inflamatório, receitas e suplementação. Fundamental para resultado — sem dieta, o probiótico tem efeito limitado.",
-   conteudo:"• O mapa da sua microbiota: como está e como deveria estar\n• Reset alimentar 30 dias: o que comer + o que cortar\n• 30 receitas anti-inflamatórias e pró-microbioma\n• Fibras, prebióticos e probióticos: como combinar\n• Estresse e intestino: o eixo que ninguém conta",
-   pitch:{l:"Script de pitch",t:"[Nome], posso te mostrar o que faz a diferença real no resultado do [produto]?\n\nSem ajuste alimentar, o probiótico tem efeito limitado — você continua alimentando as bactérias ruins.\n\nCriamos o 'Reset Intestinal 30 Dias' — programa que combina o suplemento com alimentação específica.\n\nEstá incluso no kit de 6 frascos. Quer saber mais? 🌱"},
+  ip:{titulo:"30-Day Gut Reset",tipo:"Online Program + Recipes",preco:"$27 — $57",upsell:"Bônus no kit de 6 frascos ou venda avulsa para leads interessados",
+   desc:"Programa guiado de reequilíbrio intestinal com protocolo alimentar anti-inflamatório, receitas e suplementação. Sem dieta, o probiótico tem efeito limitado.",
+   conteudo:"• Your microbiome map: where it is and where it should be\n• 30-day food reset: what to eat + what to cut\n• 30 anti-inflammatory, microbiome-friendly recipes\n• Fiber, prebiotics, probiotics: how to combine them\n• Stress and the gut: the axis nobody talks about",
+   pitch:{l:"Pitch do infoproduto",subj:"The real difference-maker, [First Name]",
+    t:"[First Name], can I show you what really drives [Product]'s results?\n\nWithout a dietary adjustment, a probiotic is limited — you keep feeding the bad bacteria. We built '30-Day Gut Reset' to pair the supplement with specific eating. It's included in the 6-bottle kit. Want to know more?",
+    why:"<b>Por que funciona:</b> admitir que dieta é essencial conquista o cético e justifica o kit de 6 (programa grátis). Reduz reembolso por gerenciar expectativa."},
   },
  }
 },
+/* ===================== 11. PULMÃO / RESPIRAÇÃO ===================== */
 {id:"pl",label:"Pulmão / Respiração",abbr:"PL",icon:"💨",acc:"#06b6d4",bg:"#cffafe",txt:"#0e7490",
  prods:[{n:"BreathEaseX",r:1},{n:"BreathEaseX+CardioEaseX",r:1},{n:"BreathOxyX",r:0},{n:"PulmoAirX",r:0},{n:"BronchCalm",r:0}],
  cs:[{n:"FloraNew",nid:"gut",w:"Eixo intestino-pulmão: imunidade respiratória"},{n:"NervoLyn",nid:"np",w:"Nervos respiratórios precisam de suporte"},{n:"PressureCalmX",nid:"x",w:"Pack cardiovascular completo"}],
  sc:{
   fr:{ctx:"Cliente diz que ainda tem dificuldade respiratória, tosse ou cansaço.",ap:"Diagnóstico de histórico → tecido pulmonar demora → protocolo 180 dias",
    msgs:[
-    {l:"Abertura automática",t:"Oi [Nome], recebi sua mensagem e sei o quanto a dificuldade respiratória afeta a qualidade de vida. 💨\n\nEnquanto nosso especialista analisa, me conta: sua principal queixa é falta de ar, tosse crônica, chiado ou muco excessivo?\n\nEstou aqui pra te ajudar."},
-    {l:"Diagnóstico (humano)",t:"Entendi, [Nome]. Saúde pulmonar é fundamental.\n\nVocê é fumante ou ex-fumante? Tem histórico de asma, bronquite ou DPOC?\n\nAlém disso: vive em cidade com poluição intensa ou trabalha em ambiente com poeira?"},
-    {l:"Oferta: protocolo 180 dias",t:"[Nome], com o que você me contou, ficou muito claro.\n\nTecido pulmonar — especialmente com histórico de tabagismo ou inflamação — é um dos que mais demandam tempo pra responder.\n\nO protocolo de 180 dias é onde os clientes relatam melhora real em capacidade respiratória.\n\n💨 6 frascos × $49/frasco + frete grátis\n💰 Economia de $780\n\nPosso gerar o link?"},
+    {l:"Auto-reply (Freshdesk)",subj:"Re: your message — I want to help you breathe easier, [First Name]",
+     t:"Hi [First Name],\n\nI got your message and I know how much breathing trouble affects quality of life.\n\nWhile I review your case: is your main complaint shortness of breath, chronic cough, wheezing, or excess mucus?\n\nI'm here to help.",
+     why:"<b>Por que funciona:</b> validar o impacto na vida gera conexão. Mapear o sintoma principal personaliza e mostra competência."},
+    {l:"Diagnóstico (humano)",subj:"A few questions, [First Name]",
+     t:"I understand, [First Name]. Lung health is fundamental.\n\nAre you a smoker or ex-smoker? Any history of asthma, bronchitis, or COPD? Do you live in a high-pollution area or work around dust?",
+     why:"<b>Por que funciona:</b> perguntas de histórico (tabagismo, DPOC, poluição) personalizam e contextualizam a lentidão do tecido pulmonar."},
+    {l:"Oferta: protocolo 180 dias",subj:"Lung tissue needs time — especially with history",
+     t:"[First Name], from what you told me, it's very clear.\n\nLung tissue — especially with a smoking or inflammation history — is one of the slowest to respond. The 180-day protocol is where people report real gains in breathing capacity.\n\n- 6 bottles × $49/bottle + free shipping\n- You save $780\n- 60-day money-back guarantee\n\nWant me to set up the link?",
+     why:"<b>Por que funciona:</b> a lentidão do tecido pulmonar com histórico justifica o protocolo longo. \"Breathing capacity\" é o resultado-desejo. Garantia tranquiliza."},
    ]},
-  ar:{ctx:"Cliente pede reembolso ou está descrente.",ap:"Acolhe → progressão lenta do pulmão → downsell",
+  ar:{ctx:"Cliente pede reembolso ou está descrente.",ap:"Acolhe → pulmão regenera quando para de agredir → downsell",
    msgs:[
-    {l:"Acolhimento",t:"Oi [Nome], aqui é [nome] da equipe. 🙏\n\nEntendo — respiração difícil afeta cada momento do dia, e a espera por resultado esgota.\n\nMe conta: durante o uso, você chegou a perceber algum momento em que respirar ficou um pouco mais fácil?"},
-    {l:"Reframe: regeneração pulmonar",t:"[Nome], qualquer melhora é regeneração real acontecendo.\n\nO pulmão regenera mais rápido quando você para de agredir — mas o tecido danificado precisa de tempo.\n\nQue tal mais 60 dias com suporte meu e garantia total?"},
-    {l:"Downsell",t:"[Nome], se preferir:\n\n3 frascos × $72/frasco + frete grátis = $216.\n\nMínimo de 90 dias para suporte pulmonar real.\n\n*(se não aceitar → reembolso)*"},
+    {l:"Acolhimento",subj:"Re: refund — I understand, [First Name]",
+     t:"Hi [First Name], this is [Agent] from the team.\n\nI understand — difficult breathing affects every moment of the day, and waiting wears you down.\n\nDuring use, did you have any moment where breathing felt a little easier?",
+     why:"<b>Por que funciona:</b> validar o desgaste diário desarma. Pergunta sobre alívio momentâneo prepara o reframe."},
+    {l:"Reframe: regeneração pulmonar",subj:"Any easier breath is real repair, [First Name]",
+     t:"[First Name], any easier breath is real repair happening.\n\nThe lung regenerates faster once you stop the damage — but injured tissue still needs time. Here's my offer: 60 more days with my support, full guarantee intact.",
+     why:"<b>Por que funciona:</b> reinterpreta alívio momentâneo como reparo real. Acompanhamento converte reembolso."},
+    {l:"Downsell: 3 frascos",subj:"Smaller start, [First Name]",
+     t:"[First Name], if you'd prefer:\n\n3 bottles × $72/bottle + free shipping = $216.\n\nMinimum 90 days for real lung support. Same guarantee. If it's still not right, reply and I'll refund you.",
+     why:"<b>Por que funciona:</b> recupera receita parcial; saída livre."},
    ]},
-  iv:{ctx:"Cliente acha caro para suplemento respiratório.",ap:"Custo de DPOC/asma → broncodilatadores → kit menor",
+  iv:{ctx:"Cliente acha caro para suplemento respiratório.",ap:"Custo de DPOC/asma (broncodilatadores, oxigênio) → kit menor",
    msgs:[
-    {l:"Custo de não tratar",t:"[Nome], entendo.\n\nBroncodilatadores e corticoides inalatórios: $80-200/mês com dependência.\n\nOxigenoterapia domiciliar (DPOC avançado): $400-800/mês.\n\nO protocolo: $49/frasco, natural, com garantia de 60 dias. 💨"},
-    {l:"Kit menor",t:"[Nome], temos o kit de 3 frascos por $72/frasco — $216 com frete grátis.\n\nMínimo de 90 dias de suporte pulmonar.\n\nPosso gerar o link?"},
+    {l:"Custo de não tratar",subj:"The real cost of breathing problems, [First Name]",
+     t:"[First Name], I understand.\n\nBronchodilators and inhaled steroids run $80–200/month with dependence. Home oxygen therapy (advanced COPD) runs $400–800/month. The protocol is $49/bottle, natural, with a 60-day guarantee.",
+     why:"<b>Por que funciona:</b> contrasta com custos reais de broncodilatadores e oxigenoterapia nos EUA. Valoriza a opção natural."},
+    {l:"Kit menor",subj:"Smaller kit option",
+     t:"[First Name], we have the 3-bottle kit at $72/bottle — $216 with free shipping.\n\nMinimum 90 days of lung support. Want me to generate the link?",
+     why:"<b>Por que funciona:</b> entrada acessível com justificativa."},
    ]},
-  ip:{titulo:"Respiração Livre: Protocolo Pulmonar",tipo:"Ebook + Exercícios de Respiração",preco:"$27 — $47",upsell:"Bônus no kit de 6 frascos",
-   desc:"Guia com exercícios de respiração diafragmática, protocolo anti-inflamatório e suplementação. Complementa o produto e acelera resultado percebido.",
-   conteudo:"• Como o pulmão funciona (e como está sendo danificado)\n• Protocolo anti-inflamatório respiratório\n• 10 exercícios de respiração diafragmática\n• O que comer e o que evitar pra saúde pulmonar\n• Para ex-fumantes: protocolo de recuperação acelerada",
-   pitch:{l:"Script de pitch",t:"[Nome], posso te mostrar o que potencializa o resultado do [produto]?\n\nCriamos a 'Respiração Livre' — guia com exercícios e protocolo alimentar que combinam com o suplemento.\n\nEstá incluso no kit de 6 frascos. Quer que eu te envie? 💨"},
+  ip:{titulo:"Breathe Free: The Lung Protocol",tipo:"Ebook + Breathing Exercises",preco:"$27 — $47",upsell:"Bônus no kit de 6 frascos",
+   desc:"Guia com exercícios de respiração diafragmática, protocolo anti-inflamatório e suplementação. Complementa o produto e acelera o resultado percebido.",
+   conteudo:"• How the lung works (and how it's being damaged)\n• Respiratory anti-inflammatory protocol\n• 10 diaphragmatic breathing exercises\n• What to eat and avoid for lung health\n• For ex-smokers: an accelerated recovery protocol",
+   pitch:{l:"Pitch do infoproduto",subj:"What boosts your results, [First Name]",
+    t:"[First Name], can I show you what boosts [Product]'s results?\n\nWe built 'Breathe Free' — breathing exercises and an eating protocol that pair with the supplement. It's included in the 6-bottle kit. Want me to send it?",
+    why:"<b>Por que funciona:</b> exercícios de respiração dão alívio percebido enquanto o suplemento age. Inclusão no kit de 6 ancora o upsell."},
   },
  }
 },
+/* ===================== 12. ARTICULAÇÕES ===================== */
 {id:"jt",label:"Articulações",abbr:"JT",icon:"🦴",acc:"#64748b",bg:"#f1f5f9",txt:"#334155",
  prods:[{n:"MotionPrimeX",r:0},{n:"JointReliveX",r:0}],
- cs:[{n:"NervoLyn",nid:"np",w:"Dor articular tem componente nervoso"},{n:"CalciumStrength",nid:"x",w:"Osso forte = articulação protegida"},{n:"TurmeriJointz",nid:"x",w:"Anti-inflamatório natural amplifica resultado"}],
+ cs:[{n:"NervoLyn",nid:"np",w:"Dor articular tem componente nervoso"},{n:"CalciumStrength",nid:"x",w:"Osso forte = articulação protegida"},{n:"TurmeriJointz",nid:"x",w:"Anti-inflamatório natural amplifica o resultado"}],
  sc:{
-  fr:{ctx:"Cliente diz que ainda sente dor ou rigidez nas articulações.",ap:"Diagnóstico de tipo/condição → regeneração lenta de cartilagem → protocolo 180 dias",
+  fr:{ctx:"Cliente diz que ainda sente dor ou rigidez nas articulações.",ap:"Diagnóstico de tipo/condição → cartilagem regenera devagar → protocolo 180 dias",
    msgs:[
-    {l:"Abertura automática",t:"Oi [Nome], recebi sua mensagem e sei o quanto a dor nas articulações limita o dia a dia. 🦴\n\nEnquanto nosso especialista analisa, me conta: qual articulação te incomoda mais? Joelho, quadril, coluna, mãos?\n\nEstou aqui pra te ajudar."},
-    {l:"Diagnóstico (humano)",t:"Entendi, [Nome]. Dor articular crônica é exaustiva e impacta tudo.\n\nVocê tem diagnóstico de artrose, artrite ou osteoporose? Já fez fisioterapia?\n\nO problema principal é mais dor, rigidez matinal ou perda de mobilidade?"},
-    {l:"Oferta: protocolo 180 dias",t:"[Nome], com o que você me contou, ficou claro o melhor caminho.\n\nCartilagem e líquido sinovial regeneram muito lentamente. O protocolo de 180 dias é onde os resultados se consolidam.\n\nClientes com seu perfil relatam melhora na mobilidade a partir do 45º dia contínuo.\n\n🦴 6 frascos × $49/frasco + frete grátis\n💰 Economia de $780\n\nPosso gerar o link?"},
+    {l:"Auto-reply (Freshdesk)",subj:"Re: your message — I know joint pain limits everything, [First Name]",
+     t:"Hi [First Name],\n\nI got your message and I know how much joint pain limits daily life.\n\nWhile I review your case: which joint bothers you most — knee, hip, spine, hands?\n\nI'm here to help.",
+     why:"<b>Por que funciona:</b> validar a limitação diária gera conexão. Mapear a articulação personaliza."},
+    {l:"Diagnóstico (humano)",subj:"A few questions, [First Name]",
+     t:"I understand, [First Name]. Chronic joint pain is exhausting and affects everything.\n\nDo you have a diagnosis of arthrosis, arthritis, or osteoporosis? Have you done physical therapy? Is the main issue pain, morning stiffness, or loss of mobility?",
+     why:"<b>Por que funciona:</b> perguntas clínicas demonstram competência e personalizam. Diferenciar dor/rigidez/mobilidade refina a recomendação."},
+    {l:"Oferta: protocolo 180 dias",subj:"Cartilage regenerates slowly — here's the plan",
+     t:"[First Name], from what you told me, the best path is clear.\n\nCartilage and synovial fluid regenerate very slowly. The 180-day protocol is where results consolidate. People with your profile report better mobility from day 45 of continuous use.\n\n- 6 bottles × $49/bottle + free shipping\n- You save $780\n- 60-day money-back guarantee\n\nWant me to set up the link?",
+     why:"<b>Por que funciona:</b> a lentidão da cartilagem justifica o protocolo longo. Marco de \"day 45\" dá horizonte. Garantia tranquiliza."},
    ]},
-  ar:{ctx:"Cliente se arrependeu ou pede reembolso.",ap:"Acolhe → cartilagem é tecido lento → downsell",
+  ar:{ctx:"Cliente se arrependeu ou pede reembolso.",ap:"Acolhe → cartilagem é tecido lento → parar = desperdiçar progresso → downsell",
    msgs:[
-    {l:"Acolhimento",t:"Oi [Nome], aqui é [nome] da equipe. 🙏\n\nEntendo — dor crônica cansa, e quando o resultado não vem rápido a frustração é compreensível.\n\nMe conta: você chegou a perceber algum momento de dor um pouco menor ou mobilidade levemente melhor?"},
-    {l:"Reframe: cartilagem",t:"[Nome], qualquer melhora é cartilagem se regenerando — é real.\n\nCartilagem não tem vasos sanguíneos — recebe nutrição por difusão. É um processo lento mas profundo.\n\nParar agora seria desperdiçar o que já foi construído.\n\nQue tal mais 60 dias com suporte meu?"},
-    {l:"Downsell",t:"[Nome], se preferir:\n\n3 frascos × $72/frasco + frete grátis = $216.\n\nMínimo de 90 dias para regeneração articular real.\n\n*(se não aceitar → reembolso)*"},
+    {l:"Acolhimento",subj:"Re: refund — I understand, [First Name]",
+     t:"Hi [First Name], this is [Agent] from the team.\n\nI understand — chronic pain is tiring, and when results are slow, the frustration makes sense.\n\nDid you have any moment of slightly less pain or slightly better mobility?",
+     why:"<b>Por que funciona:</b> validar o cansaço da dor crônica desarma. Pergunta abre o reframe."},
+    {l:"Reframe: cartilagem",subj:"Any improvement is cartilage rebuilding, [First Name]",
+     t:"[First Name], any improvement is cartilage rebuilding — and that's real.\n\nCartilage has no blood vessels; it's fed by diffusion. It's a slow but deep process. Stopping now would waste what you've already built.\n\nHere's my offer: 60 more days with my support, full guarantee intact.",
+     why:"<b>Por que funciona:</b> \"slow but deep\" reposiciona a lentidão como qualidade. \"Waste what you've built\" cria medo de perder o progresso já feito."},
+    {l:"Downsell: 3 frascos",subj:"Smaller start, [First Name]",
+     t:"[First Name], if you'd prefer:\n\n3 bottles × $72/bottle + free shipping = $216.\n\nMinimum 90 days for real joint regeneration. Same guarantee. If it's still not right, reply and I'll refund you.",
+     why:"<b>Por que funciona:</b> recupera receita parcial; saída livre."},
    ]},
   iv:{ctx:"Cliente acha caro para suplemento de articulação.",ap:"Custo de cirurgia/fisioterapia → kit menor",
    msgs:[
-    {l:"Custo de não tratar",t:"[Nome], entendo.\n\nArtroplastia (cirurgia de joelho ou quadril): $8.000-15.000. Fisioterapia: $100-200/sessão. Infiltração de ácido hialurônico: $300-600/aplicação.\n\nO protocolo: $294, uma vez, com garantia. Prevenção é sempre mais barata que cirurgia. 🦴"},
-    {l:"Kit menor",t:"[Nome], temos o kit de 3 frascos por $72/frasco — $216 com frete grátis.\n\nMínimo de 90 dias para saúde articular.\n\nPosso gerar o link?"},
+    {l:"Custo de não tratar",subj:"Prevention vs surgery, [First Name]",
+     t:"[First Name], I understand.\n\nJoint replacement (knee or hip) runs $8,000–15,000. Physical therapy is $100–200/session. Hyaluronic-acid injections are $300–600 each. The protocol is $294, once, with a guarantee. Prevention is always cheaper than surgery.",
+     why:"<b>Por que funciona:</b> contrasta com custos reais de artroplastia e fisioterapia nos EUA. \"Prevention cheaper than surgery\" é um princípio aceito."},
+    {l:"Kit menor",subj:"Smaller kit option",
+     t:"[First Name], we have the 3-bottle kit at $72/bottle — $216 with free shipping.\n\nMinimum 90 days for joint health. Want me to generate the link?",
+     why:"<b>Por que funciona:</b> entrada acessível com justificativa."},
    ]},
-  ip:{titulo:"Articulações Livres: Protocolo Anti-Inflamatório",tipo:"Ebook + Vídeo de Exercícios",preco:"$27 — $47",upsell:"Bônus no kit de 6 frascos",
+  ip:{titulo:"Free Joints: The Anti-Inflammatory Protocol",tipo:"Ebook + Exercise Video",preco:"$27 — $47",upsell:"Bônus no kit de 6 frascos",
    desc:"Guia com protocolo anti-inflamatório, exercícios de baixo impacto e alimentação pró-cartilagem. O movimento correto é tão importante quanto a suplementação.",
-   conteudo:"• O que está destruindo sua cartilagem (e como parar)\n• Protocolo anti-inflamatório: suplementação + alimentação\n• 15 exercícios de baixo impacto pra cada articulação\n• Anti-inflamatórios naturais que funcionam de verdade\n• Como proteger suas articulações nas atividades do dia a dia",
-   pitch:{l:"Script de pitch",t:"[Nome], posso te mostrar o que complementa perfeitamente o resultado do [produto]?\n\nCriamos 'Articulações Livres' — guia com exercícios específicos e protocolo alimentar que potencializa a regeneração articular.\n\nEstá incluso no kit de 6 frascos. Quer que eu te envie? 🦴"},
+   conteudo:"• What's destroying your cartilage (and how to stop it)\n• Anti-inflammatory protocol: supplementation + nutrition\n• 15 low-impact exercises for each joint\n• Natural anti-inflammatories that actually work\n• How to protect your joints in daily activities",
+   pitch:{l:"Pitch do infoproduto",subj:"What complements your results, [First Name]",
+    t:"[First Name], can I show you what perfectly complements [Product]?\n\nWe built 'Free Joints' — specific exercises and an eating protocol that boost joint regeneration. It's included in the 6-bottle kit. Want me to send it?",
+    why:"<b>Por que funciona:</b> movimento correto acelera resultado e gera percepção de cuidado. Inclusão no kit de 6 ancora o upsell."},
   },
  }
 },
 ];
+/* ============================================================
+   ESTRATÉGIAS DE RECEITA (aplicam-se a todos os nichos)
+   8 originais + 3 atualizações de mercado 2026
+   ============================================================ */
+const STRATEGIES=[
+ {id:1,icon:"↩️",name:"Downsell pré-reembolso",tag:"Retenção",tc:"amber",potential:4,effort:2,
+  trigger:"Cliente solicita reembolso ou cancelamento por e-mail",
+  desc:"Antes de processar o reembolso, apresenta uma oferta alternativa de menor valor. Recupera receita que estava 100% perdida — mas sempre respeitando o limite: se recusar, o reembolso é processado sem fricção.",
+  tip:"Use assunto acolhedor e NUNCA a palavra 'cancelamento' no título. Dê espaço para o cliente explicar antes de ofertar. Público desgastado abandona marca que pressiona — a segunda recusa encerra o pitch.",
+  msgs:[
+   {l:"Email 1 — Abertura",subj:"💙 Let's talk before any cancellation, [First Name]",
+    t:"Hi [First Name], how are you?\n\nI got your refund request, and I want to make sure you have the best experience — even if that means giving your money back.\n\nBefore I process it, can you tell me what happened? Was it the product, the timing, or the result?\n\nI'm reading and I'll take care of it personally.",
+    why:"<b>Por que funciona:</b> abrir prometendo honrar o reembolso (\"even if that means giving your money back\") desarma a defensividade. As 3 opções de motivo fazem o cliente revelar a objeção real, que define a oferta seguinte. \"Personally\" combate o trauma de call center."},
+   {l:"Email 2 — Oferta especial",subj:"✨ A special option just for you, [First Name]",
+    t:"[First Name], thank you for the feedback.\n\nI put together an exclusive option: [Alternative Product] at 30% OFF + free shipping and an extended guarantee.\n\n👉 [offer link]\n\nIf you'd still rather have the refund, just reply 'refund' and it's done.",
+    why:"<b>Por que funciona:</b> oferece um produto alternativo (não o que ele rejeitou) com desconto + garantia estendida — reduz o risco percebido. Deixar a saída explícita (\"reply 'refund'\") mantém a confiança e evita chargeback."},
+   {l:"Email 3 — Follow-up (48h)",subj:"📌 Last chance, [First Name] — offer expires in 48h",
+    t:"Hi [First Name], I don't want to bug you, but this offer is time-limited.\n\nIf the issue was price or lack of immediate results, this alternative may solve it.\n\n👉 [offer link]\n\nNot interested? Ignore this or reply 'refund'.",
+    why:"<b>Por que funciona:</b> escassez real (48h) cria urgência sem pressão agressiva. \"I don't want to bug you\" respeita o cliente. Reforça a objeção provável (preço/resultado) ligando à solução."},
+  ]},
+ {id:2,icon:"🎥",name:"VSL Recovery (fluxo aprimorado)",tag:"Conversão",tc:"teal",potential:5,effort:1,
+  trigger:"Cliente frustrado abre ticket — e-mail automático dispara antes do humano",
+  desc:"Um e-mail automático envia uma VSL curta (3 min) explicando o protocolo atualizado, ANTES do atendimento humano. Pré-aquece o cliente e faz parte do trabalho de venda acontecer sozinho.",
+  tip:"Nunca escreva 'we have another product'. Use 'we discovered that for your profile, this protocol works better'. Automatize 100% no Freshdesk com automation rule + e-mail de follow-up se não houver clique.",
+  msgs:[
+   {l:"Email automático (0h)",subj:"[First Name], before you talk to our specialist…",
+    t:"Hi [First Name], we got your message! 🙏\n\nWhile we review your case, watch this 3-minute video: [VSL link]\n\nIt explains the updated protocol that's been working for clients with the exact same profile as you.\n\n⏰ Special offer valid for 24h.",
+    why:"<b>Por que funciona:</b> entrega valor (explicação) antes de pedir qualquer coisa — exatamente o que o cliente desgastado quer. \"Same profile as you\" personaliza. A janela de 24h cria urgência. Tudo automático = custo zero."},
+   {l:"Follow-up (4h sem clique)",subj:"⏳ [First Name], did you watch it?",
+    t:"[First Name], I noticed you haven't watched the video yet. It's quick and it might answer your question.\n\n👉 [VSL link]\n\nWe're here when you're ready.",
+    why:"<b>Por que funciona:</b> recupera quem ignorou o primeiro e-mail. Tom leve, sem cobrança. Disparado por automation rule do Freshdesk com base em não-clique."},
+   {l:"Email humano (pós-VSL)",subj:"[First Name], this is [Agent] — let's solve it",
+    t:"Hi! I'm [Agent] from support.\n\nDid you get a chance to watch the video? What was your biggest question?\n\nIf you're ready to try the updated protocol, I can send the link directly.",
+    why:"<b>Por que funciona:</b> o humano entra depois que a VSL já fez o trabalho pesado, então a conversa começa morna. \"Biggest question\" abre diálogo em vez de empurrar venda."},
+  ]},
+ {id:3,icon:"📦",name:"Upsell para protocolo completo",tag:"Upsell",tc:"teal",potential:5,effort:3,
+  trigger:"Cliente com produto isolado abre ticket",
+  desc:"Oferece um stack completo (2-3 produtos sinérgicos) explicando como eles trabalham juntos. Aumenta o ticket médio e melhora o resultado real do cliente — o que reduz reembolso futuro.",
+  tip:"Crie 3-5 protocolos fixos por nicho e anexe um PDF explicativo no Freshdesk. Use a aba do Freshsales/deal vinculado ao ticket para ver o que o cliente já comprou antes de ofertar.",
+  msgs:[
+   {l:"Email diagnóstico",subj:"🧩 [First Name], are you using [Product] alone or with others?",
+    t:"Hi! I'm resolving your request. Quick question: are you using just [Product X], or do you combine it with other supplements? It makes a real difference in your results.",
+    why:"<b>Por que funciona:</b> a pergunta diagnóstica abre o upsell de forma consultiva, não comercial. Descobrir o stack atual permite recomendar exatamente a peça que falta — relevância máxima."},
+   {l:"Email apresentação do stack",subj:"🚀 [First Name] — the complete protocol for [niche]",
+    t:"Based on your profile, [Product X] works best with [Product Y].\n\nThe complete protocol:\n✅ [X] — [function]\n✅ [Y] — [function]\n\n👉 [kit link]\n\nYou save $[amount] versus buying separately.",
+    why:"<b>Por que funciona:</b> explicar a função de cada item posiciona como protocolo médico, não venda. A economia versus comprar separado justifica a compra maior. Apela ao desejo de \"fazer certo dessa vez\"."},
+  ]},
+ {id:4,icon:"🔄",name:"Conversão para assinatura",tag:"Retenção",tc:"amber",potential:5,effort:2,
+  trigger:"Cliente satisfeito, segunda compra ou pedindo reposição",
+  desc:"O motor de receita mais importante. Converte compra única em recorrência. Benchmark 2026: LTV de suplemento com assinatura é $300-600 e churn mensal fica em 5-8%. Assinatura é o que separa marcas de $10M das de $100M.",
+  tip:"Argumentos vencedores: conveniência (nunca fica sem) + preço travado. Ofereça pausa/troca/cancelamento fáceis — a flexibilidade aumenta a retenção. Nunca esconda o botão de cancelar.",
+  msgs:[
+   {l:"Email pós-resolução",subj:"🌟 [First Name], never run out of [Product] again?",
+    t:"So glad we got that sorted! 😊\n\nMeet the [Brand] Club:\n✅ [X]% off every order\n✅ Free shipping\n✅ Locked-in price (never goes up)\n✅ Pause, swap, or cancel anytime\n\n👉 [subscription link]",
+    why:"<b>Por que funciona:</b> aproveita o pico de satisfação pós-resolução. \"Never run out\" vende conveniência (o suplemento só funciona se usado continuamente). \"Cancel anytime\" remove o medo de aprisionamento — crítico para o público cético dos EUA."},
+   {l:"Follow-up (brinde)",subj:"🎁 [First Name] — this week comes with a bonus",
+    t:"I was thinking of you! This week, anyone who joins the Club gets an exclusive bonus. Best time to lock it in.",
+    why:"<b>Por que funciona:</b> escassez temporal + bônus aumentam a conversão de quem hesitou. \"I was thinking of you\" mantém o tom pessoal."},
+  ]},
+ {id:5,icon:"🔁",name:"Win-back proativo",tag:"Reativação",tc:"coral",potential:3,effort:2,
+  trigger:"Cliente sem compra há 45, 90 ou 180 dias (e-mail automatizado)",
+  desc:"Campanha segmentada para reativar clientes inativos a custo quase zero. Segmenta por motivo de saída — quem pediu reembolso recebe mensagem diferente de quem só sumiu.",
+  tip:"Segmente por motivo de saída usando tags do Freshdesk. Para quem pediu reembolso, ofereça amostra grátis de produto reformulado — recupera a confiança antes de pedir a venda.",
+  msgs:[
+   {l:"Para quem parou de comprar",subj:"[First Name], we miss you! How have you been?",
+    t:"Hi! It's been a while. Did you get results with [Product]?\n\nWe just launched a new, improved formula. 👉 [link with special discount]\n\nWe'd love to have you back.",
+    why:"<b>Por que funciona:</b> tom de reencontro, não de venda. Perguntar sobre resultados reabre o diálogo e pode revelar por que parou. \"Improved formula\" dá um motivo novo para voltar."},
+   {l:"Para quem pediu reembolso",subj:"💙 [First Name], a second chance (no strings)",
+    t:"I want to offer you a second chance. We reformulated the product based on feedback like yours, and I'd like to send you a free sample + free shipping.\n\nReply 'YES' and I'll take care of it.",
+    why:"<b>Por que funciona:</b> com quem se decepcionou, pedir venda direto não funciona. Oferecer amostra grátis reconstrói a confiança primeiro. \"Reformulated based on feedback like yours\" faz o cliente sentir que foi ouvido."},
+  ]},
+ {id:6,icon:"🎁",name:"Oferta de cortesia pós-resolução",tag:"Conversão",tc:"teal",potential:4,effort:1,
+  trigger:"Ticket encerrado com satisfação",
+  desc:"E-mail de agradecimento com uma oferta exclusiva, aproveitando o pico de gratidão logo após resolver o problema do cliente. Um dos momentos de maior conversão de toda a jornada.",
+  tip:"Use 'courtesy', 'gift', 'thank-you' — NUNCA 'discount'. O enquadramento de presente ativa reciprocidade; o de desconto ativa caça-promoção. Dispare automaticamente quando o ticket muda para 'Resolved'.",
+  msgs:[
+   {l:"Email de fechamento",subj:"🎁 [First Name], a little thank-you for your patience",
+    t:"So glad we resolved that! 🎉\n\nAs a thank-you for being so patient: 25% OFF any product — valid for 48h.\nCode: THANKYOU25\n\n👉 [link to use it]",
+    why:"<b>Por que funciona:</b> reciprocidade — o cliente acabou de ser bem tratado e está predisposto a retribuir. Enquadrar como agradecimento (não promoção) preserva a percepção premium. 48h cria urgência."},
+  ]},
+ {id:7,icon:"👥",name:"Programa de indicação",tag:"Aquisição",tc:"blue",potential:3,effort:1,
+  trigger:"Cliente satisfeito após suporte resolvido",
+  desc:"Convite para o programa de indicação no momento de maior satisfação. Transforma um cliente feliz em canal de aquisição de baixo custo.",
+  tip:"Incentivo bilateral (quem indica E o indicado ganham) dobra a adesão. No nicho de saúde, indicações convertem muito porque vêm com prova social de quem teve resultado.",
+  msgs:[
+   {l:"Convite",subj:"👥 [First Name], know someone who'd benefit from [niche] support?",
+    t:"So glad we sorted that out! 😊\n\nWe have a referral program: you get $[X] in credit for every friend who buys with your link, and your friend gets $[Y] off their first order.\n\n👉 [your referral link]",
+    why:"<b>Por que funciona:</b> momento de gratidão maximiza a disposição de indicar. Incentivo bilateral remove a culpa de \"empurrar\" para o amigo (o amigo também ganha). Credito em loja incentiva recompra de quem indica."},
+  ]},
+ {id:8,icon:"📊",name:"NPS como gatilho de venda",tag:"Automação",tc:"purple",potential:4,effort:1,
+  trigger:"Após qualquer atendimento encerrado (e-mail automático)",
+  desc:"A pesquisa de satisfação vira motor de receita: nota 9-10 dispara upsell/indicação, 7-8 dispara cross-sell, 0-6 vai para fluxo de retenção. Nenhuma ação humana necessária.",
+  tip:"Automatize via automation rules do Freshdesk + integração com seu CRM de e-mail. A nota segmenta o cliente automaticamente e roteia para o fluxo certo.",
+  msgs:[
+   {l:"Pesquisa NPS",subj:"📊 [First Name], 0 to 10 — how likely are you to recommend [Brand]?",
+    t:"Just reply to this email with a number from 0 to 10. Your opinion helps us improve — and takes 5 seconds.",
+    why:"<b>Por que funciona:</b> simplicidade máxima (responder com um número) eleva a taxa de resposta. A nota é o gatilho que segmenta automaticamente — a pesquisa deixa de ser vaidade e vira roteamento de receita."},
+   {l:"Promotores (9-10) → upsell",subj:"🎉 [First Name], thank you! Here's a gift",
+    t:"That's amazing to hear! 🙏 As a thank-you, here's an exclusive offer just for you:\n\n👉 [exclusive upsell/subscription link]",
+    why:"<b>Por que funciona:</b> promotores são o público mais quente — receberam bem, então é a hora de ofertar assinatura/upsell. A gratidão deles converte alto."},
+   {l:"Neutros (7-8) → cross-sell",subj:"🤔 [First Name], what could we do better?",
+    t:"Thanks for the rating! Tell us what would've made it a 10. Reply and I'll send you a discount code as a thank-you for the feedback.",
+    why:"<b>Por que funciona:</b> neutros precisam de um empurrão. Pedir feedback engaja e o cupom abre um cross-sell suave sem parecer venda."},
+   {l:"Detratores (0-6) → retenção",subj:"😔 [First Name], tell me what happened. I want to fix it.",
+    t:"I'm sorry to hear that. Please tell me what went wrong — product, delivery, or support? Reply and I'll handle it personally.",
+    why:"<b>Por que funciona:</b> detratores viram chargebacks e reviews ruins se ignorados. Recuperá-los protege receita e reputação. \"Personally\" reconstrói confiança."},
+  ]},
+ /* ===== ATUALIZAÇÕES DE MERCADO 2026 (além das 8 originais) ===== */
+ {id:9,icon:"🔔",name:"Refill / Reposição no timing certo",tag:"Retenção",tc:"amber",potential:5,effort:2,
+  trigger:"E-mail automático disparado ~7-10 dias antes do frasco do cliente acabar",
+  desc:"NOVO — O fluxo de maior ROI em nutracêuticos. Calcula quando o suprimento do cliente vai acabar e dispara o lembrete de reposição no momento exato. Combate a queda de uso (causa nº1 de 'não funcionou') e captura a recompra antes do cliente esquecer.",
+  tip:"Use a data do pedido no Freshdesk/Freshsales para calcular o fim do suprimento (ex: kit de 1 frasco = 30 dias → dispara no dia 20). É o atalho mais barato para aumentar o LTV. Combine com a oferta de assinatura para travar a recorrência.",
+  msgs:[
+   {l:"Lembrete de reposição (dia 20)",subj:"⏰ [First Name], you're about to run low on [Product]",
+    t:"Hi [First Name], quick heads-up: based on your last order, you've got about 7–10 days of [Product] left.\n\nConsistency is everything with this — a gap of even a week can stall your progress. Want me to set up your reorder so you don't miss a day?\n\n👉 [reorder link]\n\nOr, lock in a lower price and never think about it again with the [Brand] Club. 👉 [subscription link]",
+    why:"<b>Por que funciona:</b> o timing é tudo — pegar o cliente ANTES de acabar evita a interrupção que ele depois interpreta como \"o produto parou de funcionar\". \"Consistency is everything\" educa e justifica a recompra. Oferece os dois caminhos (recompra avulsa OU assinatura), empurrando para a recorrência. É o fluxo de maior retorno do setor."},
+   {l:"Follow-up (dia de acabar, sem recompra)",subj:"[First Name], don't lose the progress you've made",
+    t:"[First Name], your supply runs out today. I'd hate for you to lose momentum after coming this far.\n\nReorder in one click 👉 [reorder link] — and if you join the Club, your next bottle ships automatically and you save [X]%.",
+    why:"<b>Por que funciona:</b> \"don't lose the progress\" usa aversão à perda — o cliente já investiu tempo e não quer desperdiçar. Reduz a fricção (\"one click\") e oferece a assinatura como solução definitiva para nunca mais passar por isso."},
+  ]},
+ {id:10,icon:"⭐",name:"Segmentação VIP / alto valor",tag:"Retenção",tc:"amber",potential:4,effort:2,
+  trigger:"Cliente com 2+ compras, kit grande ou assinante ativo",
+  desc:"NOVO — Identifica e trata diferente os clientes de maior LTV. O Freshdesk pode marcar contatos VIP automaticamente (contact scoring), priorizar os tickets deles e liberar ofertas/atendimento exclusivos. Reter um VIP vale muito mais que adquirir um novo cliente.",
+  tip:"Use tags e contact fields no Freshdesk para marcar VIP. Crie uma automation rule que prioriza tickets VIP e os roteia para seu melhor agente. Ofereça early-access a novos produtos — exclusividade aumenta lealdade.",
+  msgs:[
+   {l:"Reconhecimento VIP",subj:"⭐ [First Name], you're officially one of our VIPs",
+    t:"Hi [First Name], I wanted to personally reach out.\n\nBecause you've been with us through your journey, I've added you to our VIP list — that means priority support, early access to new formulas, and member-only pricing.\n\nNo action needed. Just know that when you reach out, you go to the front of the line. 🙏",
+    why:"<b>Por que funciona:</b> reconhecimento explícito de status cria lealdade emocional. \"Front of the line\" e \"early access\" oferecem benefícios reais sem desconto (preserva margem). Faz o melhor cliente sentir-se valorizado — o oposto do tratamento de call center que ele teme."},
+   {l:"Oferta exclusiva VIP",subj:"⭐ [First Name], first look — members only",
+    t:"[First Name], as one of our VIPs, you get first access to [New Product] before anyone else, at a price reserved for members.\n\n👉 [VIP link]\n\nThis isn't public yet — it's yours first.",
+    why:"<b>Por que funciona:</b> exclusividade e antecipação (\"not public yet\") são gatilhos poderosos para quem já confia na marca. Vender para um VIP tem custo de aquisição zero e conversão altíssima — é o lucro mais barato do funil."},
+  ]},
+ {id:11,icon:"🤝",name:"Resolução-primeiro (sem venda)",tag:"Retenção",tc:"amber",potential:3,effort:1,
+  trigger:"Ticket de problema genuíno (entrega, defeito, dúvida de uso)",
+  desc:"NOVO — A estratégia que sustenta todas as outras. Quando o problema NÃO é objeção de venda mas uma questão real, resolve primeiro, rápido e sem ofertar nada. Constrói o capital de confiança que torna todos os outros pitches possíveis depois. Para um público que se sente enganado, isto é o diferencial.",
+  tip:"Nem todo ticket é oportunidade de venda. Forçar oferta em cima de um problema genuíno destrói confiança e gera chargeback. Resolva, encante, e DEPOIS (próximo ticket, NPS, refill) venda. O timing protege o LTV.",
+  msgs:[
+   {l:"Resolução rápida e limpa",subj:"Re: your issue — fixed, [First Name]",
+    t:"Hi [First Name], I took care of this for you. [Specific resolution — replacement shipped / refund issued / question answered].\n\nNo hoops, no upsell — you had a real problem and it's handled. If anything else comes up, reply straight to me.\n\n— [Agent]",
+    why:"<b>Por que funciona:</b> \"no hoops, no upsell\" diz explicitamente que você NÃO está tentando vender — o que, paradoxalmente, é o que mais constrói confiança num público desgastado. Esse cliente vira promotor e comprador recorrente porque você provou que a marca é diferente das que o enganaram. A venda vem depois, com o terreno preparado."},
+  ]},
+];
+/* ============================================================
+   PÁGINAS ESPECIAIS: Introdução/Princípios e Freshdesk
+   ============================================================ */
+const INTRO_HTML = `
+<div class="intro-hero">
+  <h1>CS Revenue Playbook — Nutracêutico USA</h1>
+  <p>Atendimento via <b>e-mail</b> no <b>Freshdesk</b>, transformando cada ticket de pós-venda em retenção e receita — sem trair a confiança de um público já desgastado.</p>
+  <p>O cliente nutracêutico americano de 2026 já foi enganado várias vezes por promessas milagrosas. Ele é cético, cansado e desconfia de hype. Este playbook vende para ele do jeito que funciona: <b>honestidade, prova, garantia e timing</b> — nunca pressão.</p>
+  <div class="pill-row">
+    <span class="pill">12 nichos</span>
+    <span class="pill">11 estratégias de receita</span>
+    <span class="pill">Scripts em inglês (US)</span>
+    <span class="pill">Explicação do "porquê" em PT-BR</span>
+    <span class="pill">Operação no Freshdesk</span>
+  </div>
+</div>
 
-// ── STATE ──
-let cN=N[0].id,cT="fr",cpK=null;
-const TABS=[{id:"fr",lbl:"❌ Não Funcionou"},{id:"ar",lbl:"😔 Arrependimento"},{id:"iv",lbl:"💸 Inseg. de Valor"},{id:"ip",lbl:"📦 Infoproduto"}];
+<div class="slbl">Os 6 princípios que governam tudo</div>
 
-// ── HELPERS ──
-function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
-function rgba(h,a){const r=parseInt(h.slice(1,3),16),g=parseInt(h.slice(3,5),16),b=parseInt(h.slice(5,7),16);return`rgba(${r},${g},${b},${a})`}
+<div class="principle">
+  <div class="principle-h">1. Honestidade desarma o cético</div>
+  <div class="principle-p">Esse público fareja exagero. Reconhecer em voz alta que o mercado é cheio de <b>"empty, miracle promises"</b> compra credibilidade instantânea. Em todo script, a primeira frase costuma reconhecer a frustração antes de qualquer venda.</div>
+</div>
+<div class="principle">
+  <div class="principle-h">2. Reposicione "não funcionou" como "tempo insuficiente"</div>
+  <div class="principle-p">A objeção nº1 é "usei e não senti nada". A resposta nunca é defender o produto nem culpar o cliente — é a <b>fisiologia</b>: nervo regenera 1-3mm/dia, metabolismo leva 21-45 dias, unha cresce 3mm/mês. Fatos viram o motivo para completar o protocolo de 180 dias.</div>
+</div>
+<div class="principle">
+  <div class="principle-h">3. Garantia em todo fechamento</div>
+  <div class="principle-p">A garantia de 60 dias (<b>"if it doesn't work, you don't pay"</b>) é a ferramenta mais poderosa contra o ceticismo. Ela inverte o risco: a decisão deixa de ser "vou perder dinheiro de novo?" e passa a ser "o que tenho a perder?".</div>
+</div>
+<div class="principle">
+  <div class="principle-h">4. Ancore o preço, nunca o defenda de frente</div>
+  <div class="principle-p">Valide a preocupação primeiro. Depois reduza a custo diário ($1.63/dia &lt; um café) e ancore contra alternativas reais e caras dos EUA — urologista, GLP-1 meds ($200-1300/mês), cirurgia ($3k-15k). O preço de $49 passa a parecer trivial.</div>
+</div>
+<div class="principle">
+  <div class="principle-h">5. Resolva primeiro, venda depois</div>
+  <div class="principle-p">Nem todo ticket é oportunidade de venda. Problema genuíno (entrega, defeito) se resolve rápido e <b>sem ofertar nada</b>. O capital de confiança gerado é o que torna possível o upsell no próximo contato. Forçar venda em cima de problema gera chargeback e review ruim.</div>
+</div>
+<div class="principle">
+  <div class="principle-h">6. Retenção &gt; aquisição</div>
+  <div class="principle-p">Benchmark 2026: é 5-25x mais barato manter um cliente que adquirir um. Aumentar retenção em 5% eleva o lucro em 25-95%. O LTV de suplemento com assinatura é <b>$300-600</b>. Por isso o motor central deste playbook é assinatura + reposição + VIP, não desconto agressivo.</div>
+</div>
 
-// ── HELPERS ──
-function h(tag,attrs,inner){
-  var a=Object.keys(attrs).map(function(k){return k+'="'+attrs[k]+'"';}).join(" ");
-  return "<"+tag+(a?" "+a:"")+">"+inner+"</"+tag+">";
-}
-function btn(cls,onclick,style,inner){
-  return '<button class="'+cls+'" onclick="'+onclick+'" style="'+style+'">'+inner+'</button>';
-}
+<div class="callout callout-tip"><b>💡 Como usar este playbook:</b> navegue pelos <b>nichos</b> (à esquerda) para scripts de objeção específicos de cada produto, pelas <b>estratégias de receita</b> para fluxos que se aplicam a todos os nichos, e por <b>Freshdesk</b> para montar a operação. Cada script tem o texto em <b>inglês</b> pronto para o cliente e a <b>explicação em PT-BR</b> de por que funciona logo abaixo. Use o botão Copiar para levar o assunto + corpo direto ao Freshdesk.</div>
 
-// ── SIDEBAR ──
+<div class="callout callout-warn"><b>⚠️ Compliance (FTC/EUA):</b> a orientação da FTC (Jan 2023) exige <b>"competent and reliable scientific evidence"</b> para health claims. Os scripts deste playbook usam linguagem de <b>tempo de uso, fisiologia e expectativa</b> — não cura garantida. Evite afirmar que o produto "cura", "trata" ou "elimina" doença. Adapte com seu jurídico antes de publicar; substitua os campos entre colchetes pelos seus dados reais.</div>
+`;
+
+const FRESH_HTML = `
+<div class="nh">
+  <div class="nh-icon" style="background:rgba(14,116,144,.15)">🎫</div>
+  <div>
+    <div><span class="nh-name">Freshdesk como motor de vendas</span></div>
+    <div class="nh-meta">Como transformar o helpdesk em máquina de retenção e receita</div>
+  </div>
+</div>
+
+<div class="callout callout-fresh"><b>A virada de chave:</b> o Freshdesk não é só onde você responde reclamação. Bem configurado, ele <b>dispara ofertas no timing certo, segmenta clientes por valor, padroniza os melhores scripts e roteia cada ticket para o fluxo de receita correto</b> — boa parte disso de forma automática. Abaixo, as 6 alavancas, em ordem de impacto.</div>
+
+<div class="slbl">As 6 alavancas do Freshdesk para receita</div>
+
+<div class="fresh-step">
+  <div class="fresh-num">1</div>
+  <div class="fresh-body">
+    <div class="fresh-h">📋 Canned Responses = sua biblioteca de scripts de venda</div>
+    <div class="fresh-p">Salve cada script deste playbook como uma <code>Canned Response</code> (Admin › Agent Productivity › Canned Responses). Use <b>placeholders dinâmicos</b> (Requester Name, Ticket ID, ticket URL) para personalizar com 1 clique. Organize por pastas — uma pasta por nicho e uma por estratégia — e use a visibilidade <code>Agents in group</code> para que o time de retenção veja só o que importa. Resultado: o melhor pitch da empresa fica a um clique de qualquer agente, com consistência total.</div>
+  </div>
+</div>
+
+<div class="fresh-step">
+  <div class="fresh-num">2</div>
+  <div class="fresh-body">
+    <div class="fresh-h">⚙️ Automation Rules = vendas que acontecem sozinhas</div>
+    <div class="fresh-p">As <code>Automation Rules</code> (que rodam em ticket create/update) são o coração da automação de receita. Configure: <b>(a)</b> auto-reply imediato quando um ticket de "refund/results" chega (estratégia VSL Recovery); <b>(b)</b> e-mail de cortesia automático quando o ticket muda para <code>Resolved</code> (estratégia 6); <b>(c)</b> disparo de pesquisa NPS no fechamento (estratégia 8); <b>(d)</b> follow-up automático se o cliente não responde em X horas. Tudo sem ação humana — custo marginal zero.</div>
+  </div>
+</div>
+
+<div class="fresh-step">
+  <div class="fresh-num">3</div>
+  <div class="fresh-body">
+    <div class="fresh-h">🏷️ Tags + Ticket Fields = segmentação por motivo e valor</div>
+    <div class="fresh-p">Marque cada ticket com tags como <code>refund-price</code>, <code>refund-results</code>, <code>winback-90d</code>, <code>vip</code>. Isso alimenta a segmentação dos fluxos de Win-back (estratégia 5, mensagem diferente para quem pediu reembolso) e permite relatórios de quais objeções mais aparecem por nicho. Crie <b>custom ticket fields</b> para nicho e produto, e use-os nas automation rules para rotear ao agente/fluxo certo.</div>
+  </div>
+</div>
+
+<div class="fresh-step">
+  <div class="fresh-num">4</div>
+  <div class="fresh-body">
+    <div class="fresh-h">⭐ Contact Scoring = identificar e priorizar VIPs</div>
+    <div class="fresh-p">Use <b>contact fields</b> e scoring para marcar clientes de alto valor (2+ compras, kit de 6, assinantes). Uma automation rule pode <b>priorizar tickets VIP</b> e roteá-los ao seu melhor agente (estratégia 10). O Freddy AI (add-on) ajuda com <b>intent analysis</b>, sinalizando tickets de alto risco de churn ou de alta intenção de compra para ação proativa.</div>
+  </div>
+</div>
+
+<div class="fresh-step">
+  <div class="fresh-num">5</div>
+  <div class="fresh-body">
+    <div class="fresh-h">🔗 Integração Freshsales (deals no ticket)</div>
+    <div class="fresh-p">A integração <b>Freshsales ↔ Freshdesk</b> mostra os 5 deals/pedidos mais recentes do cliente <b>ao lado do ticket</b>. Antes de fazer qualquer upsell (estratégia 3) ou calcular o timing de reposição (estratégia 9), o agente vê o histórico de compra sem trocar de tela. Permite criar um novo deal direto do ticket quando uma oferta é aceita — o pós-venda vira CRM.</div>
+  </div>
+</div>
+
+<div class="fresh-step">
+  <div class="fresh-num">6</div>
+  <div class="fresh-body">
+    <div class="fresh-h">🤖 Freddy AI Copilot = mais velocidade, mesma qualidade</div>
+    <div class="fresh-p">O <b>Freddy Copilot</b> (add-on) sugere a canned response certa e rascunha respostas com base no histórico — o agente parte de um draft contextualizado em vez de escrever do zero. Acelera o atendimento mantendo o tom dos scripts, e libera o time para os tickets emocionalmente complexos (onde o humano converte melhor). Monitore o uso das canned responses no analytics para ver quais convertem mais e refinar a biblioteca.</div>
+  </div>
+</div>
+
+<div class="slbl">Blueprint de automação — fluxo completo de um ticket</div>
+<div class="callout callout-tip">
+<b>1. Chega o ticket</b> → automation rule manda auto-reply imediato + (se tag refund/results) dispara VSL Recovery.<br>
+<b>2. Agente assume</b> → vê deals do Freshsales ao lado, identifica nicho/objeção, insere a Canned Response certa com placeholders.<br>
+<b>3. Negociação</b> → downsell/upsell conforme o caso; follow-up automático se cliente silencia.<br>
+<b>4. Ticket Resolved</b> → automation dispara e-mail de cortesia (estratégia 6) + pesquisa NPS (estratégia 8).<br>
+<b>5. NPS responde</b> → 9-10 roteia para upsell/indicação, 7-8 para cross-sell, 0-6 para retenção.<br>
+<b>6. Pós-venda contínuo</b> → ~dia 20 dispara lembrete de reposição (estratégia 9); cliente recorrente recebe tag VIP (estratégia 10).
+</div>
+
+<div class="callout callout-warn"><b>⚠️ Disponibilidade por plano:</b> automation rules, Freddy Copilot e a integração Freshsales dependem do seu plano Freshdesk. Confirme o que está incluso antes de desenhar a operação. Algumas contas criadas após dez/2025 usam a experiência "Freshdesk Omni" com menus diferentes.</div>
+`;
+
+/* ============================================================
+   ESTADO E RENDERIZAÇÃO
+   ============================================================ */
+let view="intro";        // 'intro' | 'niche' | 'strategy' | 'fresh'
+let cN=N[0].id, cT="fr", cS=null, cpK=null;
+const TABS=[{id:"fr",lbl:"❌ Não funcionou"},{id:"ar",lbl:"😔 Arrependimento"},{id:"iv",lbl:"💸 Inseg. de valor"},{id:"ip",lbl:"📦 Infoproduto"}];
+const tagMap={amber:{bg:"#FAEEDA",txt:"#854F0B"},teal:{bg:"#E1F5EE",txt:"#0F6E56"},coral:{bg:"#FAECE7",txt:"#993C1D"},blue:{bg:"#E6F1FB",txt:"#185FA5"},purple:{bg:"#EEEDFE",txt:"#534AB7"}};
+
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function rgba(h,a){const r=parseInt(h.slice(1,3),16),g=parseInt(h.slice(3,5),16),b=parseInt(h.slice(5,7),16);return`rgba(${r},${g},${b},${a})`;}
+
+/* ── SIDEBAR ── */
 function rSB(){
-  var tot=N.reduce(function(s,n){return s+n.prods.length;},0);
-  var rdy=N.reduce(function(s,n){return s+n.prods.filter(function(p){return p.r;}).length;},0);
+  const tot=N.reduce((s,n)=>s+n.prods.length,0);
+  const rdy=N.reduce((s,n)=>s+n.prods.filter(p=>p.r).length,0);
   document.getElementById("stat-prod").textContent=tot;
   document.getElementById("stat-ready").textContent=rdy;
   document.getElementById("stat-dev").textContent=tot-rdy;
-  document.getElementById("sb-nichos").innerHTML=N.map(function(n){
-    var a=n.id===cN;
-    var r=n.prods.filter(function(p){return p.r;}).length;
-    var iconBg=a?n.acc:rgba(n.acc,.15);
-    var iconFilter=a?"brightness(10)":"none";
-    var borderStyle=a?"border-left-color:"+n.acc+";background:#0f172a":"";
-    var nameStyle=a?"color:#f1f5f9;font-weight:600":"";
-    var progStyle=a?"color:"+n.acc:"";
-    return '<button class="nb'+(a?" active":"")+'" onclick="gN(\''+n.id+'\')" style="'+borderStyle+'">'
-      +'<div class="nb-icon" style="background:'+iconBg+'"><span style="filter:'+iconFilter+'">'+n.icon+'</span></div>'
-      +'<div class="nb-info">'
-      +'<div class="nb-name" style="'+nameStyle+'">'+n.label+'</div>'
-      +'<div class="nb-prog" style="'+progStyle+'">'+r+'/'+n.prods.length+' ativos</div>'
-      +'</div></button>';
+
+  document.getElementById("sb-intro").innerHTML=
+    `<button class="nb${view==='intro'?' active':''}" onclick="gIntro()" style="${view==='intro'?'border-left-color:#0e7490;background:#0f172a':''}">
+      <div class="nb-icon" style="background:${view==='intro'?'#0e7490':'rgba(14,116,144,.15)'}"><span style="filter:${view==='intro'?'brightness(10)':'none'}">🏠</span></div>
+      <div class="nb-info"><div class="nb-name" style="${view==='intro'?'color:#f1f5f9;font-weight:600':''}">Visão geral & princípios</div></div>
+    </button>`;
+
+  document.getElementById("sb-nichos").innerHTML=N.map(n=>{
+    const a=(view==='niche'&&n.id===cN);
+    const r=n.prods.filter(p=>p.r).length;
+    return `<button class="nb${a?' active':''}" onclick="gN('${n.id}')" style="${a?'border-left-color:'+n.acc+';background:#0f172a':''}">
+      <div class="nb-icon" style="background:${a?n.acc:rgba(n.acc,.15)}"><span style="filter:${a?'brightness(10)':'none'}">${n.icon}</span></div>
+      <div class="nb-info"><div class="nb-name" style="${a?'color:#f1f5f9;font-weight:600':''}">${n.label}</div><div class="nb-prog" style="${a?'color:'+n.acc:''}">${r}/${n.prods.length} ativos</div></div>
+    </button>`;
   }).join("");
+
+  document.getElementById("sb-strategies").innerHTML=STRATEGIES.map(s=>{
+    const a=(view==='strategy'&&cS===s.id);
+    const tc=tagMap[s.tc];
+    return `<button class="nb${a?' active':''}" onclick="gS(${s.id})" style="${a?'border-left-color:#f1f5f9;background:#0f172a':''}">
+      <div class="nb-icon" style="background:${a?'#334155':'rgba(148,163,184,.15)'}"><span style="color:${a?'white':'#94a3b8'}">${s.icon}</span></div>
+      <div class="nb-info"><div class="nb-name" style="${a?'color:#f1f5f9;font-weight:600':''}">${s.name}</div><span class="tag-badge" style="background:${tc.bg};color:${tc.txt}">${s.tag}</span></div>
+    </button>`;
+  }).join("");
+
+  document.getElementById("sb-ops").innerHTML=
+    `<button class="nb${view==='fresh'?' active':''}" onclick="gFresh()" style="${view==='fresh'?'border-left-color:#0e7490;background:#0f172a':''}">
+      <div class="nb-icon" style="background:${view==='fresh'?'#0e7490':'rgba(14,116,144,.15)'}"><span style="filter:${view==='fresh'?'brightness(10)':'none'}">🎫</span></div>
+      <div class="nb-info"><div class="nb-name" style="${view==='fresh'?'color:#f1f5f9;font-weight:600':''}">Freshdesk como motor</div></div>
+    </button>`;
 }
 
-// ── PRICING ──
+/* ── PRICING ── */
 function rPR(){
-  var cards=PRICING.map(function(p){
-    var cls="pc"+(p.ft?" ft":"");
-    var lbl=p.label+(p.ft?'<span class="best-tag">MELHOR</span>':"");
-    var ship=p.frete?'<div class="pc-ship">✓ Frete grátis</div>':'<div style="font-size:10px;color:#64748b;margin-top:2px">+ frete</div>';
-    return '<div class="'+cls+'">'
-      +'<div class="pc-lbl">'+lbl+'</div>'
-      +'<div class="pc-price">$'+p.price+'<span class="pc-unit">/frasco</span></div>'
-      +'<div class="pc-info">'+p.bottles+' frascos &bull; '+p.supply+' &bull; $'+p.total+' total</div>'
-      +'<div class="pc-save">Economize $'+p.save+'</div>'
-      +ship+'</div>';
+  const cards=PRICING.map(p=>{
+    const cls="pc"+(p.ft?" ft":"");
+    const lbl=p.label+(p.ft?'<span class="best-tag">BEST</span>':"");
+    const ship=p.frete?'<div class="pc-ship">✓ Free shipping</div>':'<div style="font-size:10px;color:#94a3b8;margin-top:2px">+ shipping</div>';
+    return `<div class="${cls}"><div class="pc-lbl">${lbl}</div><div class="pc-price">$${p.price}<span class="pc-unit">/bottle</span></div><div class="pc-info">${p.bottles} bottles &bull; ${p.supply} &bull; $${p.total} total</div><div class="pc-save">Save $${p.save}</div>${ship}</div>`;
   }).join("");
-  return '<div class="pricing">'+cards+'</div>';
+  return `<div class="pricing">${cards}</div>`;
 }
 
-// ── SCRIPT CARD ──
-// Store texts globally indexed by key for onclick retrieval
-var _scripts={};
-function sCard(m,i,k){
-  var n=N.find(function(x){return x.id===cN;});
-  var key=cN+"-"+k+"-"+i;
-  _scripts[key]=m.t;
-  var ok=cpK===key;
-  var btnCls="cp-btn"+(ok?" ok":"");
-  var btnTxt=ok?"✓ Copiado":"📋 Copiar";
-  return '<div class="sk">'
-    +'<div class="sk-hd">'
-    +'<div style="display:flex;align-items:center;flex:1">'
-    +'<div class="sk-num" style="background:'+n.acc+'">'+(i+1)+'</div>'
-    +'<div class="sk-lbl">'+esc(m.l)+'</div>'
-    +'</div>'
-    +'<button class="'+btnCls+'" onclick="cpS(\''+key+'\')">'+btnTxt+'</button>'
-    +'</div>'
-    +'<div class="sk-body">'+esc(m.t)+'</div>'
-    +'</div>';
+/* ── SCRIPT CARD (EN + PT) ── */
+const _scripts={};
+function sCard(m,i,k,acc){
+  const key=k+"-"+i;
+  const subj=m.subj||"";
+  const full=(subj?("Subject: "+subj+"\n\n"):"")+m.t;
+  _scripts[key]=full;
+  const ok=cpK===key;
+  const btnCls="cp-btn"+(ok?" ok":"");
+  const btnTxt=ok?"✓ Copiado":"📋 Copiar";
+  const numHtml = (i!==null)?`<div class="sk-num" style="background:${acc}">${i+1}</div>`:'';
+  return `<div class="sk">
+    <div class="sk-hd">
+      <div style="display:flex;align-items:center;flex:1">${numHtml}<div class="sk-lbl">${esc(m.l)}</div></div>
+      <button class="${btnCls}" onclick="cpS('${key}')">${btnTxt}</button>
+    </div>
+    ${subj?`<div class="email-subject">📩 Subject: ${esc(subj)}</div>`:''}
+    <div class="script-en">${esc(m.t)}</div>
+    <div class="script-why"><span class="why-tag">Por que funciona</span><br>${m.why}</div>
+  </div>`;
 }
 
-// ── MAIN ──
-function rM(){
-  var n=N.find(function(x){return x.id===cN;});
-  var rdy=n.prods.filter(function(p){return p.r;}).length;
+/* ── DOTS (potencial/esforço) ── */
+function dots(val,col){let h="";for(let i=1;i<=5;i++)h+=`<div class="dot" style="background:${i<=val?col:'#e2e8f0'}"></div>`;return h;}
 
-  var prods='<div class="prod-row">'+n.prods.map(function(p){
-    var cls="pb "+(p.r?"r":"w");
-    var style=p.r?"background:"+n.acc:"";
-    return '<span class="'+cls+'" style="'+style+'">'+p.n+(p.r?"":" 🔄")+'</span>';
-  }).join("")+'</div>';
+/* ── RENDER NICHE ── */
+function renderNiche(){
+  const n=N.find(x=>x.id===cN);
+  const rdy=n.prods.filter(p=>p.r).length;
+  const prods=`<div class="prod-row">${n.prods.map(p=>`<span class="pb ${p.r?'r':'w'}" style="${p.r?'background:'+n.acc:''}">${p.n}${p.r?'':' 🔄'}</span>`).join("")}</div>`;
+  const tabs=`<div class="tab-nav">${TABS.map(t=>{const a=cT===t.id;return `<button class="tb${a?' active':''}" onclick="gT('${t.id}')" style="${a?'background:'+n.acc:''}">${t.lbl}</button>`;}).join("")}</div>`;
 
-  var tabs='<div class="tab-nav">'+TABS.map(function(t){
-    var active=cT===t.id;
-    var cls="tb"+(active?" active":"");
-    var style=active?"background:"+n.acc:"";
-    return '<button class="'+cls+'" onclick="gT(\''+t.id+'\')" style="'+style+'">'+t.lbl+'</button>';
-  }).join("")+'</div>';
-
-  var body="";
+  let body="";
   if(cT==="ip"){
-    var ip=n.sc.ip;
-    body='<div class="info-card">'
-      +'<div class="info-hd">'
-      +'<div class="info-format-tag" style="background:'+rgba(n.acc,.15)+';color:'+n.txt+'">'+esc(ip.tipo)+'</div>'
-      +'<div class="info-title">'+esc(ip.titulo)+'</div>'
-      +'<div class="info-desc">'+esc(ip.desc)+'</div>'
-      +'</div>'
-      +'<div class="info-body">'
-      +'<div class="info-meta">'
-      +'<div class="im-item"><div class="im-lbl">Preço sugerido</div><div class="im-val">'+esc(ip.preco)+'</div></div>'
-      +'<div class="im-item"><div class="im-lbl">Formato</div><div class="im-val">'+esc(ip.tipo)+'</div></div>'
-      +'<div class="im-item"><div class="im-lbl">Estratégia de uso</div><div class="im-val">'+esc(ip.upsell)+'</div></div>'
-      +'</div>'
-      +'<div class="info-content">'
-      +'<div class="info-content-title">Conteúdo sugerido</div>'
-      +'<div class="info-content-list">'+esc(ip.conteudo)+'</div>'
-      +'</div>'
-      +'<div class="slbl">Script de pitch do infoproduto</div>'
-      +sCard(ip.pitch,0,"ip")
-      +'</div></div>';
+    const ip=n.sc.ip;
+    body=`<div class="info-card">
+      <div class="info-hd">
+        <div class="info-format-tag" style="background:${rgba(n.acc,.15)};color:${n.txt}">${esc(ip.tipo)}</div>
+        <div class="info-title">${esc(ip.titulo)}</div>
+        <div class="info-desc">${esc(ip.desc)}</div>
+      </div>
+      <div class="info-body">
+        <div class="info-meta">
+          <div class="im-item"><div class="im-lbl">Preço sugerido</div><div class="im-val">${esc(ip.preco)}</div></div>
+          <div class="im-item"><div class="im-lbl">Formato</div><div class="im-val">${esc(ip.tipo)}</div></div>
+          <div class="im-item"><div class="im-lbl">Estratégia de uso</div><div class="im-val">${esc(ip.upsell)}</div></div>
+        </div>
+        <div class="info-content">
+          <div class="info-content-title">Conteúdo sugerido (EN)</div>
+          <div class="info-content-list">${esc(ip.conteudo)}</div>
+        </div>
+        <div class="slbl">Script de pitch do infoproduto</div>
+        ${sCard(ip.pitch,null,"ip-"+n.id,n.acc)}
+      </div></div>`;
   } else {
-    var sc=n.sc[cT];
-    var csCards=n.cs.map(function(c){
-      var t=N.find(function(x){return x.id===c.nid;});
-      var tb=t?t.bg:"#f1f5f9";
-      var tt=t?t.txt:"#334155";
-      var onclick=t?"gN('"+c.nid+"')":"";
-      var style=t?"":"cursor:default";
-      return '<div class="cs-card" onclick="'+onclick+'" style="'+style+'">'
-        +'<div class="cs-name">'+esc(c.n)+'</div>'
-        +'<span class="cs-nbadge" style="background:'+tb+';color:'+tt+'">'+c.nid.toUpperCase()+'</span>'
-        +'<div class="cs-why">'+esc(c.w)+'</div>'
-        +'</div>';
+    const sc=n.sc[cT];
+    const csCards=n.cs.map(c=>{
+      const t=N.find(x=>x.id===c.nid);
+      const tb=t?t.bg:"#f1f5f9", tt=t?t.txt:"#334155";
+      const onclick=t?`gN('${c.nid}')`:"";
+      const style=t?"":"cursor:default";
+      return `<div class="cs-card" onclick="${onclick}" style="${style}"><div class="cs-name">${esc(c.n)}</div><span class="cs-nbadge" style="background:${tb};color:${tt}">${c.nid.toUpperCase()}</span><div class="cs-why">${esc(c.w)}</div></div>`;
     }).join("");
-    body='<div class="scenario-box">'
-      +'<div class="sc-title">Contexto do atendimento</div>'
-      +'<div class="sc-ctx">'+esc(sc.ctx)+'</div>'
-      +'<div class="sc-approach" style="background:'+rgba(n.acc,.1)+';color:'+n.txt+'">→ Abordagem: '+esc(sc.ap)+'</div>'
-      +'</div>'
-      +'<div class="slbl">Scripts prontos para copiar</div>'
-      +sc.msgs.map(function(m,i){return sCard(m,i,cT);}).join("")
-      +'<div class="slbl">Cross-sells recomendados para este nicho</div>'
-      +'<div class="cs-grid">'+csCards+'</div>';
+    body=`<div class="scenario-box">
+        <div class="sc-title">Contexto do atendimento</div>
+        <div class="sc-ctx">${esc(sc.ctx)}</div>
+        <div class="sc-approach" style="background:${rgba(n.acc,.1)};color:${n.txt}">→ Abordagem: ${esc(sc.ap)}</div>
+      </div>
+      <div class="slbl">Scripts de e-mail (inglês) + por que funciona (PT-BR)</div>
+      ${sc.msgs.map((m,i)=>sCard(m,i,cT+"-"+n.id,n.acc)).join("")}
+      <div class="slbl">Cross-sells recomendados para este nicho</div>
+      <div class="cs-grid">${csCards}</div>`;
   }
 
-  var metaS=rdy!==1?"s":"";
-  var header='<div class="nh">'
-    +'<div class="nh-icon" style="background:'+rgba(n.acc,.15)+'">'+n.icon+'</div>'
-    +'<div>'
-    +'<div><span class="nh-name">'+n.label+'</span>'
-    +'<span class="nh-badge" style="background:'+rgba(n.acc,.15)+';color:'+n.txt+'">'+n.abbr+'</span></div>'
-    +'<div class="nh-meta">'+rdy+' produto'+metaS+' ativo'+metaS+' &bull; '+(n.prods.length-rdy)+' em desenvolvimento</div>'
-    +'</div></div>';
+  const metaS=rdy!==1?"s":"";
+  const header=`<div class="nh">
+    <div class="nh-icon" style="background:${rgba(n.acc,.15)}">${n.icon}</div>
+    <div><div><span class="nh-name">${n.label}</span><span class="nh-badge" style="background:${rgba(n.acc,.15)};color:${n.txt}">${n.abbr}</span></div>
+    <div class="nh-meta">${rdy} produto${metaS} ativo${metaS} &bull; ${n.prods.length-rdy} em desenvolvimento</div></div></div>`;
 
   document.getElementById("content").innerHTML=header+prods+rPR()+tabs+body;
 }
 
-window.gN=function(id){cN=id;cT="fr";rSB();rM();}
-window.gT=function(id){cT=id;rM();}
-window.cpS=function(key){
-  var t=_scripts[key]||"";
-  try{navigator.clipboard.writeText(t);}catch(e){}
-  cpK=key;rM();setTimeout(function(){cpK=null;rM();},2200);
+/* ── RENDER STRATEGY ── */
+function renderStrategy(){
+  const s=STRATEGIES.find(x=>x.id===cS);
+  const tc=tagMap[s.tc];
+  const isNew = s.id>=9;
+  const header=`<div class="nh">
+    <div class="nh-icon" style="background:rgba(51,65,85,.1)"><span style="font-size:22px">${s.icon}</span></div>
+    <div><div><span class="nh-name">${s.name}</span><span class="nh-badge" style="background:${tc.bg};color:${tc.txt}">${s.tag}</span>${isNew?'<span class="seq-tag">ATUALIZAÇÃO 2026</span>':''}</div>
+    <div class="nh-meta">Estratégia para e-mail &bull; aplica-se a todos os nichos</div></div></div>`;
+
+  const metrics=`<div class="metric-row">
+    <div class="metric-card"><div class="metric-lbl">Potencial de receita</div><div class="dots">${dots(s.potential,"#1D9E75")}</div></div>
+    <div class="metric-card"><div class="metric-lbl">Esforço de setup</div><div class="dots">${dots(s.effort,"#BA7517")}</div></div>
+    <div class="metric-card"><div class="metric-lbl">Gatilho</div><div style="font-size:11.5px;font-weight:600;color:#0f172a;line-height:1.4">${esc(s.trigger)}</div></div>
+  </div>`;
+
+  const body=`<div class="scenario-box"><div style="font-size:13px;color:#475569;line-height:1.75">${esc(s.desc)}</div></div>
+    <div class="slbl">Scripts de e-mail (inglês) + por que funciona (PT-BR)</div>
+    ${s.msgs.map((m,i)=>sCard(m,i,"strat-"+s.id,"#334155")).join("")}
+    <div class="callout callout-tip"><b>💡 Dica tática:</b> ${esc(s.tip)}</div>`;
+
+  document.getElementById("content").innerHTML=header+metrics+body;
 }
+
+/* ── MAIN ── */
+function rM(){
+  if(view==="intro") document.getElementById("content").innerHTML=INTRO_HTML;
+  else if(view==="fresh") document.getElementById("content").innerHTML=FRESH_HTML;
+  else if(view==="strategy") renderStrategy();
+  else renderNiche();
+  document.getElementById("main").scrollTop=0;
+}
+
+/* ── NAV ── */
+window.gIntro=function(){view="intro";rSB();rM();};
+window.gFresh=function(){view="fresh";rSB();rM();};
+window.gN=function(id){view="niche";cN=id;cT="fr";rSB();rM();};
+window.gT=function(id){cT=id;rM();};
+window.gS=function(id){view="strategy";cS=id;rSB();rM();};
+window.cpS=function(key){
+  const t=_scripts[key]||"";
+  try{navigator.clipboard.writeText(t);}catch(e){}
+  cpK=key;rM();setTimeout(()=>{cpK=null;rM();},2000);
+};
+
 rSB();rM();
 </script>
 </body>
