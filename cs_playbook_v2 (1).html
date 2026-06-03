@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CS Revenue Playbook — Nutraceutico</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,sans-serif;display:flex;height:100vh;overflow:hidden;background:#060b14;color:#e2e8f0}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:#1e293b;border-radius:4px}
+#sb{width:228px;background:#060b14;border-right:1px solid #0f172a;overflow-y:auto;flex-shrink:0;display:flex;flex-direction:column}
+.sb-hd{padding:18px 16px 14px;border-bottom:1px solid #0f172a}
+.sb-title{font-size:13px;font-weight:800;color:#f8fafc;letter-spacing:-.02em}
+.sb-sub{font-size:10px;color:#334155;margin-top:2px}
+.sb-stats{display:flex;gap:8px;margin-top:10px}
+.sb-stat{background:#0f172a;border-radius:7px;padding:7px 10px;flex:1;text-align:center}
+.sb-stat-n{font-size:16px;font-weight:900;color:#f8fafc}
+.sb-stat-l{font-size:9px;color:#475569;margin-top:1px}
+.sb-lbl{font-size:9px;font-weight:700;color:#1e3a5f;letter-spacing:.1em;text-transform:uppercase;padding:10px 16px 5px}
+.nb{display:flex;align-items:center;gap:9px;width:100%;padding:7px 12px 7px 14px;border:none;background:transparent;cursor:pointer;text-align:left;border-left:2px solid transparent;transition:all .12s}
+.nb:hover{background:#0f172a}.nb.active{background:#0f172a}
+.nb-icon{width:27px;height:27px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.nb-info{flex:1;min-width:0}
+.nb-name{font-size:11px;color:#64748b;font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.35}
+.nb.active .nb-name{color:#f1f5f9;font-weight:600}
+.nb-prog{font-size:9px;color:#1e3a5f;margin-top:1px}
+#main{flex:1;overflow-y:auto;background:#f0f4f8}
+.mi{padding:22px 24px 48px;max-width:860px}
+.nh{display:flex;align-items:center;gap:14px;padding:18px 20px;background:white;border-radius:14px;margin-bottom:14px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.nh-icon{width:50px;height:50px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:25px;flex-shrink:0}
+.nh-name{font-size:19px;font-weight:800;color:#0f172a;letter-spacing:-.03em}
+.nh-badge{display:inline-flex;align-items:center;font-size:9px;font-weight:800;padding:2px 8px;border-radius:12px;margin-left:7px;vertical-align:middle;letter-spacing:.04em}
+.nh-meta{font-size:11px;color:#64748b;margin-top:3px}
+.prod-row{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:13px}
+.pb{font-size:10.5px;font-weight:600;padding:3px 10px;border-radius:20px;white-space:nowrap}
+.pb.r{color:white}.pb.w{background:#f1f5f9;color:#94a3b8;border:1px solid #e2e8f0}
+.pricing{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;margin-bottom:16px}
+.pc{background:white;border:1px solid #e2e8f0;border-radius:12px;padding:12px 13px}
+.pc.ft{background:#0f172a;border-color:#0f172a}
+.pc-lbl{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#94a3b8}
+.pc.ft .pc-lbl{color:#334155}
+.best-tag{display:inline-block;font-size:8px;font-weight:800;background:#10b981;color:white;padding:1px 6px;border-radius:8px;margin-left:4px;vertical-align:1px}
+.pc-price{font-size:22px;font-weight:900;color:#0f172a;letter-spacing:-.04em;margin-top:3px}
+.pc.ft .pc-price{color:white}
+.pc-unit{font-size:10px;font-weight:400;color:#94a3b8}
+.pc-info{font-size:10px;color:#94a3b8;margin-top:3px}
+.pc.ft .pc-info{color:#475569}
+.pc-save{font-size:10px;font-weight:700;color:#10b981;margin-top:2px}
+.pc-ship{font-size:10px;font-weight:600;color:#10b981;margin-top:1px}
+.tab-nav{display:flex;gap:3px;background:white;padding:4px;border-radius:12px;margin-bottom:14px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.tb{flex:1;padding:8px 6px;border:none;background:transparent;cursor:pointer;font-size:10.5px;font-weight:500;color:#64748b;border-radius:9px;transition:all .12s;white-space:nowrap}
+.tb:hover{background:#f1f5f9;color:#0f172a}.tb.active{font-weight:700;color:white}
+.scenario-box{background:white;border-radius:12px;padding:14px 16px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.sc-title{font-size:11px;font-weight:800;color:#0f172a;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.sc-ctx{font-size:12px;color:#64748b;line-height:1.65;margin-bottom:8px}
+.sc-approach{font-size:11.5px;font-weight:600;padding:7px 11px;border-radius:8px;line-height:1.5}
+.sk{background:white;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;margin-bottom:9px}
+.sk-hd{display:flex;justify-content:space-between;align-items:center;padding:9px 13px;background:#f8fafc;border-bottom:1px solid #e2e8f0}
+.sk-num{width:19px;height:19px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;flex-shrink:0;color:white}
+.sk-lbl{font-size:11px;font-weight:600;color:#374151;margin-left:8px;flex:1}
+.cp-btn{display:flex;align-items:center;gap:4px;padding:3px 9px;border-radius:6px;border:1px solid #e2e8f0;background:white;color:#64748b;font-size:10.5px;cursor:pointer;transition:all .12s;font-family:inherit}
+.cp-btn:hover{border-color:#94a3b8;color:#0f172a}.cp-btn.ok{border-color:#10b981;background:#ecfdf5;color:#059669}
+.sk-body{padding:13px 14px;font-size:12.5px;line-height:1.9;color:#1e293b;white-space:pre-wrap}
+.cs-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.cs-card{background:white;border:1px solid #e2e8f0;border-radius:10px;padding:11px 12px;cursor:pointer;transition:all .15s}
+.cs-card:hover{border-color:#94a3b8;transform:translateY(-1px);box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.cs-name{font-size:12px;font-weight:700;color:#0f172a;margin-bottom:3px}
+.cs-nbadge{font-size:9px;font-weight:700;padding:1px 7px;border-radius:8px;display:inline-block;margin-bottom:5px}
+.cs-why{font-size:11px;color:#64748b;line-height:1.4}
+.info-card{background:white;border-radius:12px;overflow:hidden;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.info-hd{padding:16px 18px;border-bottom:1px solid #f1f5f9}
+.info-format-tag{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;padding:3px 9px;border-radius:10px;display:inline-block;margin-bottom:8px}
+.info-title{font-size:17px;font-weight:900;color:#0f172a;letter-spacing:-.03em;margin-bottom:5px}
+.info-desc{font-size:12px;color:#64748b;line-height:1.65}
+.info-body{padding:14px 18px}
+.info-meta{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;margin-bottom:14px}
+.im-item{background:#f8fafc;border-radius:8px;padding:10px 12px;border:1px solid #f1f5f9}
+.im-lbl{font-size:9px;font-weight:700;text-transform:uppercase;color:#94a3b8;margin-bottom:3px;letter-spacing:.05em}
+.im-val{font-size:12px;font-weight:700;color:#0f172a}
+.info-content{background:#f8fafc;border-radius:9px;padding:13px 14px;margin-bottom:14px;border:1px solid #f1f5f9}
+.info-content-title{font-size:10px;font-weight:800;text-transform:uppercase;color:#64748b;letter-spacing:.07em;margin-bottom:8px}
+.info-content-list{font-size:12px;color:#374151;line-height:2;white-space:pre-wrap}
+.slbl{font-size:10px;font-weight:800;color:#94a3b8;text-transform:uppercase;letter-spacing:.08em;margin:16px 0 8px}
+pre{font-family:inherit}
+</style>
+</head>
+<body>
+<div id="sb">
+  <div class="sb-hd">
+    <div class="sb-title">CS Revenue Playbook</div>
+    <div class="sb-sub">Nutraceutico &bull; 12 nichos</div>
+    <div class="sb-stats">
+      <div class="sb-stat"><div class="sb-stat-n" id="stat-prod">—</div><div class="sb-stat-l">Produtos</div></div>
+      <div class="sb-stat"><div class="sb-stat-n" id="stat-ready">—</div><div class="sb-stat-l">Ativos</div></div>
+      <div class="sb-stat"><div class="sb-stat-n" id="stat-dev">—</div><div class="sb-stat-l">Dev.</div></div>
+    </div>
+  </div>
+  <div class="sb-lbl">Nichos</div>
+  <div id="sb-nichos"></div>
+</div>
+<div id="main"><div class="mi" id="content"></div></div>
+<script>
+const PRICING=[
+  {label:"Try Two",bottles:2,supply:"60 dias",price:89,total:178,save:180,frete:false},
+  {label:"Best Value",bottles:6,supply:"180 dias",price:49,total:294,save:780,frete:true,ft:true},
+  {label:"Great Deal",bottles:3,supply:"90 dias",price:72,total:216,save:321,frete:true},
+];
+
+const N=[
+{id:"ed",label:"Disfunção Erétil",abbr:"ED",icon:"⚡",acc:"#3b82f6",bg:"#dbeafe",txt:"#1d4ed8",
+ prods:[{n:"VigorLong",r:1},{n:"BoosterXT",r:1},{n:"BoostSteelX",r:0},{n:"IronPulseX",r:0},{n:"AlphaErec",r:0},{n:"VigorTitan",r:0},{n:"SteelVirility",r:0},{n:"VirilonMax",r:0}],
+ cs:[{n:"ProstaFense",nid:"pr",w:"Próstata e função erétil são inseparáveis"},{n:"NervoLyn",nid:"np",w:"Nervos regulam a resposta erétil"},{n:"GlucoRecover",nid:"db",w:"Diabetes causa DE em 40% dos casos"}],
+ sc:{
+  fr:{ctx:"Cliente diz que usou o produto mas não sentiu diferença alguma.",ap:"Diagnóstico empático → identifica interferências externas → protocolo 180 dias",
+   msgs:[
+    {l:"Abertura automática (até 1 min)",t:"Oi [Nome], recebi sua mensagem e vou cuidar pessoalmente do seu caso. 🤝\n\nEnquanto nosso especialista analisa, posso te fazer uma pergunta rápida?\n\nVocê usou o [produto] todos os dias pelo período recomendado, sem pular doses?\n\nEstou aqui pra resolver isso com você."},
+    {l:"Diagnóstico empático (humano, tom privado)",t:"Entendi, [Nome]. Fico feliz que confiou em falar sobre isso conosco.\n\nDurante o uso, você estava sob muito estresse, dormia pouco ou consumia álcool com frequência?\n\nEsses fatores têm impacto direto nos resultados. 🙏"},
+    {l:"Oferta: protocolo 180 dias",t:"[Nome], agora ficou claro o que aconteceu.\n\nO [produto] funciona — mas pra homens com seu perfil o resultado real vem com o protocolo de 180 dias. Clientes nesse perfil relatam diferença já na 2ª semana do ciclo completo.\n\n🔥 6 frascos × $49/frasco + frete grátis\n💰 Economia de $780\n\nPosso gerar seu link agora?"},
+   ]},
+  ar:{ctx:"Cliente pede reembolso ou diz que se arrependeu da compra.",ap:"Acolhe → descobre real motivo → reframe do investimento → downsell 3 frascos",
+   msgs:[
+    {l:"Acolhimento (humano)",t:"Oi [Nome], aqui é [nome] da equipe. 🙏\n\nEntendo — e antes de qualquer coisa: me conta o que aconteceu. Foi algo específico que te fez querer cancelar, ou é mais uma questão de timing ou valor?\n\nQuero resolver isso da melhor forma pra você."},
+    {l:"Reframe do investimento",t:"[Nome], obrigado pela honestidade.\n\nDeixa eu te mostrar outro ângulo: 6 frascos ÷ 180 dias = $1,63/dia. Menos que um café.\n\nPor saúde que impacta sua confiança, sua relação e seu bem-estar. E com garantia de 60 dias: se não gostar, devolve tudo.\n\nO risco real é não tentar. O que você acha?"},
+    {l:"Downsell: kit 3 frascos",t:"[Nome], se preferir começar menor, tenho uma opção:\n\n3 frascos × $72/frasco com frete grátis = $216 no total.\n\nÉ suficiente pra 90 dias — onde a maioria dos homens sente a mudança real.\n\n*(se não aceitar → processa o reembolso sem pressão)*"},
+   ]},
+  iv:{ctx:"Cliente acha caro, pede desconto ou diz não ter dinheiro agora.",ap:"Justifica valor vs custo diário → compara com alternativas → kit menor",
+   msgs:[
+    {l:"Contextualização de valor",t:"[Nome], entendo completamente a sua preocupação — e respeito isso.\n\nMas veja assim: são menos de $1,65 por dia com frete grátis.\n\nComparado a consultas, tratamentos convencionais e o impacto que isso tem na sua vida e relações — é o melhor custo-benefício que existe.\n\nMais: garantia de 60 dias. Se não funcionar, devolvo tudo. Risco zero. 🙏"},
+    {l:"Oferta do kit menor",t:"[Nome], se o kit de 6 está pesando no momento, tenho uma alternativa:\n\n3 frascos por $72/frasco — $216 total com frete grátis.\n\nVocê experimenta por 90 dias, vê o resultado por conta própria.\n\nPosso gerar o link agora?"},
+   ]},
+  ip:{titulo:"Protocolo da Performance Masculina",tipo:"Ebook + Vídeo Bônus",preco:"$27 — $47",upsell:"Bônus incluso no kit de 6 frascos OU venda separada pelo CS",
+   desc:"Guia digital que posiciona o suplemento como parte de um protocolo completo de saúde masculina. Aumenta o valor percebido, reduz reembolsos e abre porta para upsell.",
+   conteudo:"• Os 7 fatores silenciosos que destroem a performance\n• Protocolo de 90 dias: suplementação + alimentação + sono\n• Exercícios específicos para fluxo sanguíneo e hormônios\n• O que fazer e NÃO fazer durante o tratamento\n• Como monitorar evolução semana a semana",
+   pitch:{l:"Script de pitch do infoproduto",t:"[Nome], antes de qualquer decisão — posso te mostrar algo que vai mudar como você enxerga isso?\n\nCriamos o 'Protocolo da Performance Masculina' — o guia que explica por que a maioria dos homens não tem resultado e o que muda isso.\n\nEle está incluso no kit de 6 frascos sem custo adicional.\n\nQuer saber mais sobre o protocolo completo? 💪"},
+  },
+ }
+},
+{id:"wl",label:"Emagrecimento",abbr:"WL",icon:"🔥",acc:"#f97316",bg:"#ffedd5",txt:"#c2410c",
+ prods:[{n:"LipoBliss",r:1},{n:"Lipotrine",r:1},{n:"LipoPeak",r:1},{n:"LipoMeltx",r:0},{n:"OzemSlimPro",r:0},{n:"ThermoLeanX",r:0},{n:"MounjaMelt",r:0}],
+ cs:[{n:"FloraNew",nid:"gut",w:"Microbioma controla metabolismo"},{n:"GlucoRecover",nid:"db",w:"Resistência insulínica trava o emagrecimento"},{n:"BurnFusionX",nid:"x",w:"Stack termogênico amplificado"}],
+ sc:{
+  fr:{ctx:"Cliente diz que tomou o produto mas não perdeu peso ou não sentiu diferença.",ap:"Empatia → diagnóstico metabólico → protocolo 180 dias + fator intestinal",
+   msgs:[
+    {l:"Abertura automática",t:"Oi [Nome], recebi sua mensagem e entendo completamente a frustração. 💪\n\nEnquanto nosso especialista analisa, me conta: você manteve a alimentação durante o uso? Dormia bem e se hidratava?\n\nEstou aqui pra entender exatamente o que aconteceu."},
+    {l:"Diagnóstico metabólico (humano)",t:"Entendi, [Nome]. O que você está descrevendo é muito mais comum do que parece — e tem solução.\n\nVocê tem condição de tireoide, hormonal ou resistência à insulina? Já usou outros produtos antes?\n\nEssas informações me ajudam a encontrar o que realmente vai funcionar pro seu metabolismo. 🙏"},
+    {l:"Oferta: protocolo metabólico 180 dias",t:"[Nome], agora entendo o que está acontecendo.\n\nPara quem tem histórico de ciclos de dieta anteriores, o metabolismo cria resistência. O protocolo de 180 dias ataca por todos os ângulos.\n\nClientes nessa situação relatam resultados reais nos primeiros 60 dias do ciclo completo.\n\n🔥 6 frascos × $49/frasco + frete grátis\n💰 Economia de $780\n\nQuer tentar de verdade dessa vez?"},
+   ]},
+  ar:{ctx:"Cliente se arrependeu, diz que não vai funcionar para ela ou quer reembolso.",ap:"Valida → questiona expectativa → reframe de prazo → downsell",
+   msgs:[
+    {l:"Acolhimento e entendimento",t:"Oi [Nome], aqui é [nome] da equipe. Recebi sua solicitação. 🙏\n\nAntes de qualquer coisa, posso te perguntar: é uma questão de resultados que não vieram ainda, ou algo que aconteceu durante o uso?\n\nQuero entender pra te ajudar da melhor forma."},
+    {l:"Reframe de expectativa e prazo",t:"[Nome], entendi.\n\nO metabolismo humano leva de 21 a 45 dias pra começar a responder a mudanças. É fisiologia, não falha do produto.\n\nSe você usou por menos de 30 dias, ainda não entrou no período de resultado real.\n\nQue tal eu te acompanhar pessoalmente nas próximas 3 semanas? Se não sentir diferença, processo o reembolso imediatamente."},
+    {l:"Downsell: kit 3 frascos",t:"[Nome], se quiser começar com menos e se sentir mais segura:\n\n3 frascos × $72/frasco + frete grátis = $216.\n\n90 dias de protocolo real — o tempo mínimo pra um resultado que você vê.\n\n*(se não aceitar → processa o reembolso normalmente)*"},
+   ]},
+  iv:{ctx:"Cliente acha caro ou pede condição especial de pagamento.",ap:"Custo diário → comparação com alternativas → kit menor + garantia",
+   msgs:[
+    {l:"Contextualização de valor",t:"[Nome], eu entendo muito bem essa preocupação.\n\nMas divide assim: 6 frascos ÷ 180 dias = $1,63 por dia. Menos do que um suco industrializado.\n\nUm plano com nutricionista: $100+/mês. Remédio convencional para obesidade: $200+/mês com efeitos colaterais.\n\nAqui: natural, com garantia de 60 dias, $49/frasco. O investimento mais inteligente que você pode fazer pela sua saúde. 🙏"},
+    {l:"Oferta: kit menor",t:"[Nome], se preferir, o kit de 3 frascos está por $72/frasco — $216 no total com frete grátis.\n\nÉ suficiente pra completar 90 dias de protocolo real.\n\nPosso gerar o link agora?"},
+   ]},
+  ip:{titulo:"Método Metabólico 90 Dias",tipo:"Programa Online + Ebook",preco:"$37 — $67",upsell:"Bônus no kit de 6 frascos ou venda separada para leads que não compraram",
+   desc:"Programa de emagrecimento que combina alimentação anti-inflamatória, suplementação e hábitos. Reduz drasticamente o reembolso porque o cliente entende que o resultado vem de um sistema, não de uma pílula.",
+   conteudo:"• Por que você não está perdendo peso (e não é sua culpa)\n• Alimentação anti-inflamatória: 30 dias de protocolo\n• Como a suplementação encaixa no sistema\n• Sono, estresse e metabolismo: o triângulo que sabota tudo\n• Receitas + lista de compras semana a semana",
+   pitch:{l:"Script de pitch",t:"[Nome], antes de qualquer decisão — posso te contar sobre algo que transforma o resultado do produto?\n\nCriamos o 'Método Metabólico 90 Dias' — um programa que combina o [produto] com protocolo de alimentação e hábitos específicos.\n\nClientes que usam o programa + suplemento têm resultado até 3x mais rápido.\n\nEstá incluso no kit de 6 frascos. Quer ver como funciona? 🔥"},
+  },
+ }
+},
+{id:"me",label:"Memória / Cognição",abbr:"ME",icon:"🧠",acc:"#8b5cf6",bg:"#ede9fe",txt:"#5b21b6",
+ prods:[{n:"MaroBrain",r:1},{n:"NeuroRemind",r:0},{n:"MemoryRepairs",r:0}],
+ cs:[{n:"VisiumPro",nid:"vs",w:"Nervo óptico e cognição: mesmo circuito"},{n:"AudiLeaf",nid:"zb",w:"Mesmo público 50+ com queixas sensoriais"},{n:"NervoLyn",nid:"np",w:"Nervos saudáveis = cérebro saudável"}],
+ sc:{
+  fr:{ctx:"Cliente diz que não sentiu melhora na memória ou concentração.",ap:"Diagnóstico de contexto → hábitos que interferem → protocolo cognitivo 180 dias",
+   msgs:[
+    {l:"Abertura automática",t:"Oi [Nome], recebi sua mensagem sobre o [produto] e quero entender o que aconteceu. 🧠\n\nEnquanto nosso especialista analisa, me conta: você tem usado com regularidade e mantém um sono de qualidade?\n\nVamos resolver isso juntos."},
+    {l:"Diagnóstico (humano)",t:"Entendi, [Nome]. Saúde cognitiva é algo que levamos muito a sério.\n\nOs lapsos de memória são mais frequentes em qual momento do dia? Você tem pressão alta, usa medicação regular ou passou por muito estresse recentemente?\n\nEssas informações fazem toda a diferença."},
+    {l:"Oferta: protocolo cognitivo 180 dias",t:"[Nome], com base no que você me contou, tenho boas notícias.\n\nSaúde cognitiva é acumulativa — os resultados mais expressivos aparecem entre o 60º e 90º dia de uso consistente.\n\nClientes com esse perfil relatam melhora clara na concentração e memória no ciclo completo.\n\n🧠 6 frascos × $49/frasco + frete grátis\n💰 Economia de $780\n\nPosso gerar seu link?"},
+   ]},
+  ar:{ctx:"Cliente se arrependeu da compra, acha que não vai funcionar para ele.",ap:"Acolhe → educa sobre cognição e tempo → downsell",
+   msgs:[
+    {l:"Acolhimento",t:"Oi [Nome], aqui é [nome] da equipe. Recebi sua solicitação.\n\nEntendo a dúvida — saúde cognitiva é um tema onde muita promessa de resultado rápido cria frustração.\n\nMe conta: o que te fez querer o produto originalmente? Memória, concentração ou clareza mental?\n\nQuero entender pra te ajudar de verdade."},
+    {l:"Reframe: cognição é processo",t:"[Nome], obrigado pela honestidade.\n\nO cérebro é o único órgão que não se vê mudando — mas ele muda. Neuroplasticidade é real, porém gradual.\n\nO protocolo de 180 dias é onde os resultados se consolidam de forma mensurável. E a garantia de 60 dias garante que você não perde nada tentando.\n\nO que você tem a perder com 60 dias de garantia total?"},
+    {l:"Downsell: 3 frascos",t:"[Nome], se preferir começar menor:\n\n3 frascos × $72/frasco + frete grátis = $216.\n\n90 dias — tempo suficiente pra sentir a diferença no dia a dia.\n\n*(se não aceitar → reembolso sem pressão)*"},
+   ]},
+  iv:{ctx:"Cliente acha caro para suplemento cognitivo.",ap:"Comparação com custo de não tratar → valor do raciocínio claro → kit menor",
+   msgs:[
+    {l:"Contextualização de valor",t:"[Nome], eu entendo.\n\nMas veja assim: memória e clareza mental impactam sua produtividade, seu trabalho, sua qualidade de vida.\n\n$49/frasco ÷ 30 dias = $1,63/dia. Menos do que qualquer suplemento cognitivo de farmácia — e com garantia de 60 dias.\n\nNão há risco financeiro aqui. 🙏"},
+    {l:"Kit menor",t:"[Nome], temos também o kit de 3 frascos por $72/frasco — $216 total com frete grátis.\n\n90 dias é o tempo mínimo pra resultado real em saúde cognitiva.\n\nPosso gerar o link agora?"},
+   ]},
+  ip:{titulo:"Memória Afiada: O Protocolo Cognitivo",tipo:"Ebook + Áudios de Treino Mental",preco:"$37 — $57",upsell:"Incluso no kit de 6 frascos ou venda separada",
+   desc:"Guia com exercícios cognitivos, alimentação pró-cérebro e protocolo de suplementação. Justifica o tratamento e reduz reembolsos ao educar sobre a lentidão natural do processo.",
+   conteudo:"• Por que sua memória está pior (e o que provoca isso)\n• Protocolo cognitivo: suplementação + exercícios + sono\n• 15 exercícios cerebrais pra praticar diariamente\n• Alimentação neuroprotetora: o que comer e o que evitar\n• Como medir sua melhora mês a mês",
+   pitch:{l:"Script de pitch",t:"[Nome], posso te mostrar o que transforma o resultado do [produto]?\n\nCriamos o 'Memória Afiada' — protocolo com exercícios cognitivos e guia alimentar que potencializa o efeito do suplemento.\n\nClientes que combinam os dois relatam melhoras 2x mais rápidas.\n\nEstá incluso no kit de 6 frascos. Posso te enviar mais informações? 🧠"},
+  },
+ }
+},
+{id:"zb",label:"Audição / Zumbido",abbr:"ZB",icon:"👂",acc:"#f59e0b",bg:"#fef3c7",txt:"#b45309",
+ prods:[{n:"AudiLeaf",r:1},{n:"AudiQuiet",r:0},{n:"TinniCalms",r:0}],
+ cs:[{n:"NervoLyn",nid:"np",w:"Zumbido tem origem nervosa/neural"},{n:"MaroBrain",nid:"me",w:"Mesmo público 50+ com queixas cognitivas"},{n:"PressureCalmX",nid:"x",w:"Pressão alta causa e piora o zumbido"}],
+ sc:{
+  fr:{ctx:"Cliente diz que o zumbido continua ou não melhorou com o produto.",ap:"Empatia → diagnóstico de origem → protocolo longo com argumento de regeneração nervosa",
+   msgs:[
+    {l:"Abertura automática",t:"Oi [Nome], recebi sua mensagem e sei o quanto o zumbido pode ser desgastante. 👂\n\nEnquanto nosso especialista analisa, me conta: o zumbido é constante ou varia em intensidade? Piora em situações de estresse?\n\nEstou aqui pra te ajudar."},
+    {l:"Diagnóstico (humano)",t:"Entendo, [Nome]. Zumbido crônico afeta sono, concentração e humor — e você merece resolver isso.\n\nQuando começou o zumbido? Você tem histórico de exposição a ruídos altos, pressão alta ou usa alguma medicação?\n\nEssas informações fazem muita diferença pra encontrar o melhor caminho."},
+    {l:"Oferta: protocolo 180 dias",t:"[Nome], o que você descreveu é exatamente o perfil que mais responde ao tratamento de longo prazo.\n\nZumbido crônico exige regeneração do nervo auditivo — e isso leva tempo. Os clientes com maior redução usaram por 90 a 180 dias seguidos.\n\n👂 6 frascos × $49/frasco + frete grátis\n💰 Economia de $780\n\nIsso muda de verdade sua situação. Posso gerar o link?"},
+   ]},
+  ar:{ctx:"Cliente quer reembolso, está descrente sobre o produto.",ap:"Acolhe a frustração → educa sobre nervo auditivo → downsell",
+   msgs:[
+    {l:"Acolhimento",t:"Oi [Nome], aqui é [nome] da equipe. Recebi sua solicitação. 🙏\n\nEntendo completamente — zumbido é um problema que esgota qualquer um.\n\nPosso te perguntar: por quanto tempo você usou o produto? E o zumbido chegou a variar em algum momento?"},
+    {l:"Reframe: nervo auditivo regenera devagar",t:"[Nome], obrigado pela honestidade.\n\nO nervo auditivo é um dos tecidos mais lentos pra responder a tratamento.\n\nSe o zumbido variou em qualquer momento durante o uso, é sinal de que o tratamento está funcionando — só precisa de mais tempo.\n\nQue tal mais 60 dias com suporte meu e garantia total?"},
+    {l:"Downsell: 3 frascos",t:"[Nome], se preferir começar com menos:\n\n3 frascos × $72/frasco + frete grátis = $216.\n\n90 dias de tratamento consistente — mínimo recomendado para zumbido crônico.\n\n*(se não aceitar → reembolso)*"},
+   ]},
+  iv:{ctx:"Cliente acha caro para um problema de ouvido.",ap:"Contextualiza impacto na vida → custo diário → kit menor",
+   msgs:[
+    {l:"Impacto real do zumbido",t:"[Nome], entendo a preocupação com o valor.\n\nMas me conta: o zumbido já afetou seu sono, sua concentração no trabalho ou sua qualidade de vida?\n\nSe sim, o custo de NÃO tratar é muito maior do que $1,63/dia.\n\nE com garantia de 60 dias — se não funcionar, devolvo tudo. Risco zero. 🙏"},
+    {l:"Kit menor",t:"[Nome], também temos o kit de 3 frascos por $72/frasco — $216 total com frete grátis.\n\nÉ o mínimo recomendado pra quem tem zumbido há mais de 6 meses.\n\nPosso gerar o link?"},
+   ]},
+  ip:{titulo:"Protocolo do Silêncio",tipo:"Ebook + Áudios de Terapia Sonora",preco:"$27 — $47",upsell:"Bônus no kit de 6 frascos",
+   desc:"Guia completo sobre tinnitus com técnicas de manejo e protocolo de suplementação. Ajuda o cliente a ter resultados percebidos mais rapidamente e reduz ansiedade sobre o processo.",
+   conteudo:"• O que causa o zumbido (e por que é tão difícil de tratar)\n• Protocolo anti-inflamatório neural: suplementação + alimentação\n• Técnicas de terapia sonora para alívio imediato\n• Como o estresse amplifica o zumbido e como quebrar o ciclo\n• Diário de melhora: acompanhamento semana a semana",
+   pitch:{l:"Script de pitch",t:"[Nome], antes de decidir qualquer coisa — posso te mostrar algo que pode mudar completamente como você está lidando com o zumbido?\n\nCriamos o 'Protocolo do Silêncio' — guia com técnicas de alívio imediato + protocolo de longo prazo que potencializa o [produto].\n\nEstá incluso no kit de 6 frascos. Quer que eu te envie as informações? 👂"},
+  },
+ }
+},
+{id:"pr",label:"Próstata",abbr:"PR",icon:"🛡️",acc:"#14b8a6",bg:"#ccfbf1",txt:"#0f766e",
+ prods:[{n:"ProstaFense",r:1},{n:"ProstaVitalis",r:0},{n:"ProstaReliefX",r:0}],
+ cs:[{n:"VigorLong",nid:"ed",w:"Próstata e função erétil são inseparáveis"},{n:"GlucoRecover",nid:"db",w:"Diabetes afeta diretamente a próstata"},{n:"NervoLyn",nid:"np",w:"Sintomas urinários têm componente nervoso"}],
+ sc:{
+  fr:{ctx:"Cliente diz que sintomas (urgência urinária, fluxo) não melhoraram.",ap:"Diagnóstico de tipo de sintoma → educa sobre gradualidade → protocolo 180 dias",
+   msgs:[
+    {l:"Abertura automática",t:"Oi [Nome], recebi sua mensagem e quero cuidar do seu caso pessoalmente. 🛡️\n\nEnquanto nosso especialista analisa, me conta: os sintomas chegaram a diminuir em algum momento durante o uso?\n\nEstou aqui pra entender."},
+    {l:"Diagnóstico (humano)",t:"Entendo, [Nome]. Saúde da próstata afeta diretamente a qualidade de vida.\n\nVocê tem histórico de diabetes, pressão alta ou usa alguma medicação regularmente?\n\nAlém disso: o sintoma principal é urgência urinária, fluxo fraco ou acordar muito à noite?"},
+    {l:"Oferta: protocolo 180 dias",t:"[Nome], com o que você me contou, ficou claro que o tempo de uso é a chave.\n\nA próstata responde de forma gradual — clientes que completaram 180 dias relatam resultados reais e duradouros.\n\n🛡️ 6 frascos × $49/frasco + frete grátis\n💰 Economia de $780\n\nPosso gerar o link?"},
+   ]},
+  ar:{ctx:"Cliente pede reembolso ou está desapontado.",ap:"Acolhe → gradualidade da próstata → downsell com acompanhamento",
+   msgs:[
+    {l:"Acolhimento",t:"Oi [Nome], aqui é [nome] da equipe. Recebi sua solicitação. 🙏\n\nEntendo — esperar resultado pra um problema que incomoda o dia a dia é difícil.\n\nMe conta: você chegou a perceber qualquer mudança (mesmo pequena) durante o uso?"},
+    {l:"Reframe e proposta de continuidade",t:"[Nome], obrigado pela honestidade.\n\nPróstata é um dos órgãos que mais demora pra responder — é tecido glandular com circulação lenta.\n\nSe você notou qualquer mudança, o tratamento está funcionando — precisa de mais tempo.\n\nQue tal mais 60 dias com suporte meu a cada 2 semanas?"},
+    {l:"Downsell: 3 frascos",t:"[Nome], se preferir começar menor:\n\n3 frascos × $72/frasco + frete grátis = $216.\n\n90 dias com acompanhamento personalizado.\n\n*(se não aceitar → reembolso sem pressão)*"},
+   ]},
+  iv:{ctx:"Cliente acha caro para suplemento de próstata.",ap:"Contextualiza progressão da doença → custo alternativo → kit menor",
+   msgs:[
+    {l:"Custo de não tratar",t:"[Nome], entendo a preocupação.\n\nMas pensa assim: HPB (próstata aumentada) não tratada evolui para retenção urinária, pedra no rim, infecções e cirurgia.\n\nUma cirurgia de próstata: $3.000 a $10.000. O protocolo completo: $294 com garantia.\n\nO investimento inteligente é agora. 🙏"},
+    {l:"Kit menor",t:"[Nome], temos também o kit de 3 frascos por $72/frasco — $216 com frete grátis.\n\nMínimo recomendado para próstata.\n\nPosso gerar o link?"},
+   ]},
+  ip:{titulo:"Guia Completo da Saúde Prostática",tipo:"Ebook + Consulta Bônus",preco:"$27 — $47",upsell:"Bônus no kit de 6 frascos",
+   desc:"Guia educativo que ensina sobre progressão da doença, posiciona suplementação como prevenção e aumenta urgência de tratamento.",
+   conteudo:"• O que está acontecendo na sua próstata (e o que vai acontecer se não agir)\n• Protocolo anti-inflamatório: suplementação + alimentação\n• O que comer e o que EVITAR para saúde prostática\n• Exercícios de soalho pélvico para controle urinário\n• Quando procurar um médico: sinais de alerta",
+   pitch:{l:"Script de pitch",t:"[Nome], posso te mostrar algo que faz toda diferença no resultado do tratamento?\n\nCriamos o 'Guia da Saúde Prostática' — um material que explica exatamente o que está acontecendo e como tratar de forma completa.\n\nEstá incluso no kit de 6 frascos. Quer que eu te envie os detalhes? 🛡️"},
+  },
+ }
+},
+{id:"np",label:"Nervos / Neuropatia",abbr:"NP",icon:"⚙️",acc:"#22c55e",bg:"#dcfce7",txt:"#15803d",
+ prods:[{n:"NervoLyn",r:1},{n:"NervocalmX",r:0},{n:"SciatiRelax",r:0}],
+ cs:[{n:"GlucoRecover",nid:"db",w:"Neuropatia diabética: causa mais comum"},{n:"JointReliveX",nid:"jt",w:"Dor nervosa e articular frequentemente juntas"},{n:"AudiLeaf",nid:"zb",w:"Nervo auditivo também se beneficia"}],
+ sc:{
+  fr:{ctx:"Cliente diz que ainda sente dor, formigamento ou dormência.",ap:"Diagnóstico de tipo/origem → regeneração nervosa é lenta → protocolo 180 dias",
+   msgs:[
+    {l:"Abertura automática",t:"Oi [Nome], recebi sua mensagem e sei o quanto a dor nervosa pode ser exaustiva. ⚙️\n\nEnquanto nosso especialista analisa, me conta: a dor/formigamento é constante ou vem em crises? Em quais partes do corpo?\n\nEstou aqui pra te ajudar de verdade."},
+    {l:"Diagnóstico (humano)",t:"Entendo, [Nome]. Neuropatia é um dos problemas mais frustrantes por ser tão persistente.\n\nVocê tem diabetes, fez quimioterapia ou tem histórico de hérnia/compressão de nervo?\n\nCom essas informações consigo te indicar o caminho mais eficiente."},
+    {l:"Oferta: protocolo 180 dias",t:"[Nome], agora entendo o que está acontecendo.\n\nNervo é o tecido que mais demora pra regenerar — a regeneração acontece de forma lenta mas profunda. O protocolo de 180 dias é onde os resultados se consolidam.\n\nClientes com seu perfil relatam redução significativa na dor a partir do 45º dia contínuo.\n\n⚙️ 6 frascos × $49/frasco + frete grátis\n💰 Economia de $780\n\nPosso gerar o link agora?"},
+   ]},
+  ar:{ctx:"Cliente quer reembolso, perdeu esperança no produto.",ap:"Acolhe frustração → nervo demora → proposta de continuidade",
+   msgs:[
+    {l:"Acolhimento",t:"Oi [Nome], aqui é [nome] da equipe. 🙏\n\nDor nervosa crônica é exaustiva, e entendo por que a impaciência aparece.\n\nPosso te perguntar: o formigamento/dor chegou a variar em intensidade ou frequência durante o uso? Mesmo que pouco?"},
+    {l:"Reframe: regeneração nervosa",t:"[Nome], qualquer variação é sinal de que o nervo está respondendo.\n\nNervo periférico regenera 1-3mm por dia — é matematicamente impossível ter resultado completo em menos de 60-90 dias.\n\nQue tal mais 60 dias com suporte meu e garantia total?"},
+    {l:"Downsell: 3 frascos",t:"[Nome], se preferir:\n\n3 frascos × $72/frasco + frete grátis = $216.\n\nMínimo de 90 dias pra regeneração nervosa real.\n\n*(se não aceitar → reembolso)*"},
+   ]},
+  iv:{ctx:"Cliente acha caro para dor nervosa.",ap:"Custo de dor crônica na qualidade de vida → custo alternativo → kit menor",
+   msgs:[
+    {l:"Custo da dor crônica",t:"[Nome], entendo a preocupação com o valor.\n\nMas a dor nervosa crônica tem um custo diferente: produtividade, sono, qualidade de vida.\n\n$49/frasco = $1,63/dia. Com garantia de 60 dias.\n\nComparado a qualquer medicação convencional pra neuropatia — que tem efeitos colaterais e não trata a causa — é incomparável. 🙏"},
+    {l:"Kit menor",t:"[Nome], temos o kit de 3 frascos por $72/frasco — $216 com frete grátis.\n\n90 dias de protocolo. Mínimo recomendado.\n\nPosso gerar o link?"},
+   ]},
+  ip:{titulo:"Protocolo Anti-Neuropatia",tipo:"Ebook + Vídeo",preco:"$27 — $47",upsell:"Bônus no kit de 6 frascos",
+   desc:"Guia sobre regeneração nervosa que educa o cliente sobre a lentidão do processo, reduz abandono e aumenta adesão ao tratamento completo.",
+   conteudo:"• Como o nervo é danificado e como ele regenera\n• Protocolo anti-inflamatório: suplementação + alimentação\n• O que acelera e o que retarda a regeneração nervosa\n• Exercícios de estimulação nervosa (sem dor)\n• Acompanhamento semanal: como medir sua evolução",
+   pitch:{l:"Script de pitch",t:"[Nome], antes de qualquer decisão — posso te mostrar o que faz diferença no tratamento de neuropatia?\n\nCriamos o 'Protocolo Anti-Neuropatia' — guia que explica exatamente como o nervo regenera e o que fazer pra acelerar.\n\nEstá incluso no kit de 6 frascos. Quer que eu te envie? ⚙️"},
+  },
+ }
+},
+{id:"db",label:"Diabetes / Glicose",abbr:"DB",icon:"🩸",acc:"#ef4444",bg:"#fee2e2",txt:"#b91c1c",
+ prods:[{n:"GlucoRecover",r:1},{n:"GlycePrime",r:0},{n:"SugarDefendX",r:0},{n:"InsuCalmX",r:0}],
+ cs:[{n:"VisiumPro",nid:"vs",w:"Retinopatia diabética: complicação silenciosa"},{n:"NervoLyn",nid:"np",w:"Neuropatia diabética: muito prevalente"},{n:"FloraNew",nid:"gut",w:"Microbioma intestinal regula glicemia"}],
+ sc:{
+  fr:{ctx:"Cliente diz que a glicemia não melhorou ou não sentiu diferença.",ap:"Diagnóstico de hábitos + medicação → educa sobre fisiologia → protocolo 180 dias",
+   msgs:[
+    {l:"Abertura automática",t:"Oi [Nome], recebi sua mensagem e quero cuidar do seu caso com atenção. 🩸\n\nEnquanto nosso especialista analisa, me conta: você monitora a glicemia regularmente? Percebeu alguma variação durante o uso?\n\nEstou aqui pra entender."},
+    {l:"Diagnóstico (humano)",t:"Entendi, [Nome]. Controle glicêmico envolve muitas variáveis.\n\nVocê usa medicação para diabetes? A alimentação variou muito durante o uso?\n\nAlém disso: você mediu a glicemia antes e depois das refeições pra ver as variações ao longo do dia?"},
+    {l:"Oferta: protocolo 180 dias",t:"[Nome], agora está mais claro.\n\nControle glicêmico natural leva de 60 a 90 dias pra mostrar resultados consistentes — pâncreas e fígado precisam de tempo.\n\nClientes no protocolo completo relatam melhora em energia, sono e redução de neuropatia.\n\n🩸 6 frascos × $49/frasco + frete grátis\n💰 Economia de $780\n\nPosso gerar o link?"},
+   ]},
+  ar:{ctx:"Cliente se arrependeu ou quer reembolso.",ap:"Acolhe → explica fisiologia do pâncreas → downsell com acompanhamento",
+   msgs:[
+    {l:"Acolhimento",t:"Oi [Nome], aqui é [nome] da equipe. 🙏\n\nEntendo — diabetes é um problema sério e quando o resultado não vem no ritmo esperado, a frustração é compreensível.\n\nMe conta: a glicemia chegou a variar em algum momento durante o uso, mesmo que pouco?"},
+    {l:"Reframe: fisiologia glicêmica",t:"[Nome], qualquer variação é sinal de resposta.\n\nO pâncreas e os receptores de insulina têm capacidade limitada de se 'resetar' — esse processo leva 60 a 90 dias mínimo.\n\nQue tal 60 dias mais com suporte meu e check-ins semanais de glicemia?"},
+    {l:"Downsell: 3 frascos",t:"[Nome], se preferir:\n\n3 frascos × $72/frasco + frete grátis = $216.\n\nMínimo de 90 dias para resultados glicêmicos reais.\n\n*(se não aceitar → reembolso)*"},
+   ]},
+  iv:{ctx:"Cliente acha caro para suplemento de diabetes.",ap:"Custo de complicações → custo alternativo (insulina, medicamentos) → kit menor",
+   msgs:[
+    {l:"Custo de não tratar",t:"[Nome], entendo completamente.\n\nMas pensa assim: diabetes não controlada leva a cegueira (retinopatia), neuropatia, insuficiência renal e amputações.\n\nInsulinização: $200+/mês. Diálise: $4.000+/mês.\n\nO protocolo completo: $49/frasco × 6 com garantia de 60 dias. 🩸"},
+    {l:"Kit menor",t:"[Nome], temos o kit de 3 frascos por $72/frasco — $216 com frete grátis.\n\n90 dias de protocolo para controle glicêmico.\n\nPosso gerar o link?"},
+   ]},
+  ip:{titulo:"Controle Glicêmico Natural: O Protocolo Completo",tipo:"Programa Online + Monitoramento",preco:"$47 — $77",upsell:"Incluso no kit de 6 frascos ou venda separada",
+   desc:"Programa que combina suplementação com protocolo alimentar anti-glicêmico. Fundamental nesse nicho pois sem mudança alimentar o suplemento tem resultado limitado.",
+   conteudo:"• O que está realmente causando sua resistência à insulina\n• Protocolo alimentar anti-glicêmico: 30 dias de guia\n• Como monitorar glicemia em casa de forma eficaz\n• Exercícios de 15 min que reduzem glicemia imediatamente\n• Prevenção das 4 complicações silenciosas",
+   pitch:{l:"Script de pitch",t:"[Nome], posso te mostrar o que transforma o resultado pra diabéticos?\n\nCriamos um protocolo completo que combina o [produto] com guia alimentar e monitoramento.\n\nClientes que usam o programa junto com a suplementação têm resultados muito mais consistentes.\n\nEstá incluso no kit de 6 frascos. Quer saber mais? 🩸"},
+  },
+ }
+},
+{id:"vs",label:"Visão",abbr:"VS",icon:"👁️",acc:"#0ea5e9",bg:"#e0f2fe",txt:"#0369a1",
+ prods:[{n:"VisiumPro",r:1},{n:"EyeVitalis",r:0},{n:"NeuroRetine",r:0}],
+ cs:[{n:"MaroBrain",nid:"me",w:"Nervo óptico = extensão do cérebro"},{n:"GlucoRecover",nid:"db",w:"Diabetes causa retinopatia"},{n:"NervoLyn",nid:"np",w:"Nervo óptico precisa de suporte neural"}],
+ sc:{
+  fr:{ctx:"Cliente diz que a visão não melhorou ou continua com cansaço/embaçamento.",ap:"Tipo de queixa visual → fisiologia lenta da retina → protocolo 180 dias",
+   msgs:[
+    {l:"Abertura automática",t:"Oi [Nome], recebi sua mensagem sobre o [produto] e quero entender o que aconteceu. 👁️\n\nEnquanto nosso especialista analisa, me conta: sua principal queixa é visão embaçada, cansaço visual, sensibilidade à luz ou flashes?\n\nVou te ajudar a encontrar a solução certa."},
+    {l:"Diagnóstico (humano)",t:"Entendi, [Nome]. Saúde visual é algo que não podemos deixar pra depois.\n\nVocê tem diabetes, pressão alta ou histórico de glaucoma/degeneração macular na família?\n\nAlém disso: você usa tela de computador ou celular por muitas horas por dia?"},
+    {l:"Oferta: protocolo 180 dias",t:"[Nome], com base no que você me contou, agora está claro.\n\nRetina e nervo óptico estão entre os tecidos mais lentos pra responder a suplementação — os resultados mais expressivos aparecem no protocolo de 180 dias.\n\nClientes com esse perfil relatam melhora na nitidez a partir do 2º mês.\n\n👁️ 6 frascos × $49/frasco + frete grátis\n💰 Economia de $780\n\nPosso gerar seu link?"},
+   ]},
+  ar:{ctx:"Cliente se arrependeu ou acha que não vai funcionar.",ap:"Acolhe → gravidade de não tratar → fisiologia da retina → downsell",
+   msgs:[
+    {l:"Acolhimento",t:"Oi [Nome], aqui é [nome] da equipe. Recebi sua solicitação. 🙏\n\nEntendo a dúvida — resultado em visão é sutil no começo.\n\nMe conta: você notou alguma diferença (mesmo mínima) em cansaço, nitidez ou sensibilidade à luz durante o uso?"},
+    {l:"Reframe: impacto de não tratar",t:"[Nome], visão é o sentido mais precioso que temos — e degeneração macular pode progredir silenciosamente.\n\nRetina é tecido nervoso que não regenera com facilidade. Proteger agora é muito mais fácil do que recuperar depois.\n\nQue tal mais 60 dias com suporte meu e garantia total?"},
+    {l:"Downsell: 3 frascos",t:"[Nome], se preferir:\n\n3 frascos × $72/frasco + frete grátis = $216.\n\nMínimo de 90 dias pra resultado real em saúde visual.\n\n*(se não aceitar → reembolso)*"},
+   ]},
+  iv:{ctx:"Cliente acha caro para suplemento de visão.",ap:"Custo de perder a visão → custo cirúrgico → kit menor",
+   msgs:[
+    {l:"Perspectiva de valor",t:"[Nome], eu entendo.\n\nMas pensa: óculos custam $200-500 e precisam ser trocados. Cirurgia a laser: $2.000-$4.000. Tratamento de glaucoma avançado: $500+/mês.\n\nO protocolo completo: $294, uma vez, com garantia. Proteção preventiva é sempre mais barata que tratamento corretivo. 👁️"},
+    {l:"Kit menor",t:"[Nome], temos o kit de 3 frascos por $72/frasco — $216 com frete grátis.\n\n90 dias de protocolo de proteção visual.\n\nPosso gerar o link?"},
+   ]},
+  ip:{titulo:"Visão Nítida: Protocolo de Proteção Ocular",tipo:"Ebook + Exercícios Visuais",preco:"$27 — $47",upsell:"Bônus no kit de 6 frascos",
+   desc:"Guia de saúde ocular que educa sobre progressão de doenças visuais, exercícios de relaxamento e protocolo alimentar. Aumenta urgência de tratamento.",
+   conteudo:"• As 5 ameaças silenciosas à sua visão\n• Protocolo de nutrição ocular: suplementação + alimentação\n• 10 exercícios visuais diários (5 minutos)\n• Como a luz azul danifica sua retina e como se proteger\n• Quando é emergência: sinais que exigem médico imediatamente",
+   pitch:{l:"Script de pitch",t:"[Nome], posso te mostrar algo que vai transformar como você cuida da sua visão?\n\nCriamos o 'Visão Nítida' — guia completo que combina o [produto] com exercícios e protocolo alimentar para saúde ocular.\n\nEstá incluso no kit de 6 frascos. Quer que eu te envie? 👁️"},
+  },
+ }
+},
+{id:"fg",label:"Fungos / Unhas",abbr:"FG",icon:"🍄",acc:"#d97706",bg:"#fef3c7",txt:"#92400e",
+ prods:[{n:"NailsCleanPro",r:1}],
+ cs:[{n:"FloraNew",nid:"gut",w:"Fungo sistêmico tem origem intestinal"},{n:"GlucoRecover",nid:"db",w:"Diabéticos têm maior risco fúngico"},{n:"NervoLyn",nid:"np",w:"Imunodeficiência afeta nervos e unhas"}],
+ sc:{
+  fr:{ctx:"Cliente diz que as unhas não melhoraram ou o fungo voltou.",ap:"Diagnóstico de origem sistêmica → ciclo de crescimento da unha → protocolo 180 dias",
+   msgs:[
+    {l:"Abertura automática",t:"Oi [Nome], recebi sua mensagem sobre o NailsCleanPro e quero te ajudar. 🍄\n\nEnquanto nosso especialista analisa, me conta: as unhas chegaram a mostrar alguma melhora (menos espessamento, cor melhor) durante o uso?\n\nEstou aqui pra entender."},
+    {l:"Diagnóstico (humano)",t:"Entendi, [Nome]. Fungo nas unhas é persistente justamente porque tem raiz sistêmica.\n\nVocê tem diabetes ou usa corticoide regularmente? Frequenta academia, piscina ou ambientes úmidos?\n\nEsse contexto explica muito."},
+    {l:"Oferta: protocolo 180 dias",t:"[Nome], agora ficou claro o que está acontecendo.\n\nFungo nas unhas tem raiz no intestino e no sistema imune. A unha nova demora 6 a 12 meses pra crescer completamente limpa.\n\nO protocolo de 180 dias é onde os clientes relatam unhas completamente limpas.\n\n🍄 6 frascos × $49/frasco + frete grátis\n💰 Economia de $780\n\nPosso gerar o link?"},
+   ]},
+  ar:{ctx:"Cliente pede reembolso, acredita que não adianta.",ap:"Acolhe → ciclo biológico da unha → downsell com explicação",
+   msgs:[
+    {l:"Acolhimento",t:"Oi [Nome], aqui é [nome] da equipe. 🙏\n\nEntendo — fungo nas unhas é frustrante porque o resultado visível demora.\n\nMe conta: as unhas chegaram a ficar menos espessas ou com cor mais clara em algum momento?"},
+    {l:"Reframe: ciclo de crescimento da unha",t:"[Nome], qualquer melhora é sinal de que o fungo está sendo eliminado.\n\nA unha humana cresce 3mm por mês. Uma unha completamente nova demora 9 a 12 meses.\n\nO resultado visível não é instantâneo — é fisiologia. Se você parar agora, o fungo volta.\n\nQue tal mais 60 dias com suporte meu e garantia total?"},
+    {l:"Downsell: 3 frascos",t:"[Nome], se preferir:\n\n3 frascos × $72/frasco + frete grátis = $216.\n\nMínimo de 90 dias pra fungos mais leves.\n\n*(se não aceitar → reembolso)*"},
+   ]},
+  iv:{ctx:"Cliente acha caro para um problema de unhas.",ap:"Comparação com antifúngico oral + laser → kit menor",
+   msgs:[
+    {l:"Comparação com alternativas",t:"[Nome], entendo a preocupação.\n\nAntifúngicos orais de farmácia: $50-100/mês com risco de dano hepático. Tratamento a laser: $200-500 por sessão (várias sessões).\n\nO protocolo: $49/frasco, natural, com garantia de 60 dias. 🍄"},
+    {l:"Kit menor",t:"[Nome], temos o kit de 3 frascos por $72/frasco — $216 com frete grátis.\n\nMínimo para fungos em fase inicial.\n\nPosso gerar o link?"},
+   ]},
+  ip:{titulo:"Anti-Fungo Total: Do Intestino às Unhas",tipo:"Ebook + Protocolo Tópico",preco:"$17 — $37",upsell:"Bônus no kit de 6 frascos",
+   desc:"Guia que explica a origem intestinal do fungo e como combinar suplementação sistêmica com cuidados tópicos. Reduz recidiva e aumenta percepção de resultado.",
+   conteudo:"• Por que o fungo volta (e o que resolver de verdade)\n• O papel do intestino na saúde das unhas\n• Protocolo tópico: o que aplicar + o que evitar\n• Alimentação anti-Candida: alimentos que alimentam o fungo\n• Como desinfetar calçados, meias e ambientes",
+   pitch:{l:"Script de pitch",t:"[Nome], posso te mostrar o que vai garantir que o fungo não volte?\n\nCriamos o 'Anti-Fungo Total' — guia que combina o NailsCleanPro com protocolo tópico e alimentar pra acabar com o ciclo de recidiva.\n\nEstá incluso no kit de 6 frascos. Quer que eu te envie? 🍄"},
+  },
+ }
+},
+{id:"gut",label:"Saúde Intestinal",abbr:"GUT",icon:"🌱",acc:"#16a34a",bg:"#dcfce7",txt:"#14532d",
+ prods:[{n:"FloraNew",r:1},{n:"FloraLiftX",r:0},{n:"GutPrimeX",r:0}],
+ cs:[{n:"LipoBliss",nid:"wl",w:"Microbioma saudável acelera metabolismo"},{n:"GlucoRecover",nid:"db",w:"Intestino regula absorção de glicose"},{n:"NailsCleanPro",nid:"fg",w:"GUT reequilibra flora fúngica sistêmica"}],
+ sc:{
+  fr:{ctx:"Cliente diz que ainda tem inchaço, intestino irregular ou não melhorou.",ap:"Diagnóstico de hábito alimentar → tempo de recolonização → protocolo 180 dias",
+   msgs:[
+    {l:"Abertura automática",t:"Oi [Nome], recebi sua mensagem sobre o [produto] e quero entender. 🌱\n\nEnquanto nosso especialista analisa, me conta: seus principais sintomas eram inchaço, intestino preso, diarreia ou gases?\n\nVou te ajudar a encontrar a solução certa."},
+    {l:"Diagnóstico (humano)",t:"Entendi, [Nome]. Saúde intestinal é a base de tudo no corpo.\n\nVocê usou antibiótico nos últimos 2 anos? Tem intolerância alimentar conhecida?\n\nAlém disso: você manteve a alimentação durante o uso? Isso impacta muito o resultado do probiótico."},
+    {l:"Oferta: protocolo 180 dias",t:"[Nome], com base no que você me contou, entendi o que está acontecendo.\n\nRecolonização intestinal é gradual — a microbiota se reequilibra ao longo de 90 a 180 dias.\n\nClientes que completaram o protocolo relataram melhora intestinal, energia, pele, imunidade e até perda de peso.\n\n🌱 6 frascos × $49/frasco + frete grátis\n💰 Economia de $780\n\nPosso gerar o link?"},
+   ]},
+  ar:{ctx:"Cliente se arrependeu da compra ou quer reembolso.",ap:"Acolhe → saúde intestinal é base de tudo → downsell",
+   msgs:[
+    {l:"Acolhimento",t:"Oi [Nome], aqui é [nome] da equipe. 🙏\n\nEntendo — saúde intestinal às vezes parece abstrata quando esperamos resultados visíveis.\n\nMe conta: você chegou a perceber alguma mudança (mesmo pequena) no trânsito intestinal, inchaço ou energia?"},
+    {l:"Reframe: intestino como base",t:"[Nome], a microbiota intestinal controla imunidade, humor, peso e energia. Reequilibrá-la leva tempo — mas os efeitos se espalham por todo o corpo.\n\nQue tal mais 60 dias com suporte meu? Se não sentir diferença, processo tudo."},
+    {l:"Downsell: 3 frascos",t:"[Nome], se preferir:\n\n3 frascos × $72/frasco + frete grátis = $216.\n\nMínimo de 90 dias para recolonização intestinal real.\n\n*(se não aceitar → reembolso)*"},
+   ]},
+  iv:{ctx:"Cliente acha caro para um probiótico.",ap:"Custo de intestino desregulado → comparação com farmácia → kit menor",
+   msgs:[
+    {l:"Perspectiva de valor",t:"[Nome], entendo.\n\nUm probiótico de farmácia de qualidade: $50-80/mês, poucas cepas, sem garantia.\n\nAqui: 18+ cepas probióticas, garantia de 60 dias, $49/frasco.\n\nIntestino desregulado gera gastos frequentes em consultas e medicamentos pra sintomas — sem tratar a causa. 🌱"},
+    {l:"Kit menor",t:"[Nome], temos o kit de 3 frascos por $72/frasco — $216 com frete grátis.\n\nMínimo de 90 dias de reequilíbrio intestinal.\n\nPosso gerar o link?"},
+   ]},
+  ip:{titulo:"Reset Intestinal 30 Dias",tipo:"Programa Online + Receitas",preco:"$27 — $57",upsell:"Bônus no kit de 6 frascos ou venda separada para leads interessados",
+   desc:"Programa guiado de reequilíbrio intestinal com protocolo alimentar anti-inflamatório, receitas e suplementação. Fundamental para resultado — sem dieta, o probiótico tem efeito limitado.",
+   conteudo:"• O mapa da sua microbiota: como está e como deveria estar\n• Reset alimentar 30 dias: o que comer + o que cortar\n• 30 receitas anti-inflamatórias e pró-microbioma\n• Fibras, prebióticos e probióticos: como combinar\n• Estresse e intestino: o eixo que ninguém conta",
+   pitch:{l:"Script de pitch",t:"[Nome], posso te mostrar o que faz a diferença real no resultado do [produto]?\n\nSem ajuste alimentar, o probiótico tem efeito limitado — você continua alimentando as bactérias ruins.\n\nCriamos o 'Reset Intestinal 30 Dias' — programa que combina o suplemento com alimentação específica.\n\nEstá incluso no kit de 6 frascos. Quer saber mais? 🌱"},
+  },
+ }
+},
+{id:"pl",label:"Pulmão / Respiração",abbr:"PL",icon:"💨",acc:"#06b6d4",bg:"#cffafe",txt:"#0e7490",
+ prods:[{n:"BreathEaseX",r:1},{n:"BreathEaseX+CardioEaseX",r:1},{n:"BreathOxyX",r:0},{n:"PulmoAirX",r:0},{n:"BronchCalm",r:0}],
+ cs:[{n:"FloraNew",nid:"gut",w:"Eixo intestino-pulmão: imunidade respiratória"},{n:"NervoLyn",nid:"np",w:"Nervos respiratórios precisam de suporte"},{n:"PressureCalmX",nid:"x",w:"Pack cardiovascular completo"}],
+ sc:{
+  fr:{ctx:"Cliente diz que ainda tem dificuldade respiratória, tosse ou cansaço.",ap:"Diagnóstico de histórico → tecido pulmonar demora → protocolo 180 dias",
+   msgs:[
+    {l:"Abertura automática",t:"Oi [Nome], recebi sua mensagem e sei o quanto a dificuldade respiratória afeta a qualidade de vida. 💨\n\nEnquanto nosso especialista analisa, me conta: sua principal queixa é falta de ar, tosse crônica, chiado ou muco excessivo?\n\nEstou aqui pra te ajudar."},
+    {l:"Diagnóstico (humano)",t:"Entendi, [Nome]. Saúde pulmonar é fundamental.\n\nVocê é fumante ou ex-fumante? Tem histórico de asma, bronquite ou DPOC?\n\nAlém disso: vive em cidade com poluição intensa ou trabalha em ambiente com poeira?"},
+    {l:"Oferta: protocolo 180 dias",t:"[Nome], com o que você me contou, ficou muito claro.\n\nTecido pulmonar — especialmente com histórico de tabagismo ou inflamação — é um dos que mais demandam tempo pra responder.\n\nO protocolo de 180 dias é onde os clientes relatam melhora real em capacidade respiratória.\n\n💨 6 frascos × $49/frasco + frete grátis\n💰 Economia de $780\n\nPosso gerar o link?"},
+   ]},
+  ar:{ctx:"Cliente pede reembolso ou está descrente.",ap:"Acolhe → progressão lenta do pulmão → downsell",
+   msgs:[
+    {l:"Acolhimento",t:"Oi [Nome], aqui é [nome] da equipe. 🙏\n\nEntendo — respiração difícil afeta cada momento do dia, e a espera por resultado esgota.\n\nMe conta: durante o uso, você chegou a perceber algum momento em que respirar ficou um pouco mais fácil?"},
+    {l:"Reframe: regeneração pulmonar",t:"[Nome], qualquer melhora é regeneração real acontecendo.\n\nO pulmão regenera mais rápido quando você para de agredir — mas o tecido danificado precisa de tempo.\n\nQue tal mais 60 dias com suporte meu e garantia total?"},
+    {l:"Downsell",t:"[Nome], se preferir:\n\n3 frascos × $72/frasco + frete grátis = $216.\n\nMínimo de 90 dias para suporte pulmonar real.\n\n*(se não aceitar → reembolso)*"},
+   ]},
+  iv:{ctx:"Cliente acha caro para suplemento respiratório.",ap:"Custo de DPOC/asma → broncodilatadores → kit menor",
+   msgs:[
+    {l:"Custo de não tratar",t:"[Nome], entendo.\n\nBroncodilatadores e corticoides inalatórios: $80-200/mês com dependência.\n\nOxigenoterapia domiciliar (DPOC avançado): $400-800/mês.\n\nO protocolo: $49/frasco, natural, com garantia de 60 dias. 💨"},
+    {l:"Kit menor",t:"[Nome], temos o kit de 3 frascos por $72/frasco — $216 com frete grátis.\n\nMínimo de 90 dias de suporte pulmonar.\n\nPosso gerar o link?"},
+   ]},
+  ip:{titulo:"Respiração Livre: Protocolo Pulmonar",tipo:"Ebook + Exercícios de Respiração",preco:"$27 — $47",upsell:"Bônus no kit de 6 frascos",
+   desc:"Guia com exercícios de respiração diafragmática, protocolo anti-inflamatório e suplementação. Complementa o produto e acelera resultado percebido.",
+   conteudo:"• Como o pulmão funciona (e como está sendo danificado)\n• Protocolo anti-inflamatório respiratório\n• 10 exercícios de respiração diafragmática\n• O que comer e o que evitar pra saúde pulmonar\n• Para ex-fumantes: protocolo de recuperação acelerada",
+   pitch:{l:"Script de pitch",t:"[Nome], posso te mostrar o que potencializa o resultado do [produto]?\n\nCriamos a 'Respiração Livre' — guia com exercícios e protocolo alimentar que combinam com o suplemento.\n\nEstá incluso no kit de 6 frascos. Quer que eu te envie? 💨"},
+  },
+ }
+},
+{id:"jt",label:"Articulações",abbr:"JT",icon:"🦴",acc:"#64748b",bg:"#f1f5f9",txt:"#334155",
+ prods:[{n:"MotionPrimeX",r:0},{n:"JointReliveX",r:0}],
+ cs:[{n:"NervoLyn",nid:"np",w:"Dor articular tem componente nervoso"},{n:"CalciumStrength",nid:"x",w:"Osso forte = articulação protegida"},{n:"TurmeriJointz",nid:"x",w:"Anti-inflamatório natural amplifica resultado"}],
+ sc:{
+  fr:{ctx:"Cliente diz que ainda sente dor ou rigidez nas articulações.",ap:"Diagnóstico de tipo/condição → regeneração lenta de cartilagem → protocolo 180 dias",
+   msgs:[
+    {l:"Abertura automática",t:"Oi [Nome], recebi sua mensagem e sei o quanto a dor nas articulações limita o dia a dia. 🦴\n\nEnquanto nosso especialista analisa, me conta: qual articulação te incomoda mais? Joelho, quadril, coluna, mãos?\n\nEstou aqui pra te ajudar."},
+    {l:"Diagnóstico (humano)",t:"Entendi, [Nome]. Dor articular crônica é exaustiva e impacta tudo.\n\nVocê tem diagnóstico de artrose, artrite ou osteoporose? Já fez fisioterapia?\n\nO problema principal é mais dor, rigidez matinal ou perda de mobilidade?"},
+    {l:"Oferta: protocolo 180 dias",t:"[Nome], com o que você me contou, ficou claro o melhor caminho.\n\nCartilagem e líquido sinovial regeneram muito lentamente. O protocolo de 180 dias é onde os resultados se consolidam.\n\nClientes com seu perfil relatam melhora na mobilidade a partir do 45º dia contínuo.\n\n🦴 6 frascos × $49/frasco + frete grátis\n💰 Economia de $780\n\nPosso gerar o link?"},
+   ]},
+  ar:{ctx:"Cliente se arrependeu ou pede reembolso.",ap:"Acolhe → cartilagem é tecido lento → downsell",
+   msgs:[
+    {l:"Acolhimento",t:"Oi [Nome], aqui é [nome] da equipe. 🙏\n\nEntendo — dor crônica cansa, e quando o resultado não vem rápido a frustração é compreensível.\n\nMe conta: você chegou a perceber algum momento de dor um pouco menor ou mobilidade levemente melhor?"},
+    {l:"Reframe: cartilagem",t:"[Nome], qualquer melhora é cartilagem se regenerando — é real.\n\nCartilagem não tem vasos sanguíneos — recebe nutrição por difusão. É um processo lento mas profundo.\n\nParar agora seria desperdiçar o que já foi construído.\n\nQue tal mais 60 dias com suporte meu?"},
+    {l:"Downsell",t:"[Nome], se preferir:\n\n3 frascos × $72/frasco + frete grátis = $216.\n\nMínimo de 90 dias para regeneração articular real.\n\n*(se não aceitar → reembolso)*"},
+   ]},
+  iv:{ctx:"Cliente acha caro para suplemento de articulação.",ap:"Custo de cirurgia/fisioterapia → kit menor",
+   msgs:[
+    {l:"Custo de não tratar",t:"[Nome], entendo.\n\nArtroplastia (cirurgia de joelho ou quadril): $8.000-15.000. Fisioterapia: $100-200/sessão. Infiltração de ácido hialurônico: $300-600/aplicação.\n\nO protocolo: $294, uma vez, com garantia. Prevenção é sempre mais barata que cirurgia. 🦴"},
+    {l:"Kit menor",t:"[Nome], temos o kit de 3 frascos por $72/frasco — $216 com frete grátis.\n\nMínimo de 90 dias para saúde articular.\n\nPosso gerar o link?"},
+   ]},
+  ip:{titulo:"Articulações Livres: Protocolo Anti-Inflamatório",tipo:"Ebook + Vídeo de Exercícios",preco:"$27 — $47",upsell:"Bônus no kit de 6 frascos",
+   desc:"Guia com protocolo anti-inflamatório, exercícios de baixo impacto e alimentação pró-cartilagem. O movimento correto é tão importante quanto a suplementação.",
+   conteudo:"• O que está destruindo sua cartilagem (e como parar)\n• Protocolo anti-inflamatório: suplementação + alimentação\n• 15 exercícios de baixo impacto pra cada articulação\n• Anti-inflamatórios naturais que funcionam de verdade\n• Como proteger suas articulações nas atividades do dia a dia",
+   pitch:{l:"Script de pitch",t:"[Nome], posso te mostrar o que complementa perfeitamente o resultado do [produto]?\n\nCriamos 'Articulações Livres' — guia com exercícios específicos e protocolo alimentar que potencializa a regeneração articular.\n\nEstá incluso no kit de 6 frascos. Quer que eu te envie? 🦴"},
+  },
+ }
+},
+];
+
+// ── STATE ──
+let cN=N[0].id,cT="fr",cpK=null;
+const TABS=[{id:"fr",lbl:"❌ Não Funcionou"},{id:"ar",lbl:"😔 Arrependimento"},{id:"iv",lbl:"💸 Inseg. de Valor"},{id:"ip",lbl:"📦 Infoproduto"}];
+
+// ── HELPERS ──
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
+function rgba(h,a){const r=parseInt(h.slice(1,3),16),g=parseInt(h.slice(3,5),16),b=parseInt(h.slice(5,7),16);return`rgba(${r},${g},${b},${a})`}
+
+// ── HELPERS ──
+function h(tag,attrs,inner){
+  var a=Object.keys(attrs).map(function(k){return k+'="'+attrs[k]+'"';}).join(" ");
+  return "<"+tag+(a?" "+a:"")+">"+inner+"</"+tag+">";
+}
+function btn(cls,onclick,style,inner){
+  return '<button class="'+cls+'" onclick="'+onclick+'" style="'+style+'">'+inner+'</button>';
+}
+
+// ── SIDEBAR ──
+function rSB(){
+  var tot=N.reduce(function(s,n){return s+n.prods.length;},0);
+  var rdy=N.reduce(function(s,n){return s+n.prods.filter(function(p){return p.r;}).length;},0);
+  document.getElementById("stat-prod").textContent=tot;
+  document.getElementById("stat-ready").textContent=rdy;
+  document.getElementById("stat-dev").textContent=tot-rdy;
+  document.getElementById("sb-nichos").innerHTML=N.map(function(n){
+    var a=n.id===cN;
+    var r=n.prods.filter(function(p){return p.r;}).length;
+    var iconBg=a?n.acc:rgba(n.acc,.15);
+    var iconFilter=a?"brightness(10)":"none";
+    var borderStyle=a?"border-left-color:"+n.acc+";background:#0f172a":"";
+    var nameStyle=a?"color:#f1f5f9;font-weight:600":"";
+    var progStyle=a?"color:"+n.acc:"";
+    return '<button class="nb'+(a?" active":"")+'" onclick="gN(\''+n.id+'\')" style="'+borderStyle+'">'
+      +'<div class="nb-icon" style="background:'+iconBg+'"><span style="filter:'+iconFilter+'">'+n.icon+'</span></div>'
+      +'<div class="nb-info">'
+      +'<div class="nb-name" style="'+nameStyle+'">'+n.label+'</div>'
+      +'<div class="nb-prog" style="'+progStyle+'">'+r+'/'+n.prods.length+' ativos</div>'
+      +'</div></button>';
+  }).join("");
+}
+
+// ── PRICING ──
+function rPR(){
+  var cards=PRICING.map(function(p){
+    var cls="pc"+(p.ft?" ft":"");
+    var lbl=p.label+(p.ft?'<span class="best-tag">MELHOR</span>':"");
+    var ship=p.frete?'<div class="pc-ship">✓ Frete grátis</div>':'<div style="font-size:10px;color:#64748b;margin-top:2px">+ frete</div>';
+    return '<div class="'+cls+'">'
+      +'<div class="pc-lbl">'+lbl+'</div>'
+      +'<div class="pc-price">$'+p.price+'<span class="pc-unit">/frasco</span></div>'
+      +'<div class="pc-info">'+p.bottles+' frascos &bull; '+p.supply+' &bull; $'+p.total+' total</div>'
+      +'<div class="pc-save">Economize $'+p.save+'</div>'
+      +ship+'</div>';
+  }).join("");
+  return '<div class="pricing">'+cards+'</div>';
+}
+
+// ── SCRIPT CARD ──
+// Store texts globally indexed by key for onclick retrieval
+var _scripts={};
+function sCard(m,i,k){
+  var n=N.find(function(x){return x.id===cN;});
+  var key=cN+"-"+k+"-"+i;
+  _scripts[key]=m.t;
+  var ok=cpK===key;
+  var btnCls="cp-btn"+(ok?" ok":"");
+  var btnTxt=ok?"✓ Copiado":"📋 Copiar";
+  return '<div class="sk">'
+    +'<div class="sk-hd">'
+    +'<div style="display:flex;align-items:center;flex:1">'
+    +'<div class="sk-num" style="background:'+n.acc+'">'+(i+1)+'</div>'
+    +'<div class="sk-lbl">'+esc(m.l)+'</div>'
+    +'</div>'
+    +'<button class="'+btnCls+'" onclick="cpS(\''+key+'\')">'+btnTxt+'</button>'
+    +'</div>'
+    +'<div class="sk-body">'+esc(m.t)+'</div>'
+    +'</div>';
+}
+
+// ── MAIN ──
+function rM(){
+  var n=N.find(function(x){return x.id===cN;});
+  var rdy=n.prods.filter(function(p){return p.r;}).length;
+
+  var prods='<div class="prod-row">'+n.prods.map(function(p){
+    var cls="pb "+(p.r?"r":"w");
+    var style=p.r?"background:"+n.acc:"";
+    return '<span class="'+cls+'" style="'+style+'">'+p.n+(p.r?"":" 🔄")+'</span>';
+  }).join("")+'</div>';
+
+  var tabs='<div class="tab-nav">'+TABS.map(function(t){
+    var active=cT===t.id;
+    var cls="tb"+(active?" active":"");
+    var style=active?"background:"+n.acc:"";
+    return '<button class="'+cls+'" onclick="gT(\''+t.id+'\')" style="'+style+'">'+t.lbl+'</button>';
+  }).join("")+'</div>';
+
+  var body="";
+  if(cT==="ip"){
+    var ip=n.sc.ip;
+    body='<div class="info-card">'
+      +'<div class="info-hd">'
+      +'<div class="info-format-tag" style="background:'+rgba(n.acc,.15)+';color:'+n.txt+'">'+esc(ip.tipo)+'</div>'
+      +'<div class="info-title">'+esc(ip.titulo)+'</div>'
+      +'<div class="info-desc">'+esc(ip.desc)+'</div>'
+      +'</div>'
+      +'<div class="info-body">'
+      +'<div class="info-meta">'
+      +'<div class="im-item"><div class="im-lbl">Preço sugerido</div><div class="im-val">'+esc(ip.preco)+'</div></div>'
+      +'<div class="im-item"><div class="im-lbl">Formato</div><div class="im-val">'+esc(ip.tipo)+'</div></div>'
+      +'<div class="im-item"><div class="im-lbl">Estratégia de uso</div><div class="im-val">'+esc(ip.upsell)+'</div></div>'
+      +'</div>'
+      +'<div class="info-content">'
+      +'<div class="info-content-title">Conteúdo sugerido</div>'
+      +'<div class="info-content-list">'+esc(ip.conteudo)+'</div>'
+      +'</div>'
+      +'<div class="slbl">Script de pitch do infoproduto</div>'
+      +sCard(ip.pitch,0,"ip")
+      +'</div></div>';
+  } else {
+    var sc=n.sc[cT];
+    var csCards=n.cs.map(function(c){
+      var t=N.find(function(x){return x.id===c.nid;});
+      var tb=t?t.bg:"#f1f5f9";
+      var tt=t?t.txt:"#334155";
+      var onclick=t?"gN('"+c.nid+"')":"";
+      var style=t?"":"cursor:default";
+      return '<div class="cs-card" onclick="'+onclick+'" style="'+style+'">'
+        +'<div class="cs-name">'+esc(c.n)+'</div>'
+        +'<span class="cs-nbadge" style="background:'+tb+';color:'+tt+'">'+c.nid.toUpperCase()+'</span>'
+        +'<div class="cs-why">'+esc(c.w)+'</div>'
+        +'</div>';
+    }).join("");
+    body='<div class="scenario-box">'
+      +'<div class="sc-title">Contexto do atendimento</div>'
+      +'<div class="sc-ctx">'+esc(sc.ctx)+'</div>'
+      +'<div class="sc-approach" style="background:'+rgba(n.acc,.1)+';color:'+n.txt+'">→ Abordagem: '+esc(sc.ap)+'</div>'
+      +'</div>'
+      +'<div class="slbl">Scripts prontos para copiar</div>'
+      +sc.msgs.map(function(m,i){return sCard(m,i,cT);}).join("")
+      +'<div class="slbl">Cross-sells recomendados para este nicho</div>'
+      +'<div class="cs-grid">'+csCards+'</div>';
+  }
+
+  var metaS=rdy!==1?"s":"";
+  var header='<div class="nh">'
+    +'<div class="nh-icon" style="background:'+rgba(n.acc,.15)+'">'+n.icon+'</div>'
+    +'<div>'
+    +'<div><span class="nh-name">'+n.label+'</span>'
+    +'<span class="nh-badge" style="background:'+rgba(n.acc,.15)+';color:'+n.txt+'">'+n.abbr+'</span></div>'
+    +'<div class="nh-meta">'+rdy+' produto'+metaS+' ativo'+metaS+' &bull; '+(n.prods.length-rdy)+' em desenvolvimento</div>'
+    +'</div></div>';
+
+  document.getElementById("content").innerHTML=header+prods+rPR()+tabs+body;
+}
+
+window.gN=function(id){cN=id;cT="fr";rSB();rM();}
+window.gT=function(id){cT=id;rM();}
+window.cpS=function(key){
+  var t=_scripts[key]||"";
+  try{navigator.clipboard.writeText(t);}catch(e){}
+  cpK=key;rM();setTimeout(function(){cpK=null;rM();},2200);
+}
+rSB();rM();
+</script>
+</body>
+</html>
