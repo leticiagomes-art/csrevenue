@@ -4,128 +4,191 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>CS Revenue Playbook — Nutraceutical USA (Email / Freshdesk)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
 <style>
+/* ============================================================
+   THEME SYSTEM — variáveis semânticas
+   Default (:root) = WHITE theme | [data-theme="dark"] = DARK theme
+   Cores de nicho/estratégia (acentos) permanecem inline no JS,
+   pois são cores de dados e funcionam nos dois temas.
+   ============================================================ */
+:root{
+  /* sidebar */
+  --sb-bg:#ffffff; --sb-border:#e2e8f0; --sb-title:#0f172a; --sb-sub:#94a3b8;
+  --sb-lbl:#94a3b8; --sb-stat-bg:#f1f5f9; --sb-stat-n:#0f172a; --sb-stat-l:#94a3b8;
+  --nb-name:#475569; --nb-name-active:#0f172a; --nb-hover:#f1f5f9; --nb-active:#f1f5f9;
+  --nb-prog:#94a3b8; --nb-icon-idle:rgba(14,116,144,.12);
+  /* main */
+  --main-bg:#f0f4f8; --surface:#ffffff; --surface-2:#f8fafc; --surface-3:#fcfdfe;
+  --border:#e2e8f0; --border-soft:#f1f5f9;
+  --text:#0f172a; --text-2:#475569; --text-3:#64748b; --text-4:#94a3b8;
+  --shadow:rgba(0,0,0,.06); --shadow-soft:rgba(0,0,0,.04);
+  --hero-from:#0f172a; --hero-to:#1e293b; --hero-text:#cbd5e1;
+  --code-bg:#f1f5f9; --scroll-thumb:#cbd5e1;
+  --accent:#0e7490; --accent-soft:#cffafe;
+  /* badges / callouts mantêm cor própria */
+}
+[data-theme="dark"]{
+  --sb-bg:#060b14; --sb-border:#0f172a; --sb-title:#f8fafc; --sb-sub:#334155;
+  --sb-lbl:#1e3a5f; --sb-stat-bg:#0f172a; --sb-stat-n:#f8fafc; --sb-stat-l:#475569;
+  --nb-name:#64748b; --nb-name-active:#f1f5f9; --nb-hover:#0f172a; --nb-active:#0f172a;
+  --nb-prog:#1e3a5f; --nb-icon-idle:rgba(14,116,144,.15);
+  --main-bg:#0a1120; --surface:#0f172a; --surface-2:#111c30; --surface-3:#0d1626;
+  --border:#1e293b; --border-soft:#16223a;
+  --text:#f1f5f9; --text-2:#cbd5e1; --text-3:#94a3b8; --text-4:#64748b;
+  --shadow:rgba(0,0,0,.4); --shadow-soft:rgba(0,0,0,.3);
+  --hero-from:#0e7490; --hero-to:#155e75; --hero-text:#cbd5e1;
+  --code-bg:#1e293b; --scroll-thumb:#334155;
+  --accent:#22d3ee; --accent-soft:#164e63;
+}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,sans-serif;display:flex;height:100vh;overflow:hidden;background:#060b14;color:#e2e8f0}
-::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:#1e293b;border-radius:4px}
-#sb{width:256px;background:#060b14;border-right:1px solid #0f172a;overflow-y:auto;flex-shrink:0;display:flex;flex-direction:column}
-.sb-hd{padding:18px 16px 14px;border-bottom:1px solid #0f172a}
-.sb-title{font-size:13px;font-weight:800;color:#f8fafc;letter-spacing:-.02em}
-.sb-sub{font-size:10px;color:#334155;margin-top:2px;line-height:1.5}
+body{font-family:'Nunito',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,sans-serif;display:flex;height:100vh;overflow:hidden;background:var(--sb-bg);color:var(--text);transition:background .25s,color .25s;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--scroll-thumb);border-radius:4px}
+#sb{width:280px;background:var(--sb-bg);border-right:1px solid var(--sb-border);overflow-y:auto;flex-shrink:0;display:flex;flex-direction:column;transition:background .25s,border-color .25s}
+.sb-hd{padding:18px 16px 14px;border-bottom:1px solid var(--sb-border)}
+.sb-title{font-size:15.5px;font-weight:800;color:var(--sb-title);letter-spacing:-.02em}
+.sb-sub{font-size:12.5px;color:var(--sb-sub);margin-top:2px;line-height:1.5}
 .sb-stats{display:flex;gap:7px;margin-top:11px}
-.sb-stat{background:#0f172a;border-radius:7px;padding:7px 8px;flex:1;text-align:center}
-.sb-stat-n{font-size:15px;font-weight:900;color:#f8fafc}
-.sb-stat-l{font-size:8.5px;color:#475569;margin-top:1px}
-.sb-lbl{font-size:9px;font-weight:700;color:#1e3a5f;letter-spacing:.1em;text-transform:uppercase;padding:13px 16px 5px}
+.sb-stat{background:var(--sb-stat-bg);border-radius:7px;padding:7px 8px;flex:1;text-align:center}
+.sb-stat-n{font-size:18px;font-weight:900;color:var(--sb-stat-n)}
+.sb-stat-l{font-size:11px;color:var(--sb-stat-l);margin-top:1px}
+.sb-lbl{font-size:11.5px;font-weight:700;color:var(--sb-lbl);letter-spacing:.1em;text-transform:uppercase;padding:13px 16px 5px}
+/* toggle de tema */
+.theme-toggle{display:flex;gap:4px;margin:10px 12px 4px;background:var(--sb-stat-bg);border-radius:9px;padding:3px}
+.tt-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:5px;border:none;background:transparent;cursor:pointer;font-size:13px;font-weight:600;color:var(--nb-name);padding:6px 4px;border-radius:7px;font-family:inherit;transition:all .15s}
+.tt-btn.on{background:var(--surface);color:var(--text);box-shadow:0 1px 3px var(--shadow)}
+.tt-btn:hover:not(.on){color:var(--nb-name-active)}
 .nb{display:flex;align-items:center;gap:9px;width:100%;padding:7px 12px 7px 14px;border:none;background:transparent;cursor:pointer;text-align:left;border-left:2px solid transparent;transition:all .12s}
-.nb:hover{background:#0f172a}.nb.active{background:#0f172a}
-.nb-icon{width:27px;height:27px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.nb:hover{background:var(--nb-hover)}.nb.active{background:var(--nb-active)}
+.nb-icon{width:27px;height:27px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:16.5px;flex-shrink:0}
 .nb-info{flex:1;min-width:0}
-.nb-name{font-size:11px;color:#64748b;font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.35}
-.nb.active .nb-name{color:#f1f5f9;font-weight:600}
-.nb-prog{font-size:9px;color:#1e3a5f;margin-top:1px}
-.tag-badge{display:inline-block;font-size:8.5px;font-weight:700;padding:1px 7px;border-radius:8px;margin-top:2px}
-#main{flex:1;overflow-y:auto;background:#f0f4f8}
-.mi{padding:22px 24px 56px;max-width:920px}
-.nh{display:flex;align-items:center;gap:14px;padding:18px 20px;background:white;border-radius:14px;margin-bottom:14px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
-.nh-icon{width:50px;height:50px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:25px;flex-shrink:0}
-.nh-name{font-size:19px;font-weight:800;color:#0f172a;letter-spacing:-.03em}
-.nh-badge{display:inline-flex;align-items:center;font-size:9px;font-weight:800;padding:2px 8px;border-radius:12px;margin-left:7px;vertical-align:middle;letter-spacing:.04em}
-.nh-meta{font-size:11px;color:#64748b;margin-top:3px}
+.nb-name{font-size:13.5px;color:var(--nb-name);font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.35}
+.nb.active .nb-name{color:var(--nb-name-active);font-weight:600}
+.nb-prog{font-size:11.5px;color:var(--nb-prog);margin-top:1px}
+.tag-badge{display:inline-block;font-size:11px;font-weight:700;padding:1px 7px;border-radius:8px;margin-top:2px}
+#main{flex:1;overflow-y:auto;background:var(--main-bg);transition:background .25s}
+.mi{padding:24px 28px 60px;max-width:980px}
+.nh{display:flex;align-items:center;gap:14px;padding:18px 20px;background:var(--surface);border-radius:14px;margin-bottom:14px;box-shadow:0 1px 4px var(--shadow)}
+.nh-icon{width:50px;height:50px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:30px;flex-shrink:0}
+.nh-name{font-size:23px;font-weight:800;color:var(--text);letter-spacing:-.03em}
+.nh-badge{display:inline-flex;align-items:center;font-size:11.5px;font-weight:800;padding:2px 8px;border-radius:12px;margin-left:7px;vertical-align:middle;letter-spacing:.04em}
+.nh-meta{font-size:13.5px;color:var(--text-3);margin-top:3px}
 .prod-row{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:13px}
-.pb{font-size:10.5px;font-weight:600;padding:3px 10px;border-radius:20px;white-space:nowrap}
-.pb.r{color:white}.pb.w{background:#f1f5f9;color:#94a3b8;border:1px solid #e2e8f0}
+.pb{font-size:13px;font-weight:600;padding:3px 10px;border-radius:20px;white-space:nowrap}
+.pb.r{color:white}.pb.w{background:var(--surface-2);color:var(--text-4);border:1px solid var(--border)}
 .pricing{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;margin-bottom:16px}
-.pc{background:white;border:1px solid #e2e8f0;border-radius:12px;padding:12px 13px}
+.pc{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 13px}
 .pc.ft{background:#0f172a;border-color:#0f172a}
-.pc-lbl{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#94a3b8}
+.pc-lbl{font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--text-4)}
 .pc.ft .pc-lbl{color:#cbd5e1}
-.best-tag{display:inline-block;font-size:8px;font-weight:800;background:#10b981;color:white;padding:1px 6px;border-radius:8px;margin-left:4px;vertical-align:1px}
-.pc-price{font-size:22px;font-weight:900;color:#0f172a;letter-spacing:-.04em;margin-top:3px}
+.best-tag{display:inline-block;font-size:11px;font-weight:800;background:#10b981;color:white;padding:1px 6px;border-radius:8px;margin-left:4px;vertical-align:1px}
+.pc-price{font-size:27px;font-weight:900;color:var(--text);letter-spacing:-.04em;margin-top:3px}
 .pc.ft .pc-price{color:white}
-.pc-unit{font-size:10px;font-weight:400;color:#94a3b8}
-.pc-info{font-size:10px;color:#94a3b8;margin-top:3px}
+.pc-unit{font-size:12.5px;font-weight:400;color:#94a3b8}
+.pc-info{font-size:12.5px;color:var(--text-4);margin-top:3px}
 .pc.ft .pc-info{color:#94a3b8}
-.pc-save{font-size:10px;font-weight:700;color:#10b981;margin-top:2px}
-.pc-ship{font-size:10px;font-weight:600;color:#10b981;margin-top:1px}
-.tab-nav{display:flex;gap:3px;background:white;padding:4px;border-radius:12px;margin-bottom:14px;box-shadow:0 1px 3px rgba(0,0,0,.05);flex-wrap:wrap}
-.tb{flex:1;padding:8px 6px;border:none;background:transparent;cursor:pointer;font-size:10.5px;font-weight:500;color:#64748b;border-radius:9px;transition:all .12s;white-space:nowrap;min-width:90px}
-.tb:hover{background:#f1f5f9;color:#0f172a}.tb.active{font-weight:700;color:white}
-.scenario-box{background:white;border-radius:12px;padding:14px 16px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.sc-title{font-size:11px;font-weight:800;color:#0f172a;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
-.sc-ctx{font-size:12px;color:#64748b;line-height:1.65;margin-bottom:8px}
-.sc-approach{font-size:11.5px;font-weight:600;padding:7px 11px;border-radius:8px;line-height:1.5}
-.sk{background:white;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;margin-bottom:9px}
-.sk-hd{display:flex;justify-content:space-between;align-items:center;padding:9px 13px;background:#f8fafc;border-bottom:1px solid #e2e8f0;gap:8px}
-.sk-num{width:19px;height:19px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;flex-shrink:0;color:white}
-.sk-lbl{font-size:11px;font-weight:600;color:#374151;margin-left:8px;flex:1}
-.cp-btn{display:flex;align-items:center;gap:4px;padding:3px 9px;border-radius:6px;border:1px solid #e2e8f0;background:white;color:#64748b;font-size:10.5px;cursor:pointer;transition:all .12s;font-family:inherit;white-space:nowrap;flex-shrink:0}
-.cp-btn:hover{border-color:#94a3b8;color:#0f172a}.cp-btn.ok{border-color:#10b981;background:#ecfdf5;color:#059669}
+.pc-save{font-size:12.5px;font-weight:700;color:#10b981;margin-top:2px}
+.pc-ship{font-size:12.5px;font-weight:600;color:#10b981;margin-top:1px}
+.tab-nav{display:flex;gap:3px;background:var(--surface);padding:4px;border-radius:12px;margin-bottom:14px;box-shadow:0 1px 3px var(--shadow-soft);flex-wrap:wrap}
+.tb{flex:1;padding:8px 6px;border:none;background:transparent;cursor:pointer;font-size:13px;font-weight:500;color:var(--text-3);border-radius:9px;transition:all .12s;white-space:nowrap;min-width:90px}
+.tb:hover{background:var(--surface-2);color:var(--text)}.tb.active{font-weight:700;color:white}
+.scenario-box{background:var(--surface);border-radius:12px;padding:14px 16px;margin-bottom:12px;box-shadow:0 1px 3px var(--shadow-soft)}
+.sc-title{font-size:13.5px;font-weight:800;color:var(--text);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.sc-ctx{font-size:14.5px;color:var(--text-3);line-height:1.65;margin-bottom:8px}
+.sc-approach{font-size:14px;font-weight:600;padding:7px 11px;border-radius:8px;line-height:1.5}
+.sk{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:9px}
+.sk-hd{display:flex;justify-content:space-between;align-items:center;padding:9px 13px;background:var(--surface-2);border-bottom:1px solid var(--border);gap:8px}
+.sk-num{width:19px;height:19px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:800;flex-shrink:0;color:white}
+.sk-lbl{font-size:13.5px;font-weight:600;color:var(--text-2);margin-left:8px;flex:1}
+.cp-btn{display:flex;align-items:center;gap:4px;padding:3px 9px;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--text-3);font-size:13px;cursor:pointer;transition:all .12s;font-family:inherit;white-space:nowrap;flex-shrink:0}
+.cp-btn:hover{border-color:var(--text-4);color:var(--text)}.cp-btn.ok{border-color:#10b981;background:#ecfdf5;color:#059669}
+[data-theme="dark"] .cp-btn.ok{background:#064e3b;color:#6ee7b7;border-color:#059669}
 .sk-body{padding:0}
-.email-subject{font-size:11.5px;font-weight:700;color:#0f172a;padding:10px 14px 4px;background:#fcfdfe}
-.script-en{padding:11px 14px 13px;font-size:12.5px;line-height:1.85;color:#1e293b;white-space:pre-wrap;border-bottom:1px solid #f1f5f9}
-.script-why{padding:10px 14px;font-size:11.5px;line-height:1.7;color:#475569;background:#f8fafc;white-space:pre-wrap}
-.script-why b{color:#0f172a;font-weight:700}
-.why-tag{display:inline-block;font-size:8.5px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:#0e7490;background:#cffafe;padding:2px 7px;border-radius:7px;margin-bottom:6px}
+.email-subject{font-size:14px;font-weight:700;color:var(--text);padding:10px 14px 4px;background:var(--surface-3)}
+.script-en{padding:11px 14px 13px;font-size:15px;line-height:1.85;color:var(--text-2);white-space:pre-wrap;border-bottom:1px solid var(--border-soft)}
+.script-why{padding:10px 14px;font-size:14px;line-height:1.7;color:var(--text-2);background:var(--surface-2);white-space:pre-wrap}
+.script-why b{color:var(--text);font-weight:700}
+.why-tag{display:inline-block;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--accent);background:var(--accent-soft);padding:2px 7px;border-radius:7px;margin-bottom:6px}
 .cs-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
-.cs-card{background:white;border:1px solid #e2e8f0;border-radius:10px;padding:11px 12px;cursor:pointer;transition:all .15s}
-.cs-card:hover{border-color:#94a3b8;transform:translateY(-1px);box-shadow:0 2px 8px rgba(0,0,0,.06)}
-.cs-name{font-size:12px;font-weight:700;color:#0f172a;margin-bottom:3px}
-.cs-nbadge{font-size:9px;font-weight:700;padding:1px 7px;border-radius:8px;display:inline-block;margin-bottom:5px}
-.cs-why{font-size:11px;color:#64748b;line-height:1.4}
-.info-card{background:white;border-radius:12px;overflow:hidden;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
-.info-hd{padding:16px 18px;border-bottom:1px solid #f1f5f9}
-.info-format-tag{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;padding:3px 9px;border-radius:10px;display:inline-block;margin-bottom:8px}
-.info-title{font-size:17px;font-weight:900;color:#0f172a;letter-spacing:-.03em;margin-bottom:5px}
-.info-desc{font-size:12px;color:#64748b;line-height:1.65}
+.cs-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:11px 12px;cursor:pointer;transition:all .15s}
+.cs-card:hover{border-color:var(--text-4);transform:translateY(-1px);box-shadow:0 2px 8px var(--shadow)}
+.cs-name{font-size:14.5px;font-weight:700;color:var(--text);margin-bottom:3px}
+.cs-nbadge{font-size:11.5px;font-weight:700;padding:1px 7px;border-radius:8px;display:inline-block;margin-bottom:5px}
+.cs-why{font-size:13.5px;color:var(--text-3);line-height:1.4}
+.info-card{background:var(--surface);border-radius:12px;overflow:hidden;margin-bottom:12px;box-shadow:0 1px 4px var(--shadow)}
+.info-hd{padding:16px 18px;border-bottom:1px solid var(--border-soft)}
+.info-format-tag{font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;padding:3px 9px;border-radius:10px;display:inline-block;margin-bottom:8px}
+.info-title{font-size:20px;font-weight:900;color:var(--text);letter-spacing:-.03em;margin-bottom:5px}
+.info-desc{font-size:14.5px;color:var(--text-3);line-height:1.65}
 .info-body{padding:14px 18px}
 .info-meta{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;margin-bottom:14px}
-.im-item{background:#f8fafc;border-radius:8px;padding:10px 12px;border:1px solid #f1f5f9}
-.im-lbl{font-size:9px;font-weight:700;text-transform:uppercase;color:#94a3b8;margin-bottom:3px;letter-spacing:.05em}
-.im-val{font-size:12px;font-weight:700;color:#0f172a}
-.info-content{background:#f8fafc;border-radius:9px;padding:13px 14px;margin-bottom:14px;border:1px solid #f1f5f9}
-.info-content-title{font-size:10px;font-weight:800;text-transform:uppercase;color:#64748b;letter-spacing:.07em;margin-bottom:8px}
-.info-content-list{font-size:12px;color:#374151;line-height:2;white-space:pre-wrap}
-.slbl{font-size:10px;font-weight:800;color:#94a3b8;text-transform:uppercase;letter-spacing:.08em;margin:18px 0 8px}
+.im-item{background:var(--surface-2);border-radius:8px;padding:10px 12px;border:1px solid var(--border-soft)}
+.im-lbl{font-size:11.5px;font-weight:700;text-transform:uppercase;color:var(--text-4);margin-bottom:3px;letter-spacing:.05em}
+.im-val{font-size:14.5px;font-weight:700;color:var(--text)}
+.info-content{background:var(--surface-2);border-radius:9px;padding:13px 14px;margin-bottom:14px;border:1px solid var(--border-soft)}
+.info-content-title{font-size:12.5px;font-weight:800;text-transform:uppercase;color:var(--text-3);letter-spacing:.07em;margin-bottom:8px}
+.info-content-list{font-size:14.5px;color:var(--text-2);line-height:2;white-space:pre-wrap}
+.slbl{font-size:12.5px;font-weight:800;color:var(--text-4);text-transform:uppercase;letter-spacing:.08em;margin:18px 0 8px}
 .metric-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px}
-.metric-card{background:white;border-radius:12px;padding:12px 14px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.metric-lbl{font-size:11px;color:#64748b;margin-bottom:7px}
+.metric-card{background:var(--surface);border-radius:12px;padding:12px 14px;box-shadow:0 1px 3px var(--shadow-soft)}
+.metric-lbl{font-size:13.5px;color:var(--text-3);margin-bottom:7px}
 .dots{display:flex;gap:3px}
 .dot{width:18px;height:5px;border-radius:3px}
-.callout{border-radius:12px;padding:13px 15px;margin:14px 0;font-size:12.5px;line-height:1.7}
+.callout{border-radius:12px;padding:13px 15px;margin:14px 0;font-size:15px;line-height:1.7}
 .callout-tip{background:#eef2ff;color:#3730a3}
 .callout-warn{background:#fef2f2;color:#991b1b}
 .callout-fresh{background:#ecfdf5;color:#065f46}
+[data-theme="dark"] .callout-tip{background:#1e1b4b;color:#c7d2fe}
+[data-theme="dark"] .callout-warn{background:#450a0a;color:#fecaca}
+[data-theme="dark"] .callout-fresh{background:#064e3b;color:#a7f3d0}
 .callout b{font-weight:800}
-.fresh-step{display:flex;gap:12px;background:white;border-radius:11px;padding:13px 15px;margin-bottom:9px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.fresh-num{width:26px;height:26px;border-radius:8px;background:#0e7490;color:white;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0}
+.fresh-step{display:flex;gap:12px;background:var(--surface);border-radius:11px;padding:13px 15px;margin-bottom:9px;box-shadow:0 1px 3px var(--shadow-soft)}
+.fresh-num{width:26px;height:26px;border-radius:8px;background:var(--accent);color:white;display:flex;align-items:center;justify-content:center;font-size:14.5px;font-weight:800;flex-shrink:0}
+[data-theme="dark"] .fresh-num{color:#06141f}
 .fresh-body{flex:1}
-.fresh-h{font-size:13px;font-weight:700;color:#0f172a;margin-bottom:4px}
-.fresh-p{font-size:12px;color:#475569;line-height:1.65}
-.fresh-p code{background:#f1f5f9;padding:1px 6px;border-radius:5px;font-size:11px;color:#0e7490;font-family:ui-monospace,monospace}
-.intro-hero{background:linear-gradient(135deg,#0f172a,#1e293b);border-radius:16px;padding:24px 26px;margin-bottom:16px;color:white}
-.intro-hero h1{font-size:22px;font-weight:900;letter-spacing:-.03em;margin-bottom:8px}
-.intro-hero p{font-size:13px;line-height:1.7;color:#cbd5e1;margin-bottom:6px}
+.fresh-h{font-size:15.5px;font-weight:700;color:var(--text);margin-bottom:4px}
+.fresh-p{font-size:14.5px;color:var(--text-2);line-height:1.65}
+.fresh-p code{background:var(--code-bg);padding:1px 6px;border-radius:5px;font-size:13.5px;color:var(--accent);font-family:ui-monospace,monospace}
+.intro-hero{background:linear-gradient(135deg,var(--hero-from),var(--hero-to));border-radius:16px;padding:24px 26px;margin-bottom:16px;color:white}
+.intro-hero h1{font-size:27px;font-weight:900;letter-spacing:-.03em;margin-bottom:8px}
+.intro-hero p{font-size:15.5px;line-height:1.7;color:var(--hero-text);margin-bottom:6px}
 .pill-row{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
-.pill{font-size:10.5px;font-weight:600;padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.08);color:#e2e8f0;border:1px solid rgba(255,255,255,.12)}
-.principle{background:white;border-radius:12px;padding:15px 17px;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,.04);border-left:3px solid #0e7490}
-.principle-h{font-size:13.5px;font-weight:800;color:#0f172a;margin-bottom:5px}
-.principle-p{font-size:12.5px;color:#475569;line-height:1.7}
-.principle-p b{color:#0f172a}
+.pill{font-size:13px;font-weight:600;padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.08);color:#e2e8f0;border:1px solid rgba(255,255,255,.12)}
+.principle{background:var(--surface);border-radius:12px;padding:15px 17px;margin-bottom:10px;box-shadow:0 1px 3px var(--shadow-soft);border-left:3px solid var(--accent)}
+.principle-h{font-size:16px;font-weight:800;color:var(--text);margin-bottom:5px}
+.principle-p{font-size:15px;color:var(--text-2);line-height:1.7}
+.principle-p b{color:var(--text)}
 pre{font-family:inherit}
-.seq-tag{display:inline-block;font-size:9px;font-weight:700;color:#7c3aed;background:#ede9fe;padding:2px 8px;border-radius:8px;margin-left:6px}
+.seq-tag{display:inline-block;font-size:11.5px;font-weight:700;color:#7c3aed;background:#ede9fe;padding:2px 8px;border-radius:8px;margin-left:6px}
+[data-theme="dark"] .seq-tag{color:#c4b5fd;background:#2e1065}
+/* ===== TABELA DE MOTIVOS DE CONTATO (Freshdesk) ===== */
+.rtbl{width:100%;border-collapse:separate;border-spacing:0;background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:14px;box-shadow:0 1px 4px var(--shadow)}
+.rtbl th{background:var(--surface-2);text-align:left;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--text-3);padding:10px 13px;border-bottom:1px solid var(--border)}
+.rtbl td{padding:11px 13px;border-bottom:1px solid var(--border-soft);font-size:14px;color:var(--text-2);line-height:1.55;vertical-align:top}
+.rtbl tr:last-child td{border-bottom:none}
+.rtbl tr:hover td{background:var(--surface-2)}
+.rsn-name{font-weight:700;color:var(--text);white-space:nowrap}
+.rsn-emoji{font-size:16.5px;margin-right:5px}
+.rsn-cat{display:inline-block;font-size:11px;font-weight:800;padding:1px 7px;border-radius:8px;margin-top:4px;white-space:nowrap}
+.rsn-en{font-size:13.5px;color:var(--text);font-style:italic;background:var(--surface-3);border-left:2px solid var(--accent);padding:6px 9px;border-radius:6px;margin-top:5px;line-height:1.5;white-space:pre-wrap}
 </style>
 </head>
 <body>
 <div id="sb">
   <div class="sb-hd">
     <div class="sb-title">CS Revenue Playbook</div>
-    <div class="sb-sub">Nutraceutical USA &bull; Email / Freshdesk<br>12 nichos &bull; 11 estratégias</div>
+    <div class="sb-sub">Nutraceutical USA &bull; Email / Freshdesk<br>12 nichos &bull; 11 estratégias &bull; 17 motivos</div>
     <div class="sb-stats">
       <div class="sb-stat"><div class="sb-stat-n" id="stat-prod">—</div><div class="sb-stat-l">Produtos</div></div>
       <div class="sb-stat"><div class="sb-stat-n" id="stat-ready">—</div><div class="sb-stat-l">Ativos</div></div>
       <div class="sb-stat"><div class="sb-stat-n" id="stat-dev">—</div><div class="sb-stat-l">Dev.</div></div>
     </div>
+  </div>
+  <div class="theme-toggle">
+    <button class="tt-btn" id="tt-white" onclick="setTheme('white')">☀️ White</button>
+    <button class="tt-btn" id="tt-dark" onclick="setTheme('dark')">🌙 Dark</button>
   </div>
   <div class="sb-lbl">Começe aqui</div>
   <div id="sb-intro"></div>
@@ -912,6 +975,84 @@ const INTRO_HTML = `
 <div class="callout callout-warn"><b>⚠️ Compliance (FTC/EUA):</b> a orientação da FTC (Jan 2023) exige <b>"competent and reliable scientific evidence"</b> para health claims. Os scripts deste playbook usam linguagem de <b>tempo de uso, fisiologia e expectativa</b> — não cura garantida. Evite afirmar que o produto "cura", "trata" ou "elimina" doença. Adapte com seu jurídico antes de publicar; substitua os campos entre colchetes pelos seus dados reais.</div>
 `;
 
+/* ============================================================
+   17 MOTIVOS DE CONTATO (categorias de ticket Freshdesk)
+   cat = rótulo de categoria | cc = cor da categoria
+   acao = o que fazer (PT-BR) | en = snippet de e-mail (inglês)
+   ============================================================ */
+const RCAT={
+  duvida:{l:"Dúvida",bg:"#E6F1FB",tx:"#185FA5"},
+  log:{l:"Logística",bg:"#FAEEDA",tx:"#854F0B"},
+  retencao:{l:"Retenção",bg:"#E1F5EE",tx:"#0F6E56"},
+  conversao:{l:"Conversão",bg:"#EEEDFE",tx:"#534AB7"},
+  critico:{l:"Crítico",bg:"#FAECE7",tx:"#993C1D"},
+  reembolso:{l:"Reembolso",bg:"#FDECEC",tx:"#B91C1C"}
+};
+const REASONS=[
+  {e:"📦",n:"Dúvida sobre Produto",c:"duvida",
+   acao:"Responder com clareza + confiança e plantar a semente do protocolo. Reforce que a fórmula é de origem natural e desenvolvida com base em pesquisa publicada — credibilidade desarma o cético. Toda dúvida bem respondida é micro-venda: encerre com consistência (90-180 dias), opção de escalonar a dose ao longo do protocolo e a garantia de 60 dias.",
+   en:"Happy to clear that up, [First Name]. [Resposta direta]. Our formula is made with natural-origin ingredients and developed based on published research. One tip: results build with daily use over 90–180 days — many people start at the standard dose and adjust as they go — that's why most folks go with the 6-bottle supply. And you're covered by our 60-day guarantee either way."},
+  {e:"📍",n:"Rastreamento",c:"log",
+   acao:"Dar o status proativamente com link/transportadora. Toque de relacionamento, não burocracia. Se houver atraso, antecipe (ver Atraso). Bom momento para um upsell suave de assinatura.",
+   en:"Tracking your order now, [First Name] — here's your link: [URL]. Latest update shows [status]. I'll keep an eye on it personally; reply here if anything looks off."},
+  {e:"✏️",n:"Alteração de Dados",c:"log",
+   acao:"Resolver rápido e confirmar por escrito (endereço/cartão/e-mail). Confirme se já não despachou. Atendimento ágil aqui constrói a confiança que sustenta recompra.",
+   en:"Done, [First Name] — I've updated [campo] to [novo valor] and your order hasn't shipped yet, so you're all set. Anything else you'd like me to adjust?"},
+  {e:"🔄",n:"Devolução",c:"reembolso",
+   acao:"Antes de processar, oferecer downsell/troca (estratégia 1) ancorado na fisiologia (tempo insuficiente) — e lembrar que a fórmula natural age de forma cumulativa, com opção de ajustar a dose dentro do recomendado. Se insistir, honrar a garantia sem fricção — cliente bem tratado volta ou indica.",
+   en:"I can absolutely start that return, [First Name] — no hoops. Before I do: most people who didn't see results just needed more time, and since these are natural-origin ingredients that build up gradually, sometimes adjusting the daily dose within the recommended range helps. I can also swap you to a smaller plan at cost or extend your supply. Want that, or should I process the return now?"},
+  {e:"⏰",n:"Atraso na Entrega",c:"log",
+   acao:"Pedir desculpa concreta + dar status real + gesto de cortesia (estratégia 6). Transformar fricção em fidelização. Nunca minimizar; assumir a responsabilidade.",
+   en:"You're right to follow up, [First Name], and I'm sorry for the wait. Here's exactly where it is: [status]. For the trouble, I've added [cortesia] to your account. Thanks for your patience — I've got this."},
+  {e:"❌",n:"Pedido Incorreto / Avariado",c:"critico",
+   acao:"Resolver primeiro (reenvio imediato), vender depois (estratégia 11). Não pedir devolução do item errado. Recuperação impecável vira prova social e recompra.",
+   en:"That's on us, [First Name] — I'm shipping the correct/replacement item today at no cost, and keep the other one. No need to send anything back. You'll have tracking by tomorrow."},
+  {e:"🛒",n:"Suporte Pré-venda",c:"conversao",
+   acao:"Lead quente: responder objeção + reforçar que é fórmula de origem natural com base em pesquisa publicada + recomendar o kit certo (ancore no Best Value/180 dias) + garantia. Aqui o atendimento É a venda. Foco em consistência para o cético.",
+   en:"Great question before you start, [First Name]. [Resposta]. It's made with natural-origin ingredients and developed based on published research. For best results most people choose the 180-day supply — it's the timeline where this actually works, and it's fully backed by our 60-day guarantee. Want me to send the link?"},
+  {e:"💲",n:"Discordou de upsell",c:"retencao",
+   acao:"Não insistir no upsell; recuar com elegância e manter a relação. Reposicione no menor kit ou só confirme o pedido atual. Respeitar o 'não' preserva o LTV.",
+   en:"Totally fair, [First Name] — no pressure at all. I'll keep your order exactly as is. If you ever want to extend your supply later, I'll make sure you get the best price. You're all set."},
+  {e:"🤑",n:"Comprar produto",c:"conversao",
+   acao:"Intenção de compra clara: facilitar ao máximo + reforçar origem natural com base em pesquisa publicada + ancorar no kit de maior valor + garantia. Reduza atrito (link direto). Ofereça assinatura (estratégia 4) para recorrência.",
+   en:"Love it, [First Name]! Here's your secure link: [URL]. It's made with natural-origin ingredients and developed based on published research. The 6-bottle supply gives the best price and the full results window — and with subscription you lock that rate and never run out. Covered by our 60-day guarantee."},
+  {e:"🤺",n:"Comprou no concorrente — ofertamos desconto",c:"retencao",
+   acao:"Reconquista (win-back, estratégia 5): validar a escolha, diferenciar pela honestidade/qualidade — fórmula de origem natural com base em pesquisa publicada — e oferecer desconto de retorno. Sem desmerecer o concorrente; foco no seu valor.",
+   en:"I hear you, [First Name] — and no hard feelings. If you ever want to give us a try, here's [desconto] to come back. Our formula is made with natural-origin ingredients and developed based on published research, and we're upfront about timelines — you're also protected by our 60-day guarantee. The offer's here whenever you're ready."},
+  {e:"😔",n:"Resultados x Expectativa",c:"retencao",
+   acao:"Acolher sem defensividade + reposicionar como tempo/protocolo insuficiente (fisiologia) + lembrar que a fórmula natural age de forma cumulativa e que dá para ajustar/escalonar a dose dentro do uso recomendado + oferecer estender o supply. Núcleo do público cético: empatia primeiro, venda depois.",
+   en:"Thanks for being honest, [First Name]. Most people who feel this way simply hadn't hit the full window yet — these natural-origin ingredients work gradually on a 90–180 day timeline, not overnight, and many people fine-tune their daily dose within the recommended range as they go. I'd love to get you there: I can extend your supply at cost. Want me to set that up?"},
+  {e:"👺",n:"HelpGrid já reembolsou",c:"reembolso",
+   acao:"Reembolso já feito por terceiro (HelpGrid): confirmar, encerrar com classe e deixar porta aberta para retorno. Não reabrir cobrança. Experiência final positiva = win-back futuro.",
+   en:"All confirmed, [First Name] — your refund was already processed, so there's nothing left on your end. I'm sorry it wasn't the right fit this time. If you ever want to revisit it, reach out to me directly and I'll take care of you."},
+  {e:"🚑",n:"Aconselhamento médico",c:"critico",
+   acao:"NUNCA prescrever nem fazer health claim específico (FTC). Pode informar que a fórmula é de origem natural e desenvolvida com base em pesquisa publicada, mas qualquer ajuste de dose ou decisão clínica é do profissional de saúde — recomende consultar o médico/farmacêutico. Empatia + limite claro. Proteção legal e do cliente acima de qualquer venda.",
+   en:"I really appreciate you reaching out, [First Name]. Our formula is made with natural-origin ingredients and developed based on published research, but I'm not able to give medical advice or dosing instructions — your doctor or pharmacist is the right person to advise on [tópico] and any dose adjustments for your situation. Your safety comes first, and I'm here for anything order-related."},
+  {e:"🤔",n:"Arrependimento dentro de 7 dias",c:"retencao",
+   acao:"Janela curta pós-compra: acolher, lembrar que ainda não houve tempo de uso, que a fórmula natural age de forma cumulativa e que dá para ajustar a dose dentro do recomendado, e oferecer downsell/extensão (estratégia 1). Buyer's remorse some com reassurance. Garantia tranquiliza.",
+   en:"No worries at all, [First Name] — you've barely started. These natural-origin ingredients build up gradually, and you can fine-tune your daily dose within the recommended range as you go. Give it a real shot risk-free: you're covered by our 60-day guarantee, so there's nothing to lose by trying it first. Want to keep it going?"},
+  {e:"2️⃣",n:"Compra duplicada",c:"log",
+   acao:"Erro honesto: oferecer cancelar/reembolsar a duplicata imediatamente OU converter em assinatura/estoque com desconto. Transparência total. Resolver gera confiança e abre upsell suave.",
+   en:"Caught it, [First Name] — looks like the order went through twice. I can refund the duplicate right now, or if you'd like, keep both as backup stock and I'll apply a discount. Your call — which works best?"},
+  {e:"☢️",n:"Reação ao produto",c:"critico",
+   acao:"PRIORIDADE MÁXIMA: orientar a PARAR o uso imediatamente e procurar atendimento médico. NÃO sugerir ajuste de dose nem 'continuar tomando' — mesmo sendo de origem natural, qualquer reação é levada a sério (e é justamente por isso que a empresa age na hora). Documentar para compliance. Reembolso sem fricção. Zero venda. Segurança e responsabilidade legal primeiro.",
+   en:"Thank you for telling me right away, [First Name]. Even though our formula uses natural-origin ingredients, any reaction is something we take seriously — so please stop taking it now and contact your doctor, especially if symptoms continue or worsen. I'm refunding you in full right away — no need to return anything. Your wellbeing is what matters most here."},
+  {e:"📌",n:"Outros",c:"duvida",
+   acao:"Categoria coringa: ler com atenção, identificar a intenção real e rotear para o cenário/estratégia certo. Sempre tom humano e foco em resolver. Tag específica depois para refinar relatórios.",
+   en:"Got your message, [First Name] — I'm on it personally. [Resposta]. Let me know if there's anything else; I'm here to help and I'll make sure this gets sorted."}
+];
+function reasonsTable(){
+  const rows=REASONS.map(r=>{
+    const c=RCAT[r.c];
+    return `<tr>
+      <td style="min-width:140px"><span class="rsn-emoji">${r.e}</span><span class="rsn-name">${r.n}</span><br><span class="rsn-cat" style="background:${c.bg};color:${c.tx}">${c.l}</span></td>
+      <td>${r.acao}<div class="rsn-en"><b>📩 EN:</b> ${r.en}</div></td>
+    </tr>`;
+  }).join("");
+  return `<table class="rtbl"><thead><tr><th style="width:165px">Motivo do ticket</th><th>O que fazer (PT-BR) + script de e-mail (EN)</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+const REASONS_TABLE=reasonsTable();
+
 const FRESH_HTML = `
 <div class="nh">
   <div class="nh-icon" style="background:rgba(14,116,144,.15)">🎫</div>
@@ -972,6 +1113,11 @@ const FRESH_HTML = `
     <div class="fresh-p">O <b>Freddy Copilot</b> (add-on) sugere a canned response certa e rascunha respostas com base no histórico — o agente parte de um draft contextualizado em vez de escrever do zero. Acelera o atendimento mantendo o tom dos scripts, e libera o time para os tickets emocionalmente complexos (onde o humano converte melhor). Monitore o uso das canned responses no analytics para ver quais convertem mais e refinar a biblioteca.</div>
   </div>
 </div>
+
+<div class="slbl">Mapa de motivos de contato → ação de receita</div>
+<div class="callout callout-fresh"><b>🎫 Como usar:</b> crie um <b>custom ticket field "Motivo"</b> no Freshdesk com estas 17 opções e uma <b>Canned Response</b> por motivo (placeholders dinâmicos como <code>[First Name]</code>, <code>[URL]</code>). Cada motivo tem uma intenção e uma jogada de receita — os críticos (🚑 ☢️) e reembolsos vêm <b>antes</b> de qualquer venda. Os snippets abaixo já estão em inglês, prontos para colar.</div>
+<div class="callout callout-warn"><b>⚠️ Linguagem de produto & limites (FTC):</b> os scripts reforçam que a fórmula é de <b>origem natural e desenvolvida com base em pesquisa publicada</b> — mantenha essa frase genérica e <b>tenha a pesquisa que a sustenta</b> em mãos. Evite alegações específicas de cura/tratamento. "Ajustar a dose" só aparece como sugestão dentro da <b>faixa recomendada no rótulo</b>, nunca em caso de reação. Nos dois críticos: em <b>🚑 Aconselhamento médico</b> qualquer decisão de dose é do profissional de saúde; em <b>☢️ Reação ao produto</b> a orientação é sempre <b>parar o uso + procurar médico + reembolsar</b>, sem sugerir continuar ou mudar a dose.</div>
+${REASONS_TABLE}
 
 <div class="slbl">Blueprint de automação — fluxo completo de um ticket</div>
 <div class="callout callout-tip">
@@ -1041,7 +1187,7 @@ function rPR(){
   const cards=PRICING.map(p=>{
     const cls="pc"+(p.ft?" ft":"");
     const lbl=p.label+(p.ft?'<span class="best-tag">BEST</span>':"");
-    const ship=p.frete?'<div class="pc-ship">✓ Free shipping</div>':'<div style="font-size:10px;color:#94a3b8;margin-top:2px">+ shipping</div>';
+    const ship=p.frete?'<div class="pc-ship">✓ Free shipping</div>':'<div style="font-size:12.5px;color:#94a3b8;margin-top:2px">+ shipping</div>';
     return `<div class="${cls}"><div class="pc-lbl">${lbl}</div><div class="pc-price">$${p.price}<span class="pc-unit">/bottle</span></div><div class="pc-info">${p.bottles} bottles &bull; ${p.supply} &bull; $${p.total} total</div><div class="pc-save">Save $${p.save}</div>${ship}</div>`;
   }).join("");
   return `<div class="pricing">${cards}</div>`;
@@ -1136,17 +1282,17 @@ function renderStrategy(){
   const tc=tagMap[s.tc];
   const isNew = s.id>=9;
   const header=`<div class="nh">
-    <div class="nh-icon" style="background:rgba(51,65,85,.1)"><span style="font-size:22px">${s.icon}</span></div>
+    <div class="nh-icon" style="background:rgba(51,65,85,.1)"><span style="font-size:27px">${s.icon}</span></div>
     <div><div><span class="nh-name">${s.name}</span><span class="nh-badge" style="background:${tc.bg};color:${tc.txt}">${s.tag}</span>${isNew?'<span class="seq-tag">ATUALIZAÇÃO 2026</span>':''}</div>
     <div class="nh-meta">Estratégia para e-mail &bull; aplica-se a todos os nichos</div></div></div>`;
 
   const metrics=`<div class="metric-row">
     <div class="metric-card"><div class="metric-lbl">Potencial de receita</div><div class="dots">${dots(s.potential,"#1D9E75")}</div></div>
     <div class="metric-card"><div class="metric-lbl">Esforço de setup</div><div class="dots">${dots(s.effort,"#BA7517")}</div></div>
-    <div class="metric-card"><div class="metric-lbl">Gatilho</div><div style="font-size:11.5px;font-weight:600;color:#0f172a;line-height:1.4">${esc(s.trigger)}</div></div>
+    <div class="metric-card"><div class="metric-lbl">Gatilho</div><div style="font-size:14px;font-weight:600;color:#0f172a;line-height:1.4">${esc(s.trigger)}</div></div>
   </div>`;
 
-  const body=`<div class="scenario-box"><div style="font-size:13px;color:#475569;line-height:1.75">${esc(s.desc)}</div></div>
+  const body=`<div class="scenario-box"><div style="font-size:15.5px;color:#475569;line-height:1.75">${esc(s.desc)}</div></div>
     <div class="slbl">Scripts de e-mail (inglês) + por que funciona (PT-BR)</div>
     ${s.msgs.map((m,i)=>sCard(m,i,"strat-"+s.id,"#334155")).join("")}
     <div class="callout callout-tip"><b>💡 Dica tática:</b> ${esc(s.tip)}</div>`;
@@ -1175,6 +1321,18 @@ window.cpS=function(key){
   cpK=key;rM();setTimeout(()=>{cpK=null;rM();},2000);
 };
 
+/* ── TEMA (dark / white) ── */
+let theme="white";
+function setTheme(t){
+  theme=t;
+  if(t==="dark") document.documentElement.setAttribute("data-theme","dark");
+  else document.documentElement.removeAttribute("data-theme");
+  document.getElementById("tt-white").classList.toggle("on",t==="white");
+  document.getElementById("tt-dark").classList.toggle("on",t==="dark");
+}
+window.setTheme=setTheme;
+
+setTheme("white");
 rSB();rM();
 </script>
 </body>
