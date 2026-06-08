@@ -2108,14 +2108,34 @@ function buildInteractiveFlow(container, agent) {
               {
                 label: 'NÃO aceitou downsell', type: 'decision', color: '#f43f5e',
                 children: [
-                  { label: '30-day card window', branchLabel: 'Ofertar crédito', branchColor: '#8b5cf6',
-                    icon: '💳', color: '#8b5cf6', sub: 'Crédito imediato vs. esperar até 30 dias no cartão', leaf: true,
-                    script: { subj: `A faster option, [First Name]`, why: 'O prazo real de estorno como contraste — crédito imediato parece muito melhor do que esperar. Prazo informado precisa ser verdadeiro.',
-                      body: `Hi [First Name],\n\nI'll process your refund now — no issues at all.\n\nOne heads-up so there are no surprises: card refunds are typically processed within a few business days on our end, but depending on your card's billing cycle, the amount can take up to 30 days to appear on your statement. That timing is entirely on the bank's side, not ours.\n\nIf you'd prefer not to wait, I can give you store credit today for the same amount — it never expires and you can use it any time.\n\nYour call — just let me know.\n\n— ${agentName}\n${prod} Customer Care`, key: '30day' } },
-                  { label: 'Reembolso integral confirmado', branchLabel: 'Honrar garantia', branchColor: '#10b981',
-                    icon: '✅', color: '#10b981', sub: 'Processar na hora · informar prazo real · sem fricção', leaf: true,
-                    script: { subj: `Refund confirmed, [First Name]`, why: 'Honrar sem fricção evita chargeback e review negativo. Comunicar prazo real previne follow-ups.',
-                      body: `Hi [First Name],\n\nYour refund has been confirmed and is being processed now — you'll receive a confirmation email shortly.\n\nA quick note on timing: the refund is typically processed within a few business days on our end. However, depending on your card's billing cycle, it can take up to 30 days to appear on your statement. That part is controlled by your bank, not us — but it's on its way.\n\nIf you don't see it after 30 days, please reach out and I'll look into it personally.\n\nThank you for giving ${prod} a try, [First Name]. I hope our paths cross again.\n\n— ${agentName}\n${prod} Customer Care`, key: 'refund_full' } },
+                  // ── DEGRAU: Reembolso Parcial Imediato ──
+                  {
+                    label: 'Reembolso Parcial Imediato', branchLabel: '⚡ Oferta rápida', branchColor: '#f59e0b',
+                    icon: '⚡', color: '#f59e0b',
+                    sub: 'Fica com o produto · recebe parte agora · sem devolução · sem espera',
+                    badge: 'Degrau 2 — antes da devolução', badgeBg: '#fef3c7', badgeTx: '#92400e',
+                    script: { subj: `[First Name] — here's a faster option that might make more sense`, why: 'O parcial imediato é o degrau mais importante durante o atrito de devolução. Posicionar ANTES de explicar o processo de devolução física — o contraste entre "dinheiro parcial agora, zero esforço" vs "processo de 30-60 dias com risco e custo" faz o parcial parecer a escolha óbvia. O cliente sente que está no controle e ganhando algo imediatamente.',
+                      body: `Hi [First Name],\n\nBefore we go down the return route, I want to offer you something that might work better for your situation.\n\nHere's the thing: returning a physical product takes time — shipping on your end, transit, our inspection process. We're typically talking 30–60 days before anything reflects on your card, and there are variables along the way.\n\nAlternative: I can process a partial refund directly to your card right now.\n\n⚡ What that looks like:\n• You receive [X]% back on your card within a few business days\n• You keep ${prod} — no packaging, no post office, no waiting\n• If you decide to give it another shot, everything is still there\n\nThis is the option most customers choose when they hear the full picture.\n\nWould you like me to process that partial now?\n\n— ${agentName}\n${prod} Customer Care`, key: 'parcial_atrito' },
+                    children: [
+                      { label: 'Aceita o parcial', sub: 'Revenue parcialmente salva · produto fica com o cliente', icon: '✅', color: '#10b981', leaf: true,
+                        script: { subj: `Partial refund confirmed, [First Name]`, why: 'Confirmar rápido antes que o cliente mude de ideia. Reforçar que o produto ainda está disponível — planta a semente para o cliente continuar usando.',
+                          body: `Hi [First Name],\n\nDone — your partial refund has been processed. You'll receive a confirmation shortly, and it should appear on your statement within a few business days (up to 30 days depending on your billing cycle).\n\n${prod} is still yours. I genuinely hope you give it a proper run — the real window is ${pw ? pw.window : '90–180 days'}, and everything you've taken so far is already working in your system.\n\nIf you have any questions about getting the most out of it, I'm right here.\n\n— ${agentName}\n${prod} Customer Care`, key: 'parcial_aceito' } },
+                      {
+                        label: 'NÃO quer o parcial — insiste na devolução', type: 'decision', color: '#f43f5e',
+                        children: [
+                          { label: 'Choque de realidade logística', branchLabel: 'Devolução física', branchColor: '#ef4444',
+                            icon: '📦', color: '#ef4444',
+                            sub: 'Sem RMA · frete do cliente · risco de redução · 30-60 dias · Fast-Track como última oferta', leaf: true,
+                            script: { subj: `Before you ship anything, [First Name] — the full picture`, why: 'Último degrau antes do reembolso integral. O cliente agora sabe tudo: sem RMA, frete do bolso, risco de redução por dano, 30-60 dias, digitais não reembolsáveis. Contrastar com Fast-Track (última chance de salvar parcial de receita). Se recusar, processar o integral sem atrito adicional.',
+                              body: `Hi [First Name],\n\nI want to make sure you have the complete picture before you ship anything.\n\nHere's exactly how our return process works:\n\n• No return label provided (RMA): return shipping is your responsibility and cost.\n• Transit + receipt timeline: typically 15–30 days after you ship.\n• Product condition audit: up to 30 days after receipt. Per our Terms of Service, if the product arrives damaged or the packaging is compromised during transit, the refund amount may be adjusted accordingly.\n• Total timeline: 30–60 days from the moment you ship before anything appears on your card.\n\nAlso important: the digital components of your order — app access (${a && a.id && ['ed','ed2','ed3'].includes(a.id) ? 'vitalman.fun' : a && a.id && ['db'].includes(a.id) ? 'glucocoach.site' : a && a.id && ['wl','wl2','wl3','wl4'].includes(a.id) ? 'nuraliss.org' : '[LINK APP]'}) and your ebook — are non-refundable as they are digital products already delivered at the time of purchase.\n\nOne last option before you go through that process:\n⚡ Fast-Track: partial refund processed today, you keep the product, no shipping, no risk, no wait.\n\nWould you like to take that instead?\n\n— ${agentName}\n${prod} Customer Care`, key: 'choque_logistico' } },
+                          { label: 'Reembolso integral final', branchLabel: 'Honrar garantia', branchColor: '#10b981',
+                            icon: '✅', color: '#10b981', sub: 'Processar na hora · sem atrito adicional · prazo real informado', leaf: true,
+                            script: { subj: `Refund confirmed, [First Name]`, why: 'Aqui o cliente passou por todos os degraus e ainda quer o reembolso integral. Honrar imediatamente, sem nenhuma pressão adicional — qualquer atrito agora vira chargeback. Confirmar por escrito com o prazo real.',
+                              body: `Hi [First Name],\n\nYour refund has been confirmed and is processing now — you'll receive a confirmation email shortly.\n\nTimeline: typically a few business days on our end, though depending on your card's billing cycle it can take up to 30 days to appear on your statement. If you don't see it after 30 days, reply here and I'll look into it personally.\n\nThank you for giving ${prod} a try. I hope our paths cross again.\n\n— ${agentName}\n${prod} Customer Care`, key: 'refund_final' } },
+                        ]
+                      },
+                    ]
+                  },
                 ]
               },
             ]
