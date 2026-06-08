@@ -70,6 +70,62 @@ body{font-family:'Nunito',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,
 .tag-badge{display:inline-block;font-size:11px;font-weight:700;padding:1px 7px;border-radius:8px;margin-top:2px}
 #main{flex:1;overflow-y:auto;background:var(--main-bg);transition:background .25s}
 .mi{padding:24px 28px 60px;max-width:980px}
+/* ── MODO FLUXO FULLSCREEN + SPLIT ── */
+body.mode-fluxo #main{overflow:hidden;display:flex;flex-direction:column}
+body.mode-fluxo .mi{padding:14px 16px 0;max-width:none;display:flex;flex-direction:column;height:100%;overflow:hidden;gap:0}
+body.mode-fluxo .nh{flex-shrink:0;margin-bottom:10px}
+/* Split container: SVGs à esquerda, sidebar à direita */
+.fluxo-split{display:flex;flex:1;min-height:0;gap:10px;overflow:hidden}
+.fluxo-svgs{flex:1;min-width:0;overflow-y:auto;overflow-x:hidden;padding:4px 2px}
+.fluxo-canvas{background:var(--surface);border-radius:10px;overflow:auto;box-shadow:0 1px 4px var(--shadow);cursor:grab;flex-shrink:0}
+.fluxo-canvas:active{cursor:grabbing}
+.fluxo-canvas svg{display:block}
+.fluxo-canvas svg text{font-family:'Nunito',sans-serif!important}
+/* Sidebar interna de scripts */
+.fi-sidebar{width:340px;flex-shrink:0;background:var(--surface);border-radius:10px;border:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
+.fi-sb-hd{padding:12px 14px;border-bottom:1px solid var(--border);flex-shrink:0;background:var(--surface-2)}
+.fi-sb-title{font-size:12px;font-weight:800;color:var(--text);text-transform:uppercase;letter-spacing:.06em}
+.fi-sb-agent{font-size:11px;color:var(--text-3);margin-top:2px}
+.fi-sb-body{flex:1;overflow-y:auto;padding:0}
+/* Seções colapsáveis */
+.fi-section{border-bottom:1px solid var(--border-soft)}
+.fi-sec-hd{display:flex;align-items:center;gap:8px;padding:10px 14px;cursor:pointer;background:var(--surface);transition:background .12s;user-select:none}
+.fi-sec-hd:hover{background:var(--surface-2)}
+.fi-sec-icon{font-size:14px;flex-shrink:0}
+.fi-sec-label{font-size:12px;font-weight:700;color:var(--text);flex:1}
+.fi-sec-count{font-size:10px;color:var(--text-4);background:var(--surface-2);padding:1px 7px;border-radius:8px}
+.fi-sec-arrow{font-size:10px;color:var(--text-4);transition:transform .15s}
+.fi-sec-arrow.open{transform:rotate(180deg)}
+.fi-sec-body{display:none;padding:6px 8px}
+.fi-sec-body.open{display:block}
+/* Script cards na sidebar */
+.fi-script-card{display:flex;align-items:flex-start;gap:8px;padding:8px 10px;border-radius:8px;cursor:pointer;transition:background .12s;border:1px solid transparent;margin-bottom:3px}
+.fi-script-card:hover{background:var(--surface-2);border-color:var(--border)}
+.fi-script-card.open{background:var(--accent-soft);border-color:var(--accent)}
+.fi-sc-icon{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.fi-sc-info{flex:1;min-width:0}
+.fi-sc-step{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-4)}
+.fi-sc-title{font-size:11.5px;font-weight:600;color:var(--text);line-height:1.3;margin-top:1px}
+/* Script expandido inline */
+.fi-script-expanded{background:var(--surface-2);border-radius:8px;padding:10px 12px;margin:0 8px 6px;border-left:3px solid var(--accent)}
+.fi-se-subj{font-size:10.5px;font-weight:700;color:var(--accent);margin-bottom:6px}
+.fi-se-why{font-size:11px;color:var(--text-2);line-height:1.6;margin-bottom:8px;background:var(--surface);border-radius:6px;padding:7px 9px}
+.fi-se-script{font-size:11px;color:var(--text);white-space:pre-wrap;line-height:1.7;max-height:220px;overflow-y:auto}
+.fi-se-copy{display:flex;align-items:center;gap:5px;margin-top:8px;padding:6px 10px;background:var(--surface);border:1px solid var(--border);border-radius:7px;cursor:pointer;font-size:11px;font-weight:600;color:var(--text-3);font-family:inherit;transition:all .12s;width:100%}
+.fi-se-copy:hover{border-color:var(--accent);color:var(--accent)}
+.fi-se-copy.ok{border-color:#10b981;color:#10b981;background:var(--accent-soft)}
+/* Motivo mini-card na sidebar */
+.fi-motivo{display:flex;align-items:flex-start;gap:8px;padding:7px 10px;border-radius:8px;cursor:pointer;transition:background .12s;margin-bottom:3px;border:1px solid transparent}
+.fi-motivo:hover{background:var(--surface-2);border-color:var(--border)}
+.fi-mot-emoji{font-size:16px;flex-shrink:0;width:24px;text-align:center}
+.fi-mot-info{flex:1;min-width:0}
+.fi-mot-name{font-size:11.5px;font-weight:600;color:var(--text);line-height:1.3}
+.fi-mot-cat{font-size:9.5px;padding:1px 6px;border-radius:6px;display:inline-block;margin-top:2px;font-weight:600}
+.fi-mot-pct{font-size:9.5px;color:var(--text-4);margin-left:4px}
+/* Cross-sell card */
+.fi-cs-item{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;margin-bottom:3px;background:var(--surface-2);border:1px solid var(--border-soft)}
+.fi-cs-name{font-size:12px;font-weight:600;color:var(--text)}
+.fi-cs-why{font-size:10.5px;color:var(--text-3);margin-top:1px}
 .nh{display:flex;align-items:center;gap:14px;padding:18px 20px;background:var(--surface);border-radius:14px;margin-bottom:14px;box-shadow:0 1px 4px var(--shadow)}
 .nh-icon{width:50px;height:50px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:30px;flex-shrink:0}
 .nh-name{font-size:23px;font-weight:800;color:var(--text);letter-spacing:-.03em}
@@ -173,6 +229,67 @@ pre{font-family:inherit}
 .rsn-emoji{font-size:16.5px;margin-right:5px}
 .rsn-cat{display:inline-block;font-size:11px;font-weight:800;padding:1px 7px;border-radius:8px;margin-top:4px;white-space:nowrap}
 .rsn-en{font-size:13.5px;color:var(--text);font-style:italic;background:var(--surface-3);border-left:2px solid var(--accent);padding:6px 9px;border-radius:6px;margin-top:5px;line-height:1.5;white-space:pre-wrap}
+
+/* ── FLUXO DE JORNADA ── */
+.fluxo-tabs{display:flex;gap:4px;background:var(--surface);padding:4px;border-radius:12px;margin-bottom:16px;box-shadow:0 1px 3px var(--shadow-soft)}
+.ft-btn{flex:1;padding:9px 8px;border:none;background:transparent;cursor:pointer;font-size:13px;font-weight:600;color:var(--text-3);border-radius:9px;transition:all .12s;white-space:nowrap;font-family:inherit}
+.ft-btn:hover{background:var(--surface-2);color:var(--text)}
+.ft-btn.on{color:white;font-weight:700}
+.fluxo-canvas{background:var(--surface);border-radius:12px;overflow:auto;box-shadow:0 1px 4px var(--shadow);position:relative;cursor:grab;width:100%}
+.fluxo-canvas:active{cursor:grabbing}
+.fluxo-canvas svg{display:block}
+.fluxo-canvas svg text{font-family:'Nunito',sans-serif!important}
+/* Motivos grid dentro do playbook */
+.fcat-label{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:4px 13px;border-radius:20px;margin-bottom:10px}
+.fcat-section{margin-bottom:20px}
+.fmotivos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:9px}
+.fmotivo-card{background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:13px 15px;cursor:pointer;transition:all .15s;position:relative;overflow:hidden}
+.fmotivo-card:hover{transform:translateY(-2px);box-shadow:0 4px 16px var(--shadow);border-color:var(--border-soft)}
+.fmc-top{display:flex;align-items:center;gap:9px;margin-bottom:7px}
+.fmc-emoji{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.fmc-name{font-size:13px;font-weight:700;color:var(--text);line-height:1.3}
+.fmc-cat{font-size:9.5px;font-weight:700;padding:2px 7px;border-radius:8px;margin-top:3px;display:inline-block}
+.fmc-acao{font-size:12px;color:var(--text-3);line-height:1.55}
+.fmc-peek{font-size:11px;font-family:'Nunito',monospace;color:var(--text-4);margin-top:7px;padding:7px 9px;background:var(--surface);border-radius:7px;line-height:1.5;border-left:2px solid var(--accent)}
+/* Modal de motivo dentro do playbook */
+.fm-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:200;display:none;align-items:center;justify-content:center;backdrop-filter:blur(3px)}
+.fm-overlay.on{display:flex}
+.fm-modal{background:var(--surface);border:1px solid var(--border);border-radius:16px;max-width:620px;width:92%;max-height:85vh;overflow-y:auto;box-shadow:0 24px 80px var(--shadow)}
+.fm-hd{display:flex;align-items:center;gap:12px;padding:18px 20px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--surface);z-index:1}
+.fm-emoji{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.fm-title{flex:1}
+.fm-name{font-size:16px;font-weight:800;color:var(--text)}
+.fm-cat{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-top:2px}
+.fm-close{width:30px;height:30px;border:none;background:var(--surface-2);border-radius:8px;cursor:pointer;color:var(--text-3);font-size:16px;display:flex;align-items:center;justify-content:center}
+.fm-close:hover{background:var(--border);color:var(--text)}
+.fm-body{padding:18px 20px}
+.fm-lbl{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--text-4);margin-bottom:7px}
+.fm-acao{font-size:13px;color:var(--text-2);line-height:1.7;background:var(--surface-2);border-radius:9px;padding:12px 14px;border:1px solid var(--border);margin-bottom:14px}
+.fm-script-box{font-size:12.5px;color:var(--text);line-height:1.8;background:var(--surface-2);border-radius:9px;padding:13px 15px;white-space:pre-wrap;border-left:3px solid var(--accent);margin-bottom:10px}
+.fm-subj{font-size:11.5px;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:7px;padding:6px 10px;margin-bottom:8px}
+/* Painel lateral de script da jornada */
+.sp-panel{position:fixed;top:0;right:-490px;width:470px;height:100vh;background:var(--surface);border-left:1px solid var(--border);z-index:300;display:flex;flex-direction:column;transition:right .3s cubic-bezier(.4,0,.2,1);box-shadow:-8px 0 40px var(--shadow)}
+.sp-panel.open{right:0}
+.sp-phd{padding:16px 18px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:10px;background:var(--surface-2);flex-shrink:0}
+.sp-picon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.sp-pmeta{flex:1}
+.sp-pstep{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--text-4);margin-bottom:3px}
+.sp-ptitle{font-size:15px;font-weight:800;color:var(--text);line-height:1.2}
+.sp-pwhen{font-size:11.5px;color:var(--text-3);margin-top:3px;line-height:1.5}
+.sp-pclose{width:28px;height:28px;border:none;background:var(--border);border-radius:7px;cursor:pointer;color:var(--text-3);font-size:14px;display:flex;align-items:center;justify-content:center;font-family:inherit}
+.sp-pclose:hover{background:var(--border-soft);color:var(--text)}
+.sp-pbody{flex:1;overflow-y:auto;padding:16px 18px}
+.sp-psec{margin-bottom:14px}
+.sp-plbl{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:var(--text-4);margin-bottom:7px;display:flex;align-items:center;gap:6px}
+.sp-plbl::after{content:'';flex:1;height:1px;background:var(--border)}
+.sp-pwhy{font-size:13px;color:var(--text-2);line-height:1.7;background:var(--surface-2);border-radius:9px;padding:11px 13px;border:1px solid var(--border)}
+.sp-pscript{font-size:12.5px;color:var(--text);line-height:1.8;background:var(--surface-2);border-radius:9px;padding:13px 15px;white-space:pre-wrap;border-left:3px solid var(--accent)}
+.sp-psubj{font-size:11.5px;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:7px;padding:6px 10px;margin-bottom:8px}
+.sp-pinternal{font-size:12px;color:var(--text-4);background:var(--surface-2);border-radius:7px;padding:7px 10px;border:1px solid var(--border);margin-bottom:8px}
+.sp-pfoot{padding:14px 18px;border-top:1px solid var(--border);display:flex;gap:8px;flex-shrink:0;background:var(--surface-2)}
+.sp-pcopy{flex:1;padding:10px;background:var(--surface);border:1px solid var(--border);border-radius:9px;color:var(--text-3);font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:6px}
+.sp-pcopy:hover{background:var(--surface-2);color:var(--text)}
+.sp-pcopy.ok{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
 </style>
 </head>
 <body>
@@ -200,6 +317,45 @@ pre{font-family:inherit}
   <div id="sb-ops"></div>
 </div>
 <div id="main"><div class="mi" id="content"></div></div>
+
+<!-- Painel lateral de script da jornada -->
+<div class="sp-panel" id="sp-panel">
+  <div class="sp-phd">
+    <div class="sp-picon" id="spp-icon"></div>
+    <div class="sp-pmeta">
+      <div class="sp-pstep" id="spp-step"></div>
+      <div class="sp-ptitle" id="spp-title"></div>
+      <div class="sp-pwhen" id="spp-when"></div>
+    </div>
+    <button class="sp-pclose" onclick="closeSP()">✕</button>
+  </div>
+  <div class="sp-pbody" id="spp-body"></div>
+  <div class="sp-pfoot">
+    <button class="sp-pcopy" id="spp-copy" onclick="copySP()">⎘ Copiar script</button>
+  </div>
+</div>
+
+<!-- Modal de motivo da jornada -->
+<div class="fm-overlay" id="fm-overlay" onclick="closeFM(event)">
+  <div class="fm-modal">
+    <div class="fm-hd">
+      <div class="fm-emoji" id="fm-emoji"></div>
+      <div class="fm-title">
+        <div class="fm-name" id="fm-name"></div>
+        <div class="fm-cat" id="fm-cat"></div>
+      </div>
+      <button class="fm-close" onclick="closeFM()">✕</button>
+    </div>
+    <div class="fm-body">
+      <div class="fm-lbl">O que fazer</div>
+      <div class="fm-acao" id="fm-acao"></div>
+      <div class="fm-lbl">Script EN — Canned Response</div>
+      <div class="fm-subj" id="fm-subj"></div>
+      <div class="fm-script-box" id="fm-script"></div>
+      <button class="cp-btn" id="fm-copy" onclick="copyFM()">⎘ Copiar script</button>
+    </div>
+  </div>
+</div>
 <script>
 /* ============================================================
    CS REVENUE PLAYBOOK — DADOS
@@ -925,6 +1081,18 @@ const STRATEGIES=[
     t:"Hi [First Name], I took care of this for you. [Specific resolution — replacement shipped / refund issued / question answered].\n\nNo hoops, no upsell — you had a real problem and it's handled. If anything else comes up, reply straight to me.\n\n— [Agent]",
     why:"<b>Por que funciona:</b> \"no hoops, no upsell\" diz explicitamente que você NÃO está tentando vender — o que, paradoxalmente, é o que mais constrói confiança num público desgastado. Esse cliente vira promotor e comprador recorrente porque você provou que a marca é diferente das que o enganaram. A venda vem depois, com o terreno preparado."},
   ]},
+ {id:12,icon:"💳",name:"Janela de reembolso no cartão (alavanca de retenção)",tag:"Retenção",tc:"amber",potential:4,effort:1,
+  trigger:"Cliente confirmou que quer o reembolso no cartão e não aceitou o downsell",
+  desc:"NOVO — Usa um fato verdadeiro a seu favor: o estorno no cartão leva tempo real para aparecer na fatura (processadores citam até 30 dias / dois ciclos como prazo máximo). Em vez de obstruir, você é transparente sobre esse prazo e oferece uma alternativa IMEDIATA — crédito na loja, troca, plano menor ou extensão disponível na hora. O contraste entre \"esperar até 30 dias\" e \"resolver agora\" recupera boa parte dos reembolsos como receita retida, sem enganar ninguém.",
+  tip:"⚠️ COMPLIANCE — esta é a alavanca mais sensível do playbook. O prazo informado precisa ser VERDADEIRO (use \"até 30 dias\"/\"up to 30 days\" como limite máximo real, nunca um número inflado para a pessoa desistir). O reembolso JAMAIS pode ser obstruído, condicionado ou atrasado de propósito — FTC e regras de bandeira exigem estorno tempestivo. A oferta imediata é um convite, não um pré-requisito: se o cliente quiser o dinheiro de volta, processe na hora. Feito assim, é retenção legítima; feito de forma enganosa, vira chargeback, dano à reputação e risco legal.",
+  msgs:[
+   {l:"Prazo honesto + alternativa imediata",subj:"Your refund, [First Name] — or something faster",
+    t:"Hi [First Name], I can process your card refund right now — no hoops.\n\nOne heads-up so there are no surprises: card refunds can take up to 30 days to show on your statement, since that timing is on your bank's side, not ours.\n\nIf you'd rather not wait, I can give you something today instead:\n• Store credit you can use right away (often a bit more than the refund)\n• A smaller plan at cost, or a few extra weeks of supply\n\nTotally your call. Want the instant option, or should I send the refund through now?",
+    why:"<b>Por que funciona:</b> a transparência (\"that timing is on your bank's side\") desarma o cético e protege você legalmente — você não está atrasando nada, só informando um prazo real. O contraste \"até 30 dias × hoje\" usa a tendência de preferir gratificação imediata (present bias): o crédito agora parece mais valioso que o mesmo dinheiro daqui a semanas. E como o reembolso continua na mesa sem condição, não há coerção — quem quer o estorno, recebe."},
+   {l:"Crédito como ponte (recupera a relação)",subj:"[First Name], a faster option than waiting on the bank",
+    t:"[First Name], since the card refund can take up to 30 days to land, here's a faster path if you want it: I'll convert it into store credit today — [valor]+ — that never expires and works on anything we carry.\n\nThat way you're not out of pocket while the bank processes, and you keep the door open in case you want to try a different formula. Refund still stands if you'd prefer it — just say the word.",
+    why:"<b>Por que funciona:</b> reposiciona o crédito como forma de o cliente \"não ficar sem o dinheiro\" durante a espera — um benefício, não uma armadilha. Crédito que não expira reduz o medo de perder valor e mantém o relacionamento vivo para um futuro win-back. Repetir que \"o reembolso continua valendo\" é o que mantém a jogada honesta e preserva a confiança."},
+  ]},
 ];
 /* ============================================================
    PÁGINAS ESPECIAIS: Introdução/Princípios e Freshdesk
@@ -1026,8 +1194,8 @@ const REASONS=[
    acao:"Reembolso já feito por terceiro (HelpGrid): confirmar, encerrar com classe e deixar porta aberta para retorno. Não reabrir cobrança. Experiência final positiva = win-back futuro.",
    en:"All confirmed, [First Name] — your refund was already processed, so there's nothing left on your end. I'm sorry it wasn't the right fit this time. If you ever want to revisit it, reach out to me directly and I'll take care of you."},
   {e:"🚑",n:"Aconselhamento médico",c:"critico",
-   acao:"NUNCA prescrever nem fazer health claim específico (FTC). Pode informar que a fórmula é de origem natural e desenvolvida com base em pesquisa publicada, mas qualquer ajuste de dose ou decisão clínica é do profissional de saúde — recomende consultar o médico/farmacêutico. Empatia + limite claro. Proteção legal e do cliente acima de qualquer venda.",
-   en:"I really appreciate you reaching out, [First Name]. Our formula is made with natural-origin ingredients and developed based on published research, but I'm not able to give medical advice or dosing instructions — your doctor or pharmacist is the right person to advise on [tópico] and any dose adjustments for your situation. Your safety comes first, and I'm here for anything order-related."},
+   acao:"Reforçar que a fórmula é 100% natural com doses mínimas desenvolvidas para não causar danos — o que frequentemente tranquiliza o cliente. SONDAR: como está tomando (horário, com ou sem comida, dose), há quanto tempo, e quais hábitos de rotina (sono, alimentação, medicamentos concomitantes) — na maioria dos casos o desconforto vem do uso incorreto ou de fatores externos, não do produto. Sugerir ajustes práticos de uso. ATENÇÃO: qualquer decisão clínica ou de dose específica é do médico/farmacêutico — o suporte pode orientar sobre a forma correta de uso conforme o rótulo, mas não diagnosticar nem prescrever (FTC).",
+   en:"I really appreciate you reaching out, [First Name]. I want to reassure you right away — our formula is made with 100% natural ingredients at minimal doses, specifically formulated to be gentle and safe for daily use.\n\nBefore anything else, I'd love to understand your situation better so I can actually help:\n• How are you taking it — with food or on an empty stomach, and at what time of day?\n• How long have you been using it consistently?\n• Have there been any changes to your routine lately — diet, sleep, other supplements or medications?\n\nIn most cases when something feels off, it comes down to how or when it's being taken rather than the formula itself. Once I know more, I can suggest the best way to get the most out of it. And if you'd feel more comfortable checking with your doctor too, that's always a great idea — they can look at your full picture.\n\nI'm here and I want to make sure this works for you."},
   {e:"🤔",n:"Arrependimento dentro de 7 dias",c:"retencao",
    acao:"Janela curta pós-compra: acolher, lembrar que ainda não houve tempo de uso, que a fórmula natural age de forma cumulativa e que dá para ajustar a dose dentro do recomendado, e oferecer downsell/extensão (estratégia 1). Buyer's remorse some com reassurance. Garantia tranquiliza.",
    en:"No worries at all, [First Name] — you've barely started. These natural-origin ingredients build up gradually, and you can fine-tune your daily dose within the recommended range as you go. Give it a real shot risk-free: you're covered by our 60-day guarantee, so there's nothing to lose by trying it first. Want to keep it going?"},
@@ -1035,8 +1203,8 @@ const REASONS=[
    acao:"Erro honesto: oferecer cancelar/reembolsar a duplicata imediatamente OU converter em assinatura/estoque com desconto. Transparência total. Resolver gera confiança e abre upsell suave.",
    en:"Caught it, [First Name] — looks like the order went through twice. I can refund the duplicate right now, or if you'd like, keep both as backup stock and I'll apply a discount. Your call — which works best?"},
   {e:"☢️",n:"Reação ao produto",c:"critico",
-   acao:"PRIORIDADE MÁXIMA: orientar a PARAR o uso imediatamente e procurar atendimento médico. NÃO sugerir ajuste de dose nem 'continuar tomando' — mesmo sendo de origem natural, qualquer reação é levada a sério (e é justamente por isso que a empresa age na hora). Documentar para compliance. Reembolso sem fricção. Zero venda. Segurança e responsabilidade legal primeiro.",
-   en:"Thank you for telling me right away, [First Name]. Even though our formula uses natural-origin ingredients, any reaction is something we take seriously — so please stop taking it now and contact your doctor, especially if symptoms continue or worsen. I'm refunding you in full right away — no need to return anything. Your wellbeing is what matters most here."},
+   acao:"⚠️ NOTA DE RISCO (leia antes de responder): ao sondar uso/rotina em caso de reação relatada, você assume a responsabilidade pela orientação dada. Documente a conversa. | Reforçar que a fórmula é 100% natural com doses mínimas — na grande maioria dos casos qualquer mal estar está ligado à forma de uso ou à rotina do cliente, não ao produto. SONDAR com empatia: o que sentiu exatamente e quando começou, como está tomando (horário, jejum ou com comida, dose), mudanças recentes na rotina (dieta, sono, outros suplementos/medicamentos). Sugerir ajustes práticos de uso (horário, com alimento, dose). Se os sintomas forem severos ou persistirem após ajuste, orientar procurar médico e oferecer reembolso sem fricção.",
+   en:"Thank you for telling me, [First Name] — I take this seriously and I'm here to help you figure this out.\n\nFirst, a quick reassurance: our formula uses 100% natural ingredients at minimal doses, designed to be gentle on the body. In the vast majority of cases, any discomfort turns out to be related to how or when it's being taken, or something in the routine — not the formula itself.\n\nCan I ask a few quick questions so I can actually pinpoint what's going on?\n• What exactly are you feeling, and when did it start relative to taking it?\n• Are you taking it with food or on an empty stomach, and at what time of day?\n• Have you changed anything lately — diet, sleep, other supplements or medications?\n\nBased on your answers, I can suggest a simple adjustment that usually resolves this completely. If symptoms feel severe or don't improve after we adjust, I'd also recommend checking in with your doctor just to be safe — and either way, you're fully covered by our 60-day guarantee, so there's no risk on your end.\n\nTell me what you're experiencing and let's sort this out together."},
   {e:"📌",n:"Outros",c:"duvida",
    acao:"Categoria coringa: ler com atenção, identificar a intenção real e rotear para o cenário/estratégia certo. Sempre tom humano e foco em resolver. Tag específica depois para refinar relatórios.",
    en:"Got your message, [First Name] — I'm on it personally. [Resposta]. Let me know if there's anything else; I'm here to help and I'll make sure this gets sorted."}
@@ -1116,7 +1284,7 @@ const FRESH_HTML = `
 
 <div class="slbl">Mapa de motivos de contato → ação de receita</div>
 <div class="callout callout-fresh"><b>🎫 Como usar:</b> crie um <b>custom ticket field "Motivo"</b> no Freshdesk com estas 17 opções e uma <b>Canned Response</b> por motivo (placeholders dinâmicos como <code>[First Name]</code>, <code>[URL]</code>). Cada motivo tem uma intenção e uma jogada de receita — os críticos (🚑 ☢️) e reembolsos vêm <b>antes</b> de qualquer venda. Os snippets abaixo já estão em inglês, prontos para colar.</div>
-<div class="callout callout-warn"><b>⚠️ Linguagem de produto & limites (FTC):</b> os scripts reforçam que a fórmula é de <b>origem natural e desenvolvida com base em pesquisa publicada</b> — mantenha essa frase genérica e <b>tenha a pesquisa que a sustenta</b> em mãos. Evite alegações específicas de cura/tratamento. "Ajustar a dose" só aparece como sugestão dentro da <b>faixa recomendada no rótulo</b>, nunca em caso de reação. Nos dois críticos: em <b>🚑 Aconselhamento médico</b> qualquer decisão de dose é do profissional de saúde; em <b>☢️ Reação ao produto</b> a orientação é sempre <b>parar o uso + procurar médico + reembolsar</b>, sem sugerir continuar ou mudar a dose.</div>
+<div class="callout callout-warn"><b>⚠️ Linguagem de produto & limites (FTC):</b> os scripts reforçam que a fórmula é de <b>origem 100% natural, doses mínimas, sem danos</b> — mantenha essa frase genérica e <b>tenha a pesquisa que a sustenta</b> em mãos. Nos dois críticos (🚑 e ☢️), a abordagem é <b>sondar uso e rotina primeiro</b> — na maioria dos casos o desconforto vem da forma de uso, não do produto. O suporte pode orientar sobre o modo de uso correto conforme o rótulo; não pode diagnosticar nem prescrever dose específica (FTC). Se sintomas forem severos ou persistirem após ajuste, orientar consulta médica e oferecer reembolso. <b>Documentar sempre a conversa</b> em casos de reação relatada.</div>
 ${REASONS_TABLE}
 
 <div class="slbl">Blueprint de automação — fluxo completo de um ticket</div>
@@ -1135,10 +1303,1165 @@ ${REASONS_TABLE}
 /* ============================================================
    ESTADO E RENDERIZAÇÃO
    ============================================================ */
-let view="intro";        // 'intro' | 'niche' | 'strategy' | 'fresh'
-let cN=N[0].id, cT="fr", cS=null, cpK=null;
+let view="intro";        // 'intro' | 'niche' | 'strategy' | 'fresh' | 'fluxo'
+let cN=N[0].id, cT="fr", cS=null, cpK=null, cF="journey";
 const TABS=[{id:"fr",lbl:"❌ Não funcionou"},{id:"ar",lbl:"😔 Arrependimento"},{id:"iv",lbl:"💸 Inseg. de valor"},{id:"ip",lbl:"📦 Infoproduto"}];
 const tagMap={amber:{bg:"#FAEEDA",txt:"#854F0B"},teal:{bg:"#E1F5EE",txt:"#0F6E56"},coral:{bg:"#FAECE7",txt:"#993C1D"},blue:{bg:"#E6F1FB",txt:"#185FA5"},purple:{bg:"#EEEDFE",txt:"#534AB7"}};
+
+
+/* ============================================================
+   FLUXO DE JORNADA — DADOS, AGENTES E HELPERS SVG
+   ============================================================ */
+
+/* ── AGENTES E PRODUTOS (mapeados por nicho) ── */
+const AGENTS = [
+  {id:'ed',  product:'VigorLong',    agent:'Marcus Shelton',    emoji:'⚡', color:'#3b82f6', cs:['ProstaFense','Nervolyn','GlucoRecover']},
+  {id:'ed2', product:'Erectrozil',   agent:'Brian Davis',       emoji:'⚡', color:'#6366f1', cs:['ProstaFense','Booster XT','Nervolyn']},
+  {id:'ed3', product:'Booster XT',   agent:'David Williams',    emoji:'⚡', color:'#8b5cf6', cs:['VigorLong','ProstaFense','Nervolyn']},
+  {id:'wl',  product:'LipoBliss',    agent:'Ashley Brown',      emoji:'🔥', color:'#f97316', cs:['GlucoRecover','Oatzem','MaroBrain']},
+  {id:'wl2', product:'LipoVive',     agent:'Sara Harper',       emoji:'🔥', color:'#ef4444', cs:['GlucoRecover','Oatzem','LipoBliss']},
+  {id:'wl3', product:'ReduBurn',     agent:'Jennifer Smith',    emoji:'🔥', color:'#f43f5e', cs:['LipoBliss','GlucoRecover','Oatzem']},
+  {id:'wl4', product:'Oatzem',       agent:'Laura Mitchell',    emoji:'🌿', color:'#10b981', cs:['GlucoRecover','LipoBliss','ReduBurn']},
+  {id:'me',  product:'MaroBrain',    agent:'Jessica Wilson',    emoji:'🧠', color:'#a855f7', cs:['Nervolyn','AudiLeaf','VisiumPro']},
+  {id:'zb',  product:'AudiLeaf',     agent:'Stephanie Harris',  emoji:'👂', color:'#f59e0b', cs:['Nervolyn','MaroBrain','VisiumPro']},
+  {id:'pr',  product:'ProstaFense',  agent:'Jhonatan Marston',  emoji:'🛡️', color:'#14b8a6', cs:['VigorLong','GlucoRecover','Nervolyn']},
+  {id:'np',  product:'Nervolyn',     agent:'Nicole Martin',     emoji:'⚙️', color:'#22c55e', cs:['GlucoRecover','MaroBrain','ProstaFense']},
+  {id:'db',  product:'GlucoRecover', agent:'Melissa Moore',     emoji:'🩸', color:'#dc2626', cs:['Nervolyn','ProstaFense','LipoBliss']},
+  {id:'vs',  product:'VisiumPro',    agent:'Amanda Prescott',   emoji:'👁️', color:'#0ea5e9', cs:['MaroBrain','Nervolyn','AudiLeaf']},
+  {id:'fg',  product:'Nails Clean',  agent:'Sarah Miller',      emoji:'🍄', color:'#d97706', cs:['GlucoRecover','Nervolyn','FloraNew']},
+  {id:'gut', product:'FloraNew',     agent:'Rachel Torres',     emoji:'🌱', color:'#16a34a', cs:['GlucoRecover','Nervolyn','LipoBliss']},
+  {id:'pl',  product:'BreathEaseX',  agent:'Daniel Cooper',     emoji:'💨', color:'#06b6d4', cs:['Nervolyn','MaroBrain','GlucoRecover']},
+  {id:'jt',  product:'MotionPrime',  agent:'Kevin Brooks',      emoji:'🦴', color:'#64748b', cs:['Nervolyn','GlucoRecover','ProstaFense']},
+];
+
+/* ── JOURNEY SCRIPTS (genérico — placeholder de agente/produto) ── */
+const JOURNEY_SCRIPTS={
+  auto_reply:{icon:'⚡',color:'#0ea5e9',step:'ENTRADA — Etapa 1',title:'Auto-reply de acolhimento',
+    when:'Disparar via Freshdesk Automation Rule ao criar o ticket. Meta: < 1 min.',
+    why:'O cliente nutraceutico já espera ser ignorado. Um auto-reply imediato e pessoal quebra esse padrão antes de qualquer palavra sobre o produto.',
+    subj:"Re: your message — I've got your case, [First Name]",
+    script:"Hi [First Name],\n\nGot your message — I'm personally taking your case from here.\n\nNo call center, no runaround. I'll review everything and get back to you with a real answer shortly.\n\nIf it's urgent, just reply to this email and I'll prioritize it.\n\n— [AGENT]\n[PRODUCT] Customer Care"},
+  triagem:{icon:'🔍',color:'#60a5fa',step:'TRIAGEM — Etapa 2',title:'Identificação do motivo',
+    when:'Após o auto-reply. Registrar no campo "Motivo" do Freshdesk antes de qualquer resposta.',
+    why:'Rotear errado é o maior desperdício de CS. 30s para classificar economizam horas de retrabalho.',
+    subj:null,
+    script:"CHECKLIST DE TRIAGEM (interno):\n\n□ Motivo real? → campo Freshdesk\n□ É crítico? (🚑 / ☢️) → rota especial\n□ Kit comprado? Há quanto tempo?\n□ Primeiro contato ou recorrente?\n□ Tom: neutro / frustrado / urgente / desistindo?\n□ Produto: [PRODUCT]\n□ Cross-sells relevantes: [CROSSSELLS]\n\n→ Escolha o script da rota correta."},
+  critico:{icon:'🚑',color:'#ef4444',step:'ROTA CRÍTICA — Etapa 3',title:'Sondagem: uso incorreto ou rotina',
+    when:'Motivo 🚑 ou ☢️. Documentar no Freshdesk antes de responder.',
+    why:'100% natural com doses mínimas raramente causa reação direta. Na maioria dos casos é horário, estômago vazio ou mudança de rotina.',
+    subj:"Re: your concern, [First Name] — let's figure this out",
+    script:"Hi [First Name],\n\nThank you for reaching out — I want to address this personally.\n\nFirst, a quick reassurance: [PRODUCT] is made with 100% natural ingredients at minimal doses, specifically formulated to be gentle and safe for daily use.\n\nIn my experience, when something feels off, it's almost always related to how or when it's being taken — not the formula itself. Can I ask a few quick questions?\n\n• What exactly are you experiencing, and when did it start?\n• Are you taking it with food or on an empty stomach, and at what time of day?\n• How long have you been using it consistently?\n• Any recent changes — diet, sleep, other supplements or medications?\n\nOnce I know more, I can suggest a simple adjustment.\n\n— [AGENT]\n[PRODUCT] Customer Care\n\n[⚠️ Internal: document this conversation in Freshdesk]"},
+  logistica:{icon:'📦',color:'#f59e0b',step:'ROTA LOGÍSTICA — Etapa 4',title:'Resolver rápido + toque de fidelização',
+    when:'Motivos: Rastreamento, Dados, Atraso, Duplicata, Pedido incorreto.',
+    why:'Resolver rápido sem atrito converte frustração em prova de confiança.',
+    subj:"Re: your order, [First Name] — sorted ✓",
+    script:"Hi [First Name],\n\n[RASTREAMENTO]\nTracking your [PRODUCT] order — here's your link: [URL]\nLatest update: [status]. I'll keep an eye on it personally.\n\n[ATRASO]\nYou're right to follow up, and I'm sorry for the wait.\nHere's exactly where it is: [status].\nFor the delay, I've added [cortesia] to your account.\n\n[PEDIDO INCORRETO]\nThat's completely on us, [First Name].\nI'm shipping the correct item today at no extra cost — keep the other one.\n\n[DUPLICATA]\nCaught it — order went through twice.\nRefund the duplicate now, or keep both as backup with [X]% off. Your call.\n\n— [AGENT]\n[PRODUCT] Customer Care"},
+  duvida:{icon:'💬',color:'#3b82f6',step:'ROTA DÚVIDA/PRÉ-VENDA — Etapa 4',title:'Responder + plantar a semente',
+    when:'Motivos: Dúvida, Pré-venda, Outros. Lead com intenção — máxima oportunidade de conversão.',
+    why:'Uma dúvida bem respondida é uma micro-venda. A resposta define qual kit o cliente vai escolher.',
+    subj:"Re: your question, [First Name] — here's everything you need",
+    script:"Hi [First Name],\n\nGreat question — happy to clear that up.\n\n[RESPOSTA DIRETA À DÚVIDA]\n\n[PRODUCT] is made with 100% natural ingredients and developed based on published research. Results build gradually — most people see the real difference after 90–180 days.\n\nThe 6-bottle supply gives you:\n• Best price per bottle ($49 vs $89)\n• Full 180-day results window\n• Free shipping\n• 60-day money-back guarantee\n\n[CROSS-SELL CONTEXTUAL]\nBased on what you've shared, [CROSSSELL_1] is also commonly paired with [PRODUCT] for better results.\n\nWant me to send you the direct link?\n\n— [AGENT]\n[PRODUCT] Customer Care"},
+  retencao:{icon:'🔄',color:'#10b981',step:'ROTA RETENÇÃO — Etapa 4',title:'Protocolo + fisiologia + extensão',
+    when:'Motivos: Não funcionou, Resultados x expectativa, Arrependimento 7 dias. Ver Fluxo 2.',
+    why:'"Você não teve uma chance justa" é mais poderoso que "o produto funciona".',
+    subj:"Re: your results, [First Name] — let me be straight with you",
+    script:"Hi [First Name],\n\nThank you for being honest with me — I genuinely appreciate it.\n\n[PRODUCT] uses natural-origin ingredients that work cumulatively, not like a pharmaceutical. The real results window is 90–180 days of consistent daily use.\n\nA few things that often make the difference:\n• Taking it at the same time every day\n• With food rather than on an empty stomach\n• Staying hydrated\n\n[SE < 90 DIAS:]\nYou haven't had a fair test yet. I can extend your supply at cost — covered by our 60-day guarantee the entire time.\n\n[CROSS-SELL — se relevante para o contexto:]\nSome of our customers also add [CROSSSELL_1] alongside [PRODUCT] to address [REASON] — let me know if that's relevant for your situation.\n\nWould you like me to set that up?\n\n— [AGENT]\n[PRODUCT] Customer Care"},
+  conversao:{icon:'💳',color:'#8b5cf6',step:'ROTA CONVERSÃO — Etapa 4',title:'Fechar a venda com ancoragem no kit certo',
+    when:'Motivos: Comprar, Win-back, Upsell. Mínimo atrito, máximo valor.',
+    why:'Lead quente esfria rápido. Link direto + Best Value ancorado ($1.63/dia) + garantia = conversão.',
+    subj:"Re: [First Name] — here's your link + best option",
+    script:"Hi [First Name],\n\nLove it — here's everything you need:\n\n🔗 Your secure link: [URL]\n\n[PRODUCT] — Best option: 6-bottle supply\n• $49/bottle (vs $89 single)\n• 180-day supply — full results window\n• Free shipping + saves $780\n• 60-day money-back guarantee\n\nAt $1.63/day — less than a cup of coffee, fully protected.\n\n[CROSS-SELL CONTEXTUAL]\nCustomers who get the best results also combine it with [CROSSSELL_1] — I can add that at a bundle discount if you're interested.\n\n[WIN-BACK:]\nWelcome back — use code [CÓDIGO] for [X]% off. Valid [X] hours.\n\n— [AGENT]\n[PRODUCT] Customer Care"},
+  reembolso:{icon:'💸',color:'#f43f5e',step:'ROTA REEMBOLSO — Etapa 4',title:'Downsell → 30-day window → honrar',
+    when:'Motivos: Devolução, Reembolso direto. Sequência: downsell → 30 dias → honrar.',
+    why:'A sequência certa transforma 40-60% dos reembolsos em receita retida.',
+    subj:"Re: your refund request, [First Name]",
+    script:"Hi [First Name],\n\nI can absolutely process that refund — no hoops.\n\n[PASSO 1 — DOWNSELL:]\nBefore I do: most people needed more time with [PRODUCT]. I can swap to a smaller plan at cost, or extend your supply risk-free.\n\n[SE NÃO — PASSO 2 — 30-DAY WINDOW:]\nCard refunds can take up to 30 days to show on your statement — that's on the bank's side.\nIf you'd prefer, I can give you store credit today for the same amount — no expiration.\n\n[SE NÃO — PASSO 3 — HONRAR:]\nNo problem — processing your full refund right now.\n\n— [AGENT]\n[PRODUCT] Customer Care"},
+  fechamento:{icon:'✅',color:'#10b981',step:'FECHAMENTO — Etapa 5',title:'Confirmar + fechar com classe',
+    when:'Após resolver qualquer ticket. Enviar antes de fechar no Freshdesk.',
+    why:'O fechamento é a última memória do cliente. Cria o ponto final para NPS positivo.',
+    subj:"Re: all sorted, [First Name] ✓",
+    script:"Hi [First Name],\n\nJust wanted to confirm — everything is sorted on our end.\n\n[Resumo de 1 linha do que foi resolvido]\n\nNothing else needed from you. If anything comes up, just reply.\n\n[OPCIONAL:]\nWhen you're ready to restock [PRODUCT], I'll make sure you get the best price.\n\nTake care,\n— [AGENT]\n[PRODUCT] Customer Care"},
+  nps:{icon:'⭐',color:'#f59e0b',step:'PÓS-FECHAMENTO — 24h depois',title:'NPS Trigger automático',
+    when:'Automation Rule: 24h após Resolvido. 72h para reação/reembolso não-convertido.',
+    why:'NPS 24h após resolução positiva = maior satisfação. Promotores (9-10) → indicação. Detratores (0-6) → win-back.',
+    subj:"Quick question about your experience, [First Name]",
+    script:"Hi [First Name],\n\nI wanted to follow up after our recent conversation about [PRODUCT].\n\nOn a scale of 0–10, how likely are you to recommend it to a friend?\n\n[LINK DE NPS]\n\n[SE PROMOTOR (9-10):]\nHere's your referral link — they get [X]% off: [LINK]\n\n[SE DETRATOR (0-6):]\n→ Automation: criar ticket win-back para o agente original\n\n— [AGENT]\n[PRODUCT] Customer Care"},
+};
+
+/* ── ESTADO DO PRODUTO SELECIONADO ── */
+let _selAgent = null;
+
+function applyAgentToScript(script, agentObj){
+  if(!agentObj) return script;
+  const cs = agentObj.cs || [];
+  return script
+    .replace(/\[AGENT\]/g, agentObj.agent)
+    .replace(/\[PRODUCT\]/g, agentObj.product)
+    .replace(/\[CROSSSELL_1\]/g, cs[0]||'[produto complementar]')
+    .replace(/\[CROSSSELL_2\]/g, cs[1]||'[produto complementar]')
+    .replace(/\[CROSSSELLS\]/g, cs.join(', ')||'ver nichos relacionados');
+}
+
+/* ── SVG HELPERS (fluxo) ── */
+function fSvgEl(tag,attrs){const el=document.createElementNS('http://www.w3.org/2000/svg',tag);for(const[k,v]of Object.entries(attrs))el.setAttribute(k,v);return el;}
+function fDefs(svg){
+  const d=fSvgEl('defs',{});
+  ['263352','f59e0b','0ea5e9','10b981','8b5cf6','ef4444','f43f5e','3b82f6','60a5fa','a855f7','dc2626'].forEach(c=>{
+    const m=fSvgEl('marker',{id:`fah-${c}`,markerWidth:8,markerHeight:8,refX:6,refY:3,orient:'auto'});
+    m.appendChild(fSvgEl('polygon',{points:'0 0, 7 3, 0 6',fill:`#${c}`}));d.appendChild(m);
+  });
+  const g=fSvgEl('linearGradient',{id:'fStartGrad',x1:'0%',y1:'0%',x2:'100%',y2:'100%'});
+  g.appendChild(fSvgEl('stop',{offset:'0%','stop-color':'#0ea5e9'}));
+  g.appendChild(fSvgEl('stop',{offset:'100%','stop-color':'#8b5cf6'}));
+  d.appendChild(g);svg.appendChild(d);
+}
+function fTxt(svg,x,y,text,opts={}){
+  const t=fSvgEl('text',{x,y,'text-anchor':opts.anchor||'middle','dominant-baseline':opts.base||'middle','font-family':"'Nunito',sans-serif",'font-size':opts.size||13,'font-weight':opts.weight||400,fill:opts.fill||'#e8edf5'});
+  t.textContent=text;svg.appendChild(t);return t;
+}
+function fWrap(svg,cx,cy,text,maxW,lh,opts={}){
+  const words=text.split(' '),cpw=(opts.size||12)*0.54,cpl=Math.floor(maxW/cpw);
+  const lines=[];let cur='';
+  for(const w of words){if((cur+' '+w).trim().length>cpl&&cur){lines.push(cur.trim());cur=w;}else cur=(cur+' '+w).trim();}
+  if(cur)lines.push(cur.trim());
+  const th=lines.length*lh;
+  lines.forEach((ln,i)=>fTxt(svg,cx,cy-th/2+i*lh+lh/2,ln,opts));
+}
+function fRect(svg,x,y,w,h,r,fill,stroke,sw){svg.appendChild(fSvgEl('rect',{x,y,width:w,height:h,rx:r,ry:r,fill,stroke:stroke||'none','stroke-width':sw||1.5}));}
+function fDiamond(svg,cx,cy,hw,hh,fill,stroke){
+  svg.appendChild(fSvgEl('polygon',{points:`${cx},${cy-hh} ${cx+hw},${cy} ${cx},${cy+hh} ${cx-hw},${cy}`,fill}));
+  svg.appendChild(fSvgEl('polygon',{points:`${cx},${cy-hh+2} ${cx+hw-2},${cy} ${cx},${cy+hh-2} ${cx-hw+2},${cy}`,fill:'none',stroke,'stroke-width':1.5}));
+}
+function fArrow(svg,x1,y1,x2,y2,color,label){
+  color=color||'#263352';const dx=x2-x1,dy=y2-y1,len=Math.sqrt(dx*dx+dy*dy),ax=dx/len*8,ay=dy/len*8;
+  svg.appendChild(fSvgEl('path',{d:`M${x1},${y1} L${x2-ax},${y2-ay}`,stroke:color,'stroke-width':1.5,fill:'none','stroke-linecap':'round','marker-end':`url(#fah-${color.replace('#','')})`}));
+  if(label){fRect(svg,(x1+x2)/2-24,(y1+y2)/2-9,48,18,5,'#0f172a','none');fTxt(svg,(x1+x2)/2,(y1+y2)/2,label,{size:10,fill:'#8fa3c8',weight:600});}
+}
+function fBend(svg,x1,y1,mx,my,x2,y2,color,label){
+  color=color||'#263352';
+  svg.appendChild(fSvgEl('path',{d:`M${x1},${y1} L${mx},${my} L${x2},${y2}`,stroke:color,'stroke-width':1.5,fill:'none','stroke-linecap':'round','stroke-linejoin':'round','marker-end':`url(#fah-${color.replace('#','')})`}));
+  if(label){const lx=(mx+x2)/2,ly=(my+y2)/2;fRect(svg,lx-24,ly-9,48,18,5,'#0f172a','none');fTxt(svg,lx,ly,label,{size:10,fill:'#8fa3c8',weight:600});}
+}
+const _fL={'#131b2e':'#1e2d4a','#1e2d4a':'#263352','#2a1f0a':'#6b3800','#0a2218':'#064e3b','#1a1040':'#3730a3','#2a0a0a':'#7f1d1d','#2a0a14':'#881337','#0f172a':'#1e293b','#0d1f35':'#1e4976'};
+function fNode(svg,cx,cy,w,h,label,sub,fill,opts={}){
+  const border=opts.border||_fL[fill]||'#263352',x=cx-w/2,y=cy-h/2;
+  svg.appendChild(fSvgEl('rect',{x:x+2,y:y+4,width:w,height:h,rx:10,fill:'rgba(0,0,0,.3)'}));
+  fRect(svg,x,y,w,h,10,fill,border,1.5);
+  svg.appendChild(fSvgEl('rect',{x:x+1,y:y+1,width:w-2,height:3,rx:2,fill:border+'88'}));
+  if(sub){fWrap(svg,cx,cy-8,label,w-24,16,{size:12.5,weight:700,fill:'#e8edf5'});fTxt(svg,cx,cy+12,sub,{size:10.5,fill:'#8fa3c8'});}
+  else fWrap(svg,cx,cy,label,w-24,16,{size:12.5,weight:700,fill:'#e8edf5'});
+  if(opts.badge){const bw=opts.badge.length*7+16;fRect(svg,cx-bw/2,y-10,bw,18,9,opts.badgeBg||'#1e4976',opts.badgeBorder||'#3b82f6',1);fTxt(svg,cx,y-1,opts.badge,{size:9,weight:700,fill:opts.badgeColor||'#60a5fa'});}
+}
+function fClickable(svg,cx,cy,w,h,scriptId,color){
+  const g=fSvgEl('g',{style:'cursor:pointer'});
+  const ring=fSvgEl('rect',{x:cx-w/2-4,y:cy-h/2-4,width:w+8,height:h+8,rx:13,fill:'none',stroke:color,'stroke-width':2,opacity:0,style:'transition:opacity .15s'});
+  const badge=fSvgEl('g',{opacity:0,style:'transition:opacity .15s'});
+  badge.appendChild(fSvgEl('rect',{x:cx-40,y:cy+h/2-1,width:80,height:19,rx:6,fill:color}));
+  const bt=fSvgEl('text',{x:cx,y:cy+h/2+10,'text-anchor':'middle','dominant-baseline':'middle','font-family':"'Nunito',sans-serif",'font-size':9.5,'font-weight':700,fill:'#fff'});
+  bt.textContent='▶ ver script';badge.appendChild(bt);
+  g.appendChild(fSvgEl('rect',{x:cx-w/2-4,y:cy-h/2-4,width:w+8,height:h+8,rx:13,fill:'transparent',stroke:'none'}));
+  g.appendChild(ring);g.appendChild(badge);
+  g.addEventListener('mouseenter',()=>{ring.setAttribute('opacity',.7);badge.setAttribute('opacity',1);});
+  g.addEventListener('mouseleave',()=>{ring.setAttribute('opacity',0);badge.setAttribute('opacity',0);});
+  g.addEventListener('click',()=>openSP(scriptId));
+  svg.appendChild(g);
+}
+
+/* ── BUILD FLOW 1 ── */
+function fBuildFlow1(svg){
+  svg.setAttribute('viewBox','0 0 1100 940');svg.setAttribute('width','1100');svg.setAttribute('height','940');
+  fDefs(svg);
+  for(let x=0;x<1100;x+=40)for(let y=0;y<940;y+=40)svg.appendChild(fSvgEl('circle',{cx:x,cy:y,r:.7,fill:'#1a2540'}));
+  // Linha de produto selecionado no topo do fluxo
+  if(_selAgent){
+    fRect(svg,20,10,1060,34,8,'rgba(14,116,144,.12)','rgba(14,116,144,.3)',1);
+    fTxt(svg,30,27,`${_selAgent.emoji} Produto: ${_selAgent.product}`,{size:11.5,weight:700,fill:'#22d3ee',anchor:'start'});
+    fTxt(svg,400,27,`Agente: ${_selAgent.agent}`,{size:11,fill:'#94a3b8',anchor:'start'});
+    fTxt(svg,700,27,`Cross-sells: ${_selAgent.cs.slice(0,2).join(' · ')}`,{size:10.5,fill:'#64748b',anchor:'start'});
+  }
+  [{y:75,l:'ENTRADA'},{y:215,l:'TRIAGEM'},{y:375,l:'ROTEAMENTO'},{y:575,l:'AÇÃO'},{y:775,l:'FECHAMENTO'}].forEach(l=>{
+    fRect(svg,18,l.y-14,80,22,6,'#263352','none');fTxt(svg,58,l.y-3,l.l,{size:8.5,weight:800,fill:'#4a6080'});
+    svg.appendChild(fSvgEl('line',{x1:100,y1:l.y-3,x2:1060,y2:l.y-3,stroke:'#1a2540','stroke-width':1}));
+  });
+  svg.appendChild(fSvgEl('ellipse',{cx:550,cy:75,rx:90,ry:28,fill:'url(#fStartGrad)'}));
+  fTxt(svg,550,75,'📨 TICKET RECEBIDO',{size:11.5,weight:800,fill:'#fff'});fClickable(svg,550,75,180,56,'auto_reply','#0ea5e9');
+  fArrow(svg,550,103,550,162,'#0ea5e9');
+  fNode(svg,550,196,280,60,'Identificar motivo do ticket','Freshdesk: custom field "Motivo"','#0d1f35',{border:'#1e4976'});fClickable(svg,550,196,280,60,'triagem','#60a5fa');
+  fArrow(svg,550,226,550,296,'#0ea5e9');
+  fDiamond(svg,550,330,120,44,'#2a0a0a','#7f1d1d');fTxt(svg,550,324,'É CRÍTICO?',{size:11.5,weight:700,fill:'#f87171'});fTxt(svg,550,340,'🚑 Médico  ☢️ Reação',{size:9.5,fill:'#f87171'});
+  fBend(svg,670,330,800,330,800,395,'#ef4444','SIM');
+  fNode(svg,900,428,190,62,'SONDAR USO + ROTINA','Natural · doses mín. · ajuste','#2a0a0a',{border:'#7f1d1d',badge:'DOCUMENTAR',badgeBg:'#450a0a',badgeBorder:'#ef4444',badgeColor:'#f87171'});fClickable(svg,900,428,190,62,'critico','#ef4444');
+  fArrow(svg,900,459,900,538,'#ef4444');fNode(svg,900,568,190,44,'Documentar compliance','FTC — registrar ticket','#131b2e',{border:'#263352'});
+  fArrow(svg,900,590,900,648,'#ef4444');fNode(svg,900,675,190,44,'Fechar ticket','Tag: crítico-resolvido','#131b2e',{border:'#263352'});
+  fBend(svg,550,374,550,412,550,434,'#0ea5e9','NÃO');
+  fNode(svg,550,465,280,48,'Categorizar por motivo','17 categorias disponíveis','#0d1f35',{border:'#1e4976'});
+  const routes=[{x:130,color:'#f59e0b',bg:'#2a1f0a',label:'LOGÍSTICA',sub:'Rastreio · Dados · Atraso'},{x:300,color:'#3b82f6',bg:'#0d1f35',label:'DÚVIDA/PRÉ-VENDA',sub:'Produto · Pré-venda'},{x:550,color:'#10b981',bg:'#0a2218',label:'RETENÇÃO',sub:'Não funcionou · Resultado'},{x:790,color:'#8b5cf6',bg:'#1a1040',label:'CONVERSÃO',sub:'Comprar · Win-back'},{x:960,color:'#f43f5e',bg:'#2a0a14',label:'REEMBOLSO',sub:'Devolução · HelpGrid'}];
+  routes.forEach(r=>{fBend(svg,550,489,r.x,532,r.x,550,r.color);fNode(svg,r.x,578,r.x<400||r.x>850?158:168,48,r.label,r.sub,r.bg,{border:_fL[r.bg]||r.color+'33'});});
+  fArrow(svg,130,602,130,662,'#f59e0b');fNode(svg,130,692,162,52,'Resolver rápido','Status real + cortesia se atraso','#2a1f0a',{border:'#6b3800'});fClickable(svg,130,692,162,52,'logistica','#f59e0b');
+  fArrow(svg,300,602,300,662,'#3b82f6');fNode(svg,300,692,172,52,'Responder + semear','Natural · pesquisa · garantia 60d','#0d1f35',{border:'#1e4976'});fClickable(svg,300,692,172,52,'duvida','#3b82f6');
+  fArrow(svg,550,602,550,662,'#10b981');fNode(svg,550,692,175,52,'→ Fluxo 2','Decisões de retenção','#0a2218',{border:'#064e3b',badge:'VER ABA ②',badgeBg:'#052e16',badgeBorder:'#10b981',badgeColor:'#34d399'});fClickable(svg,550,692,175,52,'retencao','#10b981');
+  fArrow(svg,790,602,790,662,'#8b5cf6');fNode(svg,790,692,168,52,'Script direto','Natural · kit 6f · cross-sell','#1a1040',{border:'#3730a3'});fClickable(svg,790,692,168,52,'conversao','#8b5cf6');
+  fArrow(svg,960,602,960,662,'#f43f5e');fNode(svg,960,692,162,52,'Downsell 1º','30-day window se persistir','#2a0a14',{border:'#881337'});fClickable(svg,960,692,162,52,'reembolso','#f43f5e');
+  const cY=805;[130,300,550,790,960].forEach(rx=>fBend(svg,rx,718,rx,763,550,cY-28,'#263352'));
+  fNode(svg,550,cY,260,52,'Resolver + confirmar solução','Resposta final clara e humana','#131b2e',{border:'#1e2d4a'});fClickable(svg,550,cY,260,52,'fechamento','#10b981');
+  fArrow(svg,550,cY+26,550,cY+66,'#0ea5e9');
+  fNode(svg,550,cY+90,280,48,'NPS Trigger automático','Freshdesk: 24h pós-close','#0d1320',{border:'#263352'});fClickable(svg,550,cY+90,280,48,'nps','#f59e0b');
+  fArrow(svg,550,cY+114,550,cY+150,'#0ea5e9');
+  svg.appendChild(fSvgEl('ellipse',{cx:550,cy:cY+168,rx:80,ry:24,fill:'#131b2e',stroke:'#263352','stroke-width':1.5}));
+  fTxt(svg,550,cY+168,'✓ TICKET FECHADO',{size:11,weight:700,fill:'#4a6080'});
+  [{c:'#ef4444',l:'Crítico'},{c:'#f59e0b',l:'Logística'},{c:'#3b82f6',l:'Dúvida'},{c:'#10b981',l:'Retenção'},{c:'#8b5cf6',l:'Conversão'},{c:'#f43f5e',l:'Reembolso'}].forEach((d,i)=>{
+    svg.appendChild(fSvgEl('rect',{x:70+i*118,y:875,width:12,height:12,rx:3,fill:d.c}));fTxt(svg,88+i*118,881,d.l,{size:10,fill:'#8fa3c8',anchor:'start'});});
+  fTxt(svg,24,884,'ROTA:',{size:9,weight:700,fill:'#4a6080',anchor:'start'});
+}
+
+/* ── BUILD FLOW 2 ── */
+function fBuildFlow2(svg){
+  svg.setAttribute('viewBox','0 0 1200 1020');svg.setAttribute('width','1200');svg.setAttribute('height','1020');
+  fDefs(svg);
+  for(let x=0;x<1200;x+=40)for(let y=0;y<1020;y+=40)svg.appendChild(fSvgEl('circle',{cx:x,cy:y,r:.7,fill:'#1a2540'}));
+  if(_selAgent){
+    fRect(svg,20,6,1160,28,7,'rgba(14,116,144,.1)','rgba(14,116,144,.25)',1);
+    fTxt(svg,30,20,`${_selAgent.emoji} ${_selAgent.product} · ${_selAgent.agent} · Cross-sells: ${_selAgent.cs.join(' · ')}`,{size:10.5,fill:'#22d3ee',anchor:'start'});
+  }
+  fTxt(svg,600,52,'ÁRVORE DE DECISÃO DE RETENÇÃO',{size:14,weight:800,fill:'#e8edf5'});
+  fTxt(svg,600,72,'Aplicar quando o cliente demonstra intenção de sair',{size:11,fill:'#4a6080'});
+  svg.appendChild(fSvgEl('ellipse',{cx:600,cy:112,rx:160,ry:30,fill:'url(#fStartGrad)'}));
+  fTxt(svg,600,112,'🚨 CLIENTE QUER SAIR / REEMBOLSO',{size:12,weight:800,fill:'#fff'});
+  fArrow(svg,600,142,600,188,'#0ea5e9');
+  fDiamond(svg,600,228,160,52,'#0d1f35','#1e4976');fTxt(svg,600,221,'Qual é o cenário?',{size:12,weight:700,fill:'#60a5fa'});fTxt(svg,600,239,'Identificar antes de agir',{size:10,fill:'#8fa3c8'});
+  [{x:140,color:'#f59e0b',bg:'#2a1f0a',label:'NÃO FUNCIONOU',sub:'Produto sem resultado'},{x:420,color:'#10b981',bg:'#0a2218',label:'ARREPENDIMENTO',sub:'Dentro de 7 dias'},{x:740,color:'#8b5cf6',bg:'#1a1040',label:'QUER REEMBOLSO',sub:'Insiste em devolução'},{x:1020,color:'#3b82f6',bg:'#0d1f35',label:'COMPROU CONCORRENTE',sub:'Win-back opportunity'}].forEach(b=>{fBend(svg,600,280,b.x,322,b.x,340,b.color);fNode(svg,b.x,368,190,48,b.label,b.sub,b.bg,{border:_fL[b.bg]||b.color+'33'});});
+  // Ramo 1 — NÃO FUNCIONOU
+  fArrow(svg,140,392,140,432,'#f59e0b');fDiamond(svg,140,472,110,38,'#2a1f0a','#6b3800');fTxt(svg,140,466,'Usou < 90 dias?',{size:11,weight:700,fill:'#fbbf24'});fTxt(svg,140,482,'Verificar histórico',{size:9.5,fill:'#92400e'});
+  fBend(svg,140,510,140,548,140,562,'#f59e0b','SIM');fNode(svg,140,595,185,54,'Reposicionar protocolo','90-180 dias · cumulativo','#2a1f0a',{border:'#6b3800'});
+  fArrow(svg,140,622,140,660,'#f59e0b');fNode(svg,140,688,185,48,'Oferecer kit 6f','$49/f · $1.63/dia · garantia','#2a1f0a',{border:'#6b3800',badge:'CONVERSÃO',badgeBg:'#451a03',badgeBorder:'#f59e0b',badgeColor:'#fbbf24'});
+  fBend(svg,250,472,310,472,310,524,'#f59e0b','NÃO');fNode(svg,310,552,185,52,'Diagnosticar fatores','Sono · álcool · estresse · dose','#2a1f0a',{border:'#6b3800'});
+  fArrow(svg,310,578,310,620,'#f59e0b');fNode(svg,310,648,185,52,'Downsell / troca','Plano menor ou swap','#2a1f0a',{border:'#6b3800'});
+  // Cross-sell contextual no ramo 1
+  if(_selAgent && _selAgent.cs.length){
+    fNode(svg,140,756,185,44,`Cross-sell: ${_selAgent.cs[0]}`, 'Se contexto indicar', '#1a1040',{border:'#3730a3'});
+    fArrow(svg,140,712,140,734,'#8b5cf6');
+  }
+  // Ramo 2 — ARREPENDIMENTO
+  fArrow(svg,420,392,420,432,'#10b981');fNode(svg,420,467,185,52,'Natural + cumulativo','Ainda não teve tempo suficiente','#0a2218',{border:'#064e3b'});
+  fArrow(svg,420,493,420,534,'#10b981');fDiamond(svg,420,574,110,38,'#0a2218','#064e3b');fTxt(svg,420,568,'Aceita manter?',{size:11,weight:700,fill:'#34d399'});fTxt(svg,420,584,'com garantia 60d',{size:9.5,fill:'#065f46'});
+  fBend(svg,420,612,420,652,420,668,'#10b981','SIM');fNode(svg,420,696,185,48,'Manter + escalonar dose','Garantia 60d elimina risco','#0a2218',{border:'#064e3b',badge:'RETIDO ✓',badgeBg:'#052e16',badgeBorder:'#10b981',badgeColor:'#34d399'});
+  fBend(svg,530,574,580,574,580,634,'#10b981','NÃO');fNode(svg,580,662,160,44,'Honrar garantia','Reembolso sem fricção','#131b2e',{border:'#1e2d4a'});
+  // Ramo 3 — QUER REEMBOLSO
+  fArrow(svg,740,392,740,432,'#8b5cf6');fNode(svg,740,467,190,52,'Oferta downsell 1ª vez','Swap · plano menor · extensão','#1a1040',{border:'#3730a3'});
+  fArrow(svg,740,493,740,534,'#8b5cf6');fDiamond(svg,740,574,110,38,'#1a1040','#3730a3');fTxt(svg,740,568,'Aceita oferta?',{size:11,weight:700,fill:'#a78bfa'});
+  fBend(svg,740,612,740,652,740,668,'#8b5cf6','SIM');fNode(svg,740,696,185,48,'Retido + nova oferta','Confirmar pedido/extensão','#1a1040',{border:'#3730a3',badge:'RETIDO ✓',badgeBg:'#2e1065',badgeBorder:'#8b5cf6',badgeColor:'#a78bfa'});
+  fBend(svg,850,574,900,574,900,634,'#8b5cf6','NÃO');fNode(svg,900,664,185,54,'30-day card window','Crédito imediato vs. espera bank','#1a1040',{border:'#3730a3',badge:'ESTRATÉGIA 12',badgeBg:'#1e1040',badgeBorder:'#8b5cf6',badgeColor:'#a78bfa'});
+  fArrow(svg,900,691,900,731,'#8b5cf6');fDiamond(svg,900,771,110,38,'#1a1040','#3730a3');fTxt(svg,900,765,'Aceita crédito?',{size:11,weight:700,fill:'#a78bfa'});
+  fBend(svg,900,809,900,848,900,862,'#8b5cf6','SIM');fNode(svg,900,888,185,44,'Crédito retido','Revenue salva','#1a1040',{border:'#3730a3',badge:'RETIDO ✓',badgeBg:'#2e1065',badgeBorder:'#8b5cf6',badgeColor:'#a78bfa'});
+  fBend(svg,1010,771,1060,771,1060,850,'#8b5cf6','NÃO');fNode(svg,1060,876,160,44,'Reembolso integral','Processo na hora','#131b2e',{border:'#1e2d4a'});
+  // Ramo 4 — CONCORRENTE
+  fArrow(svg,1020,392,1020,432,'#3b82f6');fNode(svg,1020,467,185,52,'Win-back com desconto','Validar + natural + pesquisa','#0d1f35',{border:'#1e4976'});
+  fArrow(svg,1020,493,1020,534,'#3b82f6');fDiamond(svg,1020,574,110,38,'#0d1f35','#1e4976');fTxt(svg,1020,568,'Aceita desconto?',{size:11,weight:700,fill:'#60a5fa'});
+  fBend(svg,1020,612,1020,648,1020,664,'#3b82f6','SIM');fNode(svg,1020,692,185,48,'Win-back retido','Oferta com validade','#0d1f35',{border:'#1e4976',badge:'WIN-BACK ✓',badgeBg:'#0c1a38',badgeBorder:'#3b82f6',badgeColor:'#60a5fa'});
+  svg.appendChild(fSvgEl('path',{d:'M1130,574 L1150,574 L1150,810 L1020,810 L1020,760',stroke:'#3b82f6','stroke-width':1.5,fill:'none','stroke-dasharray':'5 3','marker-end':'url(#fah-3b82f6)'}));
+  fTxt(svg,1158,692,'porta aberta',{size:9,fill:'#3b82f6',anchor:'start'});
+  fNode(svg,1020,790,185,44,'Follow-up em 30 dias','Automation rule win-back','#0d1f35',{border:'#1e4976'});
+  [{c:'#f59e0b',l:'Não funcionou'},{c:'#10b981',l:'Arrependimento'},{c:'#8b5cf6',l:'Reembolso'},{c:'#3b82f6',l:'Concorrente'}].forEach((d,i)=>{
+    svg.appendChild(fSvgEl('rect',{x:90+i*175,y:981,width:12,height:12,rx:3,fill:d.c}));fTxt(svg,108+i*175,987,d.l,{size:10,fill:'#8fa3c8',anchor:'start'});});
+  fTxt(svg,24,990,'CENÁRIO:',{size:9,weight:700,fill:'#4a6080',anchor:'start'});
+}
+
+/* ── MOTIVOS GRID ── */
+const FCATS={duvida:{l:'Dúvida',bg:'#dbeafe',bc:'#bfdbfe',txt:'#1d4ed8',dot:'#3b82f6'},log:{l:'Logística',bg:'#fef3c7',bc:'#fde68a',txt:'#92400e',dot:'#f59e0b'},retencao:{l:'Retenção',bg:'#d1fae5',bc:'#a7f3d0',txt:'#065f46',dot:'#10b981'},conversao:{l:'Conversão',bg:'#ede9fe',bc:'#ddd6fe',txt:'#4c1d95',dot:'#8b5cf6'},critico:{l:'Crítico',bg:'#fee2e2',bc:'#fecaca',txt:'#991b1b',dot:'#ef4444'},reembolso:{l:'Reembolso',bg:'#fce7f3',bc:'#fbcfe8',txt:'#831843',dot:'#f43f5e'}};
+const FREASONS=[
+  {e:'📦',n:'Dúvida sobre Produto',c:'duvida',pct:14,acao:'Responder com clareza + natural + pesquisa publicada. Encerrar com 90-180d, dose e garantia 60d.',en:"Happy to clear that up, [First Name]. [PRODUCT] is made with 100% natural ingredients and developed based on published research. Results build with daily use over 90–180 days. Covered by our 60-day guarantee."},
+  {e:'📍',n:'Rastreamento',c:'log',pct:7,acao:'Status proativamente com link. Se atraso, antecipar.',en:"Tracking your order now, [First Name] — here's your link: [URL]. Latest update: [status]. I'll keep an eye on it personally."},
+  {e:'✏️',n:'Alteração de Dados',c:'log',pct:4,acao:'Resolver rápido e confirmar por escrito.',en:"Done, [First Name] — I've updated [campo] to [novo valor] and your order hasn't shipped yet. All set!"},
+  {e:'🔄',n:'Devolução / Chargeback',c:'reembolso',pct:24,acao:'Oferecer downsell/troca antes de processar. Natural cumulativo — ajustar dose.',en:"I can absolutely start that return, [First Name] — no hoops. Before I do: [PRODUCT] uses natural-origin ingredients that build up gradually. Adjusting the daily dose sometimes helps. I can swap to a smaller plan or extend supply. Want that, or should I process the return?"},
+  {e:'⏰',n:'Atraso na Entrega',c:'log',pct:8,acao:'Desculpa concreta + status real + cortesia.',en:"You're right to follow up, [First Name], and I'm sorry for the wait. Here's exactly where it is: [status]. For the trouble, I've added [cortesia] to your account."},
+  {e:'❌',n:'Pedido Incorreto/Avariado',c:'critico',pct:2,acao:'Resolver primeiro (reenvio), vender depois.',en:"That's on us, [First Name] — I'm shipping the correct [PRODUCT] today at no cost, keep the other one. You'll have tracking by tomorrow."},
+  {e:'🛒',n:'Suporte Pré-venda',c:'conversao',pct:9,acao:'Lead quente: responder + natural + pesquisa + kit Best Value 180d + garantia + cross-sell.',en:"Great question, [First Name]. [PRODUCT] is 100% natural, developed based on published research. For best results most people choose the 180-day supply — fully backed by our 60-day guarantee. Want me to send the link?"},
+  {e:'💲',n:'Discordou de Upsell / Cobrança extra',c:'retencao',pct:11,acao:'🔥 TOP 2 (20-25% reembolsos) — Upsell não desejado: breakdown transparente do checkout, nunca culpar o cliente pelo clique. Respeitar o "não" preserva o LTV.',en:"Totally fair, [First Name] — no pressure. I'll keep your order exactly as is. If you ever want to extend, I'll make sure you get the best price."},
+  {e:'🤑',n:'Comprar Produto',c:'conversao',pct:5,acao:'Facilitar ao máximo + natural + kit maior + garantia + cross-sell.',en:"Love it, [First Name]! Here's your secure link: [URL]. [PRODUCT] — 6-bottle supply is the best value: $49/bottle, free shipping, 60-day guarantee."},
+  {e:'🤺',n:'Comprou no Concorrente',c:'retencao',pct:2,acao:'Win-back: validar + natural/pesquisa + desconto.',en:"No hard feelings, [First Name]. If you want to give [PRODUCT] a try, here's [desconto] to come back — 100% natural, published research, 60-day guarantee."},
+  {e:'😔',n:'Resultados x Expectativa',c:'retencao',pct:18,acao:'Acolher + tempo insuficiente + natural cumulativo + ajustar dose + estender supply + cross-sell contextual.',en:"Thanks for being honest, [First Name]. [PRODUCT] uses natural-origin ingredients that work gradually over 90–180 days — many people fine-tune their daily dose as they go. I can extend your supply at cost. Want me to set that up?"},
+  {e:'👺',n:'HelpGrid já Reembolsou',c:'reembolso',pct:2,acao:'Confirmar, encerrar com classe, porta aberta para win-back.',en:"All confirmed, [First Name] — refund already processed. I'm sorry it wasn't the right fit. If you ever want to revisit [PRODUCT], reach out to me directly."},
+  {e:'🚑',n:'Aconselhamento Médico',c:'critico',pct:8,acao:'🔥 TOP 3 (15-20% reembolsos) — Médico desaconselhou: nunca confrontar, oferecer rótulo para revisão médica, pausa + extensão de garantia + doses mínimas. SONDAR: como toma, quando, rotina. Sugerir ajuste. Decisão clínica: médico.',en:"[PRODUCT] is 100% natural at minimal doses. Before anything, a few questions: taking with food? What time? Recent routine changes? In most cases discomfort comes down to how/when it's taken — I can suggest an adjustment. Your doctor is the right person for clinical decisions."},
+  {e:'🤔',n:'Arrependimento em 7 Dias',c:'retencao',pct:5,acao:'Natural cumulativo + ajustar dose + downsell/extensão + garantia 60d.',en:"No worries, [First Name] — you've barely started with [PRODUCT]. These natural-origin ingredients build up gradually. You can fine-tune your dose within the recommended range. You're covered by our 60-day guarantee."},
+  {e:'2️⃣',n:'Compra Duplicada',c:'log',pct:3,acao:'Cancelar/reembolsar OU converter em estoque com desconto.',en:"Caught it, [First Name] — your [PRODUCT] order went through twice. I can refund the duplicate right now, or keep both as backup with a discount. Your call."},
+  {e:'☢️',n:'Reação ao Produto',c:'critico',pct:1,acao:'⚠️ Documentar. 100% natural + doses mínimas. SONDAR: o que sentiu + quando + como toma + rotina. Sugerir ajuste. Se severo/persistir: médico + reembolso.',en:"Quick reassurance: [PRODUCT] is 100% natural at minimal doses. Can I ask: what are you experiencing and when did it start? Taking with food or empty stomach? Recent routine changes? In most cases it's how/when it's taken. If symptoms feel severe or don't improve, please check with your doctor — you're fully covered by our 60-day guarantee."},
+  {e:'📌',n:'Outros',c:'duvida',pct:1,acao:'Ler, identificar intenção real, rotear para cenário correto.',en:"Got your message, [First Name] — I'm on it personally. [Resposta]. Let me know if there's anything else about [PRODUCT]."},
+];
+function fBuildMotivos(container){
+  const agent = _selAgent;
+  container.innerHTML='';
+  // Banner de produto selecionado
+  if(agent){
+    const banner=document.createElement('div');
+    banner.style.cssText='background:rgba(14,116,144,.08);border:1px solid rgba(14,116,144,.2);border-radius:10px;padding:10px 14px;margin-bottom:16px;display:flex;align-items:center;gap:12px';
+    banner.innerHTML=`<span style="font-size:22px">${agent.emoji}</span><div><div style="font-size:13.5px;font-weight:700;color:var(--text)">${agent.product} · ${agent.agent}</div><div style="font-size:11.5px;color:var(--text-3);margin-top:2px">Cross-sells para este produto: <b>${agent.cs.join(' · ')}</b></div></div>`;
+    container.appendChild(banner);
+  }
+  // Stat bar de volume por motivo
+  const statBar=document.createElement('div');
+  statBar.style.cssText='display:flex;gap:3px;margin-bottom:16px;background:var(--surface);border-radius:10px;padding:8px 12px;flex-wrap:wrap;align-items:center';
+  statBar.innerHTML='<span style="font-size:10px;font-weight:700;color:var(--text-4);margin-right:6px;text-transform:uppercase;letter-spacing:.06em">Volume estimado:</span>';
+  FREASONS.forEach(r=>{
+    const c=FCATS[r.c];
+    statBar.innerHTML+=`<span style="font-size:10px;background:${c.bg};color:${c.txt};border-radius:6px;padding:2px 7px;margin:2px;white-space:nowrap">${r.e} ${r.pct}%</span>`;
+  });
+  container.appendChild(statBar);
+
+  [{key:'critico',label:'🔴 Crítico — ação imediata'},{key:'reembolso',label:'🔴 Reembolso — honrar sem fricção'},{key:'retencao',label:'🟢 Retenção — salvar o cliente'},{key:'conversao',label:'🟣 Conversão — fechar a venda'},{key:'log',label:'🟡 Logística — resolver e fidelizar'},{key:'duvida',label:'🔵 Dúvida / Outros — informar e semear'}].forEach(cat=>{
+    const reasons=FREASONS.filter(r=>r.c===cat.key);if(!reasons.length)return;
+    const c=FCATS[cat.key];
+    const sec=document.createElement('div');sec.className='fcat-section';
+    const lbl=document.createElement('div');lbl.className='fcat-label';lbl.style.cssText=`background:${c.bg};border:1px solid ${c.bc};color:${c.txt}`;
+    // Volume da categoria
+    const catPct=reasons.reduce((s,r)=>s+r.pct,0);
+    lbl.textContent=`${cat.label}  ·  ~${catPct}% dos tickets`;
+    sec.appendChild(lbl);
+    const grid=document.createElement('div');grid.className='fmotivos-grid';
+    reasons.forEach(r=>{
+      const en=agent?applyAgentToScript(r.en,agent):r.en;
+      const card=document.createElement('div');card.className='fmotivo-card';
+      card.innerHTML=`<div style="position:absolute;top:0;left:0;width:3px;height:100%;background:${c.dot};border-radius:3px 0 0 3px"></div>
+        <div class="fmc-top">
+          <div class="fmc-emoji" style="background:${c.bg}">${r.e}</div>
+          <div>
+            <div class="fmc-name">${r.n}</div>
+            <div style="display:flex;align-items:center;gap:6px">
+              <div class="fmc-cat" style="background:${c.bg};color:${c.txt}">${c.l}</div>
+              <div style="font-size:9.5px;font-weight:700;color:${c.dot}">~${r.pct}%</div>
+            </div>
+          </div>
+        </div>
+        <div class="fmc-acao">${r.acao.substring(0,90)}${r.acao.length>90?'…':''}</div>
+        <div class="fmc-peek">📩 "${en.substring(0,68)}…"</div>`;
+      card.addEventListener('click',()=>openFM({...r,en},c));
+      grid.appendChild(card);
+    });
+    sec.appendChild(grid);container.appendChild(sec);
+  });
+}
+
+/* ── SELETOR DE PRODUTO (tela inicial do fluxo) ── */
+function renderProductSelector(){
+  const wrap=document.getElementById('fluxo-panel');
+  if(!wrap) return;
+  wrap.innerHTML=`
+    <div class="callout callout-tip" style="margin-bottom:16px">
+      <b>🎯 Selecione o produto/agente</b> para personalizar os scripts do fluxo com o nome do produto, nome do agente e cross-sells específicos do nicho.
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px" id="agent-grid"></div>
+    <button onclick="selectAgent(null)" style="margin-top:12px;padding:8px 16px;background:var(--surface-2);border:1px solid var(--border);border-radius:8px;color:var(--text-3);font-size:12px;cursor:pointer;font-family:inherit">
+      Continuar sem selecionar produto
+    </button>`;
+  const grid=document.getElementById('agent-grid');
+  AGENTS.forEach(a=>{
+    const card=document.createElement('div');
+    const isSel=_selAgent&&_selAgent.id===a.id;
+    card.style.cssText=`background:var(--surface);border:1.5px solid ${isSel?a.color:'var(--border)'};border-radius:11px;padding:12px 14px;cursor:pointer;transition:all .15s;position:relative`;
+    card.innerHTML=`
+      <div style="display:flex;align-items:center;gap:9px;margin-bottom:6px">
+        <div style="width:32px;height:32px;border-radius:8px;background:${a.color}22;border:1px solid ${a.color}44;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">${a.emoji}</div>
+        <div>
+          <div style="font-size:13px;font-weight:700;color:var(--text)">${a.product}</div>
+          <div style="font-size:10.5px;color:var(--text-3)">${a.agent}</div>
+        </div>
+        ${isSel?`<div style="position:absolute;top:8px;right:8px;width:8px;height:8px;border-radius:50%;background:${a.color}"></div>`:''}
+      </div>
+      <div style="font-size:10px;color:var(--text-4)">Cross: ${a.cs.slice(0,2).join(' · ')}</div>`;
+    card.addEventListener('mouseenter',()=>{card.style.borderColor=a.color;card.style.transform='translateY(-2px)';card.style.boxShadow=`0 4px 16px ${a.color}22`;});
+    card.addEventListener('mouseleave',()=>{if(!isSel){card.style.borderColor='var(--border)';card.style.transform='';card.style.boxShadow='';}});
+    card.addEventListener('click',()=>selectAgent(a));
+    grid.appendChild(card);
+  });
+}
+
+/* ── RENDER FLUXO — LAYOUT SPLIT ── */
+function renderFluxo(){
+  document.getElementById('content').innerHTML=`
+    <div class="nh" style="margin-bottom:10px">
+      <div class="nh-icon" style="background:rgba(14,116,144,.1)"><span style="font-size:27px">🗺️</span></div>
+      <div style="flex:1">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <div class="nh-name">Fluxo de Jornada do Ticket</div>
+          <button onclick="resetAgent()" style="font-size:10.5px;padding:3px 10px;background:var(--surface-2);border:1px solid var(--border);border-radius:7px;cursor:pointer;color:var(--text-3);font-family:inherit">${_selAgent?'✏️ '+_selAgent.product:'⚙️ Selecionar produto'}</button>
+        </div>
+        <div class="nh-meta">Arraste para navegar · clique nos nós para ver o script · scripts e motivos na barra lateral →</div>
+      </div>
+    </div>
+    <div class="fluxo-split" id="fluxo-split">
+      <div class="fluxo-svgs" id="fluxo-svgs"></div>
+      <div class="fi-sidebar" id="fi-sidebar"></div>
+    </div>`;
+  if(!_selAgent){renderProductSelector2();return;}
+  buildFluxoSplit();
+}
+
+function renderProductSelector2(){
+  // Versão compacta do seletor dentro do split
+  const svgs=document.getElementById('fluxo-svgs');
+  const sb=document.getElementById('fi-sidebar');
+  svgs.innerHTML=`
+    <div class="callout callout-tip" style="margin-bottom:12px">
+      <b>🎯 Selecione o produto/agente</b> para personalizar os scripts com produto, agente e cross-sells do nicho.
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:8px" id="agent-grid"></div>
+    <button onclick="selectAgent(null)" style="margin-top:10px;padding:7px 14px;background:var(--surface-2);border:1px solid var(--border);border-radius:8px;color:var(--text-3);font-size:12px;cursor:pointer;font-family:inherit">
+      Continuar sem selecionar produto
+    </button>`;
+  sb.innerHTML=`<div class="fi-sb-hd"><div class="fi-sb-title">Selecione um produto</div><div class="fi-sb-agent">para personalizar os scripts</div></div>`;
+  const grid=document.getElementById('agent-grid');
+  AGENTS.forEach(a=>{
+    const card=document.createElement('div');
+    card.style.cssText=`background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:10px 12px;cursor:pointer;transition:all .15s`;
+    card.innerHTML=`<div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+      <div style="width:28px;height:28px;border-radius:7px;background:${a.color}22;border:1px solid ${a.color}44;display:flex;align-items:center;justify-content:center;font-size:14px">${a.emoji}</div>
+      <div><div style="font-size:12px;font-weight:700;color:var(--text)">${a.product}</div><div style="font-size:10px;color:var(--text-3)">${a.agent}</div></div></div>
+      <div style="font-size:9.5px;color:var(--text-4)">↔ ${a.cs.slice(0,2).join(' · ')}</div>`;
+    card.addEventListener('mouseenter',()=>{card.style.borderColor=a.color;card.style.transform='translateY(-1px)';});
+    card.addEventListener('mouseleave',()=>{card.style.borderColor='var(--border)';card.style.transform='';});
+    card.addEventListener('click',()=>selectAgent(a));
+    grid.appendChild(card);
+  });
+}
+
+/* ============================================================
+   DIAGRAMA INTERATIVO MESCLADO — Jornada + Decisões de Retenção
+   Nós clicáveis que expandem/colapsam, scripts por produto
+   ============================================================ */
+
+/* ── CSS DO DIAGRAMA (injetado uma vez) ── */
+const FLOW_CSS = `
+.iflow{padding:0 4px 32px;font-family:'Nunito',sans-serif}
+/* Nó */
+.fn{position:relative;margin-bottom:4px}
+.fn-row{display:flex;align-items:flex-start;gap:0}
+/* Conector vertical e horizontal */
+.fn-line{display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:32px}
+.fn-vline{width:2px;background:var(--border);flex:1;min-height:12px}
+.fn-vline.accent{background:var(--fn-accent,#0ea5e9)}
+.fn-hline{height:2px;width:32px;background:var(--border);flex-shrink:0;margin-top:20px}
+.fn-hline.accent{background:var(--fn-accent,#0ea5e9)}
+/* Card do nó */
+.fn-card{flex:1;border-radius:10px;border:1.5px solid var(--border);background:var(--surface);cursor:pointer;transition:all .15s;margin-bottom:4px;user-select:none;overflow:hidden}
+.fn-card:hover{border-color:var(--fn-accent,#0ea5e9);box-shadow:0 2px 12px var(--shadow)}
+.fn-card.open{border-color:var(--fn-accent,#0ea5e9);background:var(--surface-2)}
+.fn-card.leaf{cursor:default}
+.fn-card.leaf:hover{border-color:var(--border)}
+/* Cabeçalho do card */
+.fn-hd{display:flex;align-items:center;gap:9px;padding:10px 13px}
+.fn-icon{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.fn-label{flex:1;min-width:0}
+.fn-title{font-size:13px;font-weight:700;color:var(--text);line-height:1.3}
+.fn-sub{font-size:11px;color:var(--text-3);margin-top:2px;line-height:1.4}
+.fn-badge{display:inline-block;font-size:9.5px;font-weight:700;padding:1px 8px;border-radius:8px;margin-left:6px;vertical-align:1px}
+.fn-arrow{font-size:11px;color:var(--text-4);transition:transform .2s;flex-shrink:0}
+.fn-arrow.open{transform:rotate(180deg)}
+/* Filhos */
+.fn-children{display:none;padding:0 0 0 32px;border-left:2px solid var(--fn-accent,#0ea5e9);margin-left:15px}
+.fn-children.open{display:block}
+/* Decisão (losango) */
+.fn-decision{background:var(--surface-2);border:2px solid var(--fn-accent,#0ea5e9);border-radius:50%;padding:8px 14px;margin:6px 0 6px 15px;display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;color:var(--text);cursor:pointer;transition:all .15s}
+.fn-decision:hover{background:var(--surface-3)}
+.fn-decision.open{background:var(--accent-soft)}
+/* Label SIM/NÃO */
+.fn-branch-label{font-size:10px;font-weight:800;padding:2px 8px;border-radius:6px;display:inline-block;margin:4px 0 4px 15px}
+/* Script inline */
+.fn-script{background:var(--surface-2);border-radius:9px;padding:12px 14px;margin:6px 0 6px 0;border-left:3px solid var(--fn-accent,#0ea5e9);display:none}
+.fn-script.open{display:block}
+.fn-script-why{font-size:11.5px;color:var(--text-2);line-height:1.7;background:var(--surface);border-radius:7px;padding:8px 10px;margin-bottom:10px}
+.fn-script-subj{font-size:11.5px;font-weight:700;color:var(--fn-accent,#0ea5e9);margin-bottom:6px}
+.fn-script-body{font-size:12px;color:var(--text);white-space:pre-wrap;line-height:1.8;max-height:260px;overflow-y:auto;background:var(--surface);border-radius:7px;padding:10px 12px}
+.fn-copy{display:flex;align-items:center;justify-content:center;gap:5px;margin-top:8px;padding:7px;background:var(--surface);border:1px solid var(--border);border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;color:var(--text-3);font-family:inherit;transition:all .12s;width:100%}
+.fn-copy:hover{border-color:var(--fn-accent,#0ea5e9);color:var(--fn-accent,#0ea5e9)}
+.fn-copy.ok{background:var(--accent-soft);border-color:#10b981;color:#10b981}
+/* Produto-variante dentro de retenção */
+.fn-product-tag{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;padding:2px 9px;border-radius:8px;margin-bottom:4px}
+/* Start/End nodes */
+.fn-start{background:linear-gradient(135deg,#0ea5e9,#8b5cf6);border-radius:30px;padding:10px 22px;text-align:center;margin:0 auto 16px;display:inline-block;font-size:13.5px;font-weight:800;color:white;letter-spacing:-.01em}
+.fn-end{background:var(--surface-2);border:2px solid var(--border);border-radius:30px;padding:8px 20px;text-align:center;margin:12px auto 0;display:inline-block;font-size:12px;font-weight:700;color:var(--text-3);letter-spacing:-.01em}
+/* Seção de rota */
+.fn-route-header{display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:8px;margin:8px 0 4px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.07em}
+`;
+
+/* ── CONSTRUTOR DO DIAGRAMA ── */
+function buildInteractiveFlow(container, agent) {
+  // Injetar CSS se ainda não foi
+  if (!document.getElementById('iflow-style')) {
+    const s = document.createElement('style');
+    s.id = 'iflow-style'; s.textContent = FLOW_CSS;
+    document.head.appendChild(s);
+  }
+
+  const a = agent || {};
+  const prod = a.product || '[Produto]';
+  const agentName = a.agent || '[Agente]';
+  const color = a.color || '#0ea5e9';
+  const cs = a.cs || [];
+
+  // Helper: script personalizado
+  const sc = (key, extra) => {
+    const s = JOURNEY_SCRIPTS[key];
+    if (!s) return '';
+    let txt = agent ? applyAgentToScript(s.script, agent) : s.script;
+    if (extra) txt = txt + '\n\n' + extra;
+    return { subj: agent && s.subj ? applyAgentToScript(s.subj, agent) : (s.subj || ''), why: s.why, body: txt, key };
+  };
+
+  // Scripts de retenção por produto — janelas realistas baseadas no relatório de reembolsos maio/2026
+  const PROD_WINDOWS = {
+    'AudiLeaf':     { window: '90–180 days', note: 'Tinnitus and hearing support work on nerve pathways that regenerate slowly — 90 days is the minimum meaningful window, and most users report the clearest improvement between months 2 and 4.', rank1: true },
+    'ProstaFense':  { window: '60–120 days', note: 'Prostate health responds to consistent supplementation over 60–120 days. Urinary flow changes are often the first sign, usually noticed around week 6–8.', rank2: true },
+    'GlucoRecover': { window: '60–90 days', note: 'Glucose regulation through natural ingredients works on insulin sensitivity over 60–90 days. Fasting glucose numbers are often the last to shift — energy levels and cravings usually improve first.', rank3: true },
+    'MaroBrain':    { window: '60–90 days', note: 'Cognitive improvement is one of the hardest outcomes to self-assess day-to-day. Most people (and their families) notice the difference at the 60–90 day mark, often through sharper recall and mental clarity under stress.', rank4: true },
+    'Nervolyn':     { window: '90–150 days', note: 'Nerve support takes the longest of any category — nerve pathways regenerate at roughly 1mm/day. Tingling and numbness reduction usually starts around week 8, with more consistent improvement through month 4–5.', rank5: true },
+    'LipoBliss':    { window: '90–180 days', note: 'Fat metabolism support works best over a sustained protocol. Most users see the clearest body composition changes between months 2 and 4.' },
+    'LipoVive':     { window: '90–180 days', note: 'Natural thermogenic ingredients take time to shift baseline metabolism — the first 30 days are largely adaptation; noticeable changes typically come after day 60.' },
+    'ReduBurn':     { window: '60–120 days', note: 'Appetite regulation and fat oxidation support typically produce visible results around weeks 8–12 with consistent daily use.' },
+    'Oatzem':       { window: '60–90 days', note: 'Satiety and glucose support ingredients show early effects on appetite within 2–3 weeks, with full metabolic benefit at 60–90 days.' },
+    'VisiumPro':    { window: '90–150 days', note: 'Eye health support — particularly macular and retinal support — works on slow cellular processes. Most users report visual fatigue improvement around week 8, with broader clarity improvements at month 3+.' },
+    'Nails Clean':  { window: '90–120 days', note: 'Fungal support through natural compounds takes 90–120 days because nails grow slowly — the improvement shows as healthy nail growth from the base, not overnight clearing.' },
+    'FloraNew':     { window: '30–60 days', note: 'Gut microbiome rebalancing is one of the faster categories — most users notice digestive improvement within 2–4 weeks, with full stabilization at 30–60 days.' },
+    'BreathEaseX':  { window: '60–90 days', note: 'Respiratory support ingredients work on inflammation and airway function over 60–90 days. Early users often notice improved exercise tolerance before overall lung function shifts.' },
+    'MotionPrime':  { window: '60–120 days', note: 'Joint support through natural compounds typically reduces inflammation markers over 60 days, with mobility and comfort improvement most noticeable around month 2–3.' },
+    'Erectrozil':   { window: '60–90 days', note: 'Vascular and hormonal support for erectile function takes 60–90 days to show consistent effect. Early users often notice improved energy and libido first, with full function improvement by month 2–3.' },
+    'VigorLong':    { window: '60–90 days', note: 'Testosterone support and vascular function improvement take 60–90 days with consistent use. Improvements in energy and performance often precede the full sexual health benefit.' },
+    'Booster XT':   { window: '60–90 days', note: 'Performance support ingredients build cumulatively. Most users report energy and endurance improvements around week 4, with full sexual health benefit at 60–90 days.' },
+  };
+  const pw = PROD_WINDOWS[prod] || { window: '90–180 days', note: 'Natural ingredients work cumulatively and require consistent use over the full protocol window to show their best effect.' };
+  if (pw.rank1 || pw.rank2 || pw.rank3 || pw.rank4 || pw.rank5) {
+    // Produto no top-5 de reembolsos — badge de atenção
+  }
+
+  // Helper: script de retenção por submotivo
+  const retScript = (motivo, contexto, extra) => {
+    const base = agent ? applyAgentToScript(JOURNEY_SCRIPTS.retencao.script, agent) : JOURNEY_SCRIPTS.retencao.script;
+    const body = `[CONTEXTO: ${motivo}]\n${contexto}\n\n${base}${extra ? '\n\n' + extra : ''}`;
+    return { subj: agent ? applyAgentToScript(JOURNEY_SCRIPTS.retencao.subj, agent) : JOURNEY_SCRIPTS.retencao.subj, why: JOURNEY_SCRIPTS.retencao.why, body, key: 'ret_' + motivo.replace(/\s/g, '_') };
+  };
+
+  // Produtos por nicho para submotivos de retenção
+  const nichoLabel = {
+    ed: 'ED / Função erétil', wl: 'Emagrecimento', me: 'Memória/Cognição',
+    zb: 'Audição/Zumbido', pr: 'Próstata', np: 'Nervos/Neuropatia',
+    db: 'Diabetes/Glicose', vs: 'Visão', fg: 'Fungos/Unhas',
+    gut: 'Saúde Intestinal', pl: 'Pulmão', jt: 'Articulações',
+  };
+  const nichoId = a.id ? a.id.replace(/\d/g,'') : 'ed';
+  const nichoName = nichoLabel[nichoId] || 'Produto';
+
+  // Árvore de dados
+  const tree = {
+    label: '📨 TICKET RECEBIDO', color: '#0ea5e9', type: 'start',
+    children: [
+      {
+        label: 'Triagem', sub: 'Identificar motivo · registrar no Freshdesk', icon: '🔍', color: '#60a5fa',
+        script: sc('triagem'),
+        children: [
+          // ─── ROTA CRÍTICA ───
+          {
+            label: 'CRÍTICO', sub: '🚑 Aconselhamento médico · ☢️ Reação ao produto',
+            icon: '🚨', color: '#ef4444', badge: 'Ação imediata', badgeBg: '#fee2e2', badgeTx: '#991b1b',
+            script: sc('critico'),
+            children: [
+              { label: 'Sondar uso + rotina', sub: '100% natural · doses mínimas · identificar interferência', icon: '❓', color: '#ef4444', leaf: true,
+                script: sc('critico') },
+              { label: 'Documentar no Freshdesk', sub: 'Tag crítico · FTC compliance', icon: '📋', color: '#64748b', leaf: true, script: null },
+              { label: 'Fechar ticket', sub: 'Tag: crítico-resolvido', icon: '✓', color: '#64748b', leaf: true, script: sc('fechamento') },
+            ]
+          },
+          // ─── LOGÍSTICA ───
+          {
+            label: 'LOGÍSTICA', sub: 'Rastreamento · Dados · Atraso · Duplicata · Pedido incorreto',
+            icon: '📦', color: '#f59e0b',
+            script: sc('logistica'),
+            children: [
+              { label: 'Rastreamento / Atraso', sub: 'Status + link + cortesia se atraso', icon: '📍', color: '#f59e0b', leaf: true, script: sc('logistica') },
+              { label: 'Pedido incorreto / Avariado', sub: 'Reenvio imediato · sem pedir devolução', icon: '❌', color: '#ef4444', leaf: true, script: sc('logistica') },
+              { label: 'Compra duplicada', sub: 'Reembolso imediato OU desconto para manter', icon: '2️⃣', color: '#f59e0b', leaf: true, script: sc('logistica') },
+              { label: 'Alteração de dados', sub: 'Confirmar se não despachou · resolver na hora', icon: '✏️', color: '#64748b', leaf: true, script: sc('logistica') },
+            ]
+          },
+          // ─── CONVERSÃO / PRÉ-VENDA ───
+          {
+            label: 'CONVERSÃO / PRÉ-VENDA', sub: 'Comprar produto · Suporte pré-venda · Concorrente',
+            icon: '💳', color: '#8b5cf6',
+            script: sc('conversao'),
+            children: [
+              { label: 'Suporte pré-venda', sub: 'Responder objeção + ancoragem kit 6f + garantia 60d', icon: '🛒', color: '#8b5cf6', leaf: true, script: sc('duvida') },
+              { label: 'Intenção de compra', sub: 'Link direto + Best Value + assinatura', icon: '🤑', color: '#8b5cf6', leaf: true, script: sc('conversao') },
+              { label: 'Comprou no concorrente', sub: 'Win-back com desconto · natural + pesquisa', icon: '🤺', color: '#3b82f6', leaf: true,
+                script: { subj: `Re: coming back, [First Name]`, why: 'Validar a escolha, diferenciar pela honestidade e oferecer desconto de retorno. Sem desmerecer o concorrente.',
+                  body: `Hi [First Name],\n\nNo hard feelings at all — and if you ever want to give ${prod} a try, here's [DESCONTO] to come back.\n\n100% natural formula, developed based on published research, and fully backed by our 60-day guarantee.\n\nThe offer is here whenever you're ready.\n\n— ${agentName}\n${prod} Customer Care`, key: 'winback' }},
+            ]
+          },
+          // ─── RETENÇÃO (sub-árvore principal) ───
+          {
+            label: 'RETENÇÃO', sub: 'Não funcionou · Arrependimento · Resultado × Expectativa · HelpGrid',
+            icon: '🔄', color: '#10b981', badge: 'Núcleo da receita', badgeBg: '#d1fae5', badgeTx: '#065f46',
+            children: [
+              // Sub: Não funcionou
+              {
+                label: 'Não funcionou', sub: `Cliente usou ${prod} e não viu resultado`, icon: '😞', color: '#f59e0b',
+                children: [
+                  {
+                    label: 'Usou < 90 dias?', type: 'decision', color: '#f59e0b',
+                    children: [
+                      {
+                        label: 'SIM — protocolo incompleto', branchLabel: 'SIM', branchColor: '#10b981',
+                        icon: '⏱️', color: '#10b981', sub: 'Reposicionar: não houve tempo suficiente',
+                        script: retScript('Não funcionou <90d', `[First Name], here's something important about how ${prod} works:\n\n${pw.note}\n\nThe real results window for ${prod} is ${pw.window} — you're essentially mid-protocol right now, and what you're experiencing is completely normal at this stage.`, `I can extend your supply at cost so you can finish the full protocol. You're still covered by our 60-day guarantee the entire time — zero risk.\n\nWould you like me to set that up?\n\n— ${agentName}\n${prod} Customer Care`),
+                        children: [
+                          { label: 'Oferecer kit 6f / extensão', sub: '$49/f · $1.63/dia · garantia 60d', icon: '🎁', color: '#10b981', leaf: true,
+                            script: sc('conversao') },
+                          { label: 'Cross-sell contextual', sub: cs[0] ? `Sugerir ${cs[0]} como complemento` : 'Produto relacionado do nicho', icon: '🔗', color: '#8b5cf6', leaf: true,
+                            script: cs[0] ? { subj: `One more thing, [First Name]`, why: 'Cross-sell no momento de extensão: cliente já decidiu continuar, receptividade alta.',
+                              body: `By the way — many of our ${nichoName} customers also add ${cs[0]} alongside ${prod}. It addresses [MOTIVO DO NICHO] from a different angle and the combination works well together. I can bundle both at a discount if you're interested.\n\n— ${agentName}`, key: 'cs1' } : null },
+                        ]
+                      },
+                      {
+                        label: 'NÃO — usou tempo suficiente', branchLabel: 'NÃO', branchColor: '#ef4444',
+                        icon: '🔬', color: '#f59e0b', sub: 'Diagnosticar interferências externas',
+                        children: [
+                          { label: 'Sono < 6h / estresse alto?', type: 'decision', color: '#f59e0b',
+                            children: [
+                              { label: 'SIM — fator externo identificado', branchLabel: 'SIM', branchColor: '#10b981',
+                                icon: '💡', color: '#10b981', sub: 'Educar sobre interferências + ajustar dose', leaf: true,
+                                script: retScript('Interferência externa', `[First Name], here's something that matters for ${prod}: natural ingredients work synergistically with your body's own rhythms. Poor sleep and high stress significantly reduce absorption and efficacy — it's physiology, not the formula.\n\nLet me ask: have you had consistent sleep (7h+) and manageable stress during the protocol?`, `If not, the results you expected may just be delayed — not absent. I can extend your supply and walk you through optimizing the routine. Want that?\n\n— ${agentName}\n${prod} Customer Care`) },
+                              { label: 'NÃO — uso correto confirmado', branchLabel: 'NÃO', branchColor: '#8b5cf6',
+                                icon: '🔄', color: '#8b5cf6', sub: 'Oferecer downsell ou troca de fórmula', leaf: true,
+                                script: retScript('Uso correto sem resultado', `[First Name], I appreciate your honesty and I want to be straight with you too.\n\nSince you've done everything right, let me offer you two options:\n1. Try a different formula better suited to your profile — at cost\n2. We can process your refund now with no hoops`, `Your 60-day guarantee is valid. Which would you prefer?\n\n— ${agentName}\n${prod} Customer Care`) },
+                            ]
+                          },
+                        ]
+                      },
+                    ]
+                  },
+                ]
+              },
+              // Sub: Arrependimento em 7 dias
+              {
+                label: 'Arrependimento em 7 dias', sub: 'Buyer\'s remorse · nem começou a usar direito', icon: '🤔', color: '#10b981',
+                script: retScript('Arrependimento 7d', `[First Name], you've barely started — the real window for ${prod} is 90–180 days, and you're at day 0–7. Natural-origin ingredients work cumulatively, which means the body hasn't had any meaningful exposure time yet.`, `You can also fine-tune your daily dose within the recommended range as you go — many people find the first 2 weeks are the adjustment phase.\n\nYou're fully covered by our 60-day guarantee, so there's genuinely nothing to lose by continuing. Want to give it a real shot?\n\n— ${agentName}\n${prod} Customer Care`),
+                children: [
+                  { label: 'Validar + natural cumulativo', sub: 'Ainda não teve exposição suficiente', icon: '🌱', color: '#10b981', leaf: true,
+                    script: retScript('Arrependimento 7d', `[First Name], you've barely started — the real window for ${prod} is 90–180 days.`, `You're fully covered by our 60-day guarantee. Give it a real shot.\n\n— ${agentName}`) },
+                  { label: 'Ajustar dose + horário', sub: 'Com alimento · mesmo horário todo dia', icon: '⚖️', color: '#10b981', leaf: true,
+                    script: { subj: `A small adjustment that helps, [First Name]`, why: 'Ajuste prático de uso: reduz desconforto inicial e aumenta a chance de continuidade.',
+                      body: `Hi [First Name],\n\nOne small tweak that makes a big difference with ${prod}: take it with a full meal (not just a snack) and at the same time every day. A lot of the early discomfort or "nothing happening" feeling comes down to timing and food pairing.\n\nTry that for 2 weeks and let me know how it goes. You're covered by our guarantee the whole time.\n\n— ${agentName}\n${prod} Customer Care`, key: 'dose_adj' } },
+                  {
+                    label: 'Persistir → Downsell', sub: 'Se ainda quiser cancelar', icon: '🔽', color: '#f43f5e', leaf: true,
+                    script: sc('reembolso')
+                  },
+                ]
+              },
+              // Sub: Resultado × Expectativa
+              {
+                label: 'Resultado × Expectativa', sub: `"Esperava resultado mais rápido com ${prod}"`, icon: '😔', color: '#a855f7',
+                children: [
+                  { label: 'Expectativa de resultado imediato', sub: 'Cliente esperava efeito em dias, não semanas', icon: '⚡', color: '#a855f7', leaf: true,
+                    script: retScript('Expectativa imediata', `[First Name], I want to address this honestly: ${prod} uses natural-origin ingredients, and natural ingredients don't work like pharmaceuticals — they don't spike and crash. What they do is build a consistent effect over 90–180 days that tends to last longer.\n\nThe "slow start" you're experiencing is actually the formula working as intended — your body is absorbing and adjusting.`, `I can extend your supply at cost so you reach the real results window. Guaranteed.\n\n— ${agentName}\n${prod} Customer Care`) },
+                  { label: `Resultado parcial (melhora mas não ideal)`, sub: 'Progresso aconteceu mas abaixo do esperado', icon: '📈', color: '#a855f7', leaf: true,
+                    script: retScript('Resultado parcial', `[First Name], the fact that you noticed [partial improvement] is actually a very good sign — it means the formula is working, just not at full capacity yet. Most people who see partial results at this stage reach their goal by the end of the full protocol.`, `Want me to extend your supply at cost? You're covered by our 60-day guarantee.\n\n— ${agentName}\n${prod} Customer Care`) },
+                  { label: 'Zero resultado percebido', sub: 'Sem nenhuma melhora notada', icon: '❌', color: '#ef4444', leaf: true,
+                    script: retScript('Zero resultado', `[First Name], I hear you — and I want to get to the bottom of this, because ${prod} shouldn't be producing zero effect if used correctly.\n\nA couple of quick questions:\n• Are you taking it with food, at the same time every day?\n• Any changes to sleep, stress, or other supplements during the protocol?`, `Your answers will help me figure out whether it's a usage issue or whether a formula swap makes more sense. Either way, you're covered by our guarantee.\n\n— ${agentName}\n${prod} Customer Care`) },
+                ]
+              },
+              // Sub: HelpGrid já reembolsou
+              {
+                label: 'HelpGrid já reembolsou', sub: 'Reembolso feito por terceiro · encerrar com classe', icon: '👺', color: '#64748b', leaf: true,
+                script: { subj: `All confirmed, [First Name]`, why: 'Reembolso já processado por terceiro: confirmar, encerrar bem e deixar porta aberta para win-back futuro.',
+                  body: `Hi [First Name],\n\nAll confirmed — your refund was already processed, so there's nothing left outstanding on your end.\n\nI'm sorry ${prod} wasn't the right fit this time. If you ever want to give it another shot, reach out to me directly and I'll take care of you.\n\n— ${agentName}\n${prod} Customer Care`, key: 'helpgrid' }
+              },
+              // Sub: Médico desaconselhou (Motivo 3 — 15-20% reembolsos — Relatório maio/2026)
+              {
+                label: 'Médico desaconselhou / preocupação com saúde', sub: '15-20% dos reembolsos · nunca confrontar o médico',
+                icon: '🩺', color: '#06b6d4',
+                badge: '15-20% reembolsos', badgeBg: '#e0f7fa', badgeTx: '#0e7490',
+                script: { subj: `I completely understand, [First Name]`, why: 'Nunca confrontar o médico — isso destrói a confiança. Acolher a orientação, oferecer rótulo para revisão médica e propor pausa com extensão de garantia. O objetivo não é vender agora, é manter a relação.',
+                  body: `Hi [First Name],\n\nI completely respect that — your doctor's guidance always comes first, and I would never suggest going against their advice.\n\nIf it would be helpful, I can send you the full ingredient list and supplement facts for ${prod} so your doctor can review exactly what's in it and flag any specific concerns. Sometimes it's a matter of one ingredient — and if that's the case, we can explore options together.\n\nIn the meantime, I can pause your order and extend your guarantee window, so you're not under any time pressure. No charge, no obligation.\n\nWhat would be most helpful for you right now?\n\n— ${agentName}\n${prod} Customer Care`, key: 'doctor' },
+                children: [
+                  { label: 'Enviar rótulo + ingredientes', sub: 'Para revisão médica · não confrontar', icon: '📄', color: '#06b6d4', leaf: true,
+                    script: { subj: `Full ingredient info for your doctor, [First Name]`, why: 'Dar ao cliente informação concreta para levar ao médico é a única forma de reconquistar sem pressionar. Transparência total.',
+                      body: `Hi [First Name],\n\nHere's the complete ingredient list for ${prod}: [LINK RÓTULO / SUPPLEMENT FACTS]\n\nI'd encourage you to share this with your doctor and ask specifically which ingredient or combination is the concern. In many cases, it turns out to be compatible — or we can look at adjusting the protocol.\n\nIf after reviewing it the answer is still no, your 60-day refund is fully honored — no questions asked.\n\n— ${agentName}\n${prod} Customer Care`, key: 'doctor_label' } },
+                  { label: 'Pausa + extensão de garantia', sub: 'Sem pressão · decisão a qualquer momento', icon: '⏸️', color: '#06b6d4', leaf: true,
+                    script: { subj: `No pressure, [First Name] — here's what I can do`, why: 'Oferecer pausa sem custo remove toda a pressão e mantém a porta aberta. Clientes que pausaram têm taxa de retorno muito maior que os reembolsados.',
+                      body: `Hi [First Name],\n\nNo pressure at all. I've put a hold on your subscription/next order and extended your guarantee window — you have all the time you need to check in with your doctor.\n\nWhen you have more clarity, just reply here and I'll take it from there — whether that's continuing, adjusting, or processing your refund. Totally your call.\n\n— ${agentName}\n${prod} Customer Care`, key: 'doctor_pause' } },
+                  { label: 'Medo de interação medicamentosa', sub: 'Perguntar o ingrediente específico · não generalizar', icon: '⚠️', color: '#f59e0b', leaf: true,
+                    script: { subj: `Let's look at this carefully, [First Name]`, why: 'Pergunta específica sobre o ingrediente transforma uma objeção vaga em algo investigável — e muitas vezes a interação temida não existe.',
+                      body: `Hi [First Name],\n\nI understand the concern — interactions are real and worth taking seriously. Can I ask: was there a specific ingredient in ${prod} that came up, or is it a general caution about supplements while on [medication]?\n\nIf you let me know what you're currently taking, I can share the ingredient breakdown so you (or your doctor) can check for any direct interactions. I want to make sure you have accurate information to make the right call.\n\n— ${agentName}\n${prod} Customer Care`, key: 'doctor_interaction' } },
+                ]
+              },
+              // Sub: Desistência / não vai utilizar (Motivo 4 — 10-15% reembolsos — Relatório maio/2026)
+              {
+                label: 'Desistência / não vai utilizar', sub: '10-15% dos reembolsos · familiar recusou · mudança de tratamento · financeiro',
+                icon: '🚪', color: '#64748b',
+                badge: '10-15% reembolsos', badgeBg: '#f1f5f9', badgeTx: '#475569',
+                script: { subj: `I understand, [First Name] — let me help`, why: 'Tratar como arrependimento pós-compra, não como falha do produto. Perguntar se chegou a usar e quantos frascos estão lacrados antes de falar em devolução. Reposicionar o estoque.',
+                  body: `Hi [First Name],\n\nI completely understand — life changes and so do priorities.\n\nBefore I process anything, can I ask: did [you/your family member] have a chance to try it at all? And do you know how many bottles are still sealed?\n\nIf it hasn't been opened, the value is still there — I can hold your order open, adjust the timeline, or explore a partial that makes sense. If the answer is a full refund, that's honored too.\n\nJust let me know what situation you're in and I'll find the best path.\n\n— ${agentName}\n${prod} Customer Care`, key: 'desistencia' },
+                children: [
+                  { label: 'Familiar recusou usar', sub: 'Comprou para outra pessoa · pessoa não aceitou', icon: '👨‍👩‍👧', color: '#64748b', leaf: true,
+                    script: { subj: `Let's find a solution, [First Name]`, why: 'A compra foi feita com boa intenção. O produto em si não foi rejeitado — a pessoa recusou. Reposicionar o estoque como futuro ou oferecer parcial.',
+                      body: `Hi [First Name],\n\nI'm sorry to hear that — it's frustrating when you go out of your way for someone and it doesn't land the way you hoped.\n\nIf the bottles are still sealed, a few options:\n• Keep them on hand — sometimes people change their minds when they see results in others\n• I can hold them open under your account at no charge\n• Or I can process a refund for the unused portion\n\nWhat would work best for your situation?\n\n— ${agentName}\n${prod} Customer Care`, key: 'familiar' } },
+                  { label: 'Mudou para outro tratamento', sub: 'Seguiu outro protocolo · médico indicou alternativa', icon: '🔀', color: '#64748b', leaf: true,
+                    script: { subj: `No problem at all, [First Name]`, why: 'Sem competir com o outro tratamento — isso cria atrito. Honrar a decisão, processar o reembolso e manter a porta aberta.',
+                      body: `Hi [First Name],\n\nThat makes complete sense — if you're starting a new protocol, it's better to focus on one approach at a time.\n\nI can process your refund for the unopened bottles now. You'll receive a confirmation email, and the amount should appear on your statement within a few business days — though depending on your card's billing cycle, it can take up to 30 days to show.\n\nIf you ever want to come back to ${prod} as a complement down the road, I'm here.\n\n— ${agentName}\n${prod} Customer Care`, key: 'outro_tratamento' } },
+                  { label: 'Questão financeira', sub: 'Cliente informa dificuldade financeira', icon: '💰', color: '#64748b', leaf: true,
+                    script: { subj: `Let me find the best option for you, [First Name]`, why: 'Empatia genuína, sem desconto de impulso. Oferecer o plano menor ou parcial antes de reembolso total — preserva alguma receita e mantém o cliente.',
+                      body: `Hi [First Name],\n\nI really appreciate you being open with me — and I want to find something that actually works for your situation.\n\nA couple of options:\n• I can switch you to a smaller plan at a significantly lower cost\n• Or I can process a refund for the portion you haven't used\n\nWhat would help most right now?\n\n— ${agentName}\n${prod} Customer Care`, key: 'financeiro' } },
+                ]
+              },
+            ]
+          },
+          // ─── REEMBOLSO ───
+          {
+            label: 'REEMBOLSO', sub: '🚨 Chargeback: 41% do volume · Upsell: 7% · Devolução · HelpGrid',
+            icon: '💸', color: '#f43f5e',
+            children: [
+
+              // ── PRÉ-REEMBOLSO: verificar ciclo de compra ──
+              {
+                label: 'PASSO 0 — Verificar ciclo de compra', sub: 'Antes de qualquer conversa de reembolso · regra que não muda',
+                icon: '📅', color: '#0ea5e9',
+                badge: 'Sempre primeiro', badgeBg: '#e0f7fa', badgeTx: '#0e7490',
+                script: { subj: null, why: 'Mapear o tempo de compra define o ângulo de retenção. 0-7 dias: reforço de decisão. 16-30 dias: fase mais crítica do ciclo — é aqui que a maioria desiste e onde a retenção faz mais diferença. Zero reembolso total no primeiro contato.',
+                  body: `CHECKLIST INTERNO (não enviar ao cliente):\n\n□ Quantos dias desde a compra?\n  • 0–7 dias → Reforço de decisão. Ainda não houve uso real. Usar arrependimento/cumulativo.\n  • 8–15 dias → Fase de adaptação. Perguntar sobre uso e rotina antes de qualquer oferta.\n  • 16–30 dias → ⚠️ FASE CRÍTICA. Maioria desiste aqui. Máximo esforço de retenção.\n  • 31–60 dias → Argumento de protocolo incompleto + extensão de supply.\n  • 60+ dias → Diagnóstico detalhado. Se uso correto confirmado, downsell ou swap.\n\n□ Produto: ${prod}\n□ Janela de resultado esperada: ${pw ? pw.window : '90–180 days'}\n□ Já ativou o valor agregado? (app, ebook, digital)\n□ Verificar se ticket não está parado sem resposta no Freshdesk`, key: 'ciclo_check' },
+                children: [
+                  { label: '0–7 dias (reforço de decisão)', sub: 'Ainda não teve uso real · buyer\'s remorse', icon: '🌱', color: '#10b981', leaf: true,
+                    script: { subj: `[First Name], before we do anything — a quick question`, why: 'Muito cedo para qualquer julgamento sobre o produto. Ancoragem no investimento já feito e na janela real.',
+                      body: `Hi [First Name],\n\nI want to help you get this sorted — and I want to make sure I'm giving you the right solution.\n\nYou've only had ${prod} for a few days, which means your body hasn't had any meaningful time with it yet. The real results window is ${pw ? pw.window : '90–180 days'} — you're essentially at day zero of the protocol.\n\nBefore I do anything with your account: have you had a chance to take it yet? And if so, are there any specific concerns I can address?\n\nI ask because the best outcome for you here isn't necessarily a refund — it's actually getting the result you were hoping for when you ordered.\n\n— ${agentName}\n${prod} Customer Care`, key: 'ciclo_7d' } },
+                  { label: '16–30 dias (fase crítica)', sub: '⚠️ Maioria desiste aqui · máximo esforço', icon: '⚠️', color: '#f59e0b', leaf: true,
+                    script: { subj: `[First Name], this is actually the most important window`, why: 'Fase crítica do ciclo — o cliente está a caminho do resultado mas não sente ainda. O argumento neurológico/fisiológico é mais forte aqui do que em qualquer outro momento.',
+                      body: `Hi [First Name],\n\nI hear you — and I want to be straight with you about something important.\n\nYou're in days 16–30, which is actually the phase where most people consider stopping — not because the formula isn't working, but because this is precisely when the active compounds are building their baseline effect in the body. ${pw ? pw.note : 'Natural ingredients work cumulatively, and this is the phase before the visible shift.'}\n\nStopping now means losing the cumulative progress of the last 30 days. The people who see the best results are the ones who get through this window.\n\nI don't want you to lose what you've already built. Can we find a solution that makes continuing feel safe?\n\n— ${agentName}\n${prod} Customer Care`, key: 'ciclo_30d' } },
+                ]
+              },
+
+              // ── ATIVAR VALOR AGREGADO (antes de qualquer conversa de dinheiro) ──
+              {
+                label: 'PASSO 1 — Ativar valor agregado', sub: 'Antes de qualquer conversa de dinheiro · apps + ebook digital',
+                icon: '🎁', color: '#8b5cf6',
+                badge: 'Sempre ativar primeiro', badgeBg: '#ede9fe', badgeTx: '#4c1d95',
+                script: { subj: `[First Name], I want to make sure you're using everything you got`, why: 'Cliente que percebe que comprou mais do que um produto é mais difícil de perder. Apps e ebook são produtos digitais — o valor foi entregue no momento do acesso. Ativar esse argumento antes de qualquer negociação de reembolso muda o enquadramento.',
+                  body: `Hi [First Name],\n\nBefore we talk about anything else, I want to make sure you're actually using everything that came with your order — because there's more here than just the supplement.\n\nWith your purchase of ${prod} you also got:\n\n📱 Access to [APP NOME] — [glucocoach.site / vitalman.fun / nuraliss.org]\n   → [Descrição curta do app para o nicho]\n\n📖 [EBOOK TÍTULO] — your personal protocol guide\n   → Step-by-step guidance on getting the most out of ${prod}\n\nThese are digital products — you have full access right now. Have you had a chance to check them out?\n\nMany of our customers find that the combination of the supplement + the app guidance is what actually makes the difference.\n\n— ${agentName}\n${prod} Customer Care`, key: 'valor_agregado' },
+              },
+
+              // ── CHARGEBACK (41% do volume — #1 motivo real) ──
+              {
+                label: '🚨 CHARGEBACK / Ameaça de chargeback', sub: '41% do volume total de reembolsos · cliente já decidido · escalar antes da disputa formal',
+                icon: '🚨', color: '#dc2626',
+                badge: '#1 motivo — 41%', badgeBg: '#fee2e2', badgeTx: '#991b1b',
+                script: { subj: `[First Name] — before you do that, here's what actually happens`, why: 'Chargeback é sinal de cliente já decidido — não tentar reter com oferta, mas sim informar o real processo de disputa (90 dias travados, investigação, risco para ambos os lados) e posicionar o reembolso direto como a saída mais rápida e segura. Escalar para o supervisor com os links da BuyGoods e do Freshdesk antes que vire disputa formal.',
+                  body: `Hi [First Name],\n\nI want to help you get this resolved as quickly as possible — and I want to be upfront about what the two paths actually look like.\n\nOption A — Dispute with your bank:\nWhen a chargeback is filed, your bank freezes the funds under investigation. This process typically takes 60–90 days. During that time, neither you nor we can access the money — it's in a holding period controlled entirely by the bank. There's also no guarantee of outcome.\n\nOption B — Direct refund with us:\nI can process your refund directly right now. You'll receive confirmation today, and the amount will appear on your statement within a few business days (up to 30 days depending on your card's billing cycle).\n\nOption B is faster, simpler, and puts you in control.\n\nI'd like to get this done for you today. Can you confirm the order number and the amount you'd like refunded?\n\n— ${agentName}\n${prod} Customer Care\n\n[⚠️ INTERNO: Escalar para supervisor com link do ticket no Freshdesk + link do pedido na BuyGoods ANTES que vire disputa formal. Usar o link: [LINK BUYGOODS] + [LINK FRESHDESK TICKET]]`, key: 'chargeback_script' },
+                children: [
+                  { label: 'Chargeback Alert / RDR (já aberto)', sub: 'Disputa já iniciada no processador · acionar supervisor imediatamente', icon: '🔴', color: '#dc2626', leaf: true,
+                    script: { subj: null, why: 'Disputa já aberta: não responder ao cliente sem antes acionar o supervisor. O tempo é crítico — a janela de resposta à disputa é curta.',
+                      body: `⚠️ AÇÃO INTERNA IMEDIATA — não enviar ao cliente ainda:\n\n1. Acionar supervisor agora com:\n   • Link do ticket no Freshdesk: [LINK]\n   • Link do pedido na BuyGoods: [LINK BUYGOODS]\n   • Status: Chargeback Alert / RDR aberto\n   • Produto: ${prod} · Agente: ${agentName}\n\n2. Aguardar instrução do supervisor antes de responder ao cliente.\n\n3. Se autorizado a responder, usar o script de chargeback acima (Option A vs B).\n\n⚠️ AudiLeaf: volume alto + chargeback ativo — verificar se ticket não está parado sem resposta no Freshdesk. 27 tickets na fila exige atenção individual em cada um.`, key: 'cb_alert' } },
+                  { label: 'Ameaça de chargeback (ainda não aberto)', sub: 'Janela para resolver antes da disputa · máxima prioridade', icon: '🟡', color: '#f59e0b', leaf: true,
+                    script: { subj: `[First Name] — let me resolve this for you right now`, why: 'Ameaça ainda não executada — janela de resolução direta. Velocidade é tudo: resolver antes que o cliente saia da conversa e vá ao banco.',
+                      body: `Hi [First Name],\n\nI hear you — and I want to make sure we get this resolved immediately, before it becomes a more complicated process for you.\n\nThe fastest path here is a direct refund from us. I can process it right now — you'll have confirmation within minutes and the money back on your card within a few business days (up to 30 days depending on your bank's cycle).\n\nThat's considerably faster than a bank dispute, which can take 60–90 days and involves a formal investigation.\n\nCan you confirm the order number so I can process this immediately?\n\n— ${agentName}\n${prod} Customer Care\n\n[⚠️ INTERNO: Escalar para supervisor com links BuyGoods + Freshdesk agora]`, key: 'cb_threat' } },
+                ]
+              },
+
+              // ── TÁTICA DE DEVOLUÇÃO REAL (Degrau 7 da Escada) ──
+              {
+                label: 'Devolução física solicitada', sub: 'Sem RMA · frete do cliente · risco de redução por dano · Fast-Track como alternativa',
+                icon: '📦', color: '#f43f5e',
+                badge: 'Choque de realidade logística', badgeBg: '#fee2e2', badgeTx: '#991b1b',
+                script: { subj: `Before you ship anything, [First Name] — read this`, why: 'O cliente acha que devolução é indolor (etiqueta grátis, dinheiro de volta). Quebramos essa expectativa com os fatos reais: sem RMA, frete do bolso do cliente, processo de 30 dias, risco de redução por dano no transporte (política nos termos). Contrastar com Fast-Track (reembolso parcial imediato, fica com o produto) faz o Fast-Track parecer muito melhor. Aversão à perda ativada pelos próprios fatos, não por pressão.',
+                  body: `Hi [First Name],\n\nI want to make sure you have the full picture before you ship anything — because the return process has a few details that catch people off guard.\n\nHere's how it works:\n\n• We do not provide a return label (RMA). Return shipping is the customer's responsibility.\n• Once you ship, the transit and delivery timeline typically adds 15–30 days to the process.\n• Upon receipt, we conduct a product condition audit (up to 30 days). Per our terms of service, if the product is damaged in transit or the packaging is compromised, the refund amount may be reduced.\n• Total timeline before funds are returned: potentially 30–60 days from the moment you ship.\n\nAlso — just to be clear: the digital components of your order (app access at [LINK APP] and the ebook) are non-refundable as they are digital products already delivered to you.\n\nThat said, I want to make this as easy as possible for you. Here's a faster option:\n\n⚡ Fast-Track option: I can process a partial refund to your card right now — you keep the product, no shipping required, no wait time, no risk of reduction.\n\nWhich would you prefer?\n\n— ${agentName}\n${prod} Customer Care`, key: 'devolucao_real' },
+                children: [
+                  { label: 'Aceita Fast-Track (parcial imediato)', sub: 'Fica com o produto · reembolso parcial agora · revenue salva', icon: '✅', color: '#10b981', leaf: true,
+                    script: { subj: `Fast-Track confirmed, [First Name]`, why: 'Revenue parcialmente salva. O cliente fica com o produto — ainda pode completar o protocolo.',
+                      body: `Hi [First Name],\n\nPerfect — I've processed your partial refund now. You'll receive a confirmation email shortly, and it should appear on your statement within a few business days (up to 30 days depending on your billing cycle).\n\nYou keep ${prod} — and I genuinely hope you give it a proper run. The real window is ${pw ? pw.window : '90–180 days'}, and everything you've taken so far has already started building in your system.\n\nIf you have any questions about how to get the most out of it, I'm here.\n\n— ${agentName}\n${prod} Customer Care`, key: 'fasttrack_done' } },
+                  { label: 'Insiste na devolução física', sub: 'Honrar · confirmar processo real · sem pressão adicional', icon: '📋', color: '#64748b', leaf: true,
+                    script: { subj: `Return instructions, [First Name]`, why: 'Se insiste, honrar sem adicionar mais atrito. Qualquer pressão adicional gera chargeback. Confirmar o processo por escrito protege a empresa.',
+                      body: `Hi [First Name],\n\nUnderstood — here's what you need to do:\n\n1. Ship the product (at your cost) to: [ENDEREÇO DE DEVOLUÇÃO]\n2. Use a tracked shipping method and send us the tracking number by replying to this email.\n3. Once received, our team will inspect and process your refund. Per our terms, the refund amount reflects the condition of the product upon receipt.\n4. Timeline: please allow up to 30 days from receipt for processing.\n\nNote: digital products (app access + ebook) are not included in the return, as they were delivered at the time of purchase.\n\nOnce you have tracking, reply here and I'll monitor it on my end.\n\n— ${agentName}\n${prod} Customer Care`, key: 'devolucao_instrucoes' } },
+                ]
+              },
+
+              // ── UPSELL NÃO DESEJADO ──
+              {
+                label: 'Upsell não desejado / cobrança extra', sub: '7% do volume · breakdown transparente · nunca culpar o cliente',
+                icon: '💳', color: '#f59e0b',
+                badge: '7% do volume', badgeBg: '#fef3c7', badgeTx: '#92400e',
+                script: { subj: `Let me break this down clearly, [First Name]`, why: 'Nunca soar defensivo. Breakdown completo e transparente. Oferecer cancelar o upsell antes de qualquer devolução — resolve a maioria dos casos.',
+                  body: `Hi [First Name],\n\nI can see why that was confusing — let me break down exactly what happened:\n\n• Order 1 (main): ${prod} — $[VALOR]\n• Order 2 (optional offer at checkout): [UPSELL] — $[VALOR]\n• Shipping: $[FRETE]\n• Total charged: $[TOTAL]\n\nThe second charge was an optional offer that appeared during checkout — it wasn't a duplicate or an error. That said, if you didn't mean to add it, I'm happy to cancel and refund that second order right now.\n\nI just need to confirm: has it shipped yet? I'll check and sort this out today.\n\n— ${agentName}\n${prod} Customer Care`, key: 'upsell_explain' },
+                children: [
+                  { label: 'Upsell ainda não enviado', sub: 'Cancelar imediatamente · reembolso na origem', icon: '✅', color: '#10b981', leaf: true,
+                    script: { subj: `Sorted — second order cancelled, [First Name]`, why: 'Solução imediata. Confirmar por escrito evita chargeback.',
+                      body: `Hi [First Name],\n\nGood news — that second order hasn't shipped yet, so I've cancelled it and issued a full refund now.\n\nYou'll receive a confirmation email shortly. The amount should show on your statement within a few business days, though depending on your card's billing cycle it can take up to 30 days to appear.\n\nYour main order for ${prod} is still on its way. Any other questions, I'm right here.\n\n— ${agentName}\n${prod} Customer Care`, key: 'upsell_cancel' } },
+                  { label: 'Upsell já enviado', sub: 'Parcial ou devolução · sem etiqueta grátis', icon: '📦', color: '#f59e0b', leaf: true,
+                    script: { subj: `Here's what I can do, [First Name]`, why: 'Produto já enviado: parcial ou devolução com processo real (sem RMA). Maioria aceita o parcial.',
+                      body: `Hi [First Name],\n\nI checked and that second order has already shipped — so a full cancellation at this stage isn't possible.\n\nHere's what I can do:\n⚡ Partial refund: I can refund [X]% of the second order cost to your card right now — you keep the product.\n📦 Return: You can ship it back at your cost to [ENDEREÇO]. Per our terms, the refund reflects the product condition on receipt.\n\nMost customers find the partial option faster and simpler. What would work better for you?\n\n— ${agentName}\n${prod} Customer Care`, key: 'upsell_shipped' } },
+                ]
+              },
+
+              // ── ALERTAS ESPECÍFICOS DE PRODUTO ──
+              {
+                label: '⚠️ Alertas de produto — atenção especial', sub: 'AudiLeaf 27 tickets · MaroBrain argumento neurológico',
+                icon: '🔔', color: '#dc2626',
+                badge: 'Alta prioridade', badgeBg: '#fee2e2', badgeTx: '#991b1b',
+                script: { subj: null, why: 'Briefing interno com os alertas de produto do gestor.',
+                  body: `BRIEFING INTERNO — ALERTAS DE PRODUTO:\n\n🔴 AudiLeaf — VOLUME ALTO + CHARGEBACK ATIVO\n• 27 tickets na fila — cada um precisa de atenção individual\n• Verificar se o Freshdesk não deixou de atualizar nenhum ticket parado\n• Não deixar ticket sem resposta do cliente sem verificar o status\n• Principal motivo: falta de resultado com zumbido + objeções médicas\n• Janela realista a reforçar: 90–180 dias (nervos auditivos regeneram lentamente)\n\n🟡 MaroBrain — voltou a subir depois de dias mais calmos\n• Reforçar o argumento cumulativo e neurológico\n• Script-chave: quem está em tratamento há semanas não pode simplesmente parar sem perder o que já foi construído neurologicamente\n• "Neuroplasticity works on a timeline — 30 days of consistent support has already changed your baseline. Stopping now means starting from zero if you decide to come back."\n• Principal comprador: familiar para idoso — tratar como desistência por terceiros\n\n📊 Dados reais (lista de reembolsos):\n• Chargeback alert: 24.3% do volume\n• Threatened chargeback: 12.1%\n• Did not agree to upsells: 7.0%\n• No longer interested: 4.2%\n• Doctor advised against: 4.0%\n• Side effects: 2.8%\n• Did not work: 2.3%\n• Too expensive: 2.1%`, key: 'alertas_produto' },
+              },
+
+              { label: 'Downsell 1ª tentativa', sub: 'Swap · plano menor · extensão de supply', icon: '🔽', color: '#f43f5e', leaf: true,
+                script: sc('reembolso') },
+              {
+                label: 'NÃO aceitou downsell', type: 'decision', color: '#f43f5e',
+                children: [
+                  { label: '30-day card window', branchLabel: 'Ofertar crédito', branchColor: '#8b5cf6',
+                    icon: '💳', color: '#8b5cf6', sub: 'Crédito imediato vs. esperar até 30 dias no cartão', leaf: true,
+                    script: { subj: `A faster option, [First Name]`, why: 'O prazo real de estorno como contraste — crédito imediato parece muito melhor do que esperar. Prazo informado precisa ser verdadeiro.',
+                      body: `Hi [First Name],\n\nI'll process your refund now — no issues at all.\n\nOne heads-up so there are no surprises: card refunds are typically processed within a few business days on our end, but depending on your card's billing cycle, the amount can take up to 30 days to appear on your statement. That timing is entirely on the bank's side, not ours.\n\nIf you'd prefer not to wait, I can give you store credit today for the same amount — it never expires and you can use it any time.\n\nYour call — just let me know.\n\n— ${agentName}\n${prod} Customer Care`, key: '30day' } },
+                  { label: 'Reembolso integral confirmado', branchLabel: 'Honrar garantia', branchColor: '#10b981',
+                    icon: '✅', color: '#10b981', sub: 'Processar na hora · informar prazo real · sem fricção', leaf: true,
+                    script: { subj: `Refund confirmed, [First Name]`, why: 'Honrar sem fricção evita chargeback e review negativo. Comunicar prazo real previne follow-ups.',
+                      body: `Hi [First Name],\n\nYour refund has been confirmed and is being processed now — you'll receive a confirmation email shortly.\n\nA quick note on timing: the refund is typically processed within a few business days on our end. However, depending on your card's billing cycle, it can take up to 30 days to appear on your statement. That part is controlled by your bank, not us — but it's on its way.\n\nIf you don't see it after 30 days, please reach out and I'll look into it personally.\n\nThank you for giving ${prod} a try, [First Name]. I hope our paths cross again.\n\n— ${agentName}\n${prod} Customer Care`, key: 'refund_full' } },
+                ]
+              },
+            ]
+          },
+          // ─── FECHAMENTO ───
+          {
+            label: 'FECHAMENTO + NPS', sub: 'Confirmar resolução · NPS trigger 24h depois',
+            icon: '✅', color: '#0ea5e9',
+            script: sc('fechamento'),
+            children: [
+              { label: 'Confirmar solução', sub: 'Resumo de 1 linha · "nothing else needed"', icon: '📧', color: '#10b981', leaf: true, script: sc('fechamento') },
+              { label: 'NPS trigger 24h', sub: 'Automation Rule Freshdesk · promotores → indicação', icon: '⭐', color: '#f59e0b', leaf: true, script: sc('nps') },
+            ]
+          },
+        ]
+      }
+    ]
+  };
+
+  // ── Renderizador recursivo ──
+  let _scriptStore = {};
+  function renderNode(node, depth) {
+    const el = document.createElement('div');
+    el.className = 'fn';
+    el.style.setProperty('--fn-accent', node.color || '#0ea5e9');
+
+    if (node.type === 'start') {
+      const start = document.createElement('div');
+      start.style.cssText = 'text-align:center;margin-bottom:16px';
+      start.innerHTML = `<div class="fn-start">${node.label}</div>`;
+      el.appendChild(start);
+      (node.children || []).forEach(child => el.appendChild(renderNode(child, depth + 1)));
+      return el;
+    }
+
+    if (node.type === 'decision') {
+      const dec = document.createElement('div');
+      dec.className = 'fn-decision';
+      dec.innerHTML = `<span>◆</span><span>${node.label}</span><span class="fn-arrow">▼</span>`;
+      const childWrap = document.createElement('div');
+      childWrap.className = 'fn-children';
+      (node.children || []).forEach(child => {
+        if (child.branchLabel) {
+          const bl = document.createElement('div');
+          bl.className = 'fn-branch-label';
+          bl.style.cssText = `background:${child.branchColor}22;color:${child.branchColor};border:1px solid ${child.branchColor}44`;
+          bl.textContent = child.branchLabel;
+          childWrap.appendChild(bl);
+        }
+        childWrap.appendChild(renderNode(child, depth + 1));
+      });
+      dec.addEventListener('click', () => {
+        dec.classList.toggle('open');
+        const arr = dec.querySelector('.fn-arrow');
+        if (arr) arr.classList.toggle('open');
+        childWrap.classList.toggle('open');
+      });
+      el.appendChild(dec);
+      el.appendChild(childWrap);
+      return el;
+    }
+
+    // Nó padrão
+    const hasChildren = node.children && node.children.length > 0;
+    const hasScript = node.script && node.script.body;
+
+    const card = document.createElement('div');
+    card.className = 'fn-card' + (node.leaf && !hasChildren ? ' leaf' : '');
+    card.style.setProperty('--fn-accent', node.color || '#0ea5e9');
+
+    // Badge
+    const badgeHtml = node.badge
+      ? `<span class="fn-badge" style="background:${node.badgeBg||'#e2e8f0'};color:${node.badgeTx||'#374151'}">${node.badge}</span>` : '';
+
+    card.innerHTML = `<div class="fn-hd">
+      <div class="fn-icon" style="background:${node.color}22;border:1px solid ${node.color}44">${node.icon || '▸'}</div>
+      <div class="fn-label">
+        <div class="fn-title">${node.label}${badgeHtml}</div>
+        ${node.sub ? `<div class="fn-sub">${node.sub}</div>` : ''}
+      </div>
+      ${(hasChildren || hasScript) ? '<div class="fn-arrow">▼</div>' : ''}
+    </div>`;
+
+    const bodyWrap = document.createElement('div');
+    bodyWrap.style.cssText = 'padding:0 13px';
+
+    // Script inline
+    if (hasScript) {
+      const sid = node.script.key || ('s' + Math.random().toString(36).slice(2, 7));
+      _scriptStore[sid] = node.script.body;
+      const scriptDiv = document.createElement('div');
+      scriptDiv.className = 'fn-script';
+      scriptDiv.innerHTML = `
+        ${node.script.why ? `<div class="fn-script-why">${node.script.why}</div>` : ''}
+        ${node.script.subj ? `<div class="fn-script-subj">📩 ${node.script.subj}</div>` : '<div style="font-size:10.5px;color:var(--text-4);margin-bottom:6px">📋 Script interno</div>'}
+        <div class="fn-script-body">${(node.script.body||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/\n/g,'<br>')}</div>
+        <button class="fn-copy" id="fn-copy-${sid}" onclick="copyFnScript('${sid}')">⎘ Copiar script</button>`;
+      bodyWrap.appendChild(scriptDiv);
+    }
+
+    // Filhos
+    const childWrap = document.createElement('div');
+    childWrap.className = 'fn-children';
+    childWrap.style.setProperty('--fn-accent', node.color || '#0ea5e9');
+    (node.children || []).forEach(child => {
+      if (child.branchLabel) {
+        const bl = document.createElement('div');
+        bl.className = 'fn-branch-label';
+        bl.style.cssText = `background:${child.branchColor}22;color:${child.branchColor};border:1px solid ${child.branchColor}44`;
+        bl.textContent = child.branchLabel;
+        childWrap.appendChild(bl);
+      }
+      childWrap.appendChild(renderNode(child, depth + 1));
+    });
+    bodyWrap.appendChild(childWrap);
+    card.appendChild(bodyWrap);
+
+    // Click toggle
+    if (hasChildren || hasScript) {
+      const hd = card.querySelector('.fn-hd');
+      hd.addEventListener('click', () => {
+        card.classList.toggle('open');
+        const arr = card.querySelector('.fn-arrow');
+        if (arr) arr.classList.toggle('open');
+        const script = card.querySelector('.fn-script');
+        if (script) script.classList.toggle('open');
+        if (hasChildren) childWrap.classList.toggle('open');
+      });
+    }
+
+    el.appendChild(card);
+    return el;
+  }
+
+  // Função global de copiar
+  window.copyFnScript = function(id) {
+    const txt = _scriptStore[id] || '';
+    navigator.clipboard.writeText(txt).then(() => {
+      const btn = document.getElementById('fn-copy-' + id);
+      if (btn) { btn.className = 'fn-copy ok'; btn.textContent = '✓ Copiado!'; setTimeout(() => { btn.className = 'fn-copy'; btn.textContent = '⎘ Copiar script'; }, 2000); }
+    }).catch(() => {});
+  };
+  window._fnScripts = _scriptStore;
+
+  // Renderizar
+  container.innerHTML = '';
+  const wrap = document.createElement('div');
+  wrap.className = 'iflow';
+  if (agent) {
+    const banner = document.createElement('div');
+    banner.style.cssText = 'display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin-bottom:16px';
+    banner.innerHTML = `<span style="font-size:22px">${agent.emoji}</span>
+      <div><div style="font-size:13.5px;font-weight:700;color:var(--text)">${agent.product} · ${agent.agent}</div>
+      <div style="font-size:11.5px;color:var(--text-3);margin-top:2px">Cross-sells: <b>${agent.cs.join(' · ')}</b></div></div>
+      <button onclick="resetAgent()" style="margin-left:auto;font-size:10.5px;padding:3px 10px;background:var(--surface-2);border:1px solid var(--border);border-radius:7px;cursor:pointer;color:var(--text-3);font-family:inherit">✏️ Trocar</button>`;
+    wrap.appendChild(banner);
+  }
+  wrap.appendChild(renderNode(tree, 0));
+  const endEl = document.createElement('div');
+  endEl.style.cssText = 'text-align:center;margin-top:16px';
+  endEl.innerHTML = '<div class="fn-end">✓ TICKET FECHADO</div>';
+  wrap.appendChild(endEl);
+  container.appendChild(wrap);
+}
+
+/* ── NOVO buildFluxoSplit ── */
+function buildFluxoSplit(){
+  const svgs=document.getElementById('fluxo-svgs');
+  const sb=document.getElementById('fi-sidebar');
+  if(!svgs||!sb)return;
+  // Área principal: diagrama interativo
+  svgs.innerHTML='';
+  buildInteractiveFlow(svgs, _selAgent);
+  // Sidebar: scripts de jornada + motivos
+  buildFiSidebar(sb);
+}
+
+
+function buildFiSidebar(sb){
+  const a=_selAgent;
+  sb.innerHTML=`
+    <div class="fi-sb-hd">
+      ${a?`<div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+        <span style="font-size:18px">${a.emoji}</span>
+        <div><div class="fi-sb-title">${a.product}</div><div class="fi-sb-agent">${a.agent}</div></div>
+      </div>`:''}
+      <button onclick="resetAgent()" style="font-size:10px;padding:2px 8px;background:var(--surface);border:1px solid var(--border);border-radius:6px;cursor:pointer;color:var(--text-4);font-family:inherit;margin-top:4px">✏️ Trocar produto</button>
+    </div>
+    <div class="fi-sb-body" id="fi-sb-body"></div>`;
+  const body=document.getElementById('fi-sb-body');
+
+  // Seção 1: Scripts da Jornada
+  const scriptKeys=Object.keys(JOURNEY_SCRIPTS);
+  const sec1=makeFiSection('⚡','Scripts da Jornada',scriptKeys.length,true);
+  const s1body=sec1.querySelector('.fi-sec-body');
+  scriptKeys.forEach(key=>{
+    const s=JOURNEY_SCRIPTS[key];
+    const card=document.createElement('div');
+    card.className='fi-script-card';card.id='fi-sc-'+key;
+    card.innerHTML=`<div class="fi-sc-icon" style="background:${s.color}22;border:1px solid ${s.color}44">${s.icon}</div>
+      <div class="fi-sc-info"><div class="fi-sc-step">${s.step}</div><div class="fi-sc-title">${s.title}</div></div>`;
+    card.addEventListener('click',()=>toggleFiScript(key,s,card,a));
+    s1body.appendChild(card);
+  });
+  body.appendChild(sec1);
+
+  // Seção 2: Mapa de Motivos
+  const sec2=makeFiSection('🎫','Mapa de Motivos',FREASONS.length,false);
+  const s2body=sec2.querySelector('.fi-sec-body');
+  FREASONS.forEach(r=>{
+    const c=FCATS[r.c];
+    const en=a?applyAgentToScript(r.en,a):r.en;
+    const el=document.createElement('div');el.className='fi-motivo';
+    el.innerHTML=`<div class="fi-mot-emoji">${r.e}</div>
+      <div class="fi-mot-info">
+        <div class="fi-mot-name">${r.n}</div>
+        <div><span class="fi-mot-cat" style="background:${c.bg};color:${c.txt}">${c.l}</span><span class="fi-mot-pct">~${r.pct}%</span></div>
+      </div>`;
+    el.addEventListener('click',()=>openFM({...r,en},c));
+    s2body.appendChild(el);
+  });
+  body.appendChild(sec2);
+
+  // Seção 3: Cross-sells (só se tiver produto)
+  if(a&&a.cs.length){
+    const sec3=makeFiSection('🔗','Cross-sells do Nicho',a.cs.length,false);
+    const s3body=sec3.querySelector('.fi-sec-body');
+    a.cs.forEach(name=>{
+      const el=document.createElement('div');el.className='fi-cs-item';
+      el.innerHTML=`<span style="font-size:16px">💊</span><div><div class="fi-cs-name">${name}</div><div class="fi-cs-why">Produto relacionado ao nicho</div></div>`;
+      s3body.appendChild(el);
+    });
+    body.appendChild(sec3);
+  }
+}
+
+function makeFiSection(icon,label,count,startOpen){
+  const sec=document.createElement('div');sec.className='fi-section';
+  const open=startOpen;
+  sec.innerHTML=`<div class="fi-sec-hd" onclick="toggleFiSec(this)">
+    <span class="fi-sec-icon">${icon}</span>
+    <span class="fi-sec-label">${label}</span>
+    <span class="fi-sec-count">${count}</span>
+    <span class="fi-sec-arrow ${open?'open':''}">▼</span>
+  </div>
+  <div class="fi-sec-body ${open?'open':''}"></div>`;
+  return sec;
+}
+window.toggleFiSec=function(hd){
+  const body=hd.nextElementSibling;
+  const arrow=hd.querySelector('.fi-sec-arrow');
+  const isOpen=body.classList.contains('open');
+  body.classList.toggle('open',!isOpen);
+  arrow.classList.toggle('open',!isOpen);
+};
+
+let _openFiScript=null;
+function toggleFiScript(key,s,card,agent){
+  // Fechar o anterior
+  const prev=document.getElementById('fi-expanded');
+  if(prev) prev.remove();
+  if(_openFiScript===key){_openFiScript=null;card.classList.remove('open');return;}
+  _openFiScript=key;
+  // Marcar ativo
+  document.querySelectorAll('.fi-script-card').forEach(c=>c.classList.remove('open'));
+  card.classList.add('open');
+  // Construir expanded
+  const raw=s.script;
+  const applied=agent?applyAgentToScript(raw,agent):raw;
+  const div=document.createElement('div');div.id='fi-expanded';div.className='fi-script-expanded';
+  div.innerHTML=`${s.subj?`<div class="fi-se-subj">📩 ${agent?applyAgentToScript(s.subj,agent):s.subj}</div>`:'<div style="font-size:10.5px;color:var(--text-4);margin-bottom:6px">📋 Script interno</div>'}
+    <div class="fi-se-why">${s.why}</div>
+    <div class="fi-se-script">${applied.replace(/&/g,'&amp;').replace(/</g,'&lt;')}</div>
+    <button class="fi-se-copy" id="fi-copy-${key}" onclick="copyFiScript('${key}')">⎘ Copiar</button>`;
+  card.after(div);
+  // Guardar para copy
+  window._fiScripts=window._fiScripts||{};
+  window._fiScripts[key]=applied;
+}
+window.copyFiScript=function(key){
+  const txt=(window._fiScripts&&window._fiScripts[key])||'';
+  navigator.clipboard.writeText(txt).then(()=>{
+    const btn=document.getElementById('fi-copy-'+key);
+    if(btn){btn.className='fi-se-copy ok';btn.textContent='✓ Copiado!';setTimeout(()=>{btn.className='fi-se-copy';btn.textContent='⎘ Copiar';},2000);}
+  }).catch(()=>{});
+};
+
+function resetAgent(){
+  _selAgent=null;_openFiScript=null;
+  renderProductSelector2();
+}
+
+function selectAgent(a){
+  _selAgent=a;
+  buildFluxoSplit();
+}
+
+/* setFluxoTab agora é no-op (mantido para compatibilidade com possíveis chamadas externas) */
+let _fTab=0;
+let _fBuilt={f1:false,f2:false,f3:false};
+function setFluxoTab(idx,force){_fTab=idx;}
+
+function makeDraggable(el){
+  let d=false,sx=0,sy=0,ox=0,oy=0;
+  el.addEventListener('mousedown',e=>{d=true;sx=e.clientX;sy=e.clientY;ox=el.scrollLeft;oy=el.scrollTop;el.style.cursor='grabbing';});
+  el.addEventListener('mousemove',e=>{if(!d)return;el.scrollLeft=ox-(e.clientX-sx);el.scrollTop=oy-(e.clientY-sy);});
+  ['mouseup','mouseleave'].forEach(ev=>el.addEventListener(ev,()=>{d=false;el.style.cursor='grab';}));
+}
+
+/* ── PAINEL LATERAL DE SCRIPT ── */
+let _spScript='';
+function openSP(id){
+  const s=JOURNEY_SCRIPTS[id];if(!s)return;
+  const raw=s.script;
+  const applied=_selAgent?applyAgentToScript(raw,_selAgent):raw;
+  _spScript=applied;
+  document.getElementById('spp-icon').textContent=s.icon;document.getElementById('spp-icon').style.cssText=`background:${s.color}20;border:1px solid ${s.color}44`;
+  document.getElementById('spp-step').textContent=s.step;document.getElementById('spp-step').style.color=s.color;
+  document.getElementById('spp-title').textContent=s.title;
+  document.getElementById('spp-when').textContent='🕐 '+s.when+(_selAgent?` · ${_selAgent.product} / ${_selAgent.agent}`:'');
+  document.getElementById('spp-body').innerHTML=`
+    <div class="sp-psec"><div class="sp-plbl">Por que funciona</div><div class="sp-pwhy">${s.why}</div></div>
+    <div class="sp-psec"><div class="sp-plbl">Script de e-mail (EN)</div>
+      ${s.subj?`<div class="sp-psubj">📩 Assunto: ${_selAgent?applyAgentToScript(s.subj,_selAgent):s.subj}</div>`:'<div class="sp-pinternal">📋 Script interno</div>'}
+      <div class="sp-pscript">${applied.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/\n/g,'<br>')}</div>
+    </div>`;
+  const btn=document.getElementById('spp-copy');btn.className='sp-pcopy';btn.textContent='⎘ Copiar script';
+  document.getElementById('sp-panel').classList.add('open');
+}
+function closeSP(){document.getElementById('sp-panel').classList.remove('open');}
+function copySP(){navigator.clipboard.writeText(_spScript).then(()=>{const btn=document.getElementById('spp-copy');btn.className='sp-pcopy ok';btn.textContent='✓ Copiado!';setTimeout(()=>{btn.className='sp-pcopy';btn.textContent='⎘ Copiar script';},2000);}).catch(()=>{});}
+
+/* ── MODAL DE MOTIVO ── */
+let _fmScript='';
+function openFM(r,c){
+  _fmScript=r.en;
+  document.getElementById('fm-emoji').textContent=r.e;document.getElementById('fm-emoji').style.background=c.bg;
+  document.getElementById('fm-name').textContent=r.n;document.getElementById('fm-cat').textContent=c.l;document.getElementById('fm-cat').style.color=c.txt;
+  document.getElementById('fm-acao').textContent=r.acao;document.getElementById('fm-subj').textContent='📩 Script EN';document.getElementById('fm-script').textContent=r.en;
+  const btn=document.getElementById('fm-copy');btn.className='cp-btn';btn.textContent='📋 Copiar';
+  document.getElementById('fm-overlay').classList.add('on');
+}
+function closeFM(e){if(!e||e.target===document.getElementById('fm-overlay'))document.getElementById('fm-overlay').classList.remove('on');}
+function copyFM(){navigator.clipboard.writeText(_fmScript).then(()=>{const btn=document.getElementById('fm-copy');btn.className='cp-btn ok';btn.textContent='✓ Copiado!';setTimeout(()=>{btn.className='cp-btn';btn.textContent='📋 Copiar';},2000);}).catch(()=>{});}
+window.closeFM=closeFM;window.closeSP=closeSP;window.setFluxoTab=setFluxoTab;window.resetAgent=resetAgent;window.selectAgent=selectAgent;
+
 
 function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
 function rgba(h,a){const r=parseInt(h.slice(1,3),16),g=parseInt(h.slice(3,5),16),b=parseInt(h.slice(5,7),16);return`rgba(${r},${g},${b},${a})`;}
@@ -1155,6 +2478,10 @@ function rSB(){
     `<button class="nb${view==='intro'?' active':''}" onclick="gIntro()" style="${view==='intro'?'border-left-color:#0e7490;background:#0f172a':''}">
       <div class="nb-icon" style="background:${view==='intro'?'#0e7490':'rgba(14,116,144,.15)'}"><span style="filter:${view==='intro'?'brightness(10)':'none'}">🏠</span></div>
       <div class="nb-info"><div class="nb-name" style="${view==='intro'?'color:#f1f5f9;font-weight:600':''}">Visão geral & princípios</div></div>
+    </button>
+    <button class="nb${view==='fluxo'?' active':''}" onclick="gFluxo()" style="${view==='fluxo'?'border-left-color:#8b5cf6;background:#0f172a':''}">
+      <div class="nb-icon" style="background:${view==='fluxo'?'#8b5cf6':'rgba(139,92,246,.15)'}"><span style="filter:${view==='fluxo'?'brightness(10)':'none'}">🗺️</span></div>
+      <div class="nb-info"><div class="nb-name" style="${view==='fluxo'?'color:#f1f5f9;font-weight:600':''}">Fluxo de Jornada</div><div class="nb-prog">Retenção · Jornada · Motivos</div></div>
     </button>`;
 
   document.getElementById("sb-nichos").innerHTML=N.map(n=>{
@@ -1304,17 +2631,19 @@ function renderStrategy(){
 function rM(){
   if(view==="intro") document.getElementById("content").innerHTML=INTRO_HTML;
   else if(view==="fresh") document.getElementById("content").innerHTML=FRESH_HTML;
+  else if(view==="fluxo") renderFluxo();
   else if(view==="strategy") renderStrategy();
   else renderNiche();
   document.getElementById("main").scrollTop=0;
 }
 
 /* ── NAV ── */
-window.gIntro=function(){view="intro";rSB();rM();};
-window.gFresh=function(){view="fresh";rSB();rM();};
-window.gN=function(id){view="niche";cN=id;cT="fr";rSB();rM();};
+window.gIntro=function(){view="intro";document.body.classList.remove('mode-fluxo');rSB();rM();};
+window.gFresh=function(){view="fresh";document.body.classList.remove('mode-fluxo');rSB();rM();};
+window.gFluxo=function(){view="fluxo";_fTab=0;document.body.classList.add('mode-fluxo');rSB();rM();};
+window.gN=function(id){view="niche";cN=id;cT="fr";document.body.classList.remove('mode-fluxo');rSB();rM();};
 window.gT=function(id){cT=id;rM();};
-window.gS=function(id){view="strategy";cS=id;rSB();rM();};
+window.gS=function(id){view="strategy";cS=id;document.body.classList.remove('mode-fluxo');rSB();rM();};
 window.cpS=function(key){
   const t=_scripts[key]||"";
   try{navigator.clipboard.writeText(t);}catch(e){}
